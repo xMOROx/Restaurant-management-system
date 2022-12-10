@@ -1,31 +1,48 @@
-<h1> Restaurant management system </h1>
-<p> Simple database supporting a catering company.</p>
-<p> The project was carried out as part of the "Basics of databases" course at AGH UST in a 3-person team. </p>
-<p> A detailed description can be found <a href="https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/task.pdf"> here</a> (in Polish).</p>
+# Restaurant management system
 
-<h2>General informations:</h2>
-<p>  Take-away and on-site ordering service. </p>
-<p>  Table reservation for at least two people. </p>
-<p>  Offer for individual customers and companies. </p>
-<p>  Generating invoices (for a single order or for the whole month). </p>
+- Simple database supporting a catering company
+- The project was carried out as part of the "Basics of databases" course at AGH UST in a 3-person team.
+- A detailed description can be found [here](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/task.pdf) (in Polish)
 
-<h2> Menu:</h2>
-<p>  At least half of the dishes in the menu is changed at least once every two weeks. </p>
-<p>  On selected days you can order seafood. </p>
-<p>  Menu is set the day before. </p>
+## General informations
 
-<h2>Reservation:</h2>
-<p>  Possible with the minimum value (WZ) of the order and WK previous orders.</p>
-<p>  Must be approved by the employee.</p>
-<p>  For companies: per company or for specific company employee (by name).</p>
+- Take-away and on-site ordering service.
+- Table reservation for at least two people.
+- Offer for individual customers and companies.
+- Generating invoices (for a single order or for the whole month).
 
-<h2>Discounts:</h2>
-<p> One-time or long-perm discount.</p>
-<p>  Available under certain conditions (for instance number of orders).</p>
-<p>  Only available for individual customers</p>
+## Menu
 
-<h2>Reports:</h2>
-<p>  Monthly and weekly reports.</p>
-<p>  Reports are available for both companies and individual customers.</p>
-<p>  Related to discount, number of orders, statistics etc.</p>
-<br>
+- At least half of the dishes in the menu is changed at least once every two weeks.
+- On selected days you can order seafood.
+- Menu is set the day before.
+
+## Reservation
+
+- Possible with the minimum value (WZ) of the order and WK previous orders
+- Must be approved by the employee
+- For companies: per company or for specific company employee (by name)
+
+## Discounts
+
+- One-time or long-perm discount
+- Available under certain conditions (for instance number of orders)
+- Only available for individual customer
+
+## Reports
+
+- Monthly and weekly reports
+- Reports are available for both companies and individual customers
+- Related to discount, number of orders, statistics etc
+
+## Functionality
+
+- [Functions](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Functions/description.md)
+- [Procedurs](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Procedures/description.md)
+- [Tables and Indexes](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Tables/description.md)
+- [Triggers](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Triggers/description.md)
+
+## Diagrams
+
+PNG [here](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Diagrams/Diagram.png)
+SVG [here](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Diagrams/Diagram.svg)
