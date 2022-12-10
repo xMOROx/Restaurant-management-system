@@ -22,6 +22,7 @@
 <h2>Discounts:</h2>
 <p> One-time or long-perm discount.</p>
 <p>  Available under certain conditions (for instance number of orders).</p>
+<p>  Only available for individual customers</p>
 
 <h2>Reports:</h2>
 <p>  Monthly and weekly reports.</p>
