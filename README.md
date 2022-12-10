@@ -1,7 +1,7 @@
 <h1> Restaurant management system </h1>
 <p> Simple database supporting a catering company.</p>
 <p> The project was carried out as part of the "Basics of databases" course at AGH UST in a 3-person team. </p>
-<p> A detailed description can be found <a href = ""> here</a> (in Polish).</p>
+<p> A detailed description can be found <a href="https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/task.pdf"> here</a> (in Polish).</p>
 
 <h2>General informations:</h2>
 <p>  Take-away and on-site ordering service. </p>
