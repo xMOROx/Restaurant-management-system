@@ -3,7 +3,7 @@
 -- Table: Address
 CREATE TABLE Address (
     AddressID int  NOT NULL IDENTITY (1,1),
-    CityID varchar(3)  NOT NULL,
+    CityID char(3)  NOT NULL,
     street nvarchar(70)  NOT NULL,
     LocalNr varchar(10)  NOT NULL check(localNr like '[0-9]%'),
     PostalCode char(6)  NOT NULL check(PostalCode like '[0-9][0-9]-[0-9][0-9][0-9]'),
@@ -20,7 +20,7 @@ CREATE TABLE Category (
 
 -- Table: Cities
 CREATE TABLE Cities (
-    CityID varchar(3)  NOT NULL ,
+    CityID char(3)  NOT NULL ,
     CityName nvarchar(35)  NOT NULL,
     CONSTRAINT Cities_pk PRIMARY KEY  (CityID)
 );
