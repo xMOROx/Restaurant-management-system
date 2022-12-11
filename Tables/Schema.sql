@@ -20,7 +20,7 @@ CREATE TABLE Category (
 
 -- Table: Cities
 CREATE TABLE Cities (
-    CityID varchar(3)  NOT NULL IDENTITY (1,1),
+    CityID varchar(3)  NOT NULL ,
     CityName nvarchar(35)  NOT NULL,
     CONSTRAINT Cities_pk PRIMARY KEY  (CityID)
 );
@@ -39,8 +39,8 @@ CREATE TABLE Companies (
     ClientID int  NOT NULL IDENTITY (1,1),
     CompanyName nvarchar(50)  NOT NULL UNIQUE,
     NIP char(10)  NOT NULL UNIQUE check(NIP like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
-    KRS char(10)  NULL UNIQUE check(NIP like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
-    Regon char(9)  NULL UNIQUE check(NIP like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+    KRS char(10)  NULL UNIQUE check(KRS like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+    Regon char(9)  NULL UNIQUE check(Regon like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT Companies_pk PRIMARY KEY  (ClientID)
 );
 
@@ -62,7 +62,8 @@ CREATE TABLE DiscountsVar (
     ValidityPeriod int  NULL,
     DiscountValue decimal(3,2)  NOT NULL CHECK ( DiscountValue >= 0 and DiscountValue <= 1 ),
     startDate datetime  NOT NULL DEFAULT getdate(),
-    endDate datetime  NULL check(datetime IS NULL or startDate < endDate),
+    endDate datetime  NULL,
+    CONSTRAINT validDate check(endDate IS NULL or startDate < endDate),
     CONSTRAINT DiscountsVar_pk PRIMARY KEY  (VarID)
 );
 
@@ -98,7 +99,7 @@ CREATE TABLE Menu (
     startDate datetime  NOT NULL default getdate(),
     endDate datetime  NOT NULL ,
     ProductID int  NOT NULL,
-    CONSTRAINT validDate check(startDate < endDate),
+    CONSTRAINT validDateMenu check(startDate < endDate),
     CONSTRAINT Menu_pk PRIMARY KEY  (MenuID)
 );
 
@@ -122,7 +123,7 @@ CREATE TABLE Orders (
     OrderDate datetime  NOT NULL default getdate(),
     OrderCompletionDate datetime  NOT NULL ,
     Picked bit  NOT NULL,
-    CONSTRAINT validDate check ( OrderCompletionDate >= OrderDate ),
+    CONSTRAINT validDateOrders check ( OrderCompletionDate >= OrderDate ),
     CONSTRAINT Orders_pk PRIMARY KEY  (OrderID)
 );
 
@@ -172,7 +173,7 @@ CREATE TABLE Reservation (
     endDate datetime  NOT NULL ,
     Status bit  NOT NULL,
     StaffID int  NOT NULL,
-    CONSTRAINT validDate  check(startDate < endDate),
+    CONSTRAINT validDateReservation  check(startDate < endDate),
     CONSTRAINT Reservation_pk PRIMARY KEY  (ReservationID)
 );
 
@@ -206,7 +207,7 @@ CREATE TABLE ReservationVar (
     WK int  NOT NULL check (WK > 0),
     startDate datetime  NOT NULL,
     endDate datetime  NULL,
-    CONSTRAINT check(startDate < endDate or endDate is NULL),
+    CONSTRAINT validDateReservationVar check(startDate < endDate or endDate is NULL),
     CONSTRAINT ReservationVar_pk PRIMARY KEY  (ReservationVarID)
 );
 
@@ -216,9 +217,9 @@ CREATE TABLE Staff (
     LastName nvarchar(50)  NOT NULL,
     FirstName nvarchar(70)  NOT NULL,
     Position varchar(50)  NOT NULL,
-    Email varchar(100)  NOT NULL ,
+    Email varchar(100)  NOT NULL UNIQUE check( Email like '%[@]%[.]%'),
     Phone varchar(14)  NOT NULL UNIQUE check( isnumeric(Phone) = 1 and len(Phone) >= 9),
-    AdressID int  NOT NULL UNIQUE check( Email like '%[@]%[.]%'),
+    AddressID int  NOT NULL ,
     CONSTRAINT Staff_pk PRIMARY KEY  (StaffID)
 );
 
@@ -239,11 +240,11 @@ ALTER TABLE Address ADD CONSTRAINT Address_Cities
 -- Reference: Clients_Address (table: Clients)
 ALTER TABLE Clients ADD CONSTRAINT Clients_Address
     FOREIGN KEY (AddressID)
-    REFERENCES Address (AdressID);
+    REFERENCES Address (AddressID);
 
 -- Reference: Clients_IndividualClient (table: IndividualClient)
 ALTER TABLE IndividualClient ADD CONSTRAINT Clients_IndividualClient
-    FOREIGN KEY (CllientID)
+    FOREIGN KEY (ClientID)
     REFERENCES Clients (ClientID);
 
 -- Reference: Companies_Clients (table: Companies)
@@ -259,7 +260,7 @@ ALTER TABLE Discounts ADD CONSTRAINT Discounts_DiscountsVar
 -- Reference: Discounts_IndividualClient (table: Discounts)
 ALTER TABLE Discounts ADD CONSTRAINT Discounts_IndividualClient
     FOREIGN KEY (ClientID)
-    REFERENCES IndividualClient (CllientID);
+    REFERENCES IndividualClient (ClientID);
 
 -- Reference: Employees_Companies (table: Employees)
 ALTER TABLE Employees ADD CONSTRAINT Employees_Companies
@@ -373,8 +374,8 @@ ALTER TABLE Reservation ADD CONSTRAINT Reservation_Staff
 
 -- Reference: Staff_Address (table: Staff)
 ALTER TABLE Staff ADD CONSTRAINT Staff_Address
-    FOREIGN KEY (AdressID)
-    REFERENCES Address (AdressID);
+    FOREIGN KEY (AddressID)
+    REFERENCES Address (AddressID);
 
 -- End of file.
 
