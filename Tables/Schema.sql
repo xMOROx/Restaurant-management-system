@@ -233,144 +233,168 @@ CREATE TABLE Tables (
 
 -- foreign keys
 -- Reference: Address_Cities (table: Address)
-ALTER TABLE Address ADD CONSTRAINT Address_Cities
-    FOREIGN KEY (CityID)
-    REFERENCES Cities (CityID);
+alter table Address
+    add constraint Address_Cities
+        foreign key (CityID) references Cities
+            on update cascade
 
 -- Reference: Clients_Address (table: Clients)
-ALTER TABLE Clients ADD CONSTRAINT Clients_Address
-    FOREIGN KEY (AddressID)
-    REFERENCES Address (AddressID);
+alter table Clients
+    add constraint Clients_Address
+        foreign key (AddressID) references Address
+            on update cascade
 
 -- Reference: Clients_IndividualClient (table: IndividualClient)
-ALTER TABLE IndividualClient ADD CONSTRAINT Clients_IndividualClient
-    FOREIGN KEY (ClientID)
-    REFERENCES Clients (ClientID);
+alter table IndividualClient
+    add constraint Clients_IndividualClient
+        foreign key (ClientID) references Clients
+            on update cascade
 
 -- Reference: Companies_Clients (table: Companies)
-ALTER TABLE Companies ADD CONSTRAINT Companies_Clients
-    FOREIGN KEY (ClientID)
-    REFERENCES Clients (ClientID);
+alter table Companies
+    add constraint Companies_Clients
+        foreign key (ClientID) references Clients
 
 -- Reference: Discounts_DiscountsVar (table: Discounts)
-ALTER TABLE Discounts ADD CONSTRAINT Discounts_DiscountsVar
-    FOREIGN KEY (VarID)
-    REFERENCES DiscountsVar (VarID);
+alter table Discounts
+    add constraint Discounts_DiscountsVar
+        foreign key (VarID) references DiscountsVar
+            on update cascade
 
 -- Reference: Discounts_IndividualClient (table: Discounts)
-ALTER TABLE Discounts ADD CONSTRAINT Discounts_IndividualClient
-    FOREIGN KEY (ClientID)
-    REFERENCES IndividualClient (ClientID);
+alter table Discounts
+    add constraint Discounts_IndividualClient
+        foreign key (ClientID) references IndividualClient
+            on update cascade
 
 -- Reference: Employees_Companies (table: Employees)
-ALTER TABLE Employees ADD CONSTRAINT Employees_Companies
-    FOREIGN KEY (CompanyID)
-    REFERENCES Companies (ClientID);
+alter table Employees
+    add constraint Employees_Companies
+        foreign key (CompanyID) references Companies
+            on update cascade
 
 -- Reference: Employees_Person (table: Employees)
-ALTER TABLE Employees ADD CONSTRAINT Employees_Person
-    FOREIGN KEY (PersonID)
-    REFERENCES Person (PersonID);
+alter table Employees
+    add constraint Employees_Person
+        foreign key (PersonID) references Person
+            on update cascade
 
 -- Reference: IndividualClient_Person (table: IndividualClient)
-ALTER TABLE IndividualClient ADD CONSTRAINT IndividualClient_Person
-    FOREIGN KEY (PersonID)
-    REFERENCES Person (PersonID);
+alter table IndividualClient
+    add constraint IndividualClient_Person
+        foreign key (PersonID) references Person
+            on update cascade
 
 -- Reference: Invoice_Clients (table: Invoice)
-ALTER TABLE Invoice ADD CONSTRAINT Invoice_Clients
-    FOREIGN KEY (ClientID)
-    REFERENCES Clients (ClientID);
+alter table Invoice
+    add constraint Invoice_Clients
+        foreign key (ClientID) references Clients
+            on update cascade
 
 -- Reference: Invoice_PaymentStatus (table: Invoice)
-ALTER TABLE Invoice ADD CONSTRAINT Invoice_PaymentStatus
-    FOREIGN KEY (PaymentStatusID)
-    REFERENCES PaymentStatus (PaymentStatusID);
+alter table Invoice
+    add constraint Invoice_PaymentStatus
+        foreign key (PaymentStatusID) references PaymentStatus
+            on update cascade
 
 -- Reference: Menu_Products (table: Menu)
-ALTER TABLE Menu ADD CONSTRAINT Menu_Products
-    FOREIGN KEY (ProductID)
-    REFERENCES Products (ProductID);
+alter table Menu
+    add constraint Menu_Products
+        foreign key (ProductID) references Products
+            on update cascade
 
 -- Reference: OrderDetails_Orders (table: OrderDetails)
-ALTER TABLE OrderDetails ADD CONSTRAINT OrderDetails_Orders
-    FOREIGN KEY (OrderID)
-    REFERENCES Orders (OrderID);
+alter table OrderDetails
+    add constraint OrderDetails_Orders
+        foreign key (OrderID) references Orders
+            on update cascade
 
 -- Reference: OrderDetails_Products (table: OrderDetails)
-ALTER TABLE OrderDetails ADD CONSTRAINT OrderDetails_Products
-    FOREIGN KEY (ProductID)
-    REFERENCES Products (ProductID);
+alter table OrderDetails
+    add constraint OrderDetails_Products
+        foreign key (ProductID) references Products
+            on update cascade
 
 -- Reference: Orders_Clients (table: Orders)
-ALTER TABLE Orders ADD CONSTRAINT Orders_Clients
-    FOREIGN KEY (ClientID)
-    REFERENCES Clients (ClientID);
+alter table Orders
+    add constraint Orders_Clients
+        foreign key (ClientID) references Clients
+            on update cascade
 
 -- Reference: Orders_OrdersTakeaways (table: Orders)
-ALTER TABLE Orders ADD CONSTRAINT Orders_OrdersTakeaways
-    FOREIGN KEY (TakeawayID)
-    REFERENCES OrdersTakeaways (TakeawaysID);
+alter table Orders
+    add constraint Orders_OrdersTakeaways
+        foreign key (TakeawayID) references OrdersTakeaways
+            on update cascade
 
 -- Reference: Orders_PaymentStatus (table: Orders)
-ALTER TABLE Orders ADD CONSTRAINT Orders_PaymentStatus
-    FOREIGN KEY (PaymentStatusID)
-    REFERENCES PaymentStatus (PaymentStatusID);
+alter table Orders
+    add constraint Orders_PaymentStatus
+        foreign key (PaymentStatusID) references PaymentStatus
+            on update cascade
 
 -- Reference: Orders_Reservation (table: Orders)
-ALTER TABLE Orders ADD CONSTRAINT Orders_Reservation
-    FOREIGN KEY (ReservationID)
-    REFERENCES Reservation (ReservationID);
+alter table Orders
+    add constraint Orders_Reservation
+        foreign key (ReservationID) references Reservation
+            on update cascade
 
 -- Reference: Orders_staff (table: Orders)
-ALTER TABLE Orders ADD CONSTRAINT Orders_staff
-    FOREIGN KEY (staffID)
-    REFERENCES Staff (StaffID);
+alter table Orders
+    add constraint Orders_staff
+        foreign key (staffID) references Staff
+            on update cascade
 
 -- Reference: PaymentStatus_PaymentMethods (table: PaymentStatus)
-ALTER TABLE PaymentStatus ADD CONSTRAINT PaymentStatus_PaymentMethods
-    FOREIGN KEY (PaymentMethodID)
-    REFERENCES PaymentMethods (PaymentMethodID);
+alter table PaymentStatus
+    add constraint PaymentStatus_PaymentMethods
+        foreign key (PaymentMethodID) references PaymentMethods
+            on update cascade
 
 -- Reference: Products_Category (table: Products)
-ALTER TABLE Products ADD CONSTRAINT Products_Category
-    FOREIGN KEY (CategoryID)
-    REFERENCES Category (CategoryID);
+alter table Products
+    add constraint Products_Category
+        foreign key (CategoryID) references Category
+            on update cascade
 
 -- Reference: ReservationCompany_Companies (table: ReservationCompany)
-ALTER TABLE ReservationCompany ADD CONSTRAINT ReservationCompany_Companies
-    FOREIGN KEY (ClientID)
-    REFERENCES Companies (ClientID);
+alter table ReservationCompany
+    add constraint ReservationCompany_Companies
+        foreign key (ClientID) references Companies
+            on update cascade
 
 -- Reference: ReservationDetails_ReservationCompany (table: ReservationDetails)
-ALTER TABLE ReservationDetails ADD CONSTRAINT ReservationDetails_ReservationCompany
-    FOREIGN KEY (ReservationID)
-    REFERENCES ReservationCompany (ReservationID);
+alter table ReservationDetails
+    add constraint ReservationDetails_ReservationCompany
+        foreign key (ReservationID) references ReservationCompany
+            on update cascade
 
 -- Reference: ReservationDetails_ReservationIndividual (table: ReservationDetails)
-ALTER TABLE ReservationDetails ADD CONSTRAINT ReservationDetails_ReservationIndividual
-    FOREIGN KEY (ReservationID)
-    REFERENCES ReservationIndividual (ReservationID);
+alter table ReservationDetails
+    add constraint ReservationDetails_ReservationIndividual
+        foreign key (ReservationID) references ReservationIndividual
+            on update cascade
 
 -- Reference: ReservationDetails_Tables (table: ReservationDetails)
-ALTER TABLE ReservationDetails ADD CONSTRAINT ReservationDetails_Tables
-    FOREIGN KEY (TableID)
-    REFERENCES Tables (TableID);
+alter table ReservationDetails
+    add constraint ReservationDetails_Tables
+        foreign key (TableID) references Tables
+            on update cascade
 
 -- Reference: Reservation_ReservationCompany (table: Reservation)
-ALTER TABLE Reservation ADD CONSTRAINT Reservation_ReservationCompany
-    FOREIGN KEY (ReservationID)
-    REFERENCES ReservationCompany (ReservationID);
+alter table Reservation
+    add constraint Reservation_ReservationCompany
+        foreign key (ReservationID) references ReservationCompany
 
 -- Reference: Reservation_ReservationIndividual (table: Reservation)
-ALTER TABLE Reservation ADD CONSTRAINT Reservation_ReservationIndividual
-    FOREIGN KEY (ReservationID)
-    REFERENCES ReservationIndividual (ReservationID);
+alter table Reservation
+    add constraint Reservation_ReservationIndividual
+        foreign key (ReservationID) references ReservationIndividual
 
 -- Reference: Reservation_Staff (table: Reservation)
-ALTER TABLE Reservation ADD CONSTRAINT Reservation_Staff
-    FOREIGN KEY (StaffID)
-    REFERENCES Staff (StaffID);
+alter table Reservation
+    add constraint Reservation_Staff
+        foreign key (StaffID) references Staff
 
 -- Reference: Staff_Address (table: Staff)
 ALTER TABLE Staff ADD CONSTRAINT Staff_Address
