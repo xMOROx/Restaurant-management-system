@@ -99,7 +99,7 @@ CREATE TABLE Menu (
     startDate datetime  NOT NULL default getdate(),
     endDate datetime  NOT NULL ,
     ProductID int  NOT NULL,
-    CONSTRAINT validDateMenu check(startDate < endDate),
+    CONSTRAINT validDateMenu check(dateadd(day, 14 ,startDate) < endDate),
     CONSTRAINT Menu_pk PRIMARY KEY  (MenuID)
 );
 
@@ -171,8 +171,9 @@ CREATE TABLE Reservation (
     ReservationID int  NOT NULL  IDENTITY (1,1),
     startDate datetime  NOT NULL,
     endDate datetime  NOT NULL ,
-    Status bit  NOT NULL,
+    Status varchar(15)  NOT NULL,
     StaffID int  NOT NULL,
+    constraint validStatus check (Status in ('waiting', 'accepted', 'denied')),
     CONSTRAINT validDateReservation  check(startDate < endDate),
     CONSTRAINT Reservation_pk PRIMARY KEY  (ReservationID)
 );
