@@ -3,6 +3,7 @@
 - Simple database supporting a catering company
 - The project was carried out as part of the "Basics of databases" course at AGH UST in a 3-person team.
 - A detailed description can be found [here](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/task.pdf) (in Polish)
+- A documentation can be found [here](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Documentation.pdf) (in Polish mostly)
 
 ## General informations
 
