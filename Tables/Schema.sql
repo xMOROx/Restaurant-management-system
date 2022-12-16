@@ -122,7 +122,7 @@ CREATE TABLE Orders (
     OrderSum money  NOT NULL check ( OrderSum > 0 ),
     OrderDate datetime  NOT NULL default getdate(),
     OrderCompletionDate datetime  NOT NULL ,
-    Picked bit  NOT NULL,
+    OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked')),
     CONSTRAINT validDateOrders check ( OrderCompletionDate >= OrderDate ),
     CONSTRAINT Orders_pk PRIMARY KEY  (OrderID)
 );
@@ -130,7 +130,7 @@ CREATE TABLE Orders (
 -- Table: OrdersTakeaways
 CREATE TABLE OrdersTakeaways (
     TakeawaysID int  NOT NULL IDENTITY (1,1),
-    PrefDate datetime  NOT NULL check (PrefDate > getdate()),
+    PrefDate datetime  NOT NULL check (PrefDate >= getdate()),
     CONSTRAINT OrdersTakeaways_pk PRIMARY KEY  (TakeawaysID)
 );
 
@@ -163,6 +163,7 @@ CREATE TABLE Products (
     CategoryID int  NOT NULL,
     Name nvarchar(50)  NOT NULL,
     Description nvarchar(150)  NOT NULL default 'brak opisu' ,
+    IsAvailable bit NOT NULL default 1,
     CONSTRAINT Products_pk PRIMARY KEY  (ProductID)
 );
 
@@ -173,7 +174,7 @@ CREATE TABLE Reservation (
     endDate datetime  NOT NULL ,
     Status varchar(15)  NOT NULL,
     StaffID int  NOT NULL,
-    constraint validStatus check (Status in ('waiting', 'accepted', 'denied')),
+    constraint validStatus check (Status in ('pending', 'accepted', 'denied')),
     CONSTRAINT validDateReservation  check(startDate < endDate),
     CONSTRAINT Reservation_pk PRIMARY KEY  (ReservationID)
 );
