@@ -184,3 +184,24 @@ create view dbo.[takeaways orders companies] as
 go
 
 -- takeaways orders companies --
+
+-- ReservationInfo --
+CREATE VIEW ReservationInfo AS
+    SELECT R.ReservationID, TableID, StartDate, EndDate
+    FROM Reservation R
+        LEFT OUTER JOIN ReservationDetails RD on RD.ReservationID = R.ReservationID
+    WHERE Status NOT LIKE 'Cancelled'
+go
+-- ReservationInfo --
+
+-- PendingReservation --
+
+CREATE VIEW PendingReservations AS
+    SELECT ReservationID, startDate, endDate
+    FROM Reservation
+    WHERE Status LIKE 'Pending'
+go
+
+
+-- PendingReservation --
+
