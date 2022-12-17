@@ -18,7 +18,8 @@ go
 create view dbo.unPaidInvoicesIndividuals as
     select  InvoiceNumber as [Numer faktury], InvoiceDate as [Data wystawienia],
             DueDate as [Data terminu zaplaty], concat(LastName, ' ',FirstName) as [Dane],
-            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode from Invoice
+            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
+    from Invoice
         inner join Clients C on C.ClientID = Invoice.ClientID
         inner join Address A on C.AddressID = A.AddressID
         inner join IndividualClient IC on C.ClientID = IC.ClientID
@@ -34,7 +35,8 @@ go
 create view dbo.unPaidInvoicesIndividuals as
     select  InvoiceNumber as [Numer faktury], InvoiceDate as [Data wystawienia],
             DueDate as [Data terminu zaplaty], CompanyName, NIP, isnull(KRS, 'Brak') as [KRS], isnull(Regon, 'Brak') as [Regon],
-            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode from Invoice
+            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
+    from Invoice
         inner join Clients C on C.ClientID = Invoice.ClientID
         inner join Companies CO on CO.ClientID = C.ClientID
         inner join Address A on C.AddressID = A.AddressID
@@ -75,28 +77,61 @@ create view dbo.[Not reserved Tables] as
         left join ReservationDetails RD on Tables.TableID = RD.TableID
         inner join ReservationCompany RC on RC.ReservationID = RD.ReservationID
         inner join Reservation R2 on RC.ReservationID = R2.ReservationID
-            where RD.ReservationID is null and (getdate() >= startDate) and (getdate() <= endDate)
+    where RD.ReservationID is null and (getdate() >= startDate) and (getdate() <= endDate)
+
     union
+
     select TableID, ChairAmount from Tables
         left join ReservationDetails RD on Tables.TableID = RD.TableID
         inner join ReservationIndividual RI on RI.ReservationID = RD.ReservationID
         inner join Reservation R3 on RD.ReservationID = R3.ReservationID
-            where RD.ReservationID is null and (getdate() >= startDate) and (getdate() <= endDate)
+    where RD.ReservationID is null and (getdate() >= startDate) and (getdate() <= endDate)
 go
 -- Not reserved Tables --
+
+-- weekly raport about tables --
+
+CREATE VIEW dbo.TablesWeekly AS
+    SELECT YEAR(R2.StartDate) as year,
+        DATEPART(week, R2.StartDate) as week,
+        T.TableID as table_id,
+        T.ChairAmount as table_size,
+        COUNT(RD.TableID) as how_many_times_reserved
+    FROM Tables T
+        INNER JOIN ReservationDetails RD on T.TableID = RD.TableID
+        INNER JOIN Reservation R2 on RD.ReservationID = R2.ReservationID
+    GROUP BY YEAR(R2.StartDate), DATEPART(week, R2.StartDate), T.TableID, T.ChairAmount
+go
+-- weekly raport about tables --
+
+-- monthly raport about tables --
+
+CREATE VIEW TablesMonthly AS
+    SELECT YEAR(R2.StartDate) as year,
+        MONTH(R2.StartDate) as month,
+        T.TableID as table_id,
+        T.ChairAmount as table_size,
+        COUNT(RD.TableID) as how_many_times_reserved
+    FROM Tables T
+        INNER JOIN ReservationDetails RD on T.TableID = RD.TableID
+        INNER JOIN Reservation R2 on RD.ReservationID = R2.ReservationID
+    GROUP BY YEAR(R2.StartDate), MONTH(R2.StartDate), T.TableID, T.ChairAmount
+go
+
+-- monthly raport about tables --
 
 -- takeaway orders not picked Individuals--
 
 create view dbo.[takeaways orders not picked Individuals] as
     select PrefDate as [Data odbioru], concat(LastName, ' ',FirstName) as [Dane],
            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
-           from OrdersTakeaways OT
-        inner join Orders O on OT.TakeawaysID = O.TakeawayID
-        inner join Clients C on O.ClientID = C.ClientID
-        inner join IndividualClient IC on C.ClientID = IC.ClientID
-        inner join Person P on IC.PersonID = P.PersonID
-        inner join Address A on C.AddressID = A.AddressID
-        inner join Cities C2 on A.CityID = C2.CityID
+        from OrdersTakeaways OT
+            inner join Orders O on OT.TakeawaysID = O.TakeawayID
+            inner join Clients C on O.ClientID = C.ClientID
+            inner join IndividualClient IC on C.ClientID = IC.ClientID
+            inner join Person P on IC.PersonID = P.PersonID
+            inner join Address A on C.AddressID = A.AddressID
+            inner join Cities C2 on A.CityID = C2.CityID
         where OrderStatus not like 'Picked' and OrderStatus not like 'Denied' and (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
 go
 -- takeaways orders not picked Individuals--
@@ -122,14 +157,14 @@ go
 create view dbo.[takeaways orders Individuals] as
     select PrefDate as [Data odbioru], concat(LastName, ' ',FirstName) as [Dane],
            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
-           from OrdersTakeaways OT
+    from OrdersTakeaways OT
         inner join Orders O on OT.TakeawaysID = O.TakeawayID
         inner join Clients C on O.ClientID = C.ClientID
         inner join IndividualClient IC on C.ClientID = IC.ClientID
         inner join Person P on IC.PersonID = P.PersonID
         inner join Address A on C.AddressID = A.AddressID
         inner join Cities C2 on A.CityID = C2.CityID
-        where  (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
+    where  (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
 go
 -- takeaways orders  Individuals--
 
@@ -139,13 +174,13 @@ go
 create view dbo.[takeaways orders companies] as
     select PrefDate as [Data odbioru], CompanyName, NIP, isnull(KRS, 'Brak') as [KRS], isnull(Regon, 'Brak') as [Regon],
            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
-           from OrdersTakeaways OT
+    from OrdersTakeaways OT
         inner join Orders O on OT.TakeawaysID = O.TakeawayID
         inner join Clients C on O.ClientID = C.ClientID
         inner join Companies CO on C.ClientID = CO.ClientID
         inner join Address A on C.AddressID = A.AddressID
         inner join Cities C2 on A.CityID = C2.CityID
-        where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
+    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
 go
 
 -- takeaways orders companies --
