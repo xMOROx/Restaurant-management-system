@@ -97,9 +97,9 @@ CREATE TABLE Menu (
     MenuID int  NOT NULL IDENTITY (1,1),
     Price money  NOT NULL check ( Price > 0 ),
     startDate datetime  NOT NULL default getdate(),
-    endDate datetime  NOT NULL ,
+    endDate datetime NULL ,
     ProductID int  NOT NULL,
-    CONSTRAINT validDateMenu check(dateadd(day, 14 ,startDate) < endDate),
+    CONSTRAINT validDateMenu check((dateadd(day, 14 ,startDate) < endDate and endDate is not null) or endDate is null),
     CONSTRAINT Menu_pk PRIMARY KEY  (MenuID)
 );
 
