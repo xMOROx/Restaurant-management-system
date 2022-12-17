@@ -49,3 +49,17 @@ create or alter view AllDiscounts as
     select IC.PersonID, LastName, FirstName,IC.ClientID, DiscountsVar.VarID, DiscountType, MinimalOrders, MinimalAggregateValue, ValidityPeriod, DiscountValue, startDate, endDate, DiscountID, AppliedDate
     from DiscountsVar join Discounts on DiscountsVar.VarID = Discounts.VarID join IndividualClient IC on Discounts.ClientID = IC.ClientID join Person P on P.PersonID = IC.PersonID
     where IC.ClientID is not null
+
+-- Dania wymagane na dzisiaj na wynos
+create or alter view DishesInProgressTakeaways as
+    select count(Quantity)
+    from Products join OrderDetails OD on Products.ProductID = OD.ProductID join Orders on OD.OrderID = Orders.OrderID join OrdersTakeaways OT on Orders.TakeawayID = OT.TakeawaysID
+    where Day(PrefDate)=DAY(getdate()) and OrderStatus='pending'
+    group by Products.ProductID
+
+-- Dania wymagane na dzisiaj w rezerwacji
+create or alter view DishesInProgressReservation as
+    select count(Quantity)
+    from Products join OrderDetails OD on Products.ProductID = OD.ProductID join Orders on OD.OrderID = Orders.OrderID join Reservation R2 on Orders.ReservationID = R2.ReservationID
+    where Day(startDate)=DAY(getdate()) and OrderStatus='pending'
+    group by Products.ProductID
