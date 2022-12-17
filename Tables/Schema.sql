@@ -162,7 +162,7 @@ CREATE TABLE Products (
     ProductID int  NOT NULL IDENTITY (1,1),
     CategoryID int  NOT NULL,
     Name nvarchar(50)  NOT NULL,
-    Description nvarchar(150)  NOT NULL default 'brak opisu' ,
+    Description nvarchar(150)  NOT NULL default 'brak opisu',
     IsAvailable bit NOT NULL default 1,
     CONSTRAINT Products_pk PRIMARY KEY  (ProductID)
 );
@@ -174,7 +174,7 @@ CREATE TABLE Reservation (
     endDate datetime  NOT NULL ,
     Status varchar(15)  NOT NULL,
     StaffID int  NOT NULL,
-    constraint validStatus check (Status in ('pending', 'accepted', 'denied')),
+    constraint validStatus check (Status in ('pending', 'accepted', 'denied', 'cancelled')),
     CONSTRAINT validDateReservation  check(startDate < endDate),
     CONSTRAINT Reservation_pk PRIMARY KEY  (ReservationID)
 );
