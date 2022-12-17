@@ -121,9 +121,9 @@ CREATE TABLE Orders (
     staffID int  NOT NULL,
     OrderSum money  NOT NULL check ( OrderSum > 0 ),
     OrderDate datetime  NOT NULL default getdate(),
-    OrderCompletionDate datetime  NOT NULL ,
+    OrderCompletionDate datetime  NULL ,
     OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked')),
-    CONSTRAINT validDateOrders check ( OrderCompletionDate >= OrderDate ),
+    CONSTRAINT validDateOrders check ( (OrderCompletionDate >= OrderDate)  or (OrderCompletionDate is null)),
     CONSTRAINT Orders_pk PRIMARY KEY  (OrderID)
 );
 
