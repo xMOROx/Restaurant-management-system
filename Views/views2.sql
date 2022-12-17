@@ -5,7 +5,7 @@ create view dbo.Waiter as
     where Position = 'waiter'
        or Position = 'waitress';
 
-create view dbo.Takeaways as
+create view dbo.AllTakeaways as
     select TakeawayID,
            PrefDate,
            OrderID,
@@ -19,3 +19,17 @@ create view dbo.Takeaways as
     from OrdersTakeaways
              join Orders O on OrdersTakeaways.TakeawaysID = O.TakeawayID;
 
+create view OrdersToPrepare as
+    select *
+    from Orders join OrdersTakeaways OT on Orders.TakeawayID = OT.TakeawaysID
+    where OrderCompletionDate is null
+
+create view SeeFood as
+    select count(OD.OrderID)
+    from Orders join OrderDetails OD on Orders.OrderID = OD.OrderID join Products P on P.ProductID = OD.ProductID join Category C on C.CategoryID = P.CategoryID
+    where CategoryName='sea food' and OrderCompletionDate is null
+    group by CategoryName
+    union
+    select OD.OrderID
+    from Orders join OrderDetails OD on Orders.OrderID = OD.OrderID join Products P on P.ProductID = OD.ProductID join Category C on C.CategoryID = P.CategoryID
+    where CategoryName='sea food' and OrderCompletionDate is null
