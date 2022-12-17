@@ -87,7 +87,7 @@ go
 
 -- takeaway orders not picked Individuals--
 
-create view dbo.[takeaway orders not picked Individuals] as
+create view dbo.[takeaways orders not picked Individuals] as
     select PrefDate as [Data odbioru], concat(LastName, ' ',FirstName) as [Dane],
            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
            from OrdersTakeaways OT
@@ -99,11 +99,11 @@ create view dbo.[takeaway orders not picked Individuals] as
         inner join Cities C2 on A.CityID = C2.CityID
         where OrderStatus not like 'Picked' and OrderStatus not like 'Denied' and (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
 go
--- takeaway orders not picked Individuals--
+-- takeaways orders not picked Individuals--
 
--- takeaway orders not picked Companies--
+-- takeaways orders not picked Companies--
 
-create view dbo.[takeaway orders not picked Individuals] as
+create view dbo.[takeaways orders not picked Individuals] as
     select PrefDate as [Data odbioru], CompanyName, NIP, isnull(KRS, 'Brak') as [KRS], isnull(Regon, 'Brak') as [Regon],
            Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
            from OrdersTakeaways OT
@@ -114,4 +114,38 @@ create view dbo.[takeaway orders not picked Individuals] as
         inner join Cities C2 on A.CityID = C2.CityID
         where OrderStatus not like 'Picked' and OrderStatus not like 'Denied' and (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
 go
--- takeaway orders not picked Companies--
+-- takeaways orders not picked Companies--
+
+
+-- takeaway orders  Individuals--
+
+create view dbo.[takeaways orders Individuals] as
+    select PrefDate as [Data odbioru], concat(LastName, ' ',FirstName) as [Dane],
+           Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
+           from OrdersTakeaways OT
+        inner join Orders O on OT.TakeawaysID = O.TakeawayID
+        inner join Clients C on O.ClientID = C.ClientID
+        inner join IndividualClient IC on C.ClientID = IC.ClientID
+        inner join Person P on IC.PersonID = P.PersonID
+        inner join Address A on C.AddressID = A.AddressID
+        inner join Cities C2 on A.CityID = C2.CityID
+        where  (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
+go
+-- takeaways orders  Individuals--
+
+
+-- takeaways orders companies --
+
+create view dbo.[takeaways orders companies] as
+    select PrefDate as [Data odbioru], CompanyName, NIP, isnull(KRS, 'Brak') as [KRS], isnull(Regon, 'Brak') as [Regon],
+           Phone, Email, concat(CityName, ' ',street,' ', LocalNr) as [Adres], PostalCode
+           from OrdersTakeaways OT
+        inner join Orders O on OT.TakeawaysID = O.TakeawayID
+        inner join Clients C on O.ClientID = C.ClientID
+        inner join Companies CO on C.ClientID = CO.ClientID
+        inner join Address A on C.AddressID = A.AddressID
+        inner join Cities C2 on A.CityID = C2.CityID
+        where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or OrderCompletionDate is null)
+go
+
+-- takeaways orders companies --
