@@ -223,19 +223,18 @@ GO
 --Discounts report
 
 --Orders report
-
 CREATE VIEW dbo.ordersReport AS
     SELECT
         YEAR(O.OrderDate) AS [Year],
         MONTH(O.OrderDate) AS [Month],
-        DAY(O.OrderDate) AS [DAY],
+        DATEPART(week, O.OrderDate) AS [WEEK],
         COUNT(O.OrderID) AS [ilość zamówień]
         SUM(OD.Quantity * M.Price) AS [suma przychodów]
     FROM Orders AS O
     INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
     INNER JOIN Products P ON P.ProductID = OD.ProductID
     INNER JOIN Menu M ON M.ProductID = P.ProductID
-    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DAY(O.OrderDate))
+    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate))
 GO
 --Orders report
 
@@ -245,7 +244,7 @@ CREATE VIEW dbo.clientExpensesReport AS
     SELECT
         YEAR(O.OrderDate) AS [Year],
         MONTH(O.OrderDate) AS [Month],
-        DAY(O.OrderDate) AS [DAY],
+        DATEPART(week, O.OrderDate) AS [Week],
         C.ClientID,
         SUM(OD.Quantity * M.Price) AS [wydane środki]
     FROM Orders AS O
@@ -253,6 +252,12 @@ CREATE VIEW dbo.clientExpensesReport AS
     INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
     INNER JOIN Products P ON P.ProductID = OD.ProductID
     INNER JOIN Menu M ON M.ProductID = P.ProductID
-    GROUP BY ROLLUP (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DAY(O.OrderDate))
+    GROUP BY GROUPING SET (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
 --Clients expenses report
 
+--
