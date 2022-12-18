@@ -205,3 +205,36 @@ go
 
 -- PendingReservation --
 
+
+--###############################################
+--Discounts report (to do)
+
+CREATE VIEW dbo.discountsReport AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month]
+    FROM Orders AS O
+    INNER JOIN Clients C ON C.ClientID = O.ClientID
+    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    INNER JOIN Discounts D ON D.ClientID = IC.ClientID
+    INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
+    GROUP BY CUBE (DV.DiscountType, YEAR(O.OrderDate), MONTH(O.OrderDate))
+GO
+--Discounts report
+
+--Orders report
+
+CREATE VIEW dbo.ordersReport AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DAY(O.OrderDate)
+        COUNT(O.OrderID) AS [ilość zamówień]
+        SUM(OD.Quantity * M.Price) AS [suma przychodów]
+    FROM Orders AS O
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN Menu M ON M.ProductID = P.ProductID
+    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DAY(O.OrderDate))
+GO
+--Orders report
