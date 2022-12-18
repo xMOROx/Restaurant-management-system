@@ -50,6 +50,7 @@ CREATE TABLE Discounts (
     ClientID int  NOT NULL,
     VarID int  NOT NULL,
     AppliedDate datetime  NOT NULL ,
+    isUsed bit NULL default 0,
     CONSTRAINT Discounts_pk PRIMARY KEY  (DiscountID)
 );
 
