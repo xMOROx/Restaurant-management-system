@@ -228,7 +228,7 @@ CREATE VIEW dbo.ordersReport AS
     SELECT
         YEAR(O.OrderDate) AS [Year],
         MONTH(O.OrderDate) AS [Month],
-        DAY(O.OrderDate)
+        DAY(O.OrderDate) AS [DAY],
         COUNT(O.OrderID) AS [ilość zamówień]
         SUM(OD.Quantity * M.Price) AS [suma przychodów]
     FROM Orders AS O
@@ -238,3 +238,21 @@ CREATE VIEW dbo.ordersReport AS
     GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DAY(O.OrderDate))
 GO
 --Orders report
+
+--Clients expenses report
+
+CREATE VIEW dbo.clientExpensesReport AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DAY(O.OrderDate) AS [DAY],
+        C.ClientID,
+        SUM(OD.Quantity * M.Price) AS [wydane środki]
+    FROM Orders AS O
+    INNER JOIN Clients C ON C.ClientID = O.ClientID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN Menu M ON M.ProductID = P.ProductID
+    GROUP BY ROLLUP (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DAY(O.OrderDate))
+--Clients expenses report
+
