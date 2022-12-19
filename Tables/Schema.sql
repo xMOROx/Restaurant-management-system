@@ -173,9 +173,9 @@ CREATE TABLE Reservation (
     ReservationID int  NOT NULL  IDENTITY (1,1),
     startDate datetime  NOT NULL,
     endDate datetime  NOT NULL ,
-    Status varchar(15)  NOT NULL,
+    Status varchar(15)  NOT NULL default 'waiting',
     StaffID int  NOT NULL,
-    constraint validStatus check (Status in ('pending', 'accepted', 'denied', 'cancelled')),
+    constraint validStatus check (Status in ('pending', 'accepted', 'denied', 'cancelled', 'waiting')),
     CONSTRAINT validDateReservation  check(startDate < endDate),
     CONSTRAINT Reservation_pk PRIMARY KEY  (ReservationID)
 );
