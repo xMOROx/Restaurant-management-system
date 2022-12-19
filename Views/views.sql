@@ -203,60 +203,27 @@ CREATE VIEW PendingReservations AS
 go
 -- PendingReservation --
 
---###############################################--###############################################--###############################################--###############################################
+--########
 
-<<<<<<< HEAD
 --Orders report (wyświetlanie ilości zamówień oraz ich wartości w okresach czasowych)
-CREATE VIEW dbo.ordersReport AS
-    SELECT
-        YEAR(O.OrderDate) AS [Rok],
-        MONTH(O.OrderDate) AS [Miesiąc],
-        DATEPART(week, O.OrderDate) AS [Tydzień],
-        COUNT(O.OrderID) AS [Ilość zamówień]
-        SUM(O.OrderSum) AS [Suma przychodów]
-    FROM Orders AS O
-    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate))
-=======
---###############################################
---Discounts report (to do)
-
-CREATE VIEW dbo.discountsReport AS
-    SELECT
-        YEAR(O.OrderDate) AS [Year],
-        MONTH(O.OrderDate) AS [Month]
-    FROM Orders AS O
-        INNER JOIN Clients C ON C.ClientID = O.ClientID
-        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
-        INNER JOIN Discounts D ON D.ClientID = IC.ClientID
-        INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
-    GROUP BY CUBE (DV.DiscountType, YEAR(O.OrderDate), MONTH(O.OrderDate))
-GO
---Discounts report
-
---Orders report
 CREATE VIEW dbo.ordersReport AS
     SELECT
         isnull(convert(varchar(50), YEAR(O.OrderDate), 120), 'Podsumowanie po latach') AS [Year],
         isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
         isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
         COUNT(O.OrderID) AS [ilość zamówień],
-        SUM(OD.Quantity * M.Price) AS [suma przychodów]
+        SUM(O.OrderSum) AS [Suma przychodów]
     FROM Orders AS O
-        INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
-        INNER JOIN Products P ON P.ProductID = OD.ProductID
-        INNER JOIN Menu M ON M.ProductID = P.ProductID
     GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(iso_week, O.OrderDate))
->>>>>>> 755427baba73940bf5fc3c1f323c891bf606a2af
 GO
 --Orders report
 
 --individual clients expenses report (wyświetlanie wydanych kwot przez klientów indywidualnych w okresach czasowych)
 CREATE VIEW dbo.individualClientExpensesReport AS
     SELECT
-<<<<<<< HEAD
-        YEAR(O.OrderDate) AS [Rok],
-        MONTH(O.OrderDate) AS [Miesiąc],
-        DATEPART(week, O.OrderDate) AS [Tydzień],
+         YEAR(O.OrderDate) AS [Year],
+        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
+        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
         C.ClientID,
         CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
         C.Phone,
@@ -271,20 +238,6 @@ CREATE VIEW dbo.individualClientExpensesReport AS
     INNER JOIN Adress A ON A.AdressID = C.AdressID
     GROUP BY GROUPING SET (
             (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
-=======
-        YEAR(O.OrderDate) AS [Year],
-        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
-        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
-        C.ClientID,
-        SUM(O.OrderSum) AS [wydane środki]
-    FROM Orders AS O
-        INNER JOIN Clients C ON C.ClientID = O.ClientID
-        INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
-        INNER JOIN Products P ON P.ProductID = OD.ProductID
-        INNER JOIN Menu M ON M.ProductID = P.ProductID
-    GROUP BY GROUPING SETS (
-            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(iso_week, O.OrderDate)),
->>>>>>> 755427baba73940bf5fc3c1f323c891bf606a2af
             (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
             (C.ClientID, YEAR(O.OrderDate))
         )
