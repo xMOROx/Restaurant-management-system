@@ -256,9 +256,6 @@ CREATE VIEW dbo.PendingReservations AS
 go
 -- PendingReservation --
 
-
---########
-
 --Orders report (wyświetlanie ilości zamówień oraz ich wartości w okresach czasowych)
 CREATE VIEW dbo.ordersReport AS
     SELECT
