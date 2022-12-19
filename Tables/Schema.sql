@@ -50,6 +50,7 @@ CREATE TABLE Discounts (
     ClientID int  NOT NULL,
     VarID int  NOT NULL,
     AppliedDate datetime  NOT NULL ,
+    isUsed bit NULL default 0,
     CONSTRAINT Discounts_pk PRIMARY KEY  (DiscountID)
 );
 
@@ -144,7 +145,7 @@ CREATE TABLE PaymentMethods (
 -- Table: PaymentStatus
 CREATE TABLE PaymentStatus (
     PaymentStatusID int  NOT NULL IDENTITY (1,1),
-    PaymentStatusName varchar(50)  NOT NULL,
+    PaymentStatusName varchar(50)  NOT NULL default 'Unpaid',
     PaymentMethodID int  NOT NULL,
     CONSTRAINT PaymentStatus_pk PRIMARY KEY  (PaymentStatusID)
 );
@@ -172,9 +173,9 @@ CREATE TABLE Reservation (
     ReservationID int  NOT NULL  IDENTITY (1,1),
     startDate datetime  NOT NULL,
     endDate datetime  NOT NULL ,
-    Status varchar(15)  NOT NULL,
+    Status varchar(15)  NOT NULL default 'waiting',
     StaffID int  NOT NULL,
-    constraint validStatus check (Status in ('pending', 'accepted', 'denied', 'cancelled')),
+    constraint validStatus check (Status in ('pending', 'accepted', 'denied', 'cancelled', 'waiting')),
     CONSTRAINT validDateReservation  check(startDate < endDate),
     CONSTRAINT Reservation_pk PRIMARY KEY  (ReservationID)
 );
