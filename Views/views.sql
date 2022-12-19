@@ -201,63 +201,223 @@ CREATE VIEW PendingReservations AS
     FROM Reservation
     WHERE Status LIKE 'Pending'
 go
-
-
 -- PendingReservation --
 
-
---###############################################
---Discounts report (to do)
-
-CREATE VIEW dbo.discountsReport AS
-    SELECT
-        YEAR(O.OrderDate) AS [Year],
-        MONTH(O.OrderDate) AS [Month]
-    FROM Orders AS O
-    INNER JOIN Clients C ON C.ClientID = O.ClientID
-    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
-    INNER JOIN Discounts D ON D.ClientID = IC.ClientID
-    INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
-    GROUP BY CUBE (DV.DiscountType, YEAR(O.OrderDate), MONTH(O.OrderDate))
-GO
---Discounts report
+--###############################################--###############################################--###############################################--###############################################
 
 --Orders report
 CREATE VIEW dbo.ordersReport AS
     SELECT
-        YEAR(O.OrderDate) AS [Year],
-        MONTH(O.OrderDate) AS [Month],
-        DATEPART(week, O.OrderDate) AS [WEEK],
-        COUNT(O.OrderID) AS [ilość zamówień]
-        SUM(OD.Quantity * M.Price) AS [suma przychodów]
+        YEAR(O.OrderDate) AS [Rok],
+        MONTH(O.OrderDate) AS [Miesiąc],
+        DATEPART(week, O.OrderDate) AS [Tydzień],
+        COUNT(DISTINCT O.OrderID) AS [Ilość zamówień]
+        SUM(OD.Quantity * M.Price) AS [Suma przychodów]
     FROM Orders AS O
     INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
     INNER JOIN Products P ON P.ProductID = OD.ProductID
     INNER JOIN Menu M ON M.ProductID = P.ProductID
+    WHERE M.startDate <= O.OrderDate AND (M.endDate >= O.OrderDate OR M.endDate IS NULL)
     GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate))
 GO
 --Orders report
 
---Clients expenses report
-
-CREATE VIEW dbo.clientExpensesReport AS
+--individual clients expenses report
+CREATE VIEW dbo.individualClientExpensesReport AS
     SELECT
-        YEAR(O.OrderDate) AS [Year],
-        MONTH(O.OrderDate) AS [Month],
-        DATEPART(week, O.OrderDate) AS [Week],
+        YEAR(O.OrderDate) AS [Rok],
+        MONTH(O.OrderDate) AS [Miesiąc],
+        DATEPART(week, O.OrderDate) AS [Tydzień],
         C.ClientID,
+        CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
+        C.Phone,
+        C.Email,
+        concat(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode
         SUM(OD.Quantity * M.Price) AS [wydane środki]
     FROM Orders AS O
     INNER JOIN Clients C ON C.ClientID = O.ClientID
     INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
     INNER JOIN Products P ON P.ProductID = OD.ProductID
     INNER JOIN Menu M ON M.ProductID = P.ProductID
+    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    INNER JOIN Person P2 ON P2.PersonID = IC.PersonID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    WHERE M.startDate <= O.OrderDate AND (O.OrderDate >= M.endDate OR M.endDate IS NULL)
     GROUP BY GROUPING SET (
             (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
             (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
             (C.ClientID, YEAR(O.OrderDate))
         )
 GO
---Clients expenses report
+--individualClients expenses report
 
---
+--company expenses report
+CREATE VIEW dbo.companyExpensesReport AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DATEPART(week, O.OrderDate) AS [Week],
+        C.ClientID,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(C2.KRS, 'Brak') as [KRS],
+        ISNULL(C2.Regon, 'Brak') as [Regon],
+        C.Phone,
+        C.Email,
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        SUM(OD.Quantity * M.Price) AS [wydane środki]
+    FROM Orders AS O
+    INNER JOIN Clients C ON C.ClientID = O.ClientID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN Menu M ON M.ProductID = P.ProductID
+    INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    WHERE M.startDate <= O.OrderDate AND (O.OrderDate >= GETDATE() OR M.endDate IS NULL)
+    GROUP BY GROUPING SET (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--company expenses report
+
+--Number of individual clients
+CREATE VIEW dbo.numberOfIndividualClients AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DATEPART(week, O.OrderDate) AS [Week],
+        COUNT(DISTINCT C.CustomerID)
+    FROM Orders AS O
+    INNER JOIN Client C ON C.OrderID = O.OrderID
+    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    GROUP BY GROUPING SET (
+            (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (YEAR(O.OrderDate))
+        )
+GO
+--Number of clients
+
+--Number of companies
+CREATE VIEW dbo.numberOfCompanies AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DATEPART(week, O.OrderDate) AS [Week],
+        COUNT(DISTINCT C.CustomerID)
+    FROM Orders AS O
+    INNER JOIN Client C ON C.OrderID = O.OrderID
+    INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    GROUP BY GROUPING SET (
+            (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (YEAR(O.OrderDate))
+        )
+GO
+--Number of companies
+
+--Number of orders individual client
+CREATE VIEW dbo.individualClientNumberOfOrders AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DATEPART(week, O.OrderDate) AS [Week],
+        C.ClientID,
+        CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
+        C.Phone,
+        C.Email,
+        concat(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode
+        COUNT(DISTINCT O.OrderID)
+    FROM Orders AS O
+    INNER JOIN Client C ON C.OrderID = O.OrderID
+    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    INNER JOIN Person P2 ON P2.PersonID = IC.PersonID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    GROUP BY GROUPING SET (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--Number of orders individual client
+
+--Number of orders companies
+CREATE VIEW dbo.companiesNumberOfOrders AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DATEPART(week, O.OrderDate) AS [Week],
+        C.ClientID,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(C2.KRS, 'Brak') as [KRS],
+        ISNULL(C2.Regon, 'Brak') as [Regon],
+        C.Phone,
+        C.Email,
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        COUNT(DISTINCT O.OrderID)
+    FROM Orders AS O
+    INNER JOIN Client C ON C.OrderID = O.OrderID
+    INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    GROUP BY GROUPING SET (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--Number of orders companies
+
+--individual clients who have not paid for their orders
+CREATE VIEW dbo.customerWhoHaveNotPaidForTheirOrders AS
+    SELECT
+        C.ClientID,
+        CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
+        C.Phone,
+        C.Email,
+        concat(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        SUM(OD.Quantity * M.Price)
+    FROM Clients AS C
+    WHERE (PS.PaymentStatusName LIKE [nieopłacone] AND (M.startDate <= O.OrderDate AND (O.OrderDate >= GETDATE() OR M.endDate IS NULL)))
+    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    INNER JOIN Orders O ON O.ClientID = C.ClientID
+    INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN Menu M ON P.ProductID = M.ProductID
+    GROUP BY C.ClientID
+--individual clients who have not paid for their orders
+
+
+
+--companies who have not paid for their orders
+CREATE VIEW dbo.customerWhoHaveNotPaidForTheirOrders AS
+    SELECT
+        C.ClientID,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(C2.KRS, 'Brak') as [KRS],
+        ISNULL(C2.Regon, 'Brak') as [Regon],
+        C.Phone,
+        C.Email,
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        SUM(OD.Quantity * M.Price)
+    FROM Clients AS C
+    WHERE (PS.PaymentStatusName LIKE [nieopłacone] AND (M.startDate <= O.OrderDate AND (O.OrderDate >= GETDATE() OR M.endDate IS NULL)))
+    INNER JOIN Orders O ON O.ClientID = C.ClientID
+    INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN Menu M ON P.ProductID = M.ProductID
+    GROUP BY C.ClientID
+--companies who have not paid for their orders
