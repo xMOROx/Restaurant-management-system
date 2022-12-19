@@ -214,10 +214,10 @@ CREATE VIEW dbo.discountsReport AS
         YEAR(O.OrderDate) AS [Year],
         MONTH(O.OrderDate) AS [Month]
     FROM Orders AS O
-    INNER JOIN Clients C ON C.ClientID = O.ClientID
-    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
-    INNER JOIN Discounts D ON D.ClientID = IC.ClientID
-    INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
+        INNER JOIN Clients C ON C.ClientID = O.ClientID
+        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+        INNER JOIN Discounts D ON D.ClientID = IC.ClientID
+        INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
     GROUP BY CUBE (DV.DiscountType, YEAR(O.OrderDate), MONTH(O.OrderDate))
 GO
 --Discounts report
@@ -225,16 +225,16 @@ GO
 --Orders report
 CREATE VIEW dbo.ordersReport AS
     SELECT
-        YEAR(O.OrderDate) AS [Year],
-        MONTH(O.OrderDate) AS [Month],
-        DATEPART(week, O.OrderDate) AS [WEEK],
-        COUNT(O.OrderID) AS [ilość zamówień]
+        isnull(convert(varchar(50), YEAR(O.OrderDate), 120), 'Podsumowanie po latach') AS [Year],
+        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
+        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
+        COUNT(O.OrderID) AS [ilość zamówień],
         SUM(OD.Quantity * M.Price) AS [suma przychodów]
     FROM Orders AS O
-    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
-    INNER JOIN Products P ON P.ProductID = OD.ProductID
-    INNER JOIN Menu M ON M.ProductID = P.ProductID
-    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate))
+        INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+        INNER JOIN Products P ON P.ProductID = OD.ProductID
+        INNER JOIN Menu M ON M.ProductID = P.ProductID
+    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(iso_week, O.OrderDate))
 GO
 --Orders report
 
@@ -243,17 +243,17 @@ GO
 CREATE VIEW dbo.clientExpensesReport AS
     SELECT
         YEAR(O.OrderDate) AS [Year],
-        MONTH(O.OrderDate) AS [Month],
-        DATEPART(week, O.OrderDate) AS [Week],
+        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
+        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
         C.ClientID,
-        SUM(OD.Quantity * M.Price) AS [wydane środki]
+        SUM(O.OrderSum) AS [wydane środki]
     FROM Orders AS O
-    INNER JOIN Clients C ON C.ClientID = O.ClientID
-    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
-    INNER JOIN Products P ON P.ProductID = OD.ProductID
-    INNER JOIN Menu M ON M.ProductID = P.ProductID
-    GROUP BY GROUPING SET (
-            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+        INNER JOIN Clients C ON C.ClientID = O.ClientID
+        INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+        INNER JOIN Products P ON P.ProductID = OD.ProductID
+        INNER JOIN Menu M ON M.ProductID = P.ProductID
+    GROUP BY GROUPING SETS (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(iso_week, O.OrderDate)),
             (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
             (C.ClientID, YEAR(O.OrderDate))
         )
