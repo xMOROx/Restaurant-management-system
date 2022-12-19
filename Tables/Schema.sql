@@ -50,6 +50,7 @@ CREATE TABLE Discounts (
     ClientID int  NOT NULL,
     VarID int  NOT NULL,
     AppliedDate datetime  NOT NULL ,
+    isUsed bit NULL default 0,
     CONSTRAINT Discounts_pk PRIMARY KEY  (DiscountID)
 );
 
@@ -121,9 +122,9 @@ CREATE TABLE Orders (
     staffID int  NOT NULL,
     OrderSum money  NOT NULL check ( OrderSum > 0 ),
     OrderDate datetime  NOT NULL default getdate(),
-    OrderCompletionDate datetime  NOT NULL ,
+    OrderCompletionDate datetime  NULL ,
     OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked')),
-    CONSTRAINT validDateOrders check ( OrderCompletionDate >= OrderDate ),
+    CONSTRAINT validDateOrders check ( (OrderCompletionDate >= OrderDate)  or (OrderCompletionDate is null)),
     CONSTRAINT Orders_pk PRIMARY KEY  (OrderID)
 );
 
@@ -162,7 +163,7 @@ CREATE TABLE Products (
     ProductID int  NOT NULL IDENTITY (1,1),
     CategoryID int  NOT NULL,
     Name nvarchar(50)  NOT NULL,
-    Description nvarchar(150)  NOT NULL default 'brak opisu' ,
+    Description nvarchar(150)  NOT NULL default 'brak opisu',
     IsAvailable bit NOT NULL default 1,
     CONSTRAINT Products_pk PRIMARY KEY  (ProductID)
 );
@@ -172,9 +173,9 @@ CREATE TABLE Reservation (
     ReservationID int  NOT NULL  IDENTITY (1,1),
     startDate datetime  NOT NULL,
     endDate datetime  NOT NULL ,
-    Status varchar(15)  NOT NULL,
+    Status varchar(15)  NOT NULL default 'waiting',
     StaffID int  NOT NULL,
-    constraint validStatus check (Status in ('pending', 'accepted', 'denied')),
+    constraint validStatus check (Status in ('pending', 'accepted', 'denied', 'cancelled', 'waiting')),
     CONSTRAINT validDateReservation  check(startDate < endDate),
     CONSTRAINT Reservation_pk PRIMARY KEY  (ReservationID)
 );
