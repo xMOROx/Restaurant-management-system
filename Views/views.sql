@@ -385,7 +385,7 @@ CREATE VIEW dbo.customerWhoHaveNotPaidForTheirOrders AS
         A.PostalCode,
         SUM(OD.Quantity * M.Price)
     FROM Clients AS C
-    WHERE (PS.PaymentStatusName LIKE [nieopłacone] AND (M.startDate <= O.OrderDate AND (O.OrderDate >= GETDATE() OR M.endDate IS NULL)))
+    WHERE (PS.PaymentStatusName LIKE [nieopłacone])
     INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
     INNER JOIN Orders O ON O.ClientID = C.ClientID
     INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
@@ -394,6 +394,7 @@ CREATE VIEW dbo.customerWhoHaveNotPaidForTheirOrders AS
     INNER JOIN Products P ON P.ProductID = OD.ProductID
     INNER JOIN Menu M ON P.ProductID = M.ProductID
     GROUP BY C.ClientID
+GO
 --individual clients who have not paid for their orders
 
 
@@ -412,7 +413,7 @@ CREATE VIEW dbo.customerWhoHaveNotPaidForTheirOrders AS
         A.PostalCode,
         SUM(OD.Quantity * M.Price)
     FROM Clients AS C
-    WHERE (PS.PaymentStatusName LIKE [nieopłacone] AND (M.startDate <= O.OrderDate AND (O.OrderDate >= GETDATE() OR M.endDate IS NULL)))
+    WHERE (PS.PaymentStatusName LIKE [nieopłacone])
     INNER JOIN Orders O ON O.ClientID = C.ClientID
     INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
     INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
@@ -420,4 +421,149 @@ CREATE VIEW dbo.customerWhoHaveNotPaidForTheirOrders AS
     INNER JOIN Products P ON P.ProductID = OD.ProductID
     INNER JOIN Menu M ON P.ProductID = M.ProductID
     GROUP BY C.ClientID
+GO
 --companies who have not paid for their orders
+
+--orders in progress
+CREATE VIEW dbo.ordersInProgress AS
+    SELECT
+        O.OrderID,
+        O.ClientID,
+        C.Phone,
+        C.Email,
+        OD.Quantity,
+        P.Name
+    FROM Orders
+    INNER JOIN Clients C ON C.OrderID = O.OrderID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    WHERE (O.TakeawayID IS NULL) AND (O.OrderStatus LIKE 'accepted')
+GO
+--orders in progress
+
+--takeaway orders in progress
+CREATE VIEW dbo.takeawayOrdersInProgress AS
+    SELECT
+        O.OrderID,
+        O.ClientID,
+        C.Phone,
+        C.Email,
+        OD.Quantity,
+        P.Name,
+        OT.PrefDate
+    FROM Orders
+    INNER JOIN Clients C ON C.OrderID = O.OrderID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN OrdersTakeaway OT ON OT.TakeawayID = O.TakeawayID
+    WHERE (O.TakeawayID IS NOT NULL) AND (O.OrderStatus LIKE 'accepted')
+GO
+--takeaway orders in progress
+
+--orders quantity individual client
+CREATE VIEW dbo.ordersQuantityIndividualClient AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DATEPART(week, O.OrderDate) AS [Week],
+        C.ClientID,
+        CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
+        C.Phone,
+        C.Email,
+        concat(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        SUM(DISTINCT O.OrdersID)
+    FROM Clients AS C
+    INNER JOIN Orders O ON O.ClientID = C.ClientID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    INNER JOIN Person P ON IC.PersonID = P.PersonID
+    GROUP BY GROUPING SET (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--orders quantity individual client
+
+--orders quantity companies
+CREATE VIEW dbo.ordersQuantityCompany AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        MONTH(O.OrderDate) AS [Month],
+        DATEPART(week, O.OrderDate) AS [Week],
+        C.ClientID,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(C2.KRS, 'Brak') as [KRS],
+        ISNULL(C2.Regon, 'Brak') as [Regon],
+        C.Phone,
+        C.Email,
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        SUM(DISTINCT O.OrdersID)
+    FROM Clients AS C
+    INNER JOIN Orders O ON O.ClientID = C.ClientID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    GROUP BY GROUPING SET (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--orders quantity companies
+
+--orders for individual clients information
+CREATE VIEW dbo.ordersInformationIndividualClient AS
+    SELECT
+        O.OrderID,
+        O.OrderStatus,
+        PS.PaymentStatus,
+        SUM(M.Price * P.Quantity) AS [Wartość zamówienia],
+        C.Phone,
+        C.Email,
+        CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+    FROM Orders AS O
+    INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProdcutID
+    INNER JOIN Menu M ON M.ProductID = P.ProductID
+    INNER JOIN Clients C ON C.ClientID = O.ClientID
+    INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    INNER JOIN Person P2 ON P2.PersonID = P2.IndividualClient
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    INNER JOIN
+    GROUP BY O.OrderID
+GO
+--orders for individual clients information
+
+--orders for company information
+CREATE VIEW dbo.ordersInformationCompany AS
+    SELECT
+        O.OrderID,
+        O.OrderStatus,
+        PS.PaymentStatus,
+        SUM(M.Price * P.Quantity) AS [Wartość zamówienia],
+        C.Phone,
+        C.Email,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(C2.KRS, 'Brak') as [KRS],
+        ISNULL(C2.Regon, 'Brak') as [Regon],
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+    FROM Orders AS O
+    INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProdcutID
+    INNER JOIN Menu M ON M.ProductID = P.ProductID
+    INNER JOIN Clients C ON C.ClientID = O.ClientID
+    INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    INNER JOIN
+    GROUP BY O.OrderID
+GO
+--orders for company information
