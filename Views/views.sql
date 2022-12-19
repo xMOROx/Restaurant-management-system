@@ -254,9 +254,329 @@ CREATE VIEW dbo.PendingReservations AS
         inner join Orders O on R.ReservationID = O.ReservationID
     WHERE Status LIKE 'Pending'
 go
-
-
 -- PendingReservation --
+
+
+--########
+
+--Orders report (wyświetlanie ilości zamówień oraz ich wartości w okresach czasowych)
+CREATE VIEW dbo.ordersReport AS
+    SELECT
+        isnull(convert(varchar(50), YEAR(O.OrderDate), 120), 'Podsumowanie po latach') AS [Year],
+        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
+        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
+        COUNT(O.OrderID) AS [ilość zamówień],
+        SUM(O.OrderSum) AS [Suma przychodów]
+    FROM Orders AS O
+    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(iso_week, O.OrderDate))
+GO
+--Orders report
+
+--individual clients expenses report (wyświetlanie wydanych kwot przez klientów indywidualnych w okresach czasowych)
+CREATE VIEW dbo.individualClientExpensesReport AS
+    SELECT
+         YEAR(O.OrderDate) AS [Year],
+        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
+        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
+        C.ClientID,
+        CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
+        C.Phone,
+        C.Email,
+        concat(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode
+        SUM(O.OrderSum) AS [wydane środki]
+    FROM Orders AS O
+        INNER JOIN Clients C ON C.ClientID = O.ClientID
+        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+        INNER JOIN Person P2 ON P2.PersonID = IC.PersonID
+        INNER JOIN Adress A ON A.AdressID = C.AdressID
+    GROUP BY GROUPING SETS (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--individualClients expenses report
+
+--company expenses report (wyświetlanie wydanych kwot przez firmy w okresach czasowych)
+CREATE VIEW dbo.companyExpensesReport AS
+    SELECT
+        YEAR(O.OrderDate) AS [Rok],
+        MONTH(O.OrderDate) AS [Miesiąc],
+        DATEPART(week, O.OrderDate) AS [Tydzień],
+        C.ClientID,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(cast(C2.KRS as varchar), 'Brak') as [KRS],
+        ISNULL(cast(C2.Regon as varchar), 'Brak') as [Regon],
+        C.Phone,
+        C.Email,
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        SUM(O.OrderSum) AS [wydane środki]
+    FROM Orders AS O
+    INNER JOIN Clients C ON C.ClientID = O.ClientID
+    INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    GROUP BY GROUPING SETS (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--company expenses report
+
+--Number of individual clients (ilość klientów indywidualnych w okresach czasu)
+CREATE VIEW dbo.numberOfIndividualClients AS
+    SELECT
+        YEAR(O.OrderDate) AS [Rok],
+        MONTH(O.OrderDate) AS [Miesiąc],
+        DATEPART(week, O.OrderDate) AS [Tydzień],
+        COUNT(DISTINCT C.CustomerID) AS [Ilość klientów indywidualnych]
+    FROM Orders AS O
+        INNER JOIN Client C ON C.OrderID = O.OrderID
+        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+    GROUP BY GROUPING SETS (
+            (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (YEAR(O.OrderDate))
+        )
+GO
+--Number of clients
+
+--Number of companies (ilość firm w okresach czasu)
+CREATE VIEW dbo.numberOfCompanies AS
+    SELECT
+        YEAR(O.OrderDate) AS [Rok],
+        MONTH(O.OrderDate) AS [Miesiąc],
+        DATEPART(week, O.OrderDate) AS [Tydzień],
+        COUNT(DISTINCT C.CustomerID) AS [Ilość zamawiających firm]
+    FROM Orders AS O
+        INNER JOIN Client C ON C.OrderID = O.OrderID
+        INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+    GROUP BY GROUPING SETS (
+            (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (YEAR(O.OrderDate))
+        )
+GO
+--Number of companies
+
+--Number of orders individual client       (ilość zamówień złożonych przez klientów indywidualnych w okresach czasu)
+CREATE VIEW dbo.individualClientNumberOfOrders AS
+    SELECT
+        YEAR(O.OrderDate) AS [Rok],
+        MONTH(O.OrderDate) AS [Miesiąc],
+        DATEPART(week, O.OrderDate) AS [Tydzień],
+        C.ClientID,
+        CONCAT(P2.LastName, ' ',P2.FirstName) as [Dane],
+        C.Phone,
+        C.Email,
+        concat(A.CityName, ' ', A.street, ' ', A.LocalNr) as [Adres],
+        A.PostalCode
+        COUNT(DISTINCT O.OrderID) AS [Ilość złożonych zamówień]
+    FROM Orders AS O
+        INNER JOIN Client C ON C.OrderID = O.OrderID
+        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+        INNER JOIN Person P2 ON P2.PersonID = IC.PersonID
+        INNER JOIN Adress A ON A.AdressID = C.AdressID
+    GROUP BY GROUPING SETS 
+        (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--Number of orders individual client
+
+--Number of orders companies       (ilość zamówień złożonych przez firmy w okresach czasu)
+CREATE VIEW dbo.companiesNumberOfOrders AS
+    SELECT
+        YEAR(O.OrderDate) AS [Rok],
+        MONTH(O.OrderDate) AS [Miesiąc],
+        DATEPART(week, O.OrderDate) AS [Tydzień],
+        C.ClientID,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(cast(C2.KRS as varchar), 'Brak') as [KRS],
+        ISNULL(cast(C2.Regon as varchar), 'Brak') as [Regon],
+        C.Phone,
+        C.Email,
+        CONCAT(A.CityName, ' ', A.street, ' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        COUNT(DISTINCT O.OrderID) AS [Ilość złożonych zamówień]
+    FROM Orders AS O
+        INNER JOIN Client C ON C.OrderID = O.OrderID
+        INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+        INNER JOIN Adress A ON A.AdressID = C.AdressID
+    GROUP BY GROUPING SETS (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+--Number of orders companies
+
+--individual clients who have not paid for their orders (klienci indywidualni, którzy mają nieopłacone zamówienia oraz jaka jest ich należność)
+CREATE VIEW dbo.individualClientsWhoNotPayForOrders AS
+    SELECT
+        C.ClientID,
+        CONCAT(P.LastName, ' ', P.FirstName) as [Dane],
+        C.Phone,
+        C.Email,
+        concat(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        C.OrderDate,
+        SUM(O.OrderSum) AS [Zaległa należność]
+    FROM Clients AS C
+    WHERE (PS.PaymentStatusName LIKE 'Unpaid')
+        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+        INNER JOIN Person P ON P.PersonID = IndividualClient.PersonID
+        INNER JOIN Orders O ON O.ClientID = C.ClientID
+        INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+        INNER JOIN Adress A ON A.AdressID = C.AdressID
+    GROUP BY C.ClientID
+GO
+--individual clients who have not paid for their orders
+
+
+
+--companies who have not paid for their orders  (firmy, które mają nieopłacone zamówienia oraz jaka jest ich wartość)
+CREATE VIEW dbo.companiesWhoNotPayForOrders AS
+    SELECT
+        C.ClientID,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(C2.KRS, 'Brak') as [KRS],
+        ISNULL(C2.Regon, 'Brak') as [Regon],
+        C.Phone,
+        C.Email,
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+        SUM(O.OrderSum) AS [Zaległa należność]
+    FROM Clients AS C
+    WHERE (PS.PaymentStatusName LIKE 'Unpaid')
+        INNER JOIN Orders O ON O.ClientID = C.ClientID
+        INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+        INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+    GROUP BY C.ClientID
+GO
+--companies who have not paid for their orders
+
+--orders on-site             (zamówienia na miejscu, które są przygotowywane)
+CREATE VIEW dbo.ordersonSite AS
+    SELECT
+        O.OrderID,
+        O.ClientID,
+        C.Phone,
+        C.Email,
+        OD.Quantity,
+        P.Name
+    FROM Orders
+        INNER JOIN Clients C ON C.OrderID = O.OrderID
+        INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+        INNER JOIN Products P ON P.ProductID = OD.ProductID
+    WHERE (O.TakeawayID IS NULL) AND (O.OrderStatus LIKE 'accepted')
+GO
+--orders in progress
+
+--takeaway orders in progress      (zamówienia na wynos, które są przygotowywane dla klientów indywidualnych)
+
+CREATE VIEW dbo.takeawayOrdersInProgressIndividual AS
+    SELECT
+        O.OrderID,
+        O.ClientID,
+        C.Phone,
+        C.Email,
+        concat(P.LastName, ' ', P.FirstName) as [Dane],
+        OD.Quantity,
+        P.Name,
+        OT.PrefDate
+    FROM Orders
+        INNER JOIN Clients C ON C.OrderID = O.OrderID
+        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+        INNER JOIN Person P ON P.PersonID = IC.PersonID
+        INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+        INNER JOIN Products P ON P.ProductID = OD.ProductID
+        INNER JOIN OrdersTakeaway OT ON OT.TakeawayID = O.TakeawayID
+    WHERE  (O.OrderStatus LIKE 'accepted')
+GO
+
+--takeaway orders in progress
+
+--takeaway orders in progress      (zamówienia na wynos, które są przygotowywane dla klientów indywidualnych)
+
+CREATE VIEW dbo.takeawayOrdersInProgressCompanies AS
+    SELECT
+        O.OrderID,
+        O.ClientID,
+        C.Phone,
+        C.Email,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(cast(C2.KRS as varchar), 'Brak') as [KRS],
+        ISNULL(cast(C2.Regon as varchar), 'Brak') as [Regon],
+        OD.Quantity,
+        P.Name,
+        OT.PrefDate
+    FROM Orders
+        INNER JOIN Clients C ON C.OrderID = O.OrderID
+        INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+        INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+        INNER JOIN Products P ON P.ProductID = OD.ProductID
+        INNER JOIN OrdersTakeaway OT ON OT.TakeawayID = O.TakeawayID
+    WHERE  (O.OrderStatus LIKE 'accepted')
+GO
+
+--takeaway orders in progress
+
+--orders for individual clients information - (infromacje o zamówieniach dla klientów indywidualnych)
+CREATE VIEW dbo.ordersInformationIndividualClient AS
+    SELECT
+        O.OrderID,
+        O.OrderStatus,
+        PS.PaymentStatus,
+        SUM(O.OrderSum) AS [Wartość zamówienia],
+        C.Phone,
+        C.Email,
+        CONCAT(P.LastName, ' ',P.FirstName) as [Dane],
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+    FROM Orders AS O
+        INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+        INNER JOIN Clients C ON C.ClientID = O.ClientID
+        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
+        INNER JOIN Person P ON P.PersonID = P.IndividualClient
+        INNER JOIN Adress A ON A.AdressID = C.AdressID
+        INNER JOIN
+    GROUP BY O.OrderID
+GO
+--orders for individual clients information
+
+--orders for company information - (informacje o zamówieniach dla firm)
+CREATE VIEW dbo.ordersInformationCompany AS
+    SELECT
+        O.OrderID,
+        O.OrderStatus,
+        PS.PaymentStatus,
+        SUM(O.OrderSum) AS [Wartość zamówienia],
+        C.Phone,
+        C.Email,
+        C2.CompanyName,
+        C2.NIP,
+        ISNULL(cast(C2.KRS as varchar), 'Brak') as [KRS],
+        ISNULL(cast(C2.Regon as varchar), 'Brak') as [Regon],
+        CONCAT(A.CityName, ' ',A.street,' ', A.LocalNr) as [Adres],
+        A.PostalCode,
+    FROM Orders AS O
+        INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+        INNER JOIN Clients C ON C.ClientID = O.ClientID
+        INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
+        INNER JOIN Adress A ON A.AdressID = C.AdressID
+        INNER JOIN
+    GROUP BY O.OrderID
+GO
+--orders for company information
 
 -- PendingReservation Companies--
 
@@ -472,7 +792,7 @@ create or alter view DishesInProgressReservation as
         join OrderDetails OD on Products.ProductID = OD.ProductID
         join Orders on OD.OrderID = Orders.OrderID
         join Reservation R2 on Orders.ReservationID = R2.ReservationID
-    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)))
+    where (((getdate() >= OrderDate) and (getdate() <= OrderCmpletionDate)))
       and Orders.OrderStatus not like 'denied' and (R2.Status not like 'denied' or R2.Status not like 'cancelled')
     group by Name
 go
@@ -492,4 +812,5 @@ create view dbo.ProductsInformations as
 go
 
 -- Products informations --
+
 
