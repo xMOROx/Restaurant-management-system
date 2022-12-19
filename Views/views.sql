@@ -14,6 +14,7 @@ create view dbo.CurrentReservationVars as
     from ReservationVar
     where ((getdate() >= startDate) and (getdate() <= endDate)) or ((getdate() >= startDate) and endDate is null);
 go
+
 -- unpaid invoices  Individuals--
 
 create view dbo.unPaidInvoicesIndividuals as
@@ -84,7 +85,6 @@ create view dbo.[Not reserved Tables] as
                 inner join Reservation R2 on RC.ReservationID = R2.ReservationID
             where (getdate() >= startDate) and (getdate() <= endDate) and (Status not like 'cancelled' and Status not like 'denied') and isActive = 1)
 union
-
     select TableID, ChairAmount
     from Tables
         where TableID not in(select ReservationDetails.TableID
@@ -107,7 +107,7 @@ CREATE VIEW dbo.TablesWeekly AS
         INNER JOIN ReservationDetails RD on T.TableID = RD.TableID
         inner join ReservationIndividual RI on RI.ReservationID = RD.ReservationID
         INNER JOIN Reservation R2 on RD.ReservationID = R2.ReservationID
-    where (Status not like 'cancelled' and Status not like 'denied')
+    WHERE (Status NOT LIKE 'cancelled' and Status NOT LIKE 'denied')
     GROUP BY YEAR(R2.StartDate), DATEPART(iso_week, R2.StartDate), T.TableID, T.ChairAmount
 union
     SELECT YEAR(R2.StartDate) as year,
@@ -119,7 +119,7 @@ union
         INNER JOIN ReservationDetails RD on T.TableID = RD.TableID
         inner join ReservationCompany RI on RI.ReservationID = RD.ReservationID
         INNER JOIN Reservation R2 on RD.ReservationID = R2.ReservationID
-    where (Status not like 'cancelled' and Status not like 'denied')
+    WHERE (Status NOT LIKE 'cancelled' and Status NOT LIKE 'denied')
     GROUP BY YEAR(R2.StartDate), DATEPART(iso_week, R2.StartDate), T.TableID, T.ChairAmount
 go
 -- weekly raport about tables --
@@ -136,9 +136,9 @@ CREATE VIEW dbo.TablesMonthly AS
         INNER JOIN ReservationDetails RD on T.TableID = RD.TableID
         inner join ReservationIndividual RI on RI.ReservationID = RD.ReservationID
         INNER JOIN Reservation R2 on RD.ReservationID = R2.ReservationID
-    where (Status not like 'cancelled' and Status not like 'denied')
+    WHERE (Status not like 'cancelled' and Status not like 'denied')
     GROUP BY YEAR(R2.StartDate), DATEPART(month, R2.StartDate), T.TableID, T.ChairAmount
-union
+UNION
     SELECT YEAR(R2.StartDate) as year,
         DATEPART(month, R2.StartDate) as month,
         T.TableID as table_id,
@@ -148,7 +148,7 @@ union
         INNER JOIN ReservationDetails RD on T.TableID = RD.TableID
         inner join ReservationCompany RI on RI.ReservationID = RD.ReservationID
         INNER JOIN Reservation R2 on RD.ReservationID = R2.ReservationID
-    where (Status not like 'cancelled' and Status not like 'denied')
+    WHERE (Status not like 'cancelled' and Status not like 'denied')
     GROUP BY YEAR(R2.StartDate), DATEPART(month, R2.StartDate), T.TableID, T.ChairAmount
 go
 
@@ -167,7 +167,7 @@ create view dbo.[takeaways orders not picked Individuals] as
             inner join Person P on IC.PersonID = P.PersonID
             inner join Address A on C.AddressID = A.AddressID
             inner join Cities C2 on A.CityID = C2.CityID
-        where OrderStatus like 'Completed' and (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or (OrderCompletionDate is null and (getdate() >= OrderDate)))
+        where OrderStatus like 'Completed' 
 go
 -- takeaways orders not picked Individuals--
 
@@ -183,7 +183,7 @@ create view dbo.[takeaways orders not picked Companies] as
         inner join Companies CO on C.ClientID = CO.ClientID
         inner join Address A on C.AddressID = A.AddressID
         inner join Cities C2 on A.CityID = C2.CityID
-    where OrderStatus like 'Completed' and (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or (OrderCompletionDate is null and (getdate() >= OrderDate)))
+    where OrderStatus like 'Completed' 
 go
 -- takeaways orders not picked Companies--
 
@@ -233,6 +233,17 @@ CREATE VIEW ReservationInfo AS
 go
 
 -- ReservationInfo --
+-- ReservationDenied --
+
+CREATE VIEW ReservationDenied AS
+    SELECT R.ReservationID, TableID, ClientID, StartDate, EndDate
+    FROM Reservation R
+        LEFT OUTER JOIN ReservationDetails RD on RD.ReservationID = R.ReservationID
+        INNER JOIN Orders O on O.ReservationID = R.ReservationID
+    WHERE Status LIKE 'denied'
+go
+
+-- ReservationDenied --
 
 -- PendingReservation --
 
@@ -298,7 +309,7 @@ create view dbo.ReservationSummary as
         inner join OrderDetails OD on O.OrderID = OD.OrderID
         inner join ReservationCompany RC on Reservation.ReservationID = RC.ReservationID
         inner join ReservationDetails RD on RC.ReservationID = RD.ReservationID
-    where Reservation.Status not like 'denied'
+    where Status not like 'denied'
 union
     select
         O.ClientID as 'Numer clienta',
@@ -315,7 +326,8 @@ union
         inner join OrderDetails OD on O.OrderID = OD.OrderID
         inner join ReservationIndividual RC on Reservation.ReservationID = RC.ReservationID
         inner join ReservationDetails RD on RC.ReservationID = RD.ReservationID
-    where Reservation.Status not like 'denied'
+    where Status not like 'denied'
+
 go
 
 -- Reservation summary --
@@ -330,6 +342,7 @@ create view dbo.ProductsSummaryDaily as
     where O.OrderStatus not like 'denied'
         group by P.Name, P.Description, cast(O.OrderDate as DATE)
 go
+
 -- Products summary Daily --
 
 -- Products summary  weekly --
@@ -358,7 +371,6 @@ go
 
 -- Products summary Monthly --
 
--- Products informations --
 
 
 -- Not reserved Tables --
@@ -399,7 +411,7 @@ create or alter view dbo.OrdersToPrepare as
         inner join PaymentStatus PS on PS.PaymentStatusID = Orders.PaymentStatusID
         inner join PaymentMethods PM on PS.PaymentMethodID = PM.PaymentMethodID
         inner join Staff S on Orders.staffID = S.StaffID
-    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or (OrderCompletionDate is null and (getdate() >= OrderDate)) and OrderStatus = 'pending')
+    where ((OrderCompletionDate is null and (getdate() >= OrderDate)) and OrderStatus = 'pending')
 go
 
 -- Ile jest zamówień które będą realizowane jako owoce morza i które to są grupowane po klientach
@@ -408,7 +420,7 @@ create or alter view dbo.SeeFoodOrdersByClient as
     from Orders
         join OrderDetails OD on Orders.OrderID = OD.OrderID
         join Products P on P.ProductID = OD.ProductID join Category C on C.CategoryID = P.CategoryID
-    where CategoryName='sea food' and (OrderStatus not like 'denied') and (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or (OrderCompletionDate is null and (getdate() >= OrderDate)))
+    where CategoryName='sea food' and (OrderStatus not like 'denied') and ( (OrderCompletionDate is null and (getdate() >= OrderDate)))
     group by CategoryName, Orders.OrderID
 go
 
@@ -418,7 +430,7 @@ create or alter view dbo.SeeFoodOrders as
     from Orders
         join OrderDetails OD on Orders.OrderID = OD.OrderID
         join Products P on P.ProductID = OD.ProductID join Category C on C.CategoryID = P.CategoryID
-    where CategoryName='sea food' and (OrderStatus not like 'denied') and (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or (OrderCompletionDate is null and (getdate() >= OrderDate)))
+    where CategoryName='sea food' and (OrderStatus not like 'denied') and ( (OrderCompletionDate is null and (getdate() >= OrderDate)))
     group by CategoryName
 go
 
@@ -430,7 +442,7 @@ create or alter view CurrentDiscounts as
     from DiscountsVar join Discounts on DiscountsVar.VarID = Discounts.VarID
         join IndividualClient IC on Discounts.ClientID = IC.ClientID
         join Person P on P.PersonID = IC.PersonID
-    where IC.ClientID is not null and (((getdate() >= startDate) and (getdate() <= endDate)) or ((getdate() >= startDate) and (endDate is null)))
+    where (((getdate() >= startDate) and (getdate() <= endDate)) or ((getdate() >= startDate) and (endDate is null)))
 go
 
 -- informacje na temat wszystkich przyznanych zniżek
@@ -440,7 +452,6 @@ create or alter view AllDiscounts as
         join Discounts on DiscountsVar.VarID = Discounts.VarID 
         join IndividualClient IC on Discounts.ClientID = IC.ClientID 
         join Person P on P.PersonID = IC.PersonID
-    where IC.ClientID is not null
 go
 -- Dania wymagane na dzisiaj na wynos
 
@@ -449,9 +460,8 @@ create or alter view DishesInProgressTakeaways as
     from Products join OrderDetails OD on Products.ProductID = OD.ProductID
         join Orders on OD.OrderID = Orders.OrderID
         join OrdersTakeaways OT on Orders.TakeawayID = OT.TakeawaysID
-    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate))
-      or (OrderCompletionDate is null and (getdate() >= OrderDate)))
-      and OrderStatus not like 'denied' and (Orders.OrderStatus not like 'denied' or Orders.OrderStatus not like 'cancelled')
+    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)))
+      and (Orders.OrderStatus not like 'denied' or Orders.OrderStatus not like 'cancelled')
     group by Name
 go
 
@@ -462,14 +472,14 @@ create or alter view DishesInProgressReservation as
         join OrderDetails OD on Products.ProductID = OD.ProductID
         join Orders on OD.OrderID = Orders.OrderID
         join Reservation R2 on Orders.ReservationID = R2.ReservationID
-    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) 
-      or (OrderCompletionDate is null and (getdate() >= OrderDate)))
-      and OrderStatus not like 'denied' and (R2.Status not like 'denied' or R2.Status not like 'cancelled')
+    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)))
+      and Orders.OrderStatus not like 'denied' and (R2.Status not like 'denied' or R2.Status not like 'cancelled')
     group by Name
 go
+-- Products informations --
 
 create view dbo.ProductsInformations as
-    select Name, P.Description, CategoryName, iif(IsAvailable = 1, 'Aktywne', 'Nieaktywne') as 'Czy produkt aktywny',
+    select Name, P.Description, CategoryName, IIF(IsAvailable = 1, 'Aktywne', 'Nieaktywne') as 'Czy produkt aktywny',
            IIF(P.ProductID in (select ProductID
                             from Menu
                             where ((startDate >= getdate()) and (endDate >= getdate()))
@@ -480,5 +490,6 @@ create view dbo.ProductsInformations as
         inner join OrderDetails OD on P.ProductID = OD.ProductID
     group by Name, P.Description, CategoryName, P.ProductID, IsAvailable
 go
+
 -- Products informations --
 

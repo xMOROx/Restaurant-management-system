@@ -145,7 +145,7 @@ CREATE TABLE PaymentMethods (
 -- Table: PaymentStatus
 CREATE TABLE PaymentStatus (
     PaymentStatusID int  NOT NULL IDENTITY (1,1),
-    PaymentStatusName varchar(50)  NOT NULL,
+    PaymentStatusName varchar(50)  NOT NULL default 'Unpaid',
     PaymentMethodID int  NOT NULL,
     CONSTRAINT PaymentStatus_pk PRIMARY KEY  (PaymentStatusID)
 );
