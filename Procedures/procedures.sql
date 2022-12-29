@@ -42,7 +42,7 @@ CREATE PROCEDURE removeProduct @ProductID int
 AS
 Delete
 from Products
-where ProductID= @ProductID
+where ProductID = @ProductID
 GO;
 -- null->accepted->pending->completed->picked (jesli na wynos)
 -- null->denied (zwrot srodkow)
@@ -79,13 +79,14 @@ GO;
 
 CREATE PROCEDURE showBestDiscountTemporary @ClientID int
 AS
+
 select max(DiscountValue)
 from IndividualClient I
          join Discounts D on I.ClientID = D.ClientID
          join DiscountsVar DV on DV.VarID = D.VarID
 where DiscountType = 'Temporary'
   and I.ClientID = @ClientID
-  and startDate <= getdate() <= endDate
+  and AppliedDate <= getdate() <= dateadd(day, ValidityPeriod, AppliedDate)
 -- Temporary Discounts must have endDate
 GO
 CREATE PROCEDURE showBestDiscountPermanent @ClientID int

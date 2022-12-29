@@ -51,9 +51,6 @@ CREATE TABLE Discounts (
     VarID int  NOT NULL,
     AppliedDate datetime  NOT NULL ,
     isUsed bit NULL default 0,
-    startDate datetime  NOT NULL DEFAULT getdate(),
-    endDate datetime  NULL,
-    CONSTRAINT validDate check(endDate IS NULL or startDate < endDate),
     CONSTRAINT Discounts_pk PRIMARY KEY  (DiscountID)
 );
 
@@ -65,6 +62,9 @@ CREATE TABLE DiscountsVar (
     MinimalAggregateValue money  NULL,
     ValidityPeriod int  NULL,
     DiscountValue decimal(3,2)  NOT NULL CHECK ( DiscountValue >= 0 and DiscountValue <= 1 ),
+    startDate datetime  NOT NULL DEFAULT getdate(),
+    endDate datetime  NULL,
+    CONSTRAINT validDate check(endDate IS NULL or startDate < endDate),
     CONSTRAINT DiscountsVar_pk PRIMARY KEY  (VarID)
 );
 
