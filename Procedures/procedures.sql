@@ -97,6 +97,3 @@ from IndividualClient I
 where DiscountType = 'Permanent'
   and I.ClientID = @ClientID
 GO;
-
-
-
