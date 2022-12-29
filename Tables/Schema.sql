@@ -51,6 +51,9 @@ CREATE TABLE Discounts (
     VarID int  NOT NULL,
     AppliedDate datetime  NOT NULL ,
     isUsed bit NULL default 0,
+    startDate datetime  NOT NULL DEFAULT getdate(),
+    endDate datetime  NULL,
+    CONSTRAINT validDate check(endDate IS NULL or startDate < endDate),
     CONSTRAINT Discounts_pk PRIMARY KEY  (DiscountID)
 );
 
@@ -62,9 +65,6 @@ CREATE TABLE DiscountsVar (
     MinimalAggregateValue money  NULL,
     ValidityPeriod int  NULL,
     DiscountValue decimal(3,2)  NOT NULL CHECK ( DiscountValue >= 0 and DiscountValue <= 1 ),
-    startDate datetime  NOT NULL DEFAULT getdate(),
-    endDate datetime  NULL,
-    CONSTRAINT validDate check(endDate IS NULL or startDate < endDate),
     CONSTRAINT DiscountsVar_pk PRIMARY KEY  (VarID)
 );
 
@@ -145,7 +145,7 @@ CREATE TABLE PaymentMethods (
 -- Table: PaymentStatus
 CREATE TABLE PaymentStatus (
     PaymentStatusID int  NOT NULL IDENTITY (1,1),
-    PaymentStatusName varchar(50)  NOT NULL default 'Unpaid',
+    PaymentStatusName varchar(50)  NOT NULL default  'Unpaid' check (PaymentStatusName in ('Unpaid','Paid','Refunded')),
     PaymentMethodID int  NOT NULL,
     CONSTRAINT PaymentStatus_pk PRIMARY KEY  (PaymentStatusID)
 );
@@ -219,7 +219,7 @@ CREATE TABLE Staff (
     StaffID int  NOT NULL IDENTITY (1,1),
     LastName nvarchar(50)  NOT NULL,
     FirstName nvarchar(70)  NOT NULL,
-    Position varchar(50)  NOT NULL,
+    Position varchar(50)  NOT NULL, check (Position in ('waiter','waitress','reservationMan','reservationWoman')),
     Email varchar(100)  NOT NULL UNIQUE check( Email like '%[@]%[.]%'),
     Phone varchar(14)  NOT NULL UNIQUE check( isnumeric(Phone) = 1 and len(Phone) >= 9),
     AddressID int  NOT NULL ,
