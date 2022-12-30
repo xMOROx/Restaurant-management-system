@@ -261,7 +261,6 @@ AS
                 THROW 52000, N'REGON jest już w bazie', 1
             END
 
-
             IF (@ClientType = 'C')
                 BEGIN
                     IF(@NIP is null)
@@ -318,7 +317,92 @@ AS
     END
 go
 
-
-
-
 -- add client
+
+-- add Product to Menu 
+
+CREATE PROCEDURE addProductToMenu   @Name nvarchar(150),
+                                    @MenuID int,
+                                    @Price money
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(
+                SELECT * FROM Products WHERE Name like @Name
+                )
+            BEGIN;
+                THROW 52000, N'Nie ma takiej potrawy', 1
+            END
+
+            IF NOT EXISTS(
+                SELECT * FROM Menu WHERE MenuID = @MenuID
+                )
+            BEGIN;
+                THROW 52000, N'Nie ma takiego menu', 1
+            END
+
+            DECLARE @ProductID int
+            DECLARE @StartDate datetime
+            DECLARE @EndDate datetime
+            SELECT @ProductID = ProductID from Products WHERE Name like @Name
+
+            SELECT TOP 1 @StartDate = StartDate FROM Menu WHERE MenuID = @MenuID
+            SELECT TOP 1 @EndDate = endDate FROM Menu WHERE MenuID = @MenuID
+
+            INSERT INTO Menu(MenuID, startDate, endDate, Price, ProductID)
+            VALUES (@MenuID, @StartDate, @EndDate, @Price, @ProductID)
+
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = N'Błąd dodania potrawy do menu: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+
+-- add Product to Menu 
+
+-- remove Product From Menu 
+
+CREATE PROCEDURE removeProductFromMenu  @Name nvarchar(150),
+                                        @MenuID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(
+                SELECT * FROM Products WHERE Name like @Name
+                )
+            BEGIN;
+                THROW 52000, N'Nie ma takiej potrawy', 1
+            END
+
+            IF NOT EXISTS(
+                SELECT * FROM Menu WHERE MenuID = @MenuID
+                )
+            BEGIN;
+                THROW 52000, N'Nie ma takiego menu', 1
+            END
+            IF NOT EXISTS(
+                SELECT * FROM Menu
+                    INNER JOIN Products P ON P.ProductID = Menu.ProductID
+                WHERE MenuID = @MenuID AND Name like @Name
+                )
+            BEGIN;
+                THROW 52000, N'Nie ma takiego produktu w menu', 1
+            END
+            DECLARE @ProductID int
+            SELECT @ProductID = ProductID from Products WHERE Name like @Name
+
+            DELETE FROM Menu WHERE MenuID = @MenuID and ProductID = @ProductID
+
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = N'Błąd usunięcia potrawy z menu: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+
+-- remove Product From Menu
