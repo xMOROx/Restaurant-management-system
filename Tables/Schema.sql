@@ -153,7 +153,7 @@ CREATE TABLE PaymentStatus (
 
 -- Table: Person
 CREATE TABLE Person (
-    PersonID int  NOT NULL,
+    PersonID int  NOT NULL IDENTITY (1,1),
     LastName varchar(50)  NOT NULL,
     FirstName varchar(70)  NOT NULL,
     CONSTRAINT Person_pk PRIMARY KEY  (PersonID)
