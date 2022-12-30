@@ -31,3 +31,19 @@ AS
         RETURN 0
     END
 GO
+
+CREATE FUNCTION GetMinimumPriceOfMenu(@MenuID int)
+    RETURNS money
+AS
+    BEGIN
+        RETURN (SELECT TOP 1 MIN(Price) FROM Menu WHERE MenuID = @MenuID)
+    END
+GO
+
+CREATE FUNCTION GetMaximumPriceOfMenu(@MenuID int)
+    RETURNS money
+AS
+    BEGIN
+        RETURN (SELECT TOP 1 MAX(Price) FROM Menu WHERE MenuID = @MenuID)
+    END
+GO
