@@ -334,18 +334,21 @@ AS
             BEGIN;
                 THROW 52000, N'Nie ma takiej potrawy', 1
             END
+            DECLARE @ProductID int
+            DECLARE @StartDate datetime
+            DECLARE @EndDate datetime
+            SELECT @ProductID = ProductID from Products WHERE Name like @Name
 
             IF NOT EXISTS(
                 SELECT * FROM Menu WHERE MenuID = @MenuID
                 )
             BEGIN;
-                THROW 52000, N'Nie ma takiego menu', 1
-            END
+                SELECT @StartDate = GETDATE()
+                SELECT @EndDate = DATEADD(day, 15, @StartDate)
 
-            DECLARE @ProductID int
-            DECLARE @StartDate datetime
-            DECLARE @EndDate datetime
-            SELECT @ProductID = ProductID from Products WHERE Name like @Name
+                EXEC addMenu @MenuID, @StartDate, @EndDate, @Price, @ProductID
+                RETURN
+            END
 
             SELECT TOP 1 @StartDate = StartDate FROM Menu WHERE MenuID = @MenuID
             SELECT TOP 1 @EndDate = endDate FROM Menu WHERE MenuID = @MenuID
@@ -406,3 +409,41 @@ AS
 GO
 
 -- remove Product From Menu
+
+-- add menu 
+
+CREATE PROCEDURE addMenu  @MenuID int,
+                          @StartDate datetime,
+                          @EndDate datetime,
+                          @Price money,
+                          @ProductID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF EXISTS(
+                SELECT * FROM Menu WHERE MenuID = @MenuID
+                )
+            BEGIN;
+                THROW 52000, N'Takie menu już istnieje', 1
+            END
+
+            IF NOT EXISTS(
+                SELECT * FROM Products WHERE ProductID = @ProductID
+                )
+            BEGIN;
+                THROW 52000, N'Nie ma takiego produktu', 1
+            END
+
+            INSERT INTO Menu(MenuID, startDate, endDate, Price, ProductID)
+            VALUES (@MenuID, @StartDate, @EndDate, @Price, @ProductID)
+
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = N'Błąd dodania menu: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+
+
