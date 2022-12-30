@@ -3,7 +3,7 @@
 -- Table: Address
 CREATE TABLE Address (
     AddressID int  NOT NULL IDENTITY (1,1),
-    CityID char(3)  NOT NULL,
+    CityID INT NOT NULL,
     street nvarchar(70)  NOT NULL,
     LocalNr varchar(10)  NOT NULL check(localNr like '[0-9]%'),
     PostalCode char(6)  NOT NULL check(PostalCode like '[0-9][0-9]-[0-9][0-9][0-9]'),
@@ -20,7 +20,7 @@ CREATE TABLE Category (
 
 -- Table: Cities
 CREATE TABLE Cities (
-    CityID char(3)  NOT NULL ,
+    CityID INT  NOT NULL IDENTITY (1,1),
     CityName nvarchar(35)  NOT NULL,
     CONSTRAINT Cities_pk PRIMARY KEY  (CityID)
 );
@@ -36,7 +36,7 @@ CREATE TABLE Clients (
 
 -- Table: Companies
 CREATE TABLE Companies (
-    ClientID int  NOT NULL IDENTITY (1,1),
+    ClientID int  NOT NULL,
     CompanyName nvarchar(50)  NOT NULL UNIQUE,
     NIP char(10)  NOT NULL UNIQUE check(NIP like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     KRS char(10)  NULL UNIQUE check(KRS like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
@@ -95,13 +95,14 @@ CREATE TABLE Invoice (
 
 -- Table: Menu
 CREATE TABLE Menu (
-    MenuID int  NOT NULL IDENTITY (1,1),
+    ID int NOT NULL IDENTITY (1,1) ,
+    MenuID int  NOT NULL ,
     Price money  NOT NULL check ( Price > 0 ),
     startDate datetime  NOT NULL default getdate(),
     endDate datetime NULL ,
     ProductID int  NOT NULL,
     CONSTRAINT validDateMenu check((dateadd(day, 14 ,startDate) < endDate and endDate is not null) or endDate is null),
-    CONSTRAINT Menu_pk PRIMARY KEY  (MenuID)
+    CONSTRAINT Menu_pk PRIMARY KEY  (ID)
 );
 
 -- Table: OrderDetails
