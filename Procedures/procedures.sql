@@ -1,7 +1,7 @@
-CREATE PROCEDURE addCity @CityID char(3), @CityName nvarchar(35)
+CREATE PROCEDURE addCity  @CityName nvarchar(35)
 AS
-INSERT INTO Cities (CityID, CityName)
-VALUES (@CityID, @CityName);
+    INSERT INTO Cities (CityName)
+    VALUES (@CityName);
 GO;
 
 
@@ -24,7 +24,7 @@ INSERT INTO Products (CategoryID, Name, Description, IsAvailable)
 VALUES (@CategoryID, @Name, @Description, @IsAvailable);
 GO;
 
-CREATE PROCEDURE removeCity @CityID char(3)
+CREATE PROCEDURE removeCity @CityID int
 AS
 Delete
 from Cities
