@@ -1,3 +1,4 @@
 *.DOCX
 .idea
 /Generators
+*.txt
