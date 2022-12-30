@@ -36,7 +36,7 @@ CREATE TABLE Clients (
 
 -- Table: Companies
 CREATE TABLE Companies (
-    ClientID int  NOT NULL IDENTITY (1,1),
+    ClientID int  NOT NULL,
     CompanyName nvarchar(50)  NOT NULL UNIQUE,
     NIP char(10)  NOT NULL UNIQUE check(NIP like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     KRS char(10)  NULL UNIQUE check(KRS like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
@@ -95,13 +95,14 @@ CREATE TABLE Invoice (
 
 -- Table: Menu
 CREATE TABLE Menu (
-    MenuID int  NOT NULL IDENTITY (1,1),
+    ID int NOT NULL IDENTITY (1,1) ,
+    MenuID int  NOT NULL ,
     Price money  NOT NULL check ( Price > 0 ),
     startDate datetime  NOT NULL default getdate(),
     endDate datetime NULL ,
     ProductID int  NOT NULL,
     CONSTRAINT validDateMenu check((dateadd(day, 14 ,startDate) < endDate and endDate is not null) or endDate is null),
-    CONSTRAINT Menu_pk PRIMARY KEY  (MenuID)
+    CONSTRAINT Menu_pk PRIMARY KEY  (ID)
 );
 
 -- Table: OrderDetails
@@ -152,7 +153,7 @@ CREATE TABLE PaymentStatus (
 
 -- Table: Person
 CREATE TABLE Person (
-    PersonID int  NOT NULL IDENTITY (1,1),
+    PersonID int  NOT NULL,
     LastName varchar(50)  NOT NULL,
     FirstName varchar(70)  NOT NULL,
     CONSTRAINT Person_pk PRIMARY KEY  (PersonID)
