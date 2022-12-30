@@ -123,7 +123,7 @@ CREATE TABLE Orders (
     OrderSum money  NOT NULL check ( OrderSum > 0 ),
     OrderDate datetime  NOT NULL default getdate(),
     OrderCompletionDate datetime  NULL ,
-    OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked')),
+    OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked', 'cancelled')),
     CONSTRAINT validDateOrders check ( (OrderCompletionDate >= OrderDate)  or (OrderCompletionDate is null)),
     CONSTRAINT Orders_pk PRIMARY KEY  (OrderID)
 );
@@ -162,7 +162,7 @@ CREATE TABLE Person (
 CREATE TABLE Products (
     ProductID int  NOT NULL IDENTITY (1,1),
     CategoryID int  NOT NULL,
-    Name nvarchar(50)  NOT NULL,
+    Name nvarchar(150)  NOT NULL,
     Description nvarchar(150)  NOT NULL default 'brak opisu',
     IsAvailable bit NOT NULL default 1,
     CONSTRAINT Products_pk PRIMARY KEY  (ProductID)
