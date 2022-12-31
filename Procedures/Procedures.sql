@@ -2,23 +2,23 @@
 CREATE PROCEDURE Project.dbo.addCategory @CategoryName nvarchar(50),
 @Description nvarchar(150) AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF EXISTS(
-        SELECT
-            *
-        FROM
-            Category
-        WHERE
-            @CategoryName = CategoryName
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF EXISTS(
+    SELECT
+      *
+    FROM
+      Category
+    WHERE
+      @CategoryName = CategoryName
+  ) BEGIN;
 
 THROW 52000,
 N'Kategoria juz istnieje!',
 1
 END
 INSERT INTO
-    Project.dbo.Category (CategoryName, Description)
+  Project.dbo.Category (CategoryName, Description)
 VALUES
-    (@CategoryName, @Description)
+  (@CategoryName, @Description)
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Blad dodania kategorii: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -27,19 +27,19 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- Category add
-    -- Modify table size 
-    CREATE PROCEDURE ModifyTableSize @TableID int,
-    @Size int AS BEGIN
+  -- Category add
+  -- Modify table size 
+  CREATE PROCEDURE ModifyTableSize @TableID int,
+  @Size int AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            TABLES
-        WHERE
-            TableID = @TableID
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      TABLES
+    WHERE
+      TableID = @TableID
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiego stolika.',
@@ -51,11 +51,11 @@ N'Stolik musi mieć przynajmniej 2 miejsca.',
 1
 END IF @Size IS NOT NULL BEGIN
 UPDATE
-    TABLES
+  TABLES
 SET
-    ChairAmount = @Size
+  ChairAmount = @Size
 WHERE
-    TableID = @TableID
+  TableID = @TableID
 END
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład edytowania stolika: ' + ERROR_MESSAGE();
 
@@ -65,41 +65,41 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- Modify table size
-    -- Modify table status
-    CREATE PROCEDURE ModifyTableStatus @TableID int,
-    @Status bit AS BEGIN
+  -- Modify table size
+  -- Modify table status
+  CREATE PROCEDURE ModifyTableStatus @TableID int,
+  @Status bit AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            TABLES
-        WHERE
-            TableID = @TableID
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      TABLES
+    WHERE
+      TableID = @TableID
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiego stolika.',
 1
 END DECLARE @TableStatus bit
 SELECT
-    @TableStatus = isActive
+  @TableStatus = isActive
 FROM
-    TABLES
+  TABLES
 WHERE
-    TableID = @TableID IF @TableStatus = @Status BEGIN;
+  TableID = @TableID IF @TableStatus = @Status BEGIN;
 
 THROW 52000,
 N'Stolik ma już taki status!.',
 1
 END IF @Status IS NOT NULL BEGIN
 UPDATE
-    TABLES
+  TABLES
 SET
-    isActive = @Status
+  isActive = @Status
 WHERE
-    TableID = @TableID
+  TableID = @TableID
 END
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład edytowania stolika: ' + ERROR_MESSAGE();
 
@@ -109,25 +109,25 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- Modify table status
-    -- Add table
-    CREATE PROCEDURE addTable @Size int,
-    @Status bit AS BEGIN
+  -- Modify table status
+  -- Add table
+  CREATE PROCEDURE addTable @Size int,
+  @Status bit AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF @Size < 2 BEGIN;
+  NOCOUNT ON BEGIN TRY IF @Size < 2 BEGIN;
 
 THROW 52000,
 N'Stolik musi mieć przynajmniej 2 miejsca.',
 1
 END DECLARE @TableID INT
 SELECT
-    @TableID = ISNULL(MAX(TableID), 0) + 1
+  @TableID = ISNULL(MAX(TableID), 0) + 1
 FROM
-    TABLES
+  TABLES
 INSERT INTO
-    TABLES(TableID, ChairAmount, isActive)
+  TABLES(TableID, ChairAmount, isActive)
 VALUES
-    (@TableID, @Size, @Status)
+  (@TableID, @Size, @Status)
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład edytowania stolika: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -136,27 +136,27 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- Add table
-    -- Remove table
-    CREATE PROCEDURE removeTable @TableID int AS BEGIN
+  -- Add table
+  -- Remove table
+  CREATE PROCEDURE removeTable @TableID int AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            TABLES
-        WHERE
-            TableID = @TableID
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      TABLES
+    WHERE
+      TableID = @TableID
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiego stolika.',
 1
 END
 DELETE FROM
-    TABLES
+  TABLES
 WHERE
-    TableID = @TableID
+  TableID = @TableID
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład edytowania stolika: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -165,27 +165,27 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- Remove table
-    -- Add address
-    AS BEGIN BEGIN TRY DECLARE @CityID int IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            Cities
-        WHERE
-            CityName LIKE @CityName
-    ) BEGIN EXEC addCity @CityName
+  -- Remove table
+  -- Add address
+  AS BEGIN BEGIN TRY DECLARE @CityID int IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      Cities
+    WHERE
+      CityName LIKE @CityName
+  ) BEGIN EXEC addCity @CityName
 END
 SELECT
-    @CityID = CityID
+  @CityID = CityID
 FROM
-    Cities
+  Cities
 WHERE
-    CityName LIKE @CityName
+  CityName LIKE @CityName
 INSERT INTO
-    Address(CityID, street, LocalNr, PostalCode)
+  Address(CityID, street, LocalNr, PostalCode)
 VALUES
-    (@CityID, @Street, @LocalNr, @PostalCode)
+  (@CityID, @Street, @LocalNr, @PostalCode)
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład dodania adresu: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -194,27 +194,27 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- Add address
-    -- remove address
-    CREATE PROCEDURE removeAddress @AddressID int AS BEGIN
+  -- Add address
+  -- remove address
+  CREATE PROCEDURE removeAddress @AddressID int AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            Address
-        WHERE
-            AddressID = @AddressID
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      Address
+    WHERE
+      AddressID = @AddressID
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiego adresu.',
 1
 END
 DELETE FROM
-    Address
+  Address
 WHERE
-    AddressID = @AddressID
+  AddressID = @AddressID
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład usuniecia adresu: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -223,14 +223,14 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- remove address
-    -- add person 
-    CREATE PROCEDURE addPerson @FirstName varchar(70),
-    @LastName varchar(50) AS BEGIN BEGIN TRY
+  -- remove address
+  -- add person 
+  CREATE PROCEDURE addPerson @FirstName varchar(70),
+  @LastName varchar(50) AS BEGIN BEGIN TRY
 INSERT INTO
-    Person(LastName, FirstName)
+  Person(LastName, FirstName)
 VALUES
-(@LastName, @FirstName)
+  (@LastName, @FirstName)
 END try BEGIN catch DECLARE @msg nvarchar(2048) = N'Bład dodania Osoby: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -239,27 +239,27 @@ THROW 52000,
 END catch
 END
 GO
-    -- add person
-    -- remove person
-    CREATE PROCEDURE removePerson @PersonID int AS BEGIN
+  -- add person
+  -- remove person
+  CREATE PROCEDURE removePerson @PersonID int AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            Person
-        WHERE
-            PersonID = @PersonID
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      Person
+    WHERE
+      PersonID = @PersonID
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiej osoby.',
 1
 END
 DELETE FROM
-    Person
+  Person
 WHERE
-    PersonID = @PersonID
+  PersonID = @PersonID
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład usuniecia osoby: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -268,49 +268,49 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- remove person
-    -- add client
-    CREATE PROCEDURE addClient @ClientType varchar(1),
-    @CityName nvarchar(35),
-    @Street nvarchar(70),
-    @LocalNr varchar(10),
-    @PostalCode char(6),
-    @Phone varchar(14),
-    @Email varchar(100),
-    @FirstName varchar(50) = NULL,
-    @LastName varchar(70) = NULL,
-    @CompanyName nvarchar(50) = NULL,
-    @NIP char(10) = NULL,
-    @KRS char(10) = NULL,
-    @REGON char(9) = NULL AS BEGIN
+  -- remove person
+  -- add client
+  CREATE PROCEDURE addClient @ClientType varchar(1),
+  @CityName nvarchar(35),
+  @Street nvarchar(70),
+  @LocalNr varchar(10),
+  @PostalCode char(6),
+  @Phone varchar(14),
+  @Email varchar(100),
+  @FirstName varchar(50) = NULL,
+  @LastName varchar(70) = NULL,
+  @CompanyName nvarchar(50) = NULL,
+  @NIP char(10) = NULL,
+  @KRS char(10) = NULL,
+  @REGON char(9) = NULL AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF (
-        @ClientType NOT LIKE 'C'
-        AND @ClientType NOT LIKE 'I'
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF (
+    @ClientType NOT LIKE 'C'
+    AND @ClientType NOT LIKE 'I'
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiego typu klienta!',
 1
 END IF EXISTS(
-    SELECT
-        *
-    FROM
-        Clients
-    WHERE
-        Phone LIKE @Phone
+  SELECT
+    *
+  FROM
+    Clients
+  WHERE
+    Phone LIKE @Phone
 ) BEGIN;
 
 THROW 52000,
 N 'Numer telefonu jest już w bazie',
 1
 END IF EXISTS(
-    SELECT
-        *
-    FROM
-        Clients
-    WHERE
-        Email LIKE @Email
+  SELECT
+    *
+  FROM
+    Clients
+  WHERE
+    Email LIKE @Email
 ) BEGIN;
 
 THROW 52000,
@@ -319,12 +319,12 @@ N'Email jest już w bazie',
 END IF @CompanyName IS NOT NULL
 AND @ClientType LIKE 'C'
 AND EXISTS(
-    SELECT
-        *
-    FROM
-        Companies
-    WHERE
-        CompanyName LIKE @CompanyName
+  SELECT
+    *
+  FROM
+    Companies
+  WHERE
+    CompanyName LIKE @CompanyName
 ) BEGIN;
 
 THROW 52000,
@@ -333,12 +333,12 @@ N'Firma jest już w bazie',
 END IF @KRS IS NOT NULL
 AND @ClientType LIKE 'C'
 AND EXISTS(
-    SELECT
-        *
-    FROM
-        Companies
-    WHERE
-        KRS LIKE @KRS
+  SELECT
+    *
+  FROM
+    Companies
+  WHERE
+    KRS LIKE @KRS
 ) BEGIN;
 
 THROW 52000,
@@ -347,12 +347,12 @@ N'KRS jest już w bazie',
 END IF @NIP IS NOT NULL
 AND @ClientType LIKE 'C'
 AND EXISTS(
-    SELECT
-        *
-    FROM
-        Companies
-    WHERE
-        NIP LIKE @NIP
+  SELECT
+    *
+  FROM
+    Companies
+  WHERE
+    NIP LIKE @NIP
 ) BEGIN;
 
 THROW 52000,
@@ -361,12 +361,12 @@ N 'NIP jest już w bazie',
 END IF @REGON IS NOT NULL
 AND @ClientType LIKE 'C'
 AND EXISTS(
-    SELECT
-        *
-    FROM
-        Companies
-    WHERE
-        Regon LIKE @REGON
+  SELECT
+    *
+  FROM
+    Companies
+  WHERE
+    Regon LIKE @REGON
 ) BEGIN;
 
 THROW 52000,
@@ -389,50 +389,50 @@ END
 END DECLARE @AddressID int;
 
 IF NOT EXISTS(
-    SELECT
-        *
-    FROM
-        Address
-    WHERE
-        street LIKE @Street
-        AND PostalCode LIKE @PostalCode
-        AND LocalNr LIKE @LocalNr
+  SELECT
+    *
+  FROM
+    Address
+  WHERE
+    street LIKE @Street
+    AND PostalCode LIKE @PostalCode
+    AND LocalNr LIKE @LocalNr
 ) BEGIN EXEC addAddress @Street,
 @LocalNr,
 @PostalCode,
 @CityName
 END
 SELECT
-    @AddressID = AddressID
+  @AddressID = AddressID
 FROM
-    Address
+  Address
 INSERT INTO
-    Clients(AddressID, Phone, Email)
+  Clients(AddressID, Phone, Email)
 VALUES
-    (@AddressID, @Phone, @Email) DECLARE @ClientID int;
+  (@AddressID, @Phone, @Email) DECLARE @ClientID int;
 
 SELECT
-    @ClientID = ClientID
+  @ClientID = ClientID
 FROM
-    Clients
+  Clients
 WHERE
-    @AddressID = AddressID
-    AND Clients.Phone LIKE @Phone
-    AND Clients.Email LIKE @Email IF (@ClientType = 'C') BEGIN
+  @AddressID = AddressID
+  AND Clients.Phone LIKE @Phone
+  AND Clients.Email LIKE @Email IF (@ClientType = 'C') BEGIN
 INSERT INTO
-    Companies(ClientID, CompanyName, NIP, KRS, Regon)
+  Companies(ClientID, CompanyName, NIP, KRS, Regon)
 VALUES
-    (@ClientID, @CompanyName, @NIP, @KRS, @REGON)
+  (@ClientID, @CompanyName, @NIP, @KRS, @REGON)
 END IF (@ClientType = 'I') BEGIN EXEC addPerson @FirstName,
 @LastName DECLARE @PersonID int
 SELECT
-    @PersonID = PersonID
+  @PersonID = PersonID
 FROM
-    Person
+  Person
 INSERT INTO
-    IndividualClient(ClientID, PersonID)
+  IndividualClient(ClientID, PersonID)
 VALUES
-    (@ClientID, @PersonID)
+  (@ClientID, @PersonID)
 END
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Bład dodania klienta: ' + ERROR_MESSAGE();
 
@@ -442,70 +442,70 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- add client
-    -- add Product to Menu 
-    CREATE PROCEDURE addProductToMenu @Name nvarchar(150),
-    @MenuID int,
-    @Price money AS BEGIN
+  -- add client
+  -- add Product to Menu 
+  CREATE PROCEDURE addProductToMenu @Name nvarchar(150),
+  @MenuID int,
+  @Price money AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            Products
-        WHERE
-            Name LIKE @Name
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      Products
+    WHERE
+      Name LIKE @Name
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiej potrawy',
 1
 END DECLARE @ProductID int DECLARE @StartDate datetime DECLARE @EndDate datetime
 SELECT
-    @ProductID = ProductID
+  @ProductID = ProductID
 FROM
-    Products
+  Products
 WHERE
-    Name LIKE @Name IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            Menu
-        WHERE
-            MenuID = @MenuID
-    ) BEGIN;
+  Name LIKE @Name IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      Menu
+    WHERE
+      MenuID = @MenuID
+  ) BEGIN;
 
 SELECT
-    @StartDate = GETDATE()
+  @StartDate = GETDATE()
 SELECT
-    @EndDate = DATEADD(DAY, 15, @StartDate) EXEC addMenu @MenuID,
+  @EndDate = DATEADD(DAY, 15, @StartDate) EXEC addMenu @MenuID,
+  @StartDate,
+  @EndDate,
+  @Price,
+  @ProductID RETURN
+END
+SELECT
+  TOP 1 @StartDate = StartDate
+FROM
+  Menu
+WHERE
+  MenuID = @MenuID
+SELECT
+  TOP 1 @EndDate = endDate
+FROM
+  Menu
+WHERE
+  MenuID = @MenuID
+INSERT INTO
+  Menu(MenuID, startDate, endDate, Price, ProductID)
+VALUES
+  (
+    @MenuID,
     @StartDate,
     @EndDate,
     @Price,
-    @ProductID RETURN
-END
-SELECT
-    TOP 1 @StartDate = StartDate
-FROM
-    Menu
-WHERE
-    MenuID = @MenuID
-SELECT
-    TOP 1 @EndDate = endDate
-FROM
-    Menu
-WHERE
-    MenuID = @MenuID
-INSERT INTO
-    Menu(MenuID, startDate, endDate, Price, ProductID)
-VALUES
-    (
-        @MenuID,
-        @StartDate,
-        @EndDate,
-        @Price,
-        @ProductID
-    )
+    @ProductID
+  )
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Błąd dodania potrawy do menu: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -514,44 +514,44 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- add Product to Menu 
-    -- remove Product From Menu 
-    CREATE PROCEDURE removeProductFromMenu @Name nvarchar(150),
-    @MenuID int AS BEGIN
+  -- add Product to Menu 
+  -- remove Product From Menu 
+  CREATE PROCEDURE removeProductFromMenu @Name nvarchar(150),
+  @MenuID int AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF NOT EXISTS(
-        SELECT
-            *
-        FROM
-            Products
-        WHERE
-            Name LIKE @Name
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF NOT EXISTS(
+    SELECT
+      *
+    FROM
+      Products
+    WHERE
+      Name LIKE @Name
+  ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiej potrawy',
 1
 END IF NOT EXISTS(
-    SELECT
-        *
-    FROM
-        Menu
-    WHERE
-        MenuID = @MenuID
+  SELECT
+    *
+  FROM
+    Menu
+  WHERE
+    MenuID = @MenuID
 ) BEGIN;
 
 THROW 52000,
 N 'Nie ma takiego menu',
 1
 END IF NOT EXISTS(
-    SELECT
-        *
-    FROM
-        Menu
-        INNER JOIN Products P ON P.ProductID = Menu.ProductID
-    WHERE
-        MenuID = @MenuID
-        AND Name LIKE @Name
+  SELECT
+    *
+  FROM
+    Menu
+    INNER JOIN Products P ON P.ProductID = Menu.ProductID
+  WHERE
+    MenuID = @MenuID
+    AND Name LIKE @Name
 ) BEGIN;
 
 THROW 52000,
@@ -559,16 +559,16 @@ N 'Nie ma takiego produktu w menu',
 1
 END DECLARE @ProductID int
 SELECT
-    @ProductID = ProductID
+  @ProductID = ProductID
 FROM
-    Products
+  Products
 WHERE
-    Name LIKE @Name
+  Name LIKE @Name
 DELETE FROM
-    Menu
+  Menu
 WHERE
-    MenuID = @MenuID
-    AND ProductID = @ProductID
+  MenuID = @MenuID
+  AND ProductID = @ProductID
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Błąd usunięcia potrawy z menu: ' + ERROR_MESSAGE();
 
 THROW 52000,
@@ -577,33 +577,33 @@ THROW 52000,
 END CATCH
 END
 GO
-    -- remove Product From Menu
-    -- add menu 
-    CREATE PROCEDURE addMenu @MenuID int,
-    @StartDate datetime,
-    @EndDate datetime,
-    @Price money,
-    @ProductID int AS BEGIN
+  -- remove Product From Menu
+  -- add menu 
+  CREATE PROCEDURE addMenu @MenuID int,
+  @StartDate datetime,
+  @EndDate datetime,
+  @Price money,
+  @ProductID int AS BEGIN
 SET
-    NOCOUNT ON BEGIN TRY IF EXISTS(
-        SELECT
-            *
-        FROM
-            Menu
-        WHERE
-            MenuID = @MenuID
-    ) BEGIN;
+  NOCOUNT ON BEGIN TRY IF EXISTS(
+    SELECT
+      *
+    FROM
+      Menu
+    WHERE
+      MenuID = @MenuID
+  ) BEGIN;
 
 THROW 52000,
 N'Takie menu już istnieje',
 1
 END IF NOT EXISTS(
-    SELECT
-        *
-    FROM
-        Products
-    WHERE
-        ProductID = @ProductID
+  SELECT
+    *
+  FROM
+    Products
+  WHERE
+    ProductID = @ProductID
 ) BEGIN;
 
 THROW 52000,
@@ -611,15 +611,15 @@ N 'Nie ma takiego produktu',
 1
 END
 INSERT INTO
-    Menu(MenuID, startDate, endDate, Price, ProductID)
+  Menu(MenuID, startDate, endDate, Price, ProductID)
 VALUES
-    (
-        @MenuID,
-        @StartDate,
-        @EndDate,
-        @Price,
-        @ProductID
-    )
+  (
+    @MenuID,
+    @StartDate,
+    @EndDate,
+    @Price,
+    @ProductID
+  )
 END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Błąd dodania menu: ' + ERROR_MESSAGE();
 
 THROW 52000,
