@@ -687,7 +687,7 @@ SELECT
     concat(C2.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
     A.PostalCode,
     O.OrderDate,
-    SUM(O.OrderSum) AS [Zaległa należność]
+    SUM(O.OrderSum) AS [money to pay]
 FROM
     Clients AS C
     INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
@@ -720,7 +720,7 @@ SELECT
     C.Email,
     CONCAT(C3.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
     A.PostalCode,
-    SUM(O.OrderSum) AS [Zaległa należność]
+    SUM(O.OrderSum) AS [money to pay]
 FROM
     Clients AS C
     INNER JOIN Orders O ON O.ClientID = C.ClientID

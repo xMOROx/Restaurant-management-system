@@ -149,3 +149,20 @@ FROM
 WHERE
     [value ordered] > @value
 GO
+    CREATE FUNCTION GetClientsWhoOweMoreThanX(@value int) RETURNS TABLE AS RETURN
+SELECT
+    ClientID,
+    [money to pay]
+FROM
+    individualClientsWhoNotPayForOrders
+WHERE
+    [money to pay] > @value
+UNION
+SELECT
+    ClientID,
+    [money to pay]
+FROM
+    companiesWhoNotPayForOrders
+WHERE
+    [money to pay] > @value
+GO
