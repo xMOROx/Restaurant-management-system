@@ -684,21 +684,28 @@ SELECT
     CONCAT(P.LastName, ' ', P.FirstName) AS [Dane],
     C.Phone,
     C.Email,
-    concat(A.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
+    concat(C2.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
     A.PostalCode,
-    C.OrderDate,
+    O.OrderDate,
     SUM(O.OrderSum) AS [Zaległa należność]
 FROM
     Clients AS C
-WHERE
-    (PS.PaymentStatusName LIKE 'Unpaid')
     INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
-    INNER JOIN Person P ON P.PersonID = IndividualClient.PersonID
+    INNER JOIN Person P ON P.PersonID = IC.PersonID
     INNER JOIN Orders O ON O.ClientID = C.ClientID
     INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
-    INNER JOIN Adress A ON A.AdressID = C.AdressID
+    INNER JOIN Address A ON A.AddressID = C.AddressID
+    INNER JOIN Cities C2 ON C2.CityID = A.CityID
+WHERE
+    (PS.PaymentStatusName LIKE 'Unpaid')
 GROUP BY
-    C.ClientID
+    C.ClientID,
+    CONCAT(P.LastName, ' ', P.FirstName),
+    C.Phone,
+    C.Email,
+    concat(C2.CityName, ' ', A.street, ' ', A.LocalNr),
+    A.PostalCode,
+    O.OrderDate
 GO
     --individual clients who have not paid for their orders
     --companies who have not paid for their orders  (firmy, które mają nieopłacone zamówienia oraz jaka jest ich wartość)
@@ -711,18 +718,28 @@ SELECT
     ISNULL(C2.Regon, 'Brak') AS [Regon],
     C.Phone,
     C.Email,
-    CONCAT(A.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
+    CONCAT(C3.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
     A.PostalCode,
     SUM(O.OrderSum) AS [Zaległa należność]
 FROM
     Clients AS C
-WHERE
-    (PS.PaymentStatusName LIKE 'Unpaid')
     INNER JOIN Orders O ON O.ClientID = C.ClientID
     INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
     INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
+    INNER JOIN Address A ON A.AddressID = C.AddressID
+    INNER JOIN Cities C3 ON C3.CityID = A.CityID
+WHERE
+    (PS.PaymentStatusName LIKE 'Unpaid')
 GROUP BY
-    C.ClientID
+    C.ClientID,
+    C2.CompanyName,
+    C2.NIP,
+    ISNULL(C2.KRS, 'Brak'),
+    ISNULL(C2.Regon, 'Brak'),
+    C.Phone,
+    C.Email,
+    CONCAT(C3.CityName, ' ', A.street, ' ', A.LocalNr),
+    A.PostalCode
 GO
     --companies who have not paid for their orders
     --orders on-site             (zamówienia na miejscu, które są przygotowywane)
