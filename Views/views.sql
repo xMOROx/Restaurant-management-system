@@ -822,6 +822,27 @@ CREATE VIEW mealMenuInfo AS
                         INNER JOIN Orders O on O.OrderID = OD.OrderID WHERE (O.OrderDate BETWEEN M.startDate AND M.endDate) GROUP BY P.Name), 0) times_sold
     FROM Menu M
 GO
-
-
 -- Meal menu info -- 
+
+-- Clients statistics --
+CREATE VIEW ClientStatistics AS
+    SELECT C.ClientID,
+           C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode as Address,
+           C.Phone,
+           C.Email,
+           COUNT(O.OrderID) as [times ordered],
+           ISNULL((SELECT [value ordered]
+                   FROM (SELECT ClientID, SUM(value) [value ordered]
+                         FROM (SELECT O.ClientID ClientID, OD.Quantity * (SELECT Price FROM Menu M2
+                                                                                       WHERE  M2.ProductID = OD.ProductID) value
+                               FROM OrderDetails OD
+                                    INNER JOIN Orders O on O.OrderID = OD.OrderID) OUT
+                         GROUP BY ClientID) a
+                    WHERE ClientID = C.ClientID), 0) [value ordered]
+    FROM Clients C
+        LEFT JOIN Orders O ON C.ClientID = O.ClientID
+        INNER JOIN Address A on A.AddressID = C.AddressID
+        INNER JOIN Cities C2 on C2.CityID = A.CityID
+    GROUP BY C.ClientID, C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode, C.Phone, C.Email
+GO
+-- Clients statistics --
