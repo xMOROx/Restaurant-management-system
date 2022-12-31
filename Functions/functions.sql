@@ -94,3 +94,21 @@ AS
         INNER JOIN mealMenuInfo MMI ON P.ProductID = MMI.ProductID
     ORDER BY MMI.times_sold
 GO
+
+CREATE FUNCTION GetClientsOrderedMoreThanXTimes(@amount int)
+    RETURNS TABLE
+AS
+    RETURN
+        SELECT *
+        FROM ClientStatistics
+        WHERE [times ordered] > @amount
+GO
+
+CREATE FUNCTION GetClientsOrderedMoreThanXValue(@value float)
+    RETURNS TABLE
+AS
+    RETURN
+        SELECT *
+        FROM ClientStatistics
+        WHERE [value ordered] > @value
+GO

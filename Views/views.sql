@@ -838,11 +838,11 @@ CREATE VIEW ClientStatistics AS
                                FROM OrderDetails OD
                                     INNER JOIN Orders O on O.OrderID = OD.OrderID) OUT
                          GROUP BY ClientID) a
-                    WHERE ClientID = C.ClientID), 0) [value ordered]
+                    WHERE ClientID = C.ClientID), 0) as [value ordered]
     FROM Clients C
         LEFT JOIN Orders O ON C.ClientID = O.ClientID
         INNER JOIN Address A on A.AddressID = C.AddressID
         INNER JOIN Cities C2 on C2.CityID = A.CityID
     GROUP BY C.ClientID, C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode, C.Phone, C.Email
-GO
+go
 -- Clients statistics --
