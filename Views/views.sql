@@ -811,3 +811,18 @@ go
 -- Products informations --
 
 
+-- Meal menu info -- 
+CREATE VIEW mealMenuInfo AS
+    SELECT DISTINCT M.MenuID,
+                    M.startDate,
+                    M.endDate,
+                    M.ProductID,
+                    ISNULL((SELECT SUM(Quantity) from Products P
+                        INNER JOIN OrderDetails OD on P.ProductID = OD.ProductID AND P.ProductID = M.ProductID
+                        INNER JOIN Orders O on O.OrderID = OD.OrderID WHERE (O.OrderDate BETWEEN M.startDate AND M.endDate) GROUP BY P.Name), 0) times_sold
+    FROM Menu M
+GO
+
+
+
+-- Meal menu info -- 
