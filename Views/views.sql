@@ -792,28 +792,35 @@ WHERE
     (O.OrderStatus LIKE 'accepted')
 GO
     --takeaway orders in progress
-    --orders for individual clients information - (infromacje o zamówieniach dla klientów indywidualnych)
+    --orders for individual clients information - (informacje o zamówieniach dla klientów indywidualnych)
     CREATE VIEW dbo.ordersInformationIndividualClient AS
 SELECT
     O.OrderID,
     O.OrderStatus,
-    PS.PaymentStatus,
+    PS.PaymentStatusName,
     SUM(O.OrderSum) AS [Wartość zamówienia],
     C.Phone,
     C.Email,
     CONCAT(P.LastName, ' ', P.FirstName) AS [Dane],
-    CONCAT(A.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
-    A.PostalCode,
+    CONCAT(C2.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
+    A.PostalCode
 FROM
     Orders AS O
     INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
     INNER JOIN Clients C ON C.ClientID = O.ClientID
     INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
-    INNER JOIN Person P ON P.PersonID = P.IndividualClient
-    INNER JOIN Adress A ON A.AdressID = C.AdressID
-    INNER JOIN
+    INNER JOIN Person P ON P.PersonID = IC.PersonID
+    INNER JOIN Address A ON A.AddressID = C.AddressID
+    INNER JOIN Cities C2 ON A.CityID = C2.CityID
 GROUP BY
-    O.OrderID
+    O.OrderID,
+    O.OrderStatus,
+    PS.PaymentStatusName,
+    C.Phone,
+    C.Email,
+    CONCAT(P.LastName, ' ', P.FirstName),
+    CONCAT(C2.CityName, ' ', A.street, ' ', A.LocalNr),
+    A.PostalCode
 GO
     --orders for individual clients information
     --orders for company information - (informacje o zamówieniach dla firm)
@@ -821,7 +828,7 @@ GO
 SELECT
     O.OrderID,
     O.OrderStatus,
-    PS.PaymentStatus,
+    PS.PaymentStatusName,
     SUM(O.OrderSum) AS [Wartość zamówienia],
     C.Phone,
     C.Email,
@@ -829,17 +836,27 @@ SELECT
     C2.NIP,
     ISNULL(cast(C2.KRS AS varchar), 'Brak') AS [KRS],
     ISNULL(cast(C2.Regon AS varchar), 'Brak') AS [Regon],
-    CONCAT(A.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
-    A.PostalCode,
+    CONCAT(C3.CityName, ' ', A.street, ' ', A.LocalNr) AS [Adres],
+    A.PostalCode
 FROM
     Orders AS O
     INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
     INNER JOIN Clients C ON C.ClientID = O.ClientID
     INNER JOIN Companies C2 ON C2.ClientID = C.ClientID
-    INNER JOIN Adress A ON A.AdressID = C.AdressID
-    INNER JOIN
+    INNER JOIN Address A ON A.AddressID = C.AddressID
+    INNER JOIN Cities C3 ON A.CityID = C3.CityID
 GROUP BY
-    O.OrderID
+    O.OrderID,
+    O.OrderStatus,
+    PS.PaymentStatusName,
+    C.Phone,
+    C.Email,
+    C2.CompanyName,
+    C2.NIP,
+    ISNULL(cast(C2.KRS AS varchar), 'Brak'),
+    ISNULL(cast(C2.Regon AS varchar), 'Brak'),
+    CONCAT(C3.CityName, ' ', A.street, ' ', A.LocalNr),
+    A.PostalCode
 GO
     --orders for company information
     -- PendingReservation Companies--
