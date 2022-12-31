@@ -824,5 +824,4 @@ CREATE VIEW mealMenuInfo AS
 GO
 
 
-
 -- Meal menu info -- 

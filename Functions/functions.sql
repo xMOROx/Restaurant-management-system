@@ -84,3 +84,13 @@ AS
         SELECT Q.TableID FROM show_taken_tables_from_x_to_y_with_z_chairs(@StartDate, @EndDate, @Chairs) Q
     ) AND T.isActive = 1 AND ChairAmount=@Chairs
 GO
+
+CREATE FUNCTION GetBestMeal(@input int)
+    RETURNS table
+AS
+    RETURN
+    SELECT DISTINCT TOP (@input) P.Name, MMI.times_sold
+    FROM Products P
+        INNER JOIN mealMenuInfo MMI ON P.ProductID = MMI.ProductID
+    ORDER BY MMI.times_sold
+GO
