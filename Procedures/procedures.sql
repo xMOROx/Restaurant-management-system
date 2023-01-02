@@ -128,7 +128,6 @@ SET
   PaymentStatusName = 'Refunded'
 WHERE
   PaymentStatusID = @PaymentStatusID;
-
 GO
 ;
 
@@ -144,6 +143,8 @@ WHERE
   AND I.ClientID = @ClientID
   AND AppliedDate <= getdate() <= dateadd(DAY, ValidityPeriod, AppliedDate) -- Temporary Discounts must have endDate
 GO
+
+
   CREATE PROCEDURE showBestDiscountPermanent @ClientID int AS
 SELECT
   max(DiscountValue)
