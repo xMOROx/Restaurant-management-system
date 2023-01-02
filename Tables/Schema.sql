@@ -119,6 +119,7 @@ CREATE TABLE Orders (
     OrderID int  NOT NULL IDENTITY (1,1),
     ClientID int  NOT NULL,
     TakeawayID int  NULL,
+    InvoiceID int  NULL,
     ReservationID int  NULL,
     PaymentStatusID int  NOT NULL,
     PaymentMethodID int  NOT NULL,
@@ -408,6 +409,9 @@ ALTER TABLE Invoice ADD CONSTRAINT Invoice_PaymentMethods
 ALTER TABLE Orders ADD CONSTRAINT Orders_PaymentMethods
     FOREIGN KEY (PaymentMethodID)
     REFERENCES PaymentMethods (PaymentMethodID);
-
+-- Reference: Orders_Invoice (table: Orders)
+ALTER TABLE Orders ADD CONSTRAINT Orders_Invoice
+    FOREIGN KEY (InvoiceID)
+    REFERENCES Invoice (InvoiceID);
 -- End of file.
 
