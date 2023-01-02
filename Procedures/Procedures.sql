@@ -1344,3 +1344,107 @@ WHERE
   AND I.ClientID = @ClientID
 GO
 ;
+
+--zmiana statusu rezerwacji
+CREATE PROCEDURE changeReservationStatus @ReservationID int, @Status varchar(15) AS
+BEGIN
+    SET NOCOUNT ON
+    BEGIN TRY
+        BEGIN
+            UPDATE Reservation
+            SET Status = @Status
+            WHERE Reservation.ReseravtionID = @ReservationID
+        END
+    END TRY
+    BEGIN CATCH
+        DECLARE @msg nvarchar(2048) = N'Błąd edytowania rezerwacji: ' + ERROR_MESSAGE();
+        THROW 52000, @msg, 1
+    END CATCH
+END CATCH
+
+
+--Dodawanie dania do zamówienia
+    CREATE PROCEDURE AddProductToOrder @OrderID int, @Quantity int, @ProductName nvarchar(50) AS
+BEGIN
+    SET NOCOUNT ON
+    BEGIN TRY
+        IF NOT EXISTS(
+            SELECT *
+            FROM Products
+            WHERE Name = @ProductName
+        )
+        BEGIN
+        ;
+        THROW 52000, 'Nie ma takiej potrawy', 1
+        END
+
+        IF NOT EXISTS(
+        SELECT *
+        FROM Orders
+        WHERE OrderID = @OrderID
+        )
+        BEGIN
+        ;
+        THROW 52000, 'Nie ma takiego zamowienia', 1
+        END
+
+        IF NOT EXISTS(
+        SELECT *
+        FROM Menu AS M
+        INNER JOIN Products P ON P.ProductID = M.MenuID
+        WHERE P.Name = @ProductName AND (M.startDate <= GETDATE() AND (M.endDate = NULL OR M.endDate >= GETDATE())
+        )
+        BEGIN
+        ;
+        THROW 52000, 'Nie mozna zamowic tego produktu, gdyz nie ma go obecnie w menu', 1
+        END
+
+        BEGIN
+        DECLARE @OrderDate DATE
+        SELECT @OrderDate = OrderDate
+        FROM Orders
+        WHERE OrderID = @OrderID
+        END
+        IF DATEPART(WEEKDAY ,@OrderDate) != 4 AND DATEPART(WEEKDAY , @OrderDate) != 5 AND DATEPART(WEEKDAY ,@OrderDate) != 6
+        BEGIN
+        ;
+        THROW 52000, N'Nieprawidłowa data złożenia zamówienia na owoce morza', 1
+        END
+        DECLARE @ProductID INT
+        SELECT @ProductID = ProductID
+        FROM Products
+        WHERE Name = @ProductName
+        INSERT INTO OrderDetails(OrderID, Quantity, ProductID)
+        VALUES (@OrderID, @Quantity, @ProductID)
+    END TRY
+    BEGIN CATCH
+        DECLARE @msg nvarchar(2048) = 'Błąd dodania produktu do zamowienia: ' + ERROR_MESSAGE();
+        THROW 52000, @msg, 1
+    END CATCH
+END
+GO
+
+
+--Listowanie pracowników przypisanych do danego zamówienia
+    CREATE PROCEDURE EmployeesAssignedToTheOrder @OrderID int AS
+BEGIN TRY
+    IF NOT EXISTS(
+    SELECT *
+    FROM Orders
+    WHERE OrderID = @OrderID
+    )
+    BEGIN
+    ;
+    THROW 52000, 'Nie ma takiego zamowienia', 1
+    END
+    SELECT O.*, S.*
+    FROM Staff AS S
+    INNER JOIN Orders O ON O.StaffID = S.StaffID
+    WHERE O.OrderID = @OrderID
+END TRY
+BEGIN CATCH
+        DECLARE @msg nvarchar(2048) = 'Błąd wypisywania pracownikow:' + ERROR_MESSAGE();
+        THROW 52000, @msg, 1
+    END CATCH
+
+--

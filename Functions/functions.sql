@@ -218,3 +218,33 @@ CREATE FUNCTION sumOfMoneySpentIn_Month_Year(@WhichYear int, @WhichMonth int) RE
 )
 END
 GO
+
+--Zwracanie informacji o zamówieniu o podanym indeksie
+    CREATE FUNCTION GetOrderDetails(@InputOrderID int) RETURNS TABLE AS RETURN (
+SELECT
+    O.*
+FROM
+    Orders AS O
+WHERE
+    OrderID = InputOrderID
+)
+END
+
+--Zwracanie informacji o produkcie o podanej nazwie(informacje ile było zamówiony w ciągu 14 dni)
+    CREATE FUNCTION OrderProductWithin14 days(@InputProductName nvarchar(150)) RETURNS INT AS BEGIN RETURN (
+SELECT
+    SUM [O D].Quantity
+FROM OrderDetails AS [O D]
+INNER JOIN Products P ON P.ProductID = [O D].ProductID
+INNER JOIN Orders O ON O.OrderID = [O D].OrderID
+WHERE P.Name LIKE InputProductName AND DATEDIFF(day, O.OrderDate, GETDATE())
+)
+END
+
+--Informacje o zamówieniach powyżej ceny X
+    CREATE FUNCTION OrdersMoreExpensiveThanN RETURNS TABLE AS RETURN (
+SELECT
+    O.*
+FROM Orders AS O
+WHERE O.OrderSum > N
+)
