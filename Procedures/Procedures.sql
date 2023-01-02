@@ -785,3 +785,184 @@ THROW 52000,
 END catch
 END
 GO
+  CREATE PROCEDURE [change payment method for order] @PaymentMethodName varchar(50),
+  @OrderID int AS BEGIN BEGIN TRY IF NOT EXISTS(
+    SELECT
+      OrderID
+    FROM
+      Orders
+    WHERE
+      OrderID = @OrderID
+  ) BEGIN;
+
+THROW 52000,
+'Brak takiego zamowienia',
+1
+END IF NOT EXISTS(
+  SELECT
+    PaymentMethodID
+  FROM
+    PaymentMethods
+  WHERE
+    PaymentName LIKE @PaymentMethodName
+) BEGIN;
+
+THROW 52000,
+'Brak takiej metody platnosci',
+1
+END DECLARE @PaymentMethodID int;
+
+SELECT
+  @PaymentMethodID = PaymentMethodID
+FROM
+  PaymentMethods
+WHERE
+  PaymentName LIKE @PaymentMethodName
+UPDATE
+  Orders
+SET
+  PaymentMethodID = @PaymentMethodID
+WHERE
+  OrderID = @OrderID
+END try BEGIN catch DECLARE @msg nvarchar(2048) = N'Błąd zmiany metody: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END CREATE PROCEDURE [change payment method for invoice] @PaymentMethodName varchar(50),
+@InvoiceID int AS BEGIN BEGIN TRY IF NOT EXISTS(
+  SELECT
+    InvoiceID
+  FROM
+    Invoice
+  WHERE
+    InvoiceID = @InvoiceID
+) BEGIN;
+
+THROW 52000,
+'Brak takiego zamowienia',
+1
+END IF NOT EXISTS(
+  SELECT
+    PaymentMethodID
+  FROM
+    PaymentMethods
+  WHERE
+    PaymentName LIKE @PaymentMethodName
+) BEGIN;
+
+THROW 52000,
+'Brak takiej metody platnosci',
+1
+END DECLARE @PaymentMethodID int;
+
+SELECT
+  @PaymentMethodID = PaymentMethodID
+FROM
+  PaymentMethods
+WHERE
+  PaymentName LIKE @PaymentMethodName
+UPDATE
+  Invoice
+SET
+  PaymentMethodID = @PaymentMethodID
+WHERE
+  InvoiceID = @InvoiceID
+END try BEGIN catch DECLARE @msg nvarchar(2048) = N'Błąd zmiany metody: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END CREATE PROCEDURE [change payment status for invoice] @PaymentStatusName varchar(50),
+@InvoiceID int AS BEGIN BEGIN TRY IF NOT EXISTS(
+  SELECT
+    InvoiceID
+  FROM
+    Invoice
+  WHERE
+    InvoiceID = @InvoiceID
+) BEGIN;
+
+THROW 52000,
+'Brak takiego zamowienia',
+1
+END IF NOT EXISTS(
+  SELECT
+    PaymentStatusID
+  FROM
+    PaymentStatus
+  WHERE
+    PaymentStatus.PaymentStatusName LIKE @PaymentStatusName
+) BEGIN;
+
+THROW 52000,
+'Brak takiego statusu platnosci',
+1
+END DECLARE @PaymentStatusID int;
+
+SELECT
+  @PaymentStatusID = PaymentStatusID
+FROM
+  PaymentStatus
+WHERE
+  PaymentStatus.PaymentStatusName LIKE @PaymentStatusName
+UPDATE
+  Invoice
+SET
+  PaymentStatusID = @PaymentStatusID
+WHERE
+  InvoiceID = @InvoiceID
+END try BEGIN catch DECLARE @msg nvarchar(2048) = N'Błąd zmiany statusu: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END CREATE PROCEDURE [change payment status for order] @PaymentStatusName varchar(50),
+@OrderID int AS BEGIN BEGIN TRY IF NOT EXISTS(
+  SELECT
+    OrderID
+  FROM
+    Orders
+  WHERE
+    OrderID = @OrderID
+) BEGIN;
+
+THROW 52000,
+'Brak takiego zamowienia',
+1
+END IF NOT EXISTS(
+  SELECT
+    PaymentStatusID
+  FROM
+    PaymentStatus
+  WHERE
+    PaymentStatus.PaymentStatusName LIKE @PaymentStatusName
+) BEGIN;
+
+THROW 52000,
+'Brak takiego statusu platnosci',
+1
+END DECLARE @PaymentStatusID int;
+
+SELECT
+  @PaymentStatusID = PaymentStatusID
+FROM
+  PaymentStatus
+WHERE
+  PaymentStatus.PaymentStatusName LIKE @PaymentStatusName
+UPDATE
+  Orders
+SET
+  PaymentStatusID = @PaymentStatusID
+WHERE
+  OrderID = @OrderID
+END try BEGIN catch DECLARE @msg nvarchar(2048) = N'Błąd zmiany statusu: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END
