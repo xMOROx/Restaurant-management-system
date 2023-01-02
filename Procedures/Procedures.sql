@@ -1006,8 +1006,7 @@ END IF NOT EXISTS(
 THROW 52000,
 'Nie ma takiego pracownika!',
 1
-END --     insert into dbo.[Orders] (OrderDate, OrderStatusID, PaymentStatusID, ClientID, OrderCompletionDate, OrderSum,
---                              DurationTime)
+END
 Declare @OrderIDTable TABLE (Id int) Declare @OrderID int DECLARE @PaymentMethodID int DECLARE @PaymentStatusID int
 SELECT
   @PaymentStatusID = PaymentStatusID
@@ -1108,8 +1107,7 @@ END IF NOT EXISTS(
 THROW 52000,
 'Nie ma takiego pracownika!',
 1
-END --     insert into dbo.[Orders] (OrderDate, OrderStatusID, PaymentStatusID, ClientID, OrderCompletionDate, OrderSum,
---                              DurationTime)
+END 
 Declare @OrderIDTable TABLE (Id int) Declare @OrderID int DECLARE @PaymentMethodID int DECLARE @PaymentStatusID int
 SELECT
   @PaymentStatusID = PaymentStatusID
