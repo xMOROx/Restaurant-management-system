@@ -149,7 +149,6 @@ CREATE TABLE PaymentMethods (
 CREATE TABLE PaymentStatus (
     PaymentStatusID int  NOT NULL IDENTITY (1,1),
     PaymentStatusName varchar(50)  NOT NULL default 'Unpaid',
-    PaymentMethodID int  NOT NULL,
     CONSTRAINT PaymentStatus_pk PRIMARY KEY  (PaymentStatusID)
 );
 
@@ -349,12 +348,6 @@ alter table Orders
 alter table Orders
     add constraint Orders_staff
         foreign key (staffID) references Staff
-            on update cascade
-
--- Reference: PaymentStatus_PaymentMethods (table: PaymentStatus)
-alter table PaymentStatus
-    add constraint PaymentStatus_PaymentMethods
-        foreign key (PaymentMethodID) references PaymentMethods
             on update cascade
 
 -- Reference: Products_Category (table: Products)

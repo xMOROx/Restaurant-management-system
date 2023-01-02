@@ -628,3 +628,101 @@ THROW 52000,
 END CATCH
 END
 GO
+  CREATE PROCEDURE [create invoice] @OrderID int,
+  @InvoiceDate date,
+  @PaymentMethodName varchar(50),
+  @PaymentStatusName varchar(50),
+  @InvoiceID int output AS BEGIN BEGIN TRY IF NOT EXISTS(
+    SELECT
+      OrderID
+    FROM
+      Orders
+    WHERE
+      OrderID = @OrderID
+  ) BEGIN;
+
+THROW 52000,
+N 'Nie ma takiego zamówienia',
+1
+END IF NOT EXISTS(
+  SELECT
+    PaymentName
+  FROM
+    PaymentMethods
+  WHERE
+    PaymentName LIKE @PaymentMethodName
+) BEGIN;
+
+THROW 52000,
+N 'Nie ma takiej metody płatności',
+1
+END IF NOT EXISTS(
+  SELECT
+    PaymentStatusName
+  FROM
+    PaymentStatus
+  WHERE
+    PaymentStatusName LIKE @PaymentStatusName
+) BEGIN;
+
+THROW 52000,
+N 'Nie ma takiego statusu płatności',
+1
+END declare @invoiceNum nvarchar(50) = concat(
+  'FV/',
+  cast(@OrderID AS nvarchar(50)),
+  '/',
+  cast(
+    year(
+      (
+        SELECT
+          OrderCompletionDate
+        FROM
+          Orders
+        WHERE
+          OrderID = @OrderID
+      )
+    ) AS nvarchar(4)
+  )
+) declare @ClientID int = (
+  SELECT
+    ClientID
+  FROM
+    Orders
+  WHERE
+    OrderID = @OrderID
+) declare @InvoiceIDs TABLE (ID int) declare @PaymentMethodID int
+SELECT
+  @PaymentMethodID = PaymentMethodID
+FROM
+  PaymentMethods declare @PaymentStatusID int
+INSERT INTO
+  Invoice(
+    InvoiceNumber,
+    InvoiceDate,
+    DueDate,
+    ClientID,
+    PaymentStatusID,
+    PaymentMethodID
+  ) output inserted.InvoiceID INTO @InvoiceIDs
+VALUES
+  (
+    @invoiceNum,
+    @InvoiceDate,
+    dateadd(DAY, 12, GETDATE()),
+    @ClientID,
+    @PaymentStatusID,
+    @PaymentMethodID
+  )
+SELECT
+  @InvoiceID = ID
+FROM
+  @InvoiceIDs RETURN @InvoiceID
+END TRY BEGIN catch DECLARE @msg nvarchar(2048) = N'Błąd dodania faktury: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END
+GO
