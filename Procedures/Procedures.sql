@@ -695,7 +695,15 @@ END declare @invoiceNum nvarchar(50) = concat(
 SELECT
   @PaymentMethodID = PaymentMethodID
 FROM
-  PaymentMethods declare @PaymentStatusID int
+  PaymentMethods
+WHERE
+  PaymentName LIKE @PaymentMethodName declare @PaymentStatusID int
+SELECT
+  @PaymentStatusID = PaymentStatusID
+FROM
+  PaymentStatus
+WHERE
+  PaymentStatusName LIKE @PaymentStatusName
 INSERT INTO
   Invoice(
     InvoiceNumber,
@@ -726,13 +734,19 @@ THROW 52000,
 END catch
 END
 GO
-  THROW 52000,
-  @msg,
-  1
-END catch
+  CREATE PROCEDURE [add Payment Status] @PaymentStatusName varchar(50) AS BEGIN BEGIN TRY IF EXISTS(
+    SELECT
+      PaymentStatusName
+    FROM
+      PaymentStatus
+    WHERE
+      PaymentStatus.PaymentStatusName LIKE @PaymentStatusName
+  ) BEGIN;
+
+THROW 52000,
+N'Taki status istnieje!',
+1
 END
-GO
-  CREATE PROCEDURE [add Payment Status] @PaymentStatusName varchar(50) AS BEGIN BEGIN TRY
 INSERT INTO
   PaymentStatus(PaymentStatusName)
 VALUES
@@ -745,7 +759,20 @@ THROW 52000,
 END catch
 END
 GO
-  CREATE PROCEDURE [add Payment Method] @PaymentMethodName varchar(50) AS BEGIN BEGIN TRY
+GO
+  CREATE PROCEDURE [add Payment Method] @PaymentMethodName varchar(50) AS BEGIN BEGIN TRY IF EXISTS(
+    SELECT
+      PaymentName
+    FROM
+      PaymentMethods
+    WHERE
+      PaymentMethods.PaymentName LIKE @PaymentMethodName
+  ) BEGIN;
+
+THROW 52000,
+N'Taka metoda istnieje!',
+1
+END
 INSERT INTO
   PaymentMethods(PaymentName)
 VALUES
