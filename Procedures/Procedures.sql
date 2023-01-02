@@ -965,4 +965,105 @@ THROW 52000,
 @msg,
 1
 END catch
-END
+END CREATE PROCEDURE OrderInsertInstPay @ClientID int,
+@OrderCompletionDate DATE,
+@PaymentStatusName_ varchar(50),
+@PaymentMethodName_ varchar(50),
+@OrderStatus varchar(15),
+@StaffID int AS BEGIN BEGIN TRY IF NOT EXISTS(
+  SELECT
+    PaymentStatusID
+  FROM
+    PaymentStatus
+  WHERE
+    PaymentStatusName LIKE @PaymentStatusName_
+) BEGIN;
+
+THROW 52000,
+'Nie ma takiego statusu!',
+1
+END IF NOT EXISTS(
+  SELECT
+    PaymentMethods.PaymentName
+  FROM
+    PaymentMethods
+  WHERE
+    PaymentMethods.PaymentName LIKE @PaymentMethodName_
+) BEGIN;
+
+THROW 52000,
+'Nie ma takiej metody!',
+1
+END IF NOT EXISTS(
+  SELECT
+    StaffID
+  FROM
+    Staff
+  WHERE
+    StaffID = @StaffID
+) BEGIN;
+
+THROW 52000,
+'Nie ma takiego pracownika!',
+1
+END --     insert into dbo.[Orders] (OrderDate, OrderStatusID, PaymentStatusID, ClientID, OrderCompletionDate, OrderSum,
+--                              DurationTime)
+Declare @OrderIDTable TABLE (Id int) Declare @OrderID int DECLARE @PaymentMethodID int DECLARE @PaymentStatusID int
+SELECT
+  @PaymentStatusID = PaymentStatusID
+FROM
+  PaymentStatus
+WHERE
+  PaymentStatusName LIKE @PaymentStatusName_
+SELECT
+  @PaymentMethodID = PaymentMethods.PaymentName
+FROM
+  PaymentMethods
+WHERE
+  PaymentMethods.PaymentName LIKE @PaymentMethodName_
+INSERT INTO
+  Orders (
+    ClientID,
+    PaymentStatusID,
+    PaymentMethodID,
+    staffID,
+    OrderSum,
+    OrderCompletionDate,
+    OrderStatus,
+    OrderDate
+  ) OUTPUT inserted.OrderID INTO @OrderIDTable
+VALUES
+  (
+    @ClientID,
+    @PaymentStatusID,
+    @PaymentMethodID,
+    @StaffID,
+    0.0,
+    @OrderCompletionDate,
+    @OrderStatus,
+    GETDATE()
+  );
+
+SELECT
+  @OrderID = Id
+FROM
+  @OrderIDTable declare @InvoiceID int EXEC dbo.[create invoice] @OrderID = @OrderID,
+  @InvoiceDate = @OrderCompletionDate,
+  @PaymentMethodName = @PaymentMethodName_,
+  @PaymentStatusName = @PaymentStatusName_,
+  @InvoiceID = @InvoiceID output
+UPDATE
+  [Orders]
+SET
+  InvoiceID = @InvoiceID
+WHERE
+  OrderID = @OrderID RETURN @OrderID
+END try BEGIN catch DECLARE @msg nvarchar(2048) = N'Błąd dodania zamowienia: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END;
+
+GO
