@@ -726,3 +726,35 @@ THROW 52000,
 END catch
 END
 GO
+  THROW 52000,
+  @msg,
+  1
+END catch
+END
+GO
+  CREATE PROCEDURE [add Payment Status] @PaymentStatusName varchar(50) AS BEGIN BEGIN TRY
+INSERT INTO
+  PaymentStatus(PaymentStatusName)
+VALUES
+  (@PaymentStatusName)
+END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Błąd dodania metody płatności do zamówienia: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END
+GO
+  CREATE PROCEDURE [add Payment Method] @PaymentMethodName varchar(50) AS BEGIN BEGIN TRY
+INSERT INTO
+  PaymentMethods(PaymentName)
+VALUES
+  (@PaymentMethodName)
+END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = N'Błąd dodania metody płatności do zamówienia: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END
+GO
