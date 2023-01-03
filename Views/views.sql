@@ -1365,3 +1365,57 @@ GROUP BY
     C.Email
 GO
     -- Clients statistics --
+
+
+    CREATE VIEW dbo.ReservationSummaryMonthly AS
+SELECT
+    R.ReservationID,
+    R.startDate,
+    R.endDate,
+    R.Status,
+    O.ClientID,
+    DATEPART(MONTH, cast(O.OrderDate AS DATE)) AS 'Miesiac',
+    DATEPART(YEAR, cast(O.OrderDate AS DATE)) AS 'Rok',
+    count(OD.ProductID) AS 'Liczba zamowionych produktow'
+FROM
+    Reservation R
+    INNER JOIN Orders O on R.ReservationID = O.ReservationID
+    INNER JOIN OrderDetails OD on O.OrderID = OD.OrderID
+WHERE
+    O.OrderStatus NOT LIKE 'denied'
+GROUP BY
+    R.ReservationID,
+    R.startDate,
+    R.endDate,
+    R.Status,
+    O.ClientID,
+    DATEPART(MONTH, cast(O.OrderDate AS DATE)),
+    DATEPART(YEAR, cast(O.OrderDate AS DATE))
+GO
+
+
+    CREATE VIEW dbo.ReservationSummaryWeekly AS
+SELECT
+    R.ReservationID,
+    R.startDate,
+    R.endDate,
+    R.Status,
+    O.ClientID,
+    DATEPART(iso_week, cast(O.OrderDate AS DATE)) AS 'Tydzien',
+    DATEPART(YEAR, cast(O.OrderDate AS DATE)) AS 'Rok',
+    count(OD.ProductID) AS 'Liczba zamowionych produktow'
+FROM
+    Reservation R
+    INNER JOIN Orders O on R.ReservationID = O.ReservationID
+    INNER JOIN OrderDetails OD on O.OrderID = OD.OrderID
+WHERE
+    O.OrderStatus NOT LIKE 'denied'
+GROUP BY
+    R.ReservationID,
+    R.startDate,
+    R.endDate,
+    R.Status,
+    O.ClientID,
+    DATEPART(iso_week, cast(O.OrderDate AS DATE)),
+    DATEPART(YEAR, cast(O.OrderDate AS DATE))
+GO
