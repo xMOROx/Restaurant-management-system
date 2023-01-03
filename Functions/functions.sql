@@ -190,7 +190,7 @@ CREATE FUNCTION calculateBestDiscountTemporary(@ClientID int) RETURNS decimal(3,
             DiscountType = 'Temporary'
             AND I.ClientID = @ClientID
             AND AppliedDate <= getdate()
-            AND getdate() <= dateadd(DAY, ValidityPeriod, AppliedDate) - - Temporary Discounts must have endDate
+            AND getdate() <= dateadd(DAY, ValidityPeriod, AppliedDate) -- Temporary Discounts must have endDate
     ) END
 GO
 
@@ -246,7 +246,7 @@ CREATE FUNCTION sumOfMoneySpentIn_Month_Year(@WhichYear int, @WhichMonth int) RE
     ) END
 GO
 
--- Zwracanie informacji o zam ó wieniu o podanym indeksie 
+-- Zwracanie informacji o zamówieniu o podanym indeksie 
 
 CREATE FUNCTION GetOrderDetails(@InputOrderID int) RETURNS TABLE AS RETURN (
         SELECT
@@ -257,7 +257,7 @@ CREATE FUNCTION GetOrderDetails(@InputOrderID int) RETURNS TABLE AS RETURN (
             OrderID = InputOrderID
     ) END 
     
--- Zwracanie informacji o produkcie o podanej nazwie(informacje ile by ł o zam ó wiony w ci ą gu 14 dni) 
+-- Zwracanie informacji o produkcie o podanej nazwie(informacje ile było zamówiony wciągu 14 dni) 
 CREATE FUNCTION OrderProductWithin14 days(@InputProductName nvarchar(150)) RETURNS INT AS BEGIN RETURN (
         SELECT
             SUM [O D].Quantity
@@ -270,7 +270,7 @@ CREATE FUNCTION OrderProductWithin14 days(@InputProductName nvarchar(150)) RETUR
             AND DATEDIFF(DAY, O.OrderDate, GETDATE())
     ) END
     
--- Informacje o zam ó wieniach powy ż ej ceny X 
+-- Informacje o zamówieniach powyżej ceny X 
 CREATE FUNCTION OrdersMoreExpensiveThanN RETURNS TABLE AS RETURN (
         SELECT
             O.*

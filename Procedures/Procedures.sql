@@ -1311,3 +1311,5 @@ WHERE
     @msg,
     1 END catch END
 GO
+
+-- Dodawanie rezerwacji
