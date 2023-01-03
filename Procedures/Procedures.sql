@@ -1536,3 +1536,59 @@ THROW 52000,
 END catch
 END
 GO
+  CREATE PROCEDURE Client_Statistics @ClientID int AS BEGIN BEGIN TRY IF NOT EXISTS(
+    SELECT
+      ClientID
+    FROM
+      Clients
+    WHERE
+      ClientID = @ClientID
+  ) BEGIN;
+
+throw 52000,
+'Nie ma takiego klienta!',
+1
+END DECLARE @PaymentStatusID int
+SELECT
+  @PaymentStatusID = PaymentStatusID
+FROM
+  PaymentStatus
+WHERE
+  PaymentStatusName LIKE 'Paid'
+SELECT
+  O.OrderID,
+  O.OrderDate,
+  O.OrderSum,
+  O.OrderSum - O2.no_disc AS [discount value],
+  1 - (O2.no_disc / O.OrderSum) AS [discount multiplier]
+FROM
+  Orders O
+  INNER JOIN (
+    SELECT
+      O.OrderID,
+      sum(Quantity) no_disc
+    FROM
+      Orders O
+      INNER JOIN OrderDetails OD ON O.OrderID = OD.OrderID
+      INNER JOIN Products P ON OD.ProductID = P.ProductID
+      INNER JOIN Menu M ON P.ProductID = M.ProductID
+    WHERE
+      M.startDate <= GETDATE()
+      AND (
+        M.endDate IS NULL
+        OR M.endDate >= getdate()
+      )
+    GROUP BY
+      O.OrderID
+  ) O2 ON O2.OrderID = O.OrderID
+WHERE
+  ClientID = @ClientID
+  AND PaymentStatusID = @PaymentStatusID
+END try BEGIN catch DECLARE @msg nvarchar(2048) = 'Błąd wyswietlenia statystyk o kliencie: ' + ERROR_MESSAGE();
+
+THROW 52000,
+@msg,
+1
+END catch
+END
+GO
