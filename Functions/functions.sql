@@ -168,7 +168,7 @@ WHERE
 GO
     CREATE FUNCTION calculateBestDiscountTemporary(@ClientID int) RETURNS decimal(3, 2) AS BEGIN RETURN (
         SELECT
-            max(DiscountValue)
+            max(DiscountValue) AS 'Value'
         FROM
             IndividualClient I
             JOIN Discounts D ON I.ClientID = D.ClientID
@@ -176,13 +176,14 @@ GO
         WHERE
             DiscountType = 'Temporary'
             AND I.ClientID = @ClientID
-            AND AppliedDate <= getdate() <= dateadd(DAY, ValidityPeriod, AppliedDate) -- Temporary Discounts must have endDate
+            AND AppliedDate <= getdate()
+            AND getdate() <= dateadd(DAY, ValidityPeriod, AppliedDate) -- Temporary Discounts must have endDate
     )
 END
 GO
     CREATE FUNCTION calculateBestDiscountPermanent(@ClientID int) RETURNS decimal(3, 2) AS BEGIN RETURN (
         SELECT
-            max(DiscountValue)
+            max(DiscountValue) AS 'Value'
         FROM
             IndividualClient I
             JOIN Discounts D ON I.ClientID = D.ClientID
@@ -193,16 +194,37 @@ GO
     )
 END
 GO
-    CREATE FUNCTION calculateDiscountForOrder(@OrderId int) RETURNS money AS BEGIN RETURN (
+    CREATE FUNCTION calculateDiscountForOrder(@OrderId int) RETURNS money AS BEGIN DECLARE @BestValue decimal(3, 2);
+
+DECLARE @ClientID int;
+
+SET
+    @ClientID = (
         SELECT
-            (
-                calculateBestDiscountTemporary(ClientID) + calculateBestDiscountPermanent(ClientID)
-            ) * Orders.OrderSum
+            ClientID
         FROM
             Orders
         WHERE
             OrderID = @OrderId
-    )
+    );
+
+IF dbo.calculateBestDiscountTemporary(@ClientID) > dbo.calculateBestDiscountPermanent(@ClientID) BEGIN
+SET
+    @BestValue = dbo.calculateBestDiscountTemporary(@ClientID);
+
+END
+ELSE BEGIN
+SET
+    @BestValue = dbo.calculateBestDiscountPermanent(@ClientID);
+
+END RETURN (
+    SELECT
+        @BestValue * Orders.OrderSum
+    FROM
+        Orders
+    WHERE
+        OrderID = @OrderId
+)
 END
 GO
 ;
@@ -218,33 +240,33 @@ CREATE FUNCTION sumOfMoneySpentIn_Month_Year(@WhichYear int, @WhichMonth int) RE
 )
 END
 GO
-
---Zwracanie informacji o zamówieniu o podanym indeksie
+    --Zwracanie informacji o zamówieniu o podanym indeksie
     CREATE FUNCTION GetOrderDetails(@InputOrderID int) RETURNS TABLE AS RETURN (
-SELECT
-    O.*
-FROM
-    Orders AS O
-WHERE
-    OrderID = InputOrderID
+        SELECT
+            O.*
+        FROM
+            Orders AS O
+        WHERE
+            OrderID = InputOrderID
+    )
+END --Zwracanie informacji o produkcie o podanej nazwie(informacje ile było zamówiony w ciągu 14 dni)
+CREATE FUNCTION OrderProductWithin14 days(@InputProductName nvarchar(150)) RETURNS INT AS BEGIN RETURN (
+    SELECT
+        SUM [O D].Quantity
+    FROM
+        OrderDetails AS [O D]
+        INNER JOIN Products P ON P.ProductID = [O D].ProductID
+        INNER JOIN Orders O ON O.OrderID = [O D].OrderID
+    WHERE
+        P.Name LIKE InputProductName
+        AND DATEDIFF(DAY, O.OrderDate, GETDATE())
 )
-END
-
---Zwracanie informacji o produkcie o podanej nazwie(informacje ile było zamówiony w ciągu 14 dni)
-    CREATE FUNCTION OrderProductWithin14 days(@InputProductName nvarchar(150)) RETURNS INT AS BEGIN RETURN (
-SELECT
-    SUM [O D].Quantity
-FROM OrderDetails AS [O D]
-INNER JOIN Products P ON P.ProductID = [O D].ProductID
-INNER JOIN Orders O ON O.OrderID = [O D].OrderID
-WHERE P.Name LIKE InputProductName AND DATEDIFF(day, O.OrderDate, GETDATE())
-)
-END
-
---Informacje o zamówieniach powyżej ceny X
-    CREATE FUNCTION OrdersMoreExpensiveThanN RETURNS TABLE AS RETURN (
-SELECT
-    O.*
-FROM Orders AS O
-WHERE O.OrderSum > N
+END --Informacje o zamówieniach powyżej ceny X
+CREATE FUNCTION OrdersMoreExpensiveThanN RETURNS TABLE AS RETURN (
+    SELECT
+        O.*
+    FROM
+        Orders AS O
+    WHERE
+        O.OrderSum > N
 )
