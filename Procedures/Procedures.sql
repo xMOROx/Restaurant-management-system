@@ -80,7 +80,8 @@ WHERE
     1 END CATCH END
 GO
 --Modifytable status 
---Addtable CREATE PROCEDURE addTable @Size int,
+--Addtable 
+CREATE PROCEDURE addTable @Size int,
     @Status bit AS BEGIN
 SET
     NOCOUNT ON BEGIN TRY IF @Size < 2 BEGIN;THROW 52000,
@@ -154,7 +155,8 @@ BEGIN
     END CATCH 
     END
 GO
---Addaddress 
+--Add address 
+
 --remove address 
     CREATE PROCEDURE removeAddress @AddressID int 
     AS BEGIN
@@ -180,8 +182,8 @@ GO
     END
 GO
 -- remove address 
---addperson 
-REATE PROCEDURE addPerson @FirstName varchar(70),
+--add person 
+CREATE PROCEDURE addPerson @FirstName varchar(70),
     @LastName varchar(50) 
     AS 
     BEGIN 
@@ -202,8 +204,7 @@ GO
 CREATE PROCEDURE removePerson @PersonID int 
 AS BEGIN
     SET NOCOUNT ON 
-    BEGIN TRY I
-        F NOT EXISTS(
+    BEGIN TRY IF NOT EXISTS(
             SELECT
                 *
             FROM
@@ -224,9 +225,9 @@ AS BEGIN
     END CATCH 
     END
 GO
-    -- remove person --
-add
-    client CREATE PROCEDURE addClient @ClientType varchar(1),
+-- remove person --
+-- add client 
+CREATE PROCEDURE addClient @ClientType varchar(1),
     @CityName nvarchar(35),
     @Street nvarchar(70),
     @LocalNr varchar(10),
@@ -422,11 +423,9 @@ VALUES
     @msg,
     1 END CATCH END
 GO
-    --
-add
-    Product to Menu -- remove Product
-From
-    Menu CREATE PROCEDURE removeProductFromMenu @Name nvarchar(150),
+    --add Product to Menu 
+    --remove Product From Menu 
+CREATE PROCEDURE removeProductFromMenu @Name nvarchar(150),
     @MenuID int AS BEGIN
 SET
     NOCOUNT ON BEGIN TRY IF NOT EXISTS(
@@ -949,7 +948,8 @@ FROM
 WHERE
     ClientID = @ClientID
     AND MONTH(InvoiceDate) = MONTH(@startOfMonth)
-    AND year(InvoiceDate) = year(@startOfMonth) IF @InvoiceID IS NULL BEGIN;EXEC dbo.[create invoice] @OrderID = @OrderID,
+    AND year(InvoiceDate) = year(@startOfMonth) IF @InvoiceID IS NULL BEGIN;
+    EXEC dbo.[create invoice] @OrderID = @OrderID,
     @InvoiceDate = @startOfMonth,
     @PaymentMethodName = @PaymentMethodName_,
     @PaymentStatusName = @PaymentStatusName_,
@@ -1038,7 +1038,6 @@ WHERE
     OrderID = @OrderID;
 GO;
 
--- pracownicy maj ą working hours,musz ą chyba kiedy ś spa ć ? 
 
 CREATE PROCEDURE AssignWaiterToOrder @OrderID int,
     @StaffId int AS
@@ -1113,7 +1112,7 @@ WHERE
     1 END CATCH END CATCH 
     
     
--- Dodawanie dania do zam ó wienia 
+-- Dodawanie dania do zamówienia 
 
 CREATE PROCEDURE AddProductToOrder @OrderID int,
     @Quantity int,
@@ -1219,7 +1218,7 @@ WHERE
     @msg,
     1 END CATCH END
 GO
-    -- Listowanie pracownik ó w przypisanych do danego zam ó wienia 
+    -- Listowanie pracowników przypisanych do danego zamówienia 
 CREATE PROCEDURE EmployeesAssignedToTheOrder @OrderID int AS 
 BEGIN TRY 
 IF NOT EXISTS(
@@ -1241,7 +1240,9 @@ FROM
 WHERE
     O.OrderID = @OrderID END TRY BEGIN CATCH DECLARE @msg nvarchar(2048) = 'Błąd wypisywania pracownikow:' + ERROR_MESSAGE();THROW 52000,
     @msg,
-    1 END CATCH -- CREATE PROCEDURE dbo.get_dishes_for_day @data Date AS BEGIN
+    1 END CATCH 
+
+CREATE PROCEDURE dbo.get_dishes_for_day @data Date AS BEGIN
 SET
     NOCOUNT ON BEGIN TRY
 SELECT
