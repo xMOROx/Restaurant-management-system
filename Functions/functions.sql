@@ -39,8 +39,18 @@ SET
             MenuID = (@MenuID - 1)
     ) / 2 IF @SameItems <= @minAmountToChange BEGIN RETURN 1 END RETURN 0 END
 GO
-    
-    
+
+--helps to make a new menu
+CREATE FUNCTION WhatWasNotInThePreviousMenu()
+    RETURNS TABLE AS RETURN
+        (SELECT ProductID
+         FROM Products
+         EXCEPT
+         SELECT ProductID
+         FROM Menu
+         WHERE MenuID=(SELECT max(MenuID) from Menu))
+GO
+
 CREATE FUNCTION GetMinimumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN (
         SELECT
             TOP 1 MIN(Price)
@@ -51,16 +61,6 @@ CREATE FUNCTION GetMinimumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN
     ) END
 GO
 
-
-CREATE FUNCTION GetMaximumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN (
-        SELECT
-            TOP 1 MAX(Price)
-        FROM
-            Menu
-        WHERE
-            MenuID = @MenuID
-    ) END
-GO
 
 
 CREATE FUNCTION show_taken_tables_from_x_to_y_with_z_chairs(
