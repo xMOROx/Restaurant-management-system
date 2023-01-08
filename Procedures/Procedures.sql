@@ -708,7 +708,7 @@ WHERE
     InvoiceID = @InvoiceID END try BEGIN catch DECLARE @msg nvarchar(2048) = N'Błąd zmiany metody: ' + ERROR_MESSAGE();THROW 52000,
     @msg,
     1 END catch END 
-    
+GO
 CREATE PROCEDURE [change payment status for invoice] @PaymentStatusName varchar(50),
     @InvoiceID int AS BEGIN BEGIN TRY IF NOT EXISTS(
         SELECT
@@ -1313,3 +1313,39 @@ WHERE
 GO
 
 -- Dodawanie rezerwacji
+CREATE PROCEDURE AddReservation @ClientID int, @StartDate datetime, @EndDate datetime, @Status varchar(15), @StaffID int
+AS
+BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM Clients WHERE ClientID = @ClientID)
+                BEGIN;
+                        THROW 52000, 'Nie ma takiego klienta', 1
+                END
+            IF NOT EXISTS(SELECT * FROM Staff WHERE StaffID = @StaffID)
+                BEGIN;
+                        THROW 52000, 'Nie ma takiego pracownika', 1
+                END
+            DECLARE @ReservationID int
+            DECLARE @PersonID int
+            SELECT @ReservationID = ISNULL(MAX(ReservationID), 0) + 1 FROM Reservation
+            IF EXISTS(SELECT * FROM Companies WHERE ClientID = @ClientID)
+                BEGIN;
+                    INSERT INTO ReservationCompany(ReservationID, ClientID, PersonID)
+                    VALUES (@ReservationID, @ClientID, null)
+                END
+            ELSE
+                BEGIN;
+                    SELECT @PersonID= PersonID from IndividualClient WHERE ClientID = @ClientID
+                    INSERT INTO ReservationIndividual(ReservationID, ClientID, PersonID)
+                    VALUES (@ReservationID, @ClientID, @PersonID)
+                END
+                INSERT INTO Reservation(startDate, endDate, Status, StaffID)
+                VALUES (@StartDate, @EndDate, @Status, @StaffID)
+        END TRY
+        BEGIN CATCH
+                DECLARE @msg nvarchar(2048) = 'Błąd dodania rezerwacji: ' + ERROR_MESSAGE();
+                THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
