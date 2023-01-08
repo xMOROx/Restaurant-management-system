@@ -99,3 +99,19 @@ BEGIN
 END
 GO
 
+-- Sprawdzanie czy pracodawca dodanego pracownika jest firmą
+
+CREATE TRIGGER EmployeeInsert
+ON Employees
+FOR INSERT
+AS
+    BEGIN
+        DECLARE @ClientID int
+        SELECT @ClientID = CompanyID from inserted
+        IF NOT EXISTS(SELECT * FROM Companies C where C.ClientID = @ClientID)
+            BEGIN;
+                THROW 50001, N'Klient o podanym ID nie jest firmą. Nie można dodać pracownika!', 1
+                ROLLBACK TRANSACTION
+            END
+    END
+GO
