@@ -41,14 +41,17 @@ SET
 GO
 
 --helps to make a new menu
-CREATE FUNCTION WhatWasNotInThePreviousMenu()
+CREATE FUNCTION WhatWasNotInTheMenuOfGivenID(@MenuID int)
     RETURNS TABLE AS RETURN
+        SELECT P.ProductID, P.Name, P.Description as 'Product Description', P.IsAvailable, C.CategoryName , C.Description as 'Category Description' FROM Products P
+                INNER JOIN Category C on C.CategoryID = P.CategoryID
+            WHERE P.ProductID IN
         (SELECT ProductID
-         FROM Products
+         FROM Products PI
          EXCEPT
          SELECT ProductID
          FROM Menu
-         WHERE MenuID=(SELECT max(MenuID) from Menu))
+         WHERE MenuID=@MenuID)
 GO
 
 CREATE FUNCTION GetMinimumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN (
