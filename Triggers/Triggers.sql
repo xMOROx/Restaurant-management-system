@@ -2,12 +2,6 @@
 -- Trigger ten blokuje zamówienia, które ze względu na znajdujące się w nim owoce
 -- morza, winno być złożone maksymalnie do poniedziałku poprzedzającego
 -- zamówienie.
-CREATE FUNCTION SeaFoodInTime (@PrefDate datetime,@TakeawyTime datetime,@ReservationTime datetime,@DayName nvarchar,@Days int ) RETURNS bit AS
-BEGIN
-    DECLARE @Y datetime =@TakeawyTime
-    if @TakeawyTime is null:@Y=@ReservationTime
-    RETURN DATENAME(WEEKDAY, @PrefDate) LIKE @DayName AND DATEDIFF(DAY, @PrefDate, @Y) <= @Days
-END
 CREATE TRIGGER SeaFoodCheckMonday
     ON OrderDetails
 AFTER INSERT
@@ -16,20 +10,47 @@ AS BEGIN
     DECLARE @CategoryID int
     SELECT @CategoryID = CategoryID from Category where CategoryName like 'sea food'
     IF EXISTS(
-
         SELECT * FROM inserted AS I
         INNER JOIN Orders AS O ON O.OrderID = I.OrderID
         INNER JOIN dbo.OrderDetails OD on O.OrderID = OD.OrderID
         INNER JOIN Products P on OD.ProductID = P.ProductID
         INNER JOIN OrdersTakeaways OT on O.TakeawayID = OT.TakeawaysID
         INNER JOIN Reservation R2 on O.ReservationID = R2.ReservationID
-
-        WHERE CategoryID = @CategoryID AND
-              SeaFoodInTime(O.OrderDate,OT.PrefDate,  R2.startDate, 2, 'Thursday')
-           OR SeaFoodInTime(O.OrderDate,OT.PrefDate,  R2.startDate, 3, 'Friday')
-           OR SeaFoodInTime(O.OrderDate,OT.PrefDate,  R2.startDate, 4, 'Saturday')
+        WHERE
+            (   DATENAME(WEEKDAY, OT.PrefDate) LIKE 'Thursday'
+                AND DATEDIFF(DAY, O.OrderDate, OT.PrefDate) <= 2
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, OT.PrefDate) LIKE 'Friday'
+                AND DATEDIFF(DAY, O.OrderDate, OT.PrefDate) <= 3
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, OT.PrefDate) LIKE 'Saturday'
+                AND DATEDIFF(DAY, O.OrderDate, OT.PrefDate) <= 4
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (   DATENAME(WEEKDAY, R2.startDate) LIKE 'Thursday'
+                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 2
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, R2.startDate) LIKE 'Friday'
+                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 3
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, R2.startDate) LIKE 'Saturday'
+                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 4
+                AND CategoryID = @CategoryID
+            )
         )
-
         BEGIN;
             THROW 50001, N'Takie zamówienie winno być złożone maksylamnie do poniedziałku poprzedzającego zamówienie.', 1
         END
