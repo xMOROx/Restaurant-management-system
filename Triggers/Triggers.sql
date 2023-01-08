@@ -72,3 +72,30 @@ BEGIN
         WHERE R2.Status = 'cancelled'
     )
 END
+-- Trigger sprawdza czy danie które probujemy dodac do menu jest w bazie w czasie odbioru zamowienia zaznaczone jako dostepne i jest w menu wtedy
+CREATE TRIGGER orderDetailsInsert
+ON OrderDetails
+FOR INSERT
+AS
+BEGIN
+    SET NOCOUNT ON
+    DECLARE @ProductID int
+    DECLARE @OrderID int
+    DECLARE @MenuID int
+    SELECT @MenuID = MAX(MenuID) from Menu
+
+    SELECT @ProductID = ProductID from inserted
+    SELECT @OrderID = OrderID from inserted
+    IF EXISTS(SELECT * FROM Products P WHERE P.ProductID = @ProductID AND P.IsAvailable = 0)
+        BEGIN;
+            THROW 50001, 'Niepoprawne ProductID, Jego IsAvailable to 0 w tabeli Products. ', 1
+            ROLLBACK TRANSACTION
+        END
+    IF NOT EXISTS(SELECT * FROM Menu M WHERE M.MenuID = @MenuID AND M.ProductID = @ProductID)
+        BEGIN
+            THROW 50001, 'Ten produkt nieznajduje się aktualnie w menu.', 1
+            ROLLBACK TRANSACTION
+        END
+END
+GO
+
