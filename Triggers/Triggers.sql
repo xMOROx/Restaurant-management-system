@@ -115,3 +115,45 @@ AS
             END
     END
 GO
+
+-- Trigger sprawdza czy stolik można dodać do rezerwacji (czy jest wtedy wolny i aktywny)
+
+CREATE TRIGGER addTableToReservationInsertCheck
+ON ReservationDetails
+FOR INSERT
+AS
+    BEGIN
+        DECLARE @ReservationID int = (SELECT ReservationID FROM inserted)
+        DECLARE @TableID int = (SELECT TableID FROM inserted)
+
+        DECLARE @StartReservationDate datetime
+        DECLARE @EndReservationDate datetime
+
+        SELECT @StartReservationDate = StartDate, @EndReservationDate = EndDate FROM Reservation R WHERE R.ReservationID = @ReservationID
+
+        DECLARE @TableInUseCountCompany int
+        DECLARE @TableInUseCountIndividuals int
+
+        SELECT @TableInUseCountCompany = COUNT(TableID) from Reservation R
+            INNER JOIN ReservationCompany RC on R.ReservationID = RC.ReservationID
+            INNER JOIN ReservationDetails RD on RC.ReservationID = RD.ReservationID
+        WHERE (R.startDate >= @StartReservationDate AND R.endDate <= @EndReservationDate)
+
+        SELECT @TableInUseCountIndividuals = COUNT(TableID) from Reservation R
+            INNER JOIN ReservationIndividual RI on R.ReservationID = RI.ReservationID
+            INNER JOIN ReservationDetails RD on RI.ReservationID = RD.ReservationID
+        WHERE (R.startDate >= @StartReservationDate AND R.endDate <= @EndReservationDate)
+
+        IF @TableInUseCountIndividuals > 0 OR @TableInUseCountCompany > 0
+        BEGIN;
+            THROW 50200, N'Dany stolik jest używany przez inną rezerwację! ', 1
+            ROLLBACK TRANSACTION;
+        END
+
+        IF EXISTS(SELECT * FROM Tables T WHERE T.TableID = @TableID AND T.isActive = 0)
+            BEGIN;
+                THROW 50200, N'Stolik nie jest w użyciu (isActive jest 0)', 1
+                ROLLBACK TRANSACTION;
+            END
+    END
+GO
