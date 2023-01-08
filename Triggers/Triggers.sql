@@ -164,35 +164,6 @@ AS
     END
 GO
 
-
-
-CREATE TRIGGER TablesOnDelete
-ON ReservationDetails
-FOR DELETE, UPDATE
-AS
-    BEGIN
-        SET NOCOUNT ON
-        DECLARE @TableInUseCountCompany int
-        DECLARE @TableInUseCountIndividuals int
-
-        SELECT @TableInUseCountCompany = COUNT(*) FROM deleted D
-            INNER JOIN ReservationCompany RC ON RC.ReservationID = D.ReservationID
-            INNER JOIN Reservation R2 on RC.ReservationID = R2.ReservationID
-        WHERE R2.startDate >= GETDATE()
-
-        SELECT @TableInUseCountIndividuals = COUNT(*) FROM deleted D
-            INNER JOIN ReservationIndividual RC ON RC.ReservationID = D.ReservationID
-            INNER JOIN Reservation R2 on RC.ReservationID = R2.ReservationID
-        WHERE R2.startDate >= GETDATE()
-
-        IF @TableInUseCountCompany > 0 OR @TableInUseCountIndividuals > 0
-        BEGIN;
-            THROW 52000, N'Stolik nie może zostać usunięty lub zmieniony jego status aktywności jeśli jest zarezerwowany', 1
-            ROLLBACK;
-        END
-    END
-GO
-
 -- Trigger sprawdza czy dodana nowa zmienna zniżki Z1 (ilość minimalna zamówień by
 -- otrzymać zniżkę) jest prawidłowa (większa od 0)
 CREATE TRIGGER Z1TestForNewDiscountVariable
