@@ -60,7 +60,15 @@ CREATE FUNCTION GetMinimumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN
             MenuID = @MenuID
     ) END
 GO
-
+CREATE FUNCTION GetMaximumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN (
+        SELECT
+            TOP 1 MAX(Price)
+        FROM
+            Menu
+        WHERE
+            MenuID = @MenuID
+    ) END
+GO
 
 
 CREATE FUNCTION show_taken_tables_from_x_to_y_with_z_chairs(
