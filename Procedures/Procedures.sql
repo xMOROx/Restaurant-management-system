@@ -1349,3 +1349,29 @@ BEGIN
         END CATCH
     END
 GO
+
+CREATE PROCEDURE addTableToReservation
+@ReservationID int,
+@TableID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM TABLES WHERE TableID = @TableID)
+            BEGIN;
+                THROW 52000, 'Nie ma takiego stolika! ', 1
+            END
+            IF NOT EXISTS(SELECT * FROM Orders WHERE ReservationID = @ReservationID)
+            BEGIN;
+                THROW 52000, 'Nie ma takiej rezerwacji! ', 1
+            END
+
+            INSERT INTO ReservationDetails(ReservationID, TableID)
+            VALUES (@ReservationID, @TableID)
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania stolika do rezerwacji: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
