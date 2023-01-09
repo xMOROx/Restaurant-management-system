@@ -290,3 +290,20 @@ CREATE FUNCTION OrdersMoreExpensiveThanN RETURNS TABLE AS RETURN (
         WHERE
             O.OrderSum > N
     )
+
+CREATE FUNCTION ShowDuplicatedProductsInXMenuFromYMenu(@MenuFirstID int, @MenuSecondID int)
+    RETURNS TABLE
+        AS RETURN SELECT max(M.MenuID) as 'MenuID', P.ProductID, P.Name, P.Description FROM Products P
+            INNER JOIN (SELECT P1.ProductID, P1.Name, P1.Description
+                FROM Menu M1
+                    INNER JOIN Products P1 on P1.ProductID = M1.ProductID
+                WHERE MenuID = (@MenuSecondID)
+                    INTERSECT
+                SELECT P2.ProductID, P2.Name, P2.Description
+                FROM Menu M2
+                    INNER JOIN Products P2 on P2.ProductID = M2.ProductID
+                WHERE MenuID = @MenuFirstID) P3 
+                ON P3.ProductID = P.ProductID
+                INNER JOIN Menu M on P.ProductID = M.ProductID
+                GROUP BY P.ProductID, P.Name, P.Description
+go

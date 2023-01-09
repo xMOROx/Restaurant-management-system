@@ -212,18 +212,11 @@ AS
         DECLARE @MenuID int = (SELECT MenuID FROM inserted)
         IF(dbo.MenuIsCorrect(@MenuID) = 0)
             BEGIN
-                SELECT P1.ProductID, P1.Name, P1.Description
-                FROM Menu M1
-                    INNER JOIN Products P1 on P1.ProductID = M1.ProductID
-                WHERE MenuID = (@MenuID - 1)
-                    INTERSECT
-                SELECT P2.ProductID, P2.Name, P2.Description
-                FROM Menu M2
-                    INNER JOIN Products P2 on P2.ProductID = M2.ProductID
-                WHERE MenuID = @MenuID;
-
+                DECLARE @HowManyDisplay int = (SELECT COUNT(*) FROM Menu WHERE MenuID = @MenuID AND ProductID IN (SELECT ProductID FROM ShowDuplicatedProductsInXMenuFromYMenu(@MenuID, @MenuID -1))) - 1
+                SELECT TOP (@HowManyDisplay) ProductID, Name, Description FROM ShowDuplicatedProductsInXMenuFromYMenu(@MenuID, @MenuID -1) ORDER BY MenuID;
                 THROW 50001, N'Zmieniono za małą liczbę dań w aktualnym menu!',1
                ROLLBACK TRANSACTION
             END
     END
-GO
+go
+
