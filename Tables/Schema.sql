@@ -96,14 +96,19 @@ CREATE TABLE Invoice (
 
 -- Table: Menu
 CREATE TABLE Menu (
-    ID int NOT NULL IDENTITY (1,1) ,
-    MenuID int  NOT NULL ,
-    Price money  NOT NULL check ( Price > 0 ),
-    startDate datetime  NOT NULL default getdate(),
-    endDate datetime NULL ,
+    MenuID int  NOT NULL,
+    Description varchar(max)  NOT NULL,
+    startDate datetime  NOT NULL DEFAULT getdate(),
+    endDate datetime  NULL,
+    CONSTRAINT validDateMenu check((startDate < endDate and endDate is not null) or endDate is null),
+    CONSTRAINT Menu_pk PRIMARY KEY  (MenuID)
+);
+
+-- Table: MenuDetails
+CREATE TABLE MenuDetails (
+    MenuID int  NOT NULL,
     ProductID int  NOT NULL,
-    CONSTRAINT validDateMenu check((dateadd(day, 14 ,startDate) < endDate and endDate is not null) or endDate is null),
-    CONSTRAINT Menu_pk PRIMARY KEY  (ID)
+    Price money  NOT NULL CHECK ( Price > 0 )
 );
 
 -- Table: OrderDetails
@@ -303,11 +308,19 @@ alter table Invoice
         foreign key (PaymentStatusID) references PaymentStatus
             on update cascade
 
--- Reference: Menu_Products (table: Menu)
-alter table Menu
-    add constraint Menu_Products
-        foreign key (ProductID) references Products
-            on update cascade
+-- Reference: MenuDetails_Menu (table: MenuDetails)
+ALTER TABLE MenuDetails ADD CONSTRAINT MenuDetails_Menu
+    FOREIGN KEY (MenuID)
+    REFERENCES Menu (MenuID)
+    ON UPDATE  CASCADE;
+
+-- Reference: MenuDetails_Products (table: MenuDetails)
+ALTER TABLE MenuDetails ADD CONSTRAINT MenuDetails_Products
+    FOREIGN KEY (ProductID)
+    REFERENCES Products (ProductID)
+    ON UPDATE  CASCADE;
+
+
 
 -- Reference: OrderDetails_Orders (table: OrderDetails)
 alter table OrderDetails
