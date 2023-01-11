@@ -1,22 +1,10 @@
 -- Current menu view --
-CREATE VIEW dbo.CurrentMenu AS
-SELECT
-    MenuID,
-    Price,
-    Name,
-    Description
-FROM
-    Menu
-    INNER JOIN Products P ON P.ProductID = Menu.ProductID
-WHERE
-    (
-        (getdate() >= startDate)
-        AND (getdate() <= endDate)
-    )
-    OR (
-        (getdate() >= startDate)
-        AND endDate IS NULL
-    );
+create view dbo.CurrentMenu as
+    select M1.MenuID, Price, Name, P.Description as 'Product Description', M2.Description as 'Menu Description' from MenuDetails M1
+        inner join Products P on P.ProductID = M1.ProductID
+        INNER JOIN Menu M2 on M1.MenuID = M2.MenuID
+    where ((getdate() >= startDate) and (getdate() <= endDate)) or ((getdate() >= startDate) and endDate is null) ;
+go
 
 GO
     -- Current menu view --
@@ -445,34 +433,18 @@ WHERE
 GO
     -- PendingReservation --
     --Orders report (wyświetlanie ilości zamówień oraz ich wartości w okresach czasowych)
-    CREATE VIEW dbo.ordersReport AS
-SELECT
-    isnull(
-        CONVERT(varchar(50), YEAR(O.OrderDate), 120),
-        'Podsumowanie po latach'
-    ) AS [Year],
-    isnull(
-        CONVERT(varchar(50), MONTH(O.OrderDate), 120),
-        'Podsumowanie miesiaca'
-    ) AS [Month],
-    isnull(
-        CONVERT(
-            varchar(50),
-            DATEPART(iso_week, O.OrderDate),
-            120
-        ),
-        'Podsumowanie tygodnia'
-    ) AS [WEEK],
-    COUNT(O.OrderID) AS [ilość zamówień],
-    SUM(O.OrderSum) AS [Suma przychodów]
-FROM
-    Orders AS O
-GROUP BY
-    ROLLUP (
-        YEAR(O.OrderDate),
-        MONTH(O.OrderDate),
-        DATEPART(iso_week, O.OrderDate)
-    )
+CREATE VIEW dbo.ordersReport AS
+    SELECT
+        isnull(convert(varchar(50), YEAR(O.OrderDate), 120), 'Podsumowanie po latach') AS [Year],
+        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie po miesiacach') AS [Month],
+        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie po tygodniach') AS [WEEK],
+        COUNT(O.OrderID) AS [ilość zamówień],
+        SUM(OD.Quantity * M.Price) AS [suma przychodów]
+    FROM Orders AS O
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN MenuDetails M ON M.ProductID = P.ProductID
+    GROUP BY ROLLUP (YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(iso_week, O.OrderDate))
 GO
     --Orders report
     --individual clients expenses report (wyświetlanie wydanych kwot przez klientów indywidualnych w okresach czasowych)
@@ -1059,33 +1031,16 @@ FROM
     JOIN Staff S ON O.staffID = S.StaffID
 GO
     -- Jakie zamówienia są w trakcie przygotowywania
-    CREATE
-    OR ALTER VIEW dbo.OrdersToPrepare AS
-SELECT
-    OrderID,
-    ClientID,
-    TakeawayID,
-    PaymentStatusName,
-    PM.PaymentName,
-    concat(S.LastName, ' ', S.FirstName) AS 'Dane kelnera',
-    OrderSum,
-    OrderDate,
-    PrefDate
-FROM
-    Orders
-    JOIN OrdersTakeaways OT ON Orders.TakeawayID = OT.TakeawaysID
-    INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = Orders.PaymentStatusID
-    INNER JOIN PaymentMethods PM ON PS.PaymentMethodID = PM.PaymentMethodID
-    INNER JOIN Staff S ON Orders.staffID = S.StaffID
-WHERE
-    (
-        (
-            OrderCompletionDate IS NULL
-            AND (getdate() >= OrderDate)
-        )
-        AND OrderStatus = 'pending'
-    )
-GO
+create or alter view dbo.OrdersToPrepare as
+    select OrderID, ClientID, TakeawayID, PaymentStatusName,PM.PaymentName,
+           concat(S.LastName, ' ',S.FirstName) as 'Dane kelnera',
+            OrderSum, OrderDate, PrefDate
+    from Orders O join OrdersTakeaways OT on O.TakeawayID = OT.TakeawaysID
+        inner join PaymentStatus PS on PS.PaymentStatusID = O.PaymentStatusID
+        inner join PaymentMethods PM on PM.PaymentMethodID = O.PaymentMethodID
+        inner join Staff S on O.staffID = S.StaffID
+    where (((getdate() >= OrderDate) and (getdate() <= OrderCompletionDate)) or (OrderCompletionDate is null and (getdate() >= OrderDate)) and OrderStatus = 'pending')
+go
     -- Ile jest zamówień które będą realizowane jako owoce morza i które to są grupowane po klientach
     CREATE
     OR ALTER VIEW dbo.SeeFoodOrdersByClient AS
@@ -1242,52 +1197,27 @@ WHERE
 GROUP BY
     Name
 GO
-    -- Products informations --
-    CREATE VIEW dbo.ProductsInformations AS
-SELECT
-    Name,
-    P.Description,
-    CategoryName,
-    IIF(IsAvailable = 1, 'Aktywne', 'Nieaktywne') AS 'Czy produkt aktywny',
-    IIF(
-        P.ProductID IN (
-            SELECT
-                ProductID
-            FROM
-                Menu
-            WHERE
-                (
-                    (startDate >= getdate())
-                    AND (endDate >= getdate())
-                )
-                OR (
-                    (startDate >= getdate())
-                    AND endDate IS NULL
-                )
-                AND P.ProductID = Menu.ProductID
-        ),
-        'Aktualnie w menu',
-        'Nie jest w menu'
-    ) AS 'Czy jest aktualnie w menu',
-    count(OD.ProductID) AS 'Ilosc zamowien danego produktu'
-FROM
-    Products P
-    INNER JOIN Category C ON C.CategoryID = P.CategoryID
-    INNER JOIN OrderDetails OD ON P.ProductID = OD.ProductID
-GROUP BY
-    Name,
-    P.Description,
-    CategoryName,
-    P.ProductID,
-    IsAvailable
-GO
-    -- Products informations --
+    -- Products information --
+create view dbo.ProductsInformation as
+    select Name, P.Description, CategoryName, iif(IsAvailable = 1, 'Aktywne', 'Nieaktywne') as 'Czy produkt aktywny',
+           IIF(P.ProductID in (select ProductID
+                            from MenuDetails M
+                            INNER JOIN Menu M2 on M2.MenuID = M.MenuID
+                            where ((startDate >= getdate()) and (endDate >= getdate()))
+                                or ((startDate >= getdate()) and endDate is null) and P.ProductID = M.ProductID),
+               'Aktualnie w menu', 'Nie jest w menu') as 'Czy jest aktualnie w menu', count(OD.ProductID) as 'Ilosc zamowien danego produktu'
+   from Products P
+        inner join Category C on C.CategoryID = P.CategoryID
+        inner join OrderDetails OD on P.ProductID = OD.ProductID
+    group by Name, P.Description, CategoryName, P.ProductID, IsAvailable
+go
+    -- Products information --
     -- Meal menu info -- 
     CREATE VIEW mealMenuInfo AS
 SELECT
     DISTINCT M.MenuID,
-    M.startDate,
-    M.endDate,
+    M2.startDate,
+    M2.endDate,
     M.ProductID,
     ISNULL(
         (
@@ -1300,8 +1230,8 @@ SELECT
                 INNER JOIN Orders O ON O.OrderID = OD.OrderID
             WHERE
                 (
-                    O.OrderDate BETWEEN M.startDate
-                    AND M.endDate
+                    O.OrderDate BETWEEN M2.startDate
+                    AND M2.endDate
                 )
             GROUP BY
                 P.Name
@@ -1309,60 +1239,54 @@ SELECT
         0
     ) times_sold
 FROM
-    Menu M
+    MenuDetails M
+    INNER JOIN Menu M2 ON M.MenuID = M2.MenuID
 GO
     -- Meal menu info -- 
+
+
+CREATE VIEW dbo.clientExpensesReport AS
+    SELECT
+        YEAR(O.OrderDate) AS [Year],
+        isnull(convert(varchar(50),  MONTH(O.OrderDate), 120), 'Podsumowanie miesiaca') AS [Month],
+        isnull(convert(varchar(50),  DATEPART(iso_week , O.OrderDate), 120), 'Podsumowanie tygodnia') AS [WEEK],
+        C.ClientID,
+        SUM(O.OrderSum) AS [wydane środki]
+    FROM Orders AS O
+    INNER JOIN Clients C ON C.ClientID = O.ClientID
+    INNER JOIN OrderDetails OD ON OD.OrderID = O.OrderID
+    INNER JOIN Products P ON P.ProductID = OD.ProductID
+    INNER JOIN MenuDetails M ON M.ProductID = P.ProductID
+    GROUP BY GROUPING SETS (
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate), DATEPART(iso_week, O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate), MONTH(O.OrderDate)),
+            (C.ClientID, YEAR(O.OrderDate))
+        )
+GO
+
+
+
+
     -- Clients statistics --
-    CREATE VIEW ClientStatistics AS
-SELECT
-    C.ClientID,
-    C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode AS Address,
-    C.Phone,
-    C.Email,
-    COUNT(O.OrderID) AS [times ordered],
-    ISNULL(
-        (
-            SELECT
-                [value ordered]
-            FROM
-                (
-                    SELECT
-                        ClientID,
-                        SUM(value) [value ordered]
-                    FROM
-                        (
-                            SELECT
-                                O.ClientID ClientID,
-                                OD.Quantity * (
-                                    SELECT
-                                        Price
-                                    FROM
-                                        Menu M2
-                                    WHERE
-                                        M2.ProductID = OD.ProductID
-                                ) value
-                            FROM
-                                OrderDetails OD
-                                INNER JOIN Orders O ON O.OrderID = OD.OrderID
-                        ) OUT
-                    GROUP BY
-                        ClientID
-                ) a
-            WHERE
-                ClientID = C.ClientID
-        ),
-        0
-    ) AS [value ordered]
-FROM
-    Clients C
-    LEFT JOIN Orders O ON C.ClientID = O.ClientID
-    INNER JOIN Address A ON A.AddressID = C.AddressID
-    INNER JOIN Cities C2 ON C2.CityID = A.CityID
-GROUP BY
-    C.ClientID,
-    C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode,
-    C.Phone,
-    C.Email
+CREATE VIEW ClientStatistics AS
+    SELECT C.ClientID,
+            C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode as Address,
+            C.Phone,
+            C.Email,
+            COUNT(O.OrderID) as [times ordered],
+            ISNULL((SELECT [value ordered]
+                    FROM (SELECT ClientID, SUM(value) [value ordered]
+                         FROM (SELECT O.ClientID ClientID, OD.Quantity * (SELECT Price FROM MenuDetails M2
+                                                                                        WHERE  M2.ProductID = OD.ProductID) value
+                                FROM OrderDetails OD
+                                    INNER JOIN Orders O on O.OrderID = OD.OrderID) OUT
+                        GROUP BY ClientID) a
+                    WHERE ClientID = C.ClientID), 0) [value ordered]
+    FROM Clients C
+        LEFT JOIN Orders O ON C.ClientID = O.ClientID
+        INNER JOIN Address A on A.AddressID = C.AddressID
+        INNER JOIN Cities C2 on C2.CityID = A.CityID
+    GROUP BY C.ClientID, C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode, C.Phone, C.Email
 GO
     -- Clients statistics --
 
