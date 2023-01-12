@@ -97,7 +97,7 @@ CREATE TABLE Invoice (
 -- Table: Menu
 CREATE TABLE Menu (
     MenuID int  NOT NULL,
-    Description varchar(max)  NOT NULL,
+    Description varchar(max)  NOT NULL DEFAULT 'Brak opisu',
     startDate datetime  NOT NULL DEFAULT getdate(),
     endDate datetime  NULL,
     CONSTRAINT validDateMenu check((startDate < endDate and endDate is not null) or endDate is null),
