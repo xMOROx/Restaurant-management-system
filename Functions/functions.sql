@@ -123,8 +123,8 @@ SELECT
 FROM
     ClientStatistics
 WHERE
-    [value ordered] > @value
-GO
+    [value ordered with discounts] > @value
+go
 
 
 CREATE FUNCTION GetClientsWhoOweMoreThanX(@value int) RETURNS TABLE AS RETURN
