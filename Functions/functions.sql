@@ -146,20 +146,18 @@ WHERE
 GO
 -- Jeżeli zniżka tymczasowa i została użyta to zmień jej pole isUsed na 1
 
-CREATE FUNCTION calculateBestDiscountTemporary(@ClientID int) RETURNS decimal(3, 2) AS BEGIN RETURN (
-        SELECT
-            max(DiscountValue) AS 'Value'
-        FROM
-            IndividualClient I
-            JOIN Discounts D ON I.ClientID = D.ClientID
-            JOIN DiscountsVar DV ON DV.VarID = D.VarID
-        WHERE
-            DiscountType = 'Temporary'
-            AND I.ClientID = @ClientID
-            AND isUsed = 0
-            AND AppliedDate <= getdate()
-            AND getdate() <= dateadd(DAY, ValidityPeriod, AppliedDate) -- Temporary Discounts must have endDate
-    ) END
+CREATE FUNCTION calculateBestDiscountTemporary(@ClientID int) RETURNS decimal(3, 2)
+AS
+    BEGIN
+        RETURN (SELECT max(DiscountValue) AS 'Discount Value' FROM IndividualClient I
+                INNER JOIN Discounts D ON I.ClientID = D.ClientID
+                INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
+            WHERE
+                DiscountType = 'Temporary'
+                AND I.ClientID = @ClientID
+                AND isUsed = 0
+                AND AppliedDate <= getdate() AND GETDATE() <= dateadd(DAY, ValidityPeriod, AppliedDate))
+    END
 GO
 
 
