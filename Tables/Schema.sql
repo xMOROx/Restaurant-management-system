@@ -215,7 +215,7 @@ CREATE TABLE ReservationIndividual (
 CREATE TABLE ReservationVar (
     ReservationVarID int  NOT NULL IDENTITY (1,1),
     WZ int  NOT NULL check ( WZ > 0 ),
-    WK int  NOT NULL check (WK > 0),
+    WK money  NOT NULL check (WK > 0),
     startDate datetime  NOT NULL,
     endDate datetime  NULL,
     CONSTRAINT validDateReservationVar check(startDate < endDate or endDate is NULL),

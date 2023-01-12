@@ -1,23 +1,23 @@
 -- Current menu view --
-create view dbo.CurrentMenu as
-    select M1.MenuID, Price, Name, P.Description as 'Product Description', M2.Description as 'Menu Description' from MenuDetails M1
-        inner join Products P on P.ProductID = M1.ProductID
-        INNER JOIN Menu M2 on M1.MenuID = M2.MenuID
-    where ((getdate() >= startDate) and (getdate() <= endDate)) or ((getdate() >= startDate) and endDate is null) ;
-go
+CREATE VIEW dbo.CurrentMenu AS
+    SELECT M1.MenuID, Price, Name, P.Description AS 'Product Description', M2.Description AS 'Menu Description', startDate, ISNULL(CONVERT(varchar(max), endDate, 120), 'Menu nie ma daty końca') AS 'endDate' FROM MenuDetails M1
+        INNER JOIN Products P ON P.ProductID = M1.ProductID
+        INNER JOIN Menu M2 ON M1.MenuID = M2.MenuID
+    WHERE ((getdate() >= startDate) AND (getdate() <= endDate)) OR ((getdate() >= startDate) AND endDate IS NULL);
+GO
 
 GO
     -- Current menu view --
     -- Current reservation vars --
     CREATE VIEW dbo.CurrentReservationVars AS
 SELECT
-    WZ AS [Minimalna liczba zamowien],
-    WK AS [Minimalna kwota dla zamowienia],
+    WZ AS [Minimal number of orders],
+    WK AS [Minimal value for orders],
     startDate,
     isnull(
         CONVERT(varchar(20), endDate, 120),
         'Obowiązuje zawsze'
-    ) AS 'Koniec menu'
+    ) AS 'Koniec daty obowiązywania zmiennej'
 FROM
     ReservationVar
 WHERE
@@ -29,10 +29,9 @@ WHERE
         (getdate() >= startDate)
         AND endDate IS NULL
     );
-
 GO
-    -- unpaid invoices  Individuals--
-    CREATE VIEW dbo.unPaidInvoicesIndividuals AS
+-- unpaid invoices  Individuals--
+CREATE VIEW dbo.unPaidInvoicesIndividuals AS
 SELECT
     InvoiceNumber AS [Numer faktury],
     InvoiceDate AS [Data wystawienia],
@@ -43,21 +42,19 @@ SELECT
     concat(CityName, ' ', street, ' ', LocalNr) AS [Adres],
     PostalCode
 FROM
-    Invoice
-    INNER JOIN Clients C ON C.ClientID = Invoice.ClientID
+    Invoice I
+    INNER JOIN Clients C ON C.ClientID = I.ClientID
     INNER JOIN Address A ON C.AddressID = A.AddressID
     INNER JOIN IndividualClient IC ON C.ClientID = IC.ClientID
     INNER JOIN Person P ON P.PersonID = IC.PersonID
     INNER JOIN Cities C2 ON C2.CityID = A.CityID
-    INNER JOIN PaymentStatus PS ON Invoice.PaymentStatusID = PS.PaymentStatusID
+    INNER JOIN PaymentStatus PS ON I.PaymentStatusID = PS.PaymentStatusID
 WHERE
     PaymentStatusName LIKE 'Unpaid';
-
--- system will change status
 GO
-    -- unpaid invoices  Individuals--
-    -- unpaid invoices  Company--
-    CREATE VIEW dbo.unPaidInvoicesCompanies AS
+-- unpaid invoices  Individuals--
+-- unpaid invoices  Company--
+CREATE VIEW dbo.unPaidInvoicesCompanies AS
 SELECT
     InvoiceNumber AS [Numer faktury],
     InvoiceDate AS [Data wystawienia],
@@ -1270,18 +1267,24 @@ GO
     -- Clients statistics --
 CREATE VIEW ClientStatistics AS
     SELECT C.ClientID,
-            C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode as Address,
-            C.Phone,
-            C.Email,
-            COUNT(O.OrderID) as [times ordered],
-            ISNULL((SELECT [value ordered]
-                    FROM (SELECT ClientID, SUM(value) [value ordered]
+           C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode as Address,
+           C.Phone,
+           C.Email,
+           COUNT(O.OrderID) as [times ordered],
+           ISNULL((SELECT [value ordered]
+                   FROM (SELECT ClientID, SUM(value) [value ordered]
                          FROM (SELECT O.ClientID ClientID, OD.Quantity * (SELECT Price FROM MenuDetails M2
-                                                                                        WHERE  M2.ProductID = OD.ProductID) value
-                                FROM OrderDetails OD
+                                                                                       WHERE  M2.ProductID = OD.ProductID) value
+                               FROM OrderDetails OD
                                     INNER JOIN Orders O on O.OrderID = OD.OrderID) OUT
-                        GROUP BY ClientID) a
-                    WHERE ClientID = C.ClientID), 0) [value ordered]
+                         GROUP BY ClientID) a
+                    WHERE ClientID = C.ClientID), 0) [value ordered without discounts],
+            ISNULL((SELECT [value ordered]
+                   FROM (SELECT ClientID, SUM(value) [value ordered]
+                         FROM (SELECT O.ClientID as ClientID, O.OrderSum as value
+                               FROM Orders O) OUT
+                         GROUP BY ClientID) a
+                    WHERE ClientID = C.ClientID), 0) [value ordered with discounts]
     FROM Clients C
         LEFT JOIN Orders O ON C.ClientID = O.ClientID
         INNER JOIN Address A on A.AddressID = C.AddressID
