@@ -116,8 +116,20 @@ FROM
 WHERE
     isActive = 1
 GO
-    -- Active Tables --
-    -- Not reserved Tables --
+-- Active Tables --
+-- withdrawn tables
+
+CREATE VIEW dbo.[withdrawnTables] AS
+SELECT
+    TableID,
+    ChairAmount
+FROM
+    TABLES
+    WHERE TableID not in (SELECT TableID FROM ActiveTables)
+GO
+-- withdrawn tables
+
+-- Not reserved Tables --
     CREATE VIEW dbo.[Not reserved Tables] AS
 SELECT
     TableID,
@@ -1261,7 +1273,26 @@ CREATE VIEW dbo.clientExpensesReport AS
         )
 GO
 
-
+-- current discounts vars 
+CREATE VIEW dbo.currentDiscountsVars AS
+    SELECT
+        VarID,
+        DiscountType,
+        ISNULL(CAST(MinimalOrders AS varchar), ' ') AS MinimalOrders,
+        ISNULL(CAST(MinimalAggregateValue AS varchar), ' ') AS MinimalAggregateValue,
+        ISNULL(CAST(ValidityPeriod AS varchar), ' ') AS ValidityPeriod,
+        DiscountValue,
+        startDate,
+        endDate
+    FROM dbo.DiscountsVar
+    WHERE
+        (
+            (
+                (getdate() >= startDate)
+                AND (getdate() <= endDate)
+            )
+        )
+GO
 
 
     -- Clients statistics --
@@ -1345,4 +1376,38 @@ GROUP BY
     O.ClientID,
     DATEPART(iso_week, cast(O.OrderDate AS DATE)),
     DATEPART(YEAR, cast(O.OrderDate AS DATE))
+GO
+
+-- show individual clients --
+CREATE VIEW dbo.showIndividualClients AS
+    SELECT
+        C.ClientID,
+        P.FirstName,
+        P.LastName,
+        C.Phone,
+        C.Email,
+        C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode as Address
+    FROM Clients C
+        INNER JOIN Address A on A.AddressID = C.AddressID
+        INNER JOIN Cities C2 on C2.CityID = A.CityID
+        INNER JOIN IndividualClient IC on IC.ClientID = C.ClientID
+        INNER JOIN Person P on IC.PersonID = P.PersonID
+GO
+
+-- show company clients --
+
+CREATE VIEW dbo.showCompanyClients AS
+    SELECT
+        C.ClientID,
+        CompanyName,
+        NIP,
+        ISNULL(CAST(KRS AS VARCHAR), '') AS KRS,
+        ISNULL(CAST(Regon AS VARCHAR), '') AS Regon,
+        C.Phone,
+        C.Email,
+        C2.CityName + ' ' + A.street + ' ' + A.LocalNr + ' ' + A.PostalCode as Address
+    FROM Clients C
+        INNER JOIN Address A on A.AddressID = C.AddressID
+        INNER JOIN Cities C2 on C2.CityID = A.CityID
+        INNER JOIN Companies CC on CC.ClientID = C.ClientID
 GO
