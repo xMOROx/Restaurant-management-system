@@ -39,8 +39,8 @@ CREATE TABLE Companies (
     ClientID int  NOT NULL,
     CompanyName nvarchar(50)  NOT NULL UNIQUE,
     NIP char(10)  NOT NULL UNIQUE check(NIP like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
-    KRS char(10)  NULL UNIQUE check(KRS like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
-    Regon char(9)  NULL UNIQUE check(Regon like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+    KRS char(10)  NULL check(KRS like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+    Regon char(9)  NULL check(Regon like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT Companies_pk PRIMARY KEY  (ClientID)
 );
 
@@ -260,11 +260,14 @@ alter table IndividualClient
     add constraint Clients_IndividualClient
         foreign key (ClientID) references Clients
             on update cascade
+            on delete cascade
 
 -- Reference: Companies_Clients (table: Companies)
 alter table Companies
     add constraint Companies_Clients
         foreign key (ClientID) references Clients
+            on update cascade
+            on delete cascade
 
 -- Reference: Discounts_DiscountsVar (table: Discounts)
 alter table Discounts
