@@ -147,12 +147,17 @@ AS
     BEGIN
        SET NOCOUNT ON
        BEGIN TRY
-           DECLARE @CityID int
+            DECLARE @CityID int
             IF NOT EXISTS(SELECT * FROM Cities WHERE CityName LIKE @CityName)
-                BEGIN
-                    EXEC addCity @CityName
-                END
+                 BEGIN
+                     EXEC addCity @CityName
+                 END
             SELECT @CityID = CityID FROM Cities WHERE CityName LIKE @CityName
+
+            IF EXISTS(SELECT * FROM Address WHERE CityID = @CityID AND PostalCode LIKE @PostalCode AND street LIKE @Street AND LocalNr LIKE @LocalNr)
+                BEGIN
+                    THROW 52000, 'Istnieje już dokładnie taki sam adres w bazie!', 1
+                END 
             INSERT INTO Address(CityID, street, LocalNr, PostalCode)
             VALUES (@CityID, @Street, @LocalNr, @PostalCode)
        END TRY
@@ -161,7 +166,7 @@ AS
            THROW 52000, @msg, 1
        END CATCH
     END
-GO
+go
 --Add address 
 
 --remove address 
@@ -220,10 +225,11 @@ GO
 -- remove person --
 -- add client 
 CREATE PROCEDURE addClient @ClientType varchar(1),
-                            @CityName nvarchar(35),
-                            @Street nvarchar(70),
-                            @LocalNr varchar(10),
-                            @PostalCode char(6),
+                            @CityName nvarchar(35) = NULL,
+                            @Street nvarchar(70) = NULL,
+                            @LocalNr varchar(10) = NULL,
+                            @PostalCode char(6) = NULL,
+                            @AddressID int = NULL,
                             @Phone varchar(14),
                             @Email varchar(100),
                             @FirstName varchar(50) = NULL,
@@ -297,20 +303,105 @@ AS
                 END
             END
 
-            DECLARE @AddressID int;
+            IF @Street IS NOT NULL AND @PostalCode IS NULL AND @LocalNr IS NULL AND @CityName IS NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @Street! Musisz podać jeszcze @CityName, @LocalNr, @PostalCode!', 1
+            END
 
-            IF NOT EXISTS( SELECT * FROM Address WHERE street LIKE @Street AND PostalCode LIKE @PostalCode AND LocalNr LIKE @LocalNr)
+            IF @Street IS NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NULL AND @CityName IS NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @PostalCode! Musisz podać jeszcze @Street, @LocalNr, @CityName!', 1
+            END
+
+            IF @Street IS NULL AND @PostalCode IS NULL AND @LocalNr IS NOT NULL AND @CityName IS NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @LocalNr. Musisz podać jeszcze @Street, @CityName, @PostalCode!', 1
+            END
+
+            IF @Street IS NULL AND @PostalCode IS NULL AND @LocalNr IS NULL AND @CityName IS NOT NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @CityName. Musisz podać jeszcze @Street, @LocalNr, @PostalCode!', 1
+            END
+
+            IF @Street IS NOT NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NOT NULL AND @CityName IS NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @Street, @PostalCode, @LocalNr. Musisz podać jeszcze @CityName!', 1
+            END
+
+            IF @Street IS NOT NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NULL AND @CityName IS NOT NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @Street, @PostalCode, @CityName. Musisz podać jeszcze @LocalNr!', 1
+            END
+
+            IF @Street IS NOT NULL AND @PostalCode IS NULL AND @LocalNr IS NOT NULL AND @CityName IS NOT NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @Street, @LocalNr, @CityName. Musisz podać jeszcze @PostalCode!', 1
+            END
+
+            IF @Street IS NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NOT NULL AND @CityName IS NOT NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @PostalCode, @LocalNr, @CityName. Musisz podać jeszcze @Street!', 1
+            END
+
+            IF @Street IS NULL AND @PostalCode IS NULL AND @LocalNr IS NOT NULL AND @CityName IS NOT NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @LocalNr, @CityName. Musisz podać jeszcze @Street, @PostalCode!', 1
+            END
+
+            IF @Street IS NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NULL AND @CityName IS NOT NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @PostalCode, @CityName. Musisz podać jeszcze @Street, @LocalNr!', 1
+            END
+
+            IF @Street IS NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NOT NULL AND @CityName IS NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @PostalCode, @LocalNr. Musisz podać jeszcze @Street, @CityName!', 1
+            END
+
+            IF @Street IS NOT NULL AND @PostalCode IS NULL AND @LocalNr IS NULL AND @CityName IS NOT NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @Street, @CityName. Musisz podać jeszcze @PostalCode, @LocalNr!', 1
+            END
+
+            IF @Street IS NOT NULL AND @PostalCode IS NULL AND @LocalNr IS NOT NULL AND @CityName IS NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @Street, @LocalNr. Musisz podać jeszcze @PostalCode, @CityName!', 1
+            END
+
+            IF @Street IS NOT NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NULL AND @CityName IS NULL
+            BEGIN
+                THROW 52000, N'Nie można podać tylko @Street, @PostalCode. Musisz podać jeszcze @LocalNr, @CityName!', 1
+            END
+
+
+            DECLARE @AddressID_ int;
+            IF @Street IS NOT NULL AND @PostalCode IS NOT NULL AND @LocalNr IS NOT NULL AND @CityName IS NOT NULL
                 BEGIN
-                    EXEC addAddress @Street,@LocalNr,@PostalCode,@CityName
+                    IF NOT EXISTS( SELECT * FROM Address WHERE street LIKE @Street AND PostalCode LIKE @PostalCode AND LocalNr LIKE @LocalNr)
+                        BEGIN
+                            EXEC addAddress @Street,@LocalNr,@PostalCode,@CityName
+                        END
+                    SELECT @AddressID_ = AddressID FROM Address
                 END
-            SELECT @AddressID = AddressID FROM Address
+            ELSE
+                BEGIN
+                    IF @AddressID IS NOT NULL
+                        BEGIN
+                           SET @AddressID_ = @AddressID
+                        END
+                    ELSE
+                        BEGIN
+                            THROW 52000, 'Nie można, żeby wszystkie parametry nie zostały podane tj. @AddressID, @Street, @PostalCode, @LocalNr, @CityName. Musisz podać @AddressID lub @Street, @PostalCode, @LocalNr, @CityName!', 1
+                        END
+                END
+
 
             INSERT INTO Clients(AddressID, Phone, Email)
-            VALUES(@AddressID, @Phone, @Email)
+            VALUES(@AddressID_, @Phone, @Email)
 
             DECLARE @ClientID int;
             SELECT @ClientID = ClientID FROM Clients
-            WHERE @AddressID = AddressID
+            WHERE @AddressID_ = AddressID
                 AND Clients.Phone LIKE @Phone
                 AND Clients.Email LIKE @Email
 
@@ -785,15 +876,30 @@ GO
 CREATE PROCEDURE addStaffMember @LastName nvarchar(50), @FirstName nvarchar(70), @Position varchar(50), @Email varchar(100), @Phone varchar(14), @AddressID int
 AS
     BEGIN
-       SET NOCOUNT ON
-       BEGIN TRY
-           INSERT INTO Staff (LastName, FirstName, Position, Email, Phone, AddressID)
-           VALUES (@LastName, @FirstName, @Position, @Email, @Phone, @AddressID);
-       END TRY
-       BEGIN CATCH
-           DECLARE @msg varchar(2048) = N'Błąd dodania nowego pracownika: ' + ERROR_MESSAGE();
-           THROW 52000, @msg, 1
-       END CATCH
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF EXISTS(SELECT * FROM Staff WHERE Email LIKE @Email)
+            BEGIN;
+                THROW 52000, 'Pracownik o takim emailu już istnieje!', 1
+            END
+
+            IF NOT EXISTS(SELECT * FROM Address WHERE AddressID = @AddressID)
+            BEGIN;
+                THROW 52000, 'Nie ma takiego adresu!', 1
+            END
+            IF EXISTS(SELECT * FROM Staff WHERE LastName = @LastName AND FirstName = @FirstName AND Position = @Position AND Email = @Email AND Phone = @Phone AND AddressID = @AddressID)
+            BEGIN;
+                THROW 52000, 'Taki pracownik już istnieje!', 1
+            END
+
+
+            INSERT INTO Staff (LastName, FirstName, Position, Email, Phone, AddressID)
+            VALUES (@LastName, @FirstName, @Position, @Email, @Phone, @AddressID);
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg varchar(2048) = N'Błąd dodania nowego pracownika: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
     END
 GO
 -- add Staff Member
@@ -1175,6 +1281,93 @@ AS
 GO
 -- Client Statistics
 
+-- add payment status 
+
+CREATE PROCEDURE AddPaymentStatus @PaymentStatusName varchar(50)
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF EXISTS(SELECT * FROM PaymentStatus WHERE PaymentStatusName = @PaymentStatusName)
+                BEGIN;
+                    THROW 52000, 'Istnieje już taki status płatności', 1
+                END
+            INSERT INTO PaymentStatus (PaymentStatusName) VALUES (@PaymentStatusName)
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania statusu płatności: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+-- add payment status 
+
+-- add payment method 
+CREATE PROCEDURE AddPaymentMethod @PaymentMethodName varchar(50)
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF EXISTS(SELECT * FROM PaymentMethods WHERE PaymentName = @PaymentMethodName)
+                BEGIN;
+                    THROW 52000, 'Istnieje już taka metoda płatności', 1
+                END
+            INSERT INTO PaymentMethods (PaymentName) VALUES (@PaymentMethodName)
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania metody płatności: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+-- add payment method 
+
+-- add takeaway 
+CREATE PROCEDURE AddTakeaway @PrefDate datetime
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            INSERT INTO OrdersTakeaways (PrefDate) VALUES (@PrefDate)
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania zamowienia: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+-- add takeaway
+
+-- add takeaway to order
+CREATE PROCEDURE AddTakeawayToOrder @OrderID int, @PrefDate datetime
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM Orders WHERE OrderID = @OrderID)
+                BEGIN;
+                    THROW 52000, 'Nie ma takiego zamowienia', 1
+                END
+
+            IF @PrefDate < GETDATE()
+                BEGIN
+                    THROW 52000, N'Data nie może być wcześniejsza niż dzisiejsza!', 1
+                END
+            EXEC AddTakeaway @PrefDate
+            DECLARE @TakeawayID int;
+            SELECT @TakeawayID = MAX(TakeawaysID) FROM OrdersTakeaways
+
+            UPDATE Orders SET TakeawayID = @TakeawayID WHERE OrderID = @OrderID
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania zamowienia do zamowienia: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+-- add takeaway to order
+
+
 -- add Reservation
 CREATE PROCEDURE AddReservation @ClientID int, @StartDate datetime, @EndDate datetime, @Status varchar(15), @StaffID int
 AS
@@ -1245,3 +1438,89 @@ AS
     END
 GO
 -- add Table to  Reservation
+
+-- Add reservation var
+CREATE PROCEDURE AddReservationVar @WK int, @WZ money, @startDate datetime, @endDate datetime = NULL
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF EXISTS(SELECT * FROM ReservationVar WHERE WZ = @WZ AND WK = @WK AND startDate = @startDate AND endDate = @endDate)
+                BEGIN;
+                    THROW 52000, 'Istnieje już taka zmienna dotycząca rezerwacji', 1
+                END
+            INSERT INTO ReservationVar (WZ, WK, startDate, endDate) VALUES (@WZ, @WK, @startDate, @endDate)
+
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania zmiennej dotyczącej rezerwacji: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+
+-- add discount var 
+CREATE PROCEDURE AddDiscountVar @MinimalOrders int = NULL, @MinimalAggregateValue money = NULL, @ValidityPeriod int = NULL, @DiscountValue decimal(3,2), @StartDate datetime, @EndDate datetime = NULL
+AS 
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF EXISTS(SELECT * FROM DiscountsVar WHERE ((MinimalOrders = @MinimalOrders AND ValidityPeriod = @ValidityPeriod) OR  MinimalAggregateValue = @MinimalAggregateValue)  AND DiscountValue = @DiscountValue AND startDate = @StartDate AND endDate = @EndDate)
+                BEGIN;
+                    THROW 52000, N'Istnieje już taka zmienna dotycząca rabatu!', 1
+                END
+            IF @MinimalOrders IS NULL AND @ValidityPeriod IS NULL AND @MinimalAggregateValue IS NULL
+                BEGIN;
+                    THROW 52000, N'@MinimalOrders i @ValidityPeriod nie mogą być Null dla zniżki tymczasowej. @MinimalAggregateValue nie mogą być puste dla zniżki bez okresu ważności!', 1
+                END
+
+            IF @MinimalOrders IS NOT NULL AND @ValidityPeriod IS NULL 
+                BEGIN;
+                    THROW 52000, N'@MinimalOrders musi być związana z @ValidityPeriod!', 1
+                END
+            IF @MinimalOrders IS NULL AND @ValidityPeriod IS NOT NULL
+                BEGIN;
+                    THROW 52000, N'@ValidityPeriod musi być związany z @MinimalOrders!', 1
+                END
+            IF @MinimalAggregateValue IS NOT NULL
+                BEGIN;
+                    INSERT INTO DiscountsVar (DiscountType,MinimalOrders, MinimalAggregateValue, ValidityPeriod, DiscountValue, startDate, endDate) VALUES ('Permanent',@MinimalOrders, @MinimalAggregateValue, @ValidityPeriod, @DiscountValue, @StartDate, @EndDate)
+                END
+            IF @MinimalOrders IS NOT NULL AND @ValidityPeriod IS NOT NULL 
+                BEGIN;
+                    INSERT INTO DiscountsVar (DiscountType,MinimalOrders, MinimalAggregateValue, ValidityPeriod, DiscountValue, startDate, endDate) VALUES ('Temporary',@MinimalOrders, @MinimalAggregateValue, @ValidityPeriod, @DiscountValue, @StartDate, @EndDate)
+                END
+
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = N'Błąd dodania zmiennej dotyczącej rabatu: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+
+-- add Employee to Company 
+CREATE PROCEDURE addEmployeeToCompany @CompanyID int, @PersonID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM Companies WHERE ClientID = @CompanyID)
+            BEGIN;
+                THROW 52000, N'Nie ma takiej firmy! ', 1
+            END
+
+            IF NOT EXISTS(SELECT * FROM Person WHERE PersonID = @PersonID)
+            BEGIN;
+                THROW 52000, N'Nie ma takiej osoby! ', 1
+            END
+
+            INSERT INTO Employees(PersonID, CompanyID)
+            VALUES (@PersonID, @CompanyID)
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = N'Błąd dodania pracownika do firmy: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
