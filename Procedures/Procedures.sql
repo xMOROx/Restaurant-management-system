@@ -451,8 +451,14 @@ AS
                 THROW 52000, N'Nie ma takiego menu. Dodaj napierw menu aby dodać produkt!', 1
             END
 
+
             DECLARE @ProductID int
             SELECT @ProductID = ProductID from Products WHERE Name like @Name
+
+            IF EXISTS(SELECT * FROM MenuDetails WHERE ProductID = @ProductID AND MenuID = @MenuID)
+                 BEGIN
+                    THROW 52000, N'Produkt już jest w menu!', 1
+                 END
 
             INSERT INTO MenuDetails(MenuID, ProductID, Price)
             VALUES (@MenuID, @ProductID, @Price)
@@ -463,7 +469,7 @@ AS
             THROW 52000, @msg, 1
         END CATCH
     END
-GO
+go
 --add Product to Menu 
 --remove Product From Menu 
 CREATE PROCEDURE removeProductFromMenu  @Name nvarchar(150),
@@ -509,22 +515,34 @@ AS
 GO
 --remove Product From Menu 
 --add menu 
-CREATE PROCEDURE addMenu  @MenuID int,
-                          @StartDate datetime,
-                          @EndDate datetime
+CREATE PROCEDURE addMenu  @StartDate datetime,
+                          @EndDate datetime = NULL,
+                          @Description varchar(max) = NULL
 AS
     BEGIN
         SET NOCOUNT ON
         BEGIN TRY
-            IF EXISTS(
-                SELECT * FROM Menu WHERE MenuID = @MenuID
-                )
-            BEGIN;
-                THROW 52000, N'Takie menu już istnieje', 1
-            END
+            IF EXISTS(SELECT * FROM Menu WHERE CAST(startDate AS date) = CAST(@StartDate AS date))
+                BEGIN
+                    THROW 52000, N'Menu zaczynające się w ten dzień już istnieje!', 1
+                END
+            IF EXISTS(SELECT * FROM Menu WHERE CAST(endDate AS date) = CAST(@EndDate AS date))
+                BEGIN
+                    THROW 52000, N'Menu kończące się w ten dzień już istnieje!', 1
+                END
+            IF EXISTS(SELECT * FROM Menu WHERE CAST(startDate AS date) = CAST(@StartDate AS date) AND CAST(endDate AS date) = CAST(@EndDate AS date))
+                BEGIN
+                    THROW 52000, N'Menu już istnieje!', 1
+                END
+            DECLARE @MenuID int
+            SELECT @MenuID = ISNULL(MAX(MenuID), 0) + 1 FROM Menu
 
-            INSERT INTO Menu(MenuID, startDate, endDate)
-            VALUES(@MenuID, @StartDate, @EndDate)
+            IF @Description IS NOT NULL
+                INSERT INTO Menu(MenuID,startDate, endDate, Description)
+                VALUES(@MenuID, @StartDate, @EndDate, @Description)
+            ELSE
+                INSERT INTO Menu(MenuID,startDate, endDate)
+                VALUES(@MenuID, @StartDate, @EndDate)
         END TRY
         BEGIN CATCH
             DECLARE @msg nvarchar(2048) = N'Błąd dodania menu: ' + ERROR_MESSAGE();
@@ -1524,3 +1542,4 @@ AS
         END CATCH
     END
 GO
+
