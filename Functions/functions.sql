@@ -302,8 +302,8 @@ CREATE FUNCTION WhatWasNotInTheMenuOfGivenID(@MenuID int)
          FROM Products PI
          EXCEPT
          SELECT ProductID
-         FROM Menu
-         WHERE MenuID=@MenuID)
+         FROM MenuDetails
+         WHERE MenuID=@MenuID) AND P.IsAvailable = 1
 GO
 
     CREATE FUNCTION MenuIsCorrect(@MenuID int) RETURNS bit AS BEGIN DECLARE @SameItems int
@@ -338,3 +338,69 @@ SET
             MenuID = (@MenuID - 1)
     ) / 2 IF @SameItems <= @minAmountToChange BEGIN RETURN 1 END RETURN 0 END
 GO
+
+CREATE FUNCTION GetIdOfFollowingMenu(@MenuID int)
+RETURNS int
+    AS
+        BEGIN
+            RETURN (SELECT FollowingID FROM (SELECT MI.MenuID, LEAD(MenuID) OVER (ORDER BY startDate, endDate) as 'FollowingID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
+        END
+    GO
+
+CREATE FUNCTION GetIdOfPreviousMenu(@MenuID int)
+RETURNS int
+    AS
+        BEGIN
+            RETURN (SELECT FollowingID FROM (SELECT MI.MenuID, LAG(MenuID) OVER (ORDER BY startDate, endDate) as 'FollowingID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
+        END
+    GO
+
+
+CREATE FUNCTION ShowDuplicatesInPreviousAndFollowingMenu(@MenuID int)
+RETURNS table
+AS
+    RETURN SELECT P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+            WHERE MenuID = @MenuID
+            INTERSECT
+            (SELECT P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+            WHERE MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+            UNION
+            SELECT P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+            WHERE MenuID = dbo.GetIdOfFollowingMenu(@MenuID))
+GO
+
+CREATE FUNCTION ShowDuplicatesInPreviousAndFollowingMenuWithID(@MenuID int)
+RETURNS table
+    AS
+        RETURN SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P ON P.ProductID = MD.ProductID
+                WHERE
+                    P.Name IN (SELECT  MI.Name FROM dbo.ShowDuplicatesInPreviousAndFollowingMenu(@MenuID) MI)
+                    AND MenuID IN (SELECT PreviousID FROM (SELECT MI.MenuID, LAG(MenuID) OVER (ORDER BY startDate, endDate) as 'PreviousID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
+               UNION
+               SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P ON P.ProductID = MD.ProductID
+               WHERE
+                    P.Name IN (SELECT  MI.Name FROM dbo.ShowDuplicatesInPreviousAndFollowingMenu(@MenuID) MI)
+                    AND MenuID IN (SELECT FollowingID FROM (SELECT MI.MenuID, LEAD(MenuID) OVER (ORDER BY startDate, endDate) as 'FollowingID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
+go
+
+CREATE FUNCTION WhatWasNotInThePreviousAndFollowingMenu(@MenuID int)
+    RETURNS TABLE AS RETURN
+        SELECT P.ProductID, P.Name, P.Description as 'Product Description', C.CategoryName , C.Description as 'Category Description' FROM Products P
+                INNER JOIN Category C on C.CategoryID = P.CategoryID
+            WHERE P.ProductID IN
+        (SELECT P.ProductID FROM Products PI
+         EXCEPT
+            (SELECT ProductID FROM MenuDetails
+                WHERE MenuID=dbo.GetIdOfFollowingMenu(@MenuID))
+         EXCEPT
+            (SELECT ProductID FROM MenuDetails
+                WHERE MenuID=dbo.GetIdOfPreviousMenu (@MenuID))
+         ) AND P.IsAvailable = 1
+GO
+
+
