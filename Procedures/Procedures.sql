@@ -1168,12 +1168,7 @@ AS
             BEGIN;
                 THROW 52000, 'Nie ma takiego zamowienia', 1
             END
-        IF NOT EXISTS(SELECT * FROM Menu M
-                            INNER JOIN MenuDetails MD ON MD.MenuID = M.MenuID
-                            INNER JOIN Products P ON P.ProductID = M.MenuID
-                        WHERE P.Name = @ProductName
-                            AND (M.startDate <= GETDATE() AND (M.endDate = NULL OR M.endDate >= GETDATE()))
-        )
+        IF NOT EXISTS(SELECT * FROM CurrentMenu CM WHERE CM.Name like @ProductName)
         BEGIN;
             THROW 52000, N'Nie mozna zamowic tego produktu, gdyz nie ma go obecnie w menu', 1
         END
@@ -1186,19 +1181,12 @@ AS
         WHERE
         Products.Name = @ProductName
 
-        IF DATEPART(WEEKDAY, @OrderDate) != 4 AND DATEPART(WEEKDAY, @OrderDate) != 5 AND DATEPART(WEEKDAY, @OrderDate) != 6 AND @CategoryName LIKE 'sea food'
-        BEGIN;
-            THROW 52000, N'Nieprawidłowa data złożenia zamówienia na owoce morza', 1
-        END
-
         DECLARE @ProductID INT
         SELECT @ProductID = ProductID FROM Products WHERE Name = @ProductName
 
         DECLARE @BasePrice money
-        SELECT @BasePrice = Price from Products
-            INNER JOIN MenuDetails MD ON Products.ProductID = MD.ProductID
-            INNER JOIN Menu M2 ON MD.MenuID = M2.MenuID
-        WHERE startDate >= GETDATE() AND (endDate IS NULL OR  endDate <= GETDATE()) and MD.ProductID = @ProductID
+        SELECT @BasePrice = Price from CurrentMenu CM where CM.Name LIKE @ProductName
+
 
         DECLARE @CurrentValue money
         DECLARE @ClientID int
@@ -1210,14 +1198,21 @@ AS
 
         INSERT INTO OrderDetails(OrderID, Quantity, ProductID) VALUES (@OrderID, @Quantity, @ProductID)
 
-        UPDATE Orders SET OrderSum = @CurrentValue + (@BasePrice * @Quantity * @DiscMulti) WHERE OrderID = @OrderID
+        IF @DiscMulti IS NOT NULL
+            BEGIN
+                UPDATE Orders SET OrderSum = @CurrentValue + (@BasePrice * @Quantity * @DiscMulti) WHERE OrderID = @OrderID
+            END
+        ELSE
+            BEGIN
+                UPDATE Orders SET OrderSum = @CurrentValue + (@BasePrice * @Quantity * 1) WHERE OrderID = @OrderID
+            END
         END TRY
         BEGIN CATCH
             DECLARE @msg nvarchar(2048) = N'Błąd dodania produktu do zamowienia: ' + ERROR_MESSAGE();
             THROW 52000, @msg, 1
         END CATCH
     END
-GO
+go
 -- add product to order
 
 -- employee assigned to the order

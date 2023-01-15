@@ -351,7 +351,7 @@ CREATE FUNCTION GetIdOfPreviousMenu(@MenuID int)
 RETURNS int
     AS
         BEGIN
-            RETURN (SELECT FollowingID FROM (SELECT MI.MenuID, LAG(MenuID) OVER (ORDER BY startDate, endDate) as 'FollowingID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
+            RETURN (SELECT PreviousID FROM (SELECT MI.MenuID, LAG(MenuID) OVER (ORDER BY startDate, endDate) as 'PreviousID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
         END
     GO
 
@@ -369,8 +369,10 @@ AS
             UNION
             SELECT P.Name, P.Description FROM MenuDetails MD
                 INNER JOIN Products P on P.ProductID = MD.ProductID
-            WHERE MenuID = dbo.GetIdOfFollowingMenu(@MenuID))
-GO
+                INNER JOIN Menu M on M.MenuID = MD.MenuID
+            WHERE MD.MenuID = dbo.GetIdOfFollowingMenu(@MenuID)
+                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1)
+go
 
 CREATE FUNCTION ShowDuplicatesInPreviousAndFollowingMenuWithID(@MenuID int)
 RETURNS table
@@ -379,14 +381,17 @@ RETURNS table
                 INNER JOIN Products P ON P.ProductID = MD.ProductID
                 WHERE
                     P.Name IN (SELECT  MI.Name FROM dbo.ShowDuplicatesInPreviousAndFollowingMenu(@MenuID) MI)
-                    AND MenuID IN (SELECT PreviousID FROM (SELECT MI.MenuID, LAG(MenuID) OVER (ORDER BY startDate, endDate) as 'PreviousID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
+                    AND MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
                UNION
                SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
-                INNER JOIN Products P ON P.ProductID = MD.ProductID
+               INNER JOIN Products P ON P.ProductID = MD.ProductID
+               INNER JOIN Menu M on M.MenuID = MD.MenuID
                WHERE
                     P.Name IN (SELECT  MI.Name FROM dbo.ShowDuplicatesInPreviousAndFollowingMenu(@MenuID) MI)
-                    AND MenuID IN (SELECT FollowingID FROM (SELECT MI.MenuID, LEAD(MenuID) OVER (ORDER BY startDate, endDate) as 'FollowingID' FROM Menu MI) MO WHERE MO.MenuID = @MenuID)
+                    AND MD.MenuID = dbo.GetIdOfFollowingMenu(@MenuID)
+                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1
 go
+
 
 CREATE FUNCTION WhatWasNotInThePreviousAndFollowingMenu(@MenuID int)
     RETURNS TABLE AS RETURN
@@ -395,12 +400,45 @@ CREATE FUNCTION WhatWasNotInThePreviousAndFollowingMenu(@MenuID int)
             WHERE P.ProductID IN
         (SELECT P.ProductID FROM Products PI
          EXCEPT
-            (SELECT ProductID FROM MenuDetails
-                WHERE MenuID=dbo.GetIdOfFollowingMenu(@MenuID))
+            (SELECT ProductID FROM MenuDetails MD
+                    INNER JOIN Menu M on M.MenuID = MD.MenuID
+                WHERE MD.MenuID=dbo.GetIdOfFollowingMenu(@MenuID)
+                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1
+                )
          EXCEPT
             (SELECT ProductID FROM MenuDetails
-                WHERE MenuID=dbo.GetIdOfPreviousMenu (@MenuID))
+                WHERE MenuID=dbo.GetIdOfPreviousMenu(@MenuID) )
          ) AND P.IsAvailable = 1
+go
+
+CREATE FUNCTION getNotReservedTablesOnAParticularDay(@Date datetime)
+RETURNS TABLE
+    AS
+        RETURN (SELECT TableID, ChairAmount FROM Tables
+                    WHERE TableID NOT IN(SELECT ReservationDetails.TableID FROM ReservationDetails
+                                            INNER JOIN ReservationCompany RC ON RC.ReservationID = ReservationDetails.ReservationID
+                                            INNER JOIN Reservation R2 ON RC.ReservationID = R2.ReservationID
+                                         WHERE
+                                            (CAST(@Date AS date) =  CAST(startDate AS date))
+                                            AND (CAST(@Date AS date) =  CAST(endDate AS date))
+                                            AND (STATUS NOT LIKE 'cancelled' AND STATUS NOT LIKE 'denied')
+                                            AND isActive = 1
+                                        ) AND isActive = 1
+                UNION
+                SELECT TableID, ChairAmount FROM Tables
+                    WHERE TableID NOT IN(SELECT ReservationDetails.TableID FROM ReservationDetails
+                                            INNER JOIN ReservationIndividual RC ON RC.ReservationID = ReservationDetails.ReservationID
+                                            INNER JOIN Reservation R2 ON RC.ReservationID = R2.ReservationID
+                                          WHERE
+                                                (CAST(@Date AS date) =  CAST(startDate AS date))
+                                                AND (CAST(@Date AS date) =  CAST(endDate AS date))
+                                                AND (
+                                                    STATUS NOT LIKE 'cancelled'
+                                                    AND STATUS NOT LIKE 'denied'
+                                                )
+                                                AND isActive = 1
+                                        ) AND isActive = 1
+               )
 GO
 
 
