@@ -115,8 +115,7 @@ CREATE TABLE MenuDetails (
 CREATE TABLE OrderDetails (
     OrderID int  NOT NULL,
     Quantity int  NOT NULL check ( Quantity > 0 ),
-    ProductID int  NOT NULL,
-    CONSTRAINT OrderDetails_pk PRIMARY KEY  (OrderID)
+    ProductID int  NOT NULL
 );
 
 -- Table: Orders
@@ -129,7 +128,7 @@ CREATE TABLE Orders (
     PaymentStatusID int  NOT NULL,
     PaymentMethodID int  NOT NULL,
     staffID int  NOT NULL,
-    OrderSum money  NOT NULL check ( OrderSum > 0 ),
+    OrderSum money  NOT NULL check ( OrderSum >= 0 ),
     OrderDate datetime  NOT NULL default getdate(),
     OrderCompletionDate datetime  NULL ,
     OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked', 'cancelled')),
@@ -199,8 +198,7 @@ CREATE TABLE ReservationCompany (
 -- Table: ReservationDetails
 CREATE TABLE ReservationDetails (
     ReservationID int  NOT NULL,
-    TableID int  NOT NULL,
-    CONSTRAINT ReservationDetails_pk PRIMARY KEY  (ReservationID)
+    TableID int  NOT NULL
 );
 
 -- Table: ReservationIndividual
