@@ -8,8 +8,6 @@ CREATE FUNCTION GetAvgPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN (
 ) END
 GO
 
-
-
 CREATE FUNCTION GetMinimumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN (
         SELECT
             TOP 1 MIN(Price)
@@ -123,7 +121,7 @@ SELECT
 FROM
     ClientStatistics
 WHERE
-    [value ordered with discounts] > @value
+    [value ordered] > @value
 go
 
 
@@ -442,3 +440,742 @@ RETURNS TABLE
 GO
 
 
+CREATE FUNCTION GenerateIndividualClientReport(@ClientID int, @From Date, @To Date)
+RETURNS @report TABLE (
+                        field NVARCHAR ( 100 ),
+                        field_value NVARCHAR ( 100 )
+                      )
+AS
+BEGIN
+    IF NOT EXISTS(SELECT * FROM IndividualClient WHERE ClientID = @ClientID)
+    BEGIN
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            N'Błąd' ,
+            'Brak takiego klienta indywidualnego!'
+        )
+       return
+    END
+    DECLARE @FirstName NVARCHAR (50)
+    SET @FirstName = (SELECT FirstName FROM IndividualClient INNER JOIN Person P on IndividualClient.PersonID = P.PersonID WHERE ClientID = @ClientID)
+
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'First Name' ,
+        @FirstName
+    )
+
+    DECLARE @LastName NVARCHAR (50)
+    SET @LastName = (SELECT LastName FROM IndividualClient INNER JOIN Person P on IndividualClient.PersonID = P.PersonID WHERE ClientID = @ClientID)
+
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Last name' ,
+        @LastName
+    )
+
+    DECLARE @TotalOrders INT
+    SET @TotalOrders = (
+        SELECT count (*) FROM Orders
+        WHERE ClientID = @ClientID
+        AND OrderDate BETWEEN @From AND @To
+    )
+
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Total orders',
+        @TotalOrders
+    )
+
+    DECLARE @CancelledOSOrders INT
+    SET @CancelledOSOrders = (
+        SELECT count (*) FROM Orders
+        WHERE ClientID = @ClientID
+            AND OrderDate BETWEEN @From AND @To
+            AND LOWER(OrderStatus) LIKE 'cancelled'
+    )
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Cancelled orders',
+        @CancelledOSOrders
+    )
+
+    DECLARE @DeniedOSOrders INT
+    SET @DeniedOSOrders = (
+        SELECT count (*) FROM Orders
+        WHERE ClientID = @ClientID
+            AND OrderDate BETWEEN @From AND @To
+            AND LOWER(OrderStatus) LIKE 'denied'
+    )
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Denied orders',
+        @DeniedOSOrders
+    )
+
+    DECLARE @TotalOSOrdersValue MONEY
+
+    SET @TotalOSOrdersValue = (SELECT SUM(OrderSum) FROM Orders
+                                WHERE ClientID = @ClientID
+                                    AND OrderDate BETWEEN @From AND @To
+                                    AND LOWER(OrderStatus) NOT LIKE 'cancelled' AND LOWER(OrderStatus) NOT LIKE 'denied' )
+    IF @TotalOSOrdersValue IS NULL
+        BEGIN
+           SET @TotalOSOrdersValue = 0
+        END
+
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Total orders value',
+        @TotalOSOrdersValue
+    )
+
+    DECLARE @TotalTakeAwayOrders INT
+    SET @TotalTakeAwayOrders = (
+        SELECT COUNT(*) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                        WHERE ClientID = @ClientID
+                        AND OrderDate BETWEEN @From AND @To
+                        AND LOWER(OrderStatus) NOT LIKE 'cancelled' AND LOWER(OrderStatus) NOT LIKE 'denied'
+        )
+
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Executed take away orders' ,
+        @TotalTakeAwayOrders
+    )
+
+    DECLARE @CancelledTakeAwayOrders INT
+    SET @CancelledTakeAwayOrders = (
+        SELECT COUNT(*) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                        WHERE ClientID = @ClientID
+                        AND OrderDate BETWEEN @From AND @To
+                        AND LOWER(OrderStatus) LIKE 'cancelled'
+        )
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Cancelled take away orders' ,
+        @TotalTakeAwayOrders
+    )
+
+    DECLARE @DeniedTakeAwayOrders INT
+    SET @DeniedTakeAwayOrders = (
+        SELECT COUNT(*) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                        WHERE ClientID = @ClientID
+                        AND OrderDate BETWEEN @From AND @To
+                        AND LOWER(OrderStatus) LIKE 'denied'
+        )
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Denied take away orders' ,
+        @DeniedTakeAwayOrders
+    )
+
+    DECLARE @TotalTAOrdersValue MONEY
+    SET @TotalTAOrdersValue = (
+                SELECT SUM(OrderSum) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                        WHERE ClientID = @ClientID
+                        AND OrderDate BETWEEN @From AND @To
+                        AND LOWER(OrderStatus) NOT LIKE 'cancelled' AND LOWER(OrderStatus) NOT LIKE 'denied'
+        )
+
+    IF @TotalTAOrdersValue IS NULL
+        BEGIN
+            SET @TotalTAOrdersValue = 0
+        END
+
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Total take away orders value' ,
+        @TotalTAOrdersValue
+    )
+
+    DECLARE @Reservations int
+    SET @Reservations = (
+            SELECT COUNT(*) FROM ReservationIndividual RI INNER JOIN Reservation R on R.ReservationID = RI.ReservationID
+                            WHERE ClientID = @ClientID
+                            AND R.startDate BETWEEN @From AND @To
+        )
+
+    INSERT @report
+    (
+        field ,
+        field_value
+    )
+    VALUES
+    (
+        'Reservations number' ,
+        @reservations
+    )
+    RETURN
+END
+GO
+
+CREATE FUNCTION GenerateCompanyReport(@CompanyID int, @From Date, @To date)
+RETURNS @Report Table (
+                        Field NVARCHAR(100),
+                        Field_Value NVARCHAR(100)
+                      )
+AS
+    BEGIN
+        IF NOT EXISTS(SELECT * FROM Companies WHERE ClientID = @CompanyID)
+            BEGIN
+                INSERT @Report
+                (
+                    Field ,
+                    Field_Value
+                )
+                VALUES
+                (
+                    N'Błąd' ,
+                    'Brak takiej Firmy!'
+                )
+                RETURN
+            END
+        DECLARE @CompanyName NVARCHAR(50)
+        SET @CompanyName = (SELECT CompanyName FROM Companies WHERE ClientID = @CompanyID)
+
+        INSERT @Report
+        (
+            Field,
+            Field_Value
+        )
+        VALUES
+        (
+            'Company Name',
+            @CompanyName
+        )
+
+        DECLARE @Nip char(10)
+        SET @Nip = (SELECT Nip FROM Companies WHERE ClientID = @CompanyID)
+
+        INSERT @Report
+        (
+            Field,
+            Field_Value
+        )
+        VALUES
+        (
+            'NIP',
+            @Nip
+        )
+
+        DECLARE @KRS char(10)
+        SET @KRS = (SELECT KRS FROM Companies WHERE ClientID = @CompanyID)
+
+        IF @KRS IS NULL
+            BEGIN
+               SET @KRS = ''
+            END
+
+        INSERT @Report
+        (
+            Field,
+            Field_Value
+        )
+        VALUES
+        (
+            'KRS',
+            @KRS
+        )
+
+        DECLARE @Regon char(9)
+        SET @Regon = (SELECT Regon FROM Companies WHERE ClientID = @CompanyID)
+
+        IF @Regon IS NULL
+            BEGIN
+               SET @Regon = ''
+            END
+
+        INSERT @Report
+        (
+            Field,
+            Field_Value
+        )
+        VALUES
+        (
+            'Regon',
+            @Regon
+        )
+
+        DECLARE @TotalOrders INT
+        SET @TotalOrders = (
+            SELECT count (*) FROM Orders
+            WHERE ClientID = @CompanyID
+            AND OrderDate BETWEEN @From AND @To
+        )
+
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Total orders',
+            @TotalOrders
+        )
+
+        DECLARE @CancelledOSOrders INT
+        SET @CancelledOSOrders = (
+            SELECT count (*) FROM Orders
+            WHERE ClientID = @CompanyID
+                AND OrderDate BETWEEN @From AND @To
+                AND LOWER(OrderStatus) LIKE 'cancelled'
+        )
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Cancelled orders',
+            @CancelledOSOrders
+        )
+
+        DECLARE @DeniedOSOrders INT
+        SET @DeniedOSOrders = (
+            SELECT count (*) FROM Orders
+            WHERE ClientID = @CompanyID
+                AND OrderDate BETWEEN @From AND @To
+                AND LOWER(OrderStatus) LIKE 'denied'
+        )
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Denied orders',
+            @DeniedOSOrders
+        )
+
+        DECLARE @TotalOSOrdersValue MONEY
+
+        SET @TotalOSOrdersValue = (SELECT SUM(OrderSum) FROM Orders
+                                    WHERE ClientID = @CompanyID
+                                        AND OrderDate BETWEEN @From AND @To
+                                        AND LOWER(OrderStatus) NOT LIKE 'cancelled' AND LOWER(OrderStatus) NOT LIKE 'denied' )
+        IF @TotalOSOrdersValue IS NULL
+            BEGIN
+               SET @TotalOSOrdersValue = 0
+            END
+
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Total orders value',
+            @TotalOSOrdersValue
+        )
+
+        DECLARE @TotalTakeAwayOrders INT
+        SET @TotalTakeAwayOrders = (
+            SELECT COUNT(*) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                            WHERE ClientID = @CompanyID
+                            AND OrderDate BETWEEN @From AND @To
+                            AND LOWER(OrderStatus) NOT LIKE 'cancelled' AND LOWER(OrderStatus) NOT LIKE 'denied'
+            )
+
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Executed take away orders' ,
+            @TotalTakeAwayOrders
+        )
+
+        DECLARE @CancelledTakeAwayOrders INT
+        SET @CancelledTakeAwayOrders = (
+            SELECT COUNT(*) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                            WHERE ClientID = @CompanyID
+                            AND OrderDate BETWEEN @From AND @To
+                            AND LOWER(OrderStatus) LIKE 'cancelled'
+            )
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Cancelled take away orders' ,
+            @TotalTakeAwayOrders
+        )
+
+        DECLARE @DeniedTakeAwayOrders INT
+        SET @DeniedTakeAwayOrders = (
+            SELECT COUNT(*) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                            WHERE ClientID = @CompanyID
+                            AND OrderDate BETWEEN @From AND @To
+                            AND LOWER(OrderStatus) LIKE 'denied'
+            )
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Denied take away orders' ,
+            @DeniedTakeAwayOrders
+        )
+
+        DECLARE @TotalTAOrdersValue MONEY
+        SET @TotalTAOrdersValue = (
+                    SELECT SUM(OrderSum) FROM Orders INNER JOIN OrdersTakeaways OT on OT.TakeawaysID = Orders.TakeawayID
+                            WHERE ClientID = @CompanyID
+                            AND OrderDate BETWEEN @From AND @To
+                            AND LOWER(OrderStatus) NOT LIKE 'cancelled' AND LOWER(OrderStatus) NOT LIKE 'denied'
+            )
+
+        IF @TotalTAOrdersValue IS NULL
+            BEGIN
+                SET @TotalTAOrdersValue = 0
+            END
+
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Total take away orders value' ,
+            @TotalTAOrdersValue
+        )
+
+        DECLARE @Reservations int
+        SET @Reservations = (
+                SELECT COUNT(*) FROM ReservationIndividual RI INNER JOIN Reservation R on R.ReservationID = RI.ReservationID
+                                WHERE ClientID = @CompanyID
+                                AND R.startDate BETWEEN @From AND @To
+            )
+
+        INSERT @report
+        (
+            field ,
+            field_value
+        )
+        VALUES
+        (
+            'Reservations number' ,
+            @reservations
+        )
+        RETURN
+    END
+go
+
+CREATE FUNCTION GenerateTableWeeklyReport(@From Date, @To Date)
+RETURNS TABLE
+AS
+    RETURN (
+        SELECT
+            YEAR(R2.StartDate) AS year,
+            DATEPART(iso_week, R2.StartDate) AS week,
+            T.TableID AS table_id,
+            T.ChairAmount AS table_size,
+            COUNT(RD.TableID) AS how_many_times_reserved
+        FROM Tables T
+            INNER JOIN ReservationDetails RD ON T.TableID = RD.TableID
+            INNER JOIN ReservationIndividual RI ON RI.ReservationID = RD.ReservationID
+            INNER JOIN Reservation R2 ON RD.ReservationID = R2.ReservationID
+        WHERE
+            (
+                LOWER(STATUS) NOT LIKE 'cancelled'
+                AND LOWER(STATUS) NOT LIKE 'denied'
+                AND startDate BETWEEN @From AND @To
+            )
+        GROUP BY
+            YEAR(R2.StartDate),
+            DATEPART(iso_week, R2.StartDate),
+            T.TableID,
+            T.ChairAmount
+    UNION
+        SELECT
+            YEAR(R2.StartDate) AS year,
+            DATEPART(iso_week, R2.StartDate) AS week,
+            T.TableID AS table_id,
+            T.ChairAmount AS table_size,
+            COUNT(RD.TableID) AS how_many_times_reserved
+        FROM Tables T
+            INNER JOIN ReservationDetails RD ON T.TableID = RD.TableID
+            INNER JOIN ReservationCompany RI ON RI.ReservationID = RD.ReservationID
+            INNER JOIN Reservation R2 ON RD.ReservationID = R2.ReservationID
+        WHERE
+            (
+                LOWER(STATUS) NOT LIKE 'cancelled'
+                AND LOWER(STATUS) NOT LIKE 'denied'
+                AND startDate BETWEEN @From AND @To
+            )
+        GROUP BY
+            YEAR(R2.StartDate),
+            DATEPART(iso_week, R2.StartDate),
+            T.TableID,
+            T.ChairAmount
+    )
+GO
+
+CREATE FUNCTION GenerateTableMonthlyReport(@From Date, @To Date)
+RETURNS TABLE
+AS
+   RETURN (
+        SELECT
+            YEAR(R2.StartDate) AS year,
+            DATEPART(MONTH, R2.StartDate) AS MONTH,
+            T.TableID AS table_id,
+            T.ChairAmount AS table_size,
+            COUNT(RD.TableID) AS how_many_times_reserved
+        FROM Tables T
+            INNER JOIN ReservationDetails RD ON T.TableID = RD.TableID
+            INNER JOIN ReservationIndividual RI ON RI.ReservationID = RD.ReservationID
+            INNER JOIN Reservation R2 ON RD.ReservationID = R2.ReservationID
+        WHERE
+            (
+                LOWER(STATUS) NOT LIKE 'cancelled'
+                AND LOWER(STATUS) NOT LIKE 'denied'
+                AND startDate BETWEEN @From AND @To
+            )
+        GROUP BY
+            YEAR(R2.StartDate),
+            DATEPART(MONTH, R2.StartDate),
+            T.TableID,
+            T.ChairAmount
+    UNION
+        SELECT
+            YEAR(R2.StartDate) AS year,
+            DATEPART(MONTH, R2.StartDate) AS MONTH,
+            T.TableID AS table_id,
+            T.ChairAmount AS table_size,
+            COUNT(RD.TableID) AS how_many_times_reserved
+        FROM
+            Tables T
+            INNER JOIN ReservationDetails RD ON T.TableID = RD.TableID
+            INNER JOIN ReservationCompany RI ON RI.ReservationID = RD.ReservationID
+            INNER JOIN Reservation R2 ON RD.ReservationID = R2.ReservationID
+        WHERE
+            (
+                LOWER(STATUS) NOT LIKE 'cancelled'
+                AND LOWER(STATUS) NOT LIKE 'denied'
+                AND startDate BETWEEN @From AND @To
+            )
+        GROUP BY
+            YEAR(R2.StartDate),
+            DATEPART(MONTH, R2.StartDate),
+            T.TableID,
+            T.ChairAmount
+    )
+GO
+
+CREATE FUNCTION GenerateReservationReport(@From Date, @To Date)
+RETURNS Table
+AS
+    RETURN (
+        SELECT
+            O.ClientID AS 'Numer clienta',
+            startDate,
+            endDate,
+            CONVERT(TIME, endDate - startDate, 108) AS 'Czas trwania',
+            O.OrderSum,
+            O.OrderDate,
+            O.OrderCompletionDate,
+            OD.Quantity,
+            RD.TableID
+        FROM Reservation
+            INNER JOIN Orders O ON Reservation.ReservationID = O.ReservationID
+            INNER JOIN OrderDetails OD ON O.OrderID = OD.OrderID
+            INNER JOIN ReservationCompany RC ON Reservation.ReservationID = RC.ReservationID
+            INNER JOIN ReservationDetails RD ON RC.ReservationID = RD.ReservationID
+        WHERE
+            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
+            AND startDate BETWEEN @From AND @To
+    UNION
+        SELECT
+            O.ClientID AS 'Numer clienta',
+            startDate,
+            endDate,
+            CONVERT(TIME, endDate - startDate, 108) AS 'Czas trwania',
+            O.OrderSum,
+            O.OrderDate,
+            O.OrderCompletionDate,
+            OD.Quantity,
+            RD.TableID
+        FROM Reservation
+            INNER JOIN Orders O ON Reservation.ReservationID = O.ReservationID
+            INNER JOIN OrderDetails OD ON O.OrderID = OD.OrderID
+            INNER JOIN ReservationIndividual RC ON Reservation.ReservationID = RC.ReservationID
+            INNER JOIN ReservationDetails RD ON RC.ReservationID = RD.ReservationID
+        WHERE
+            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
+            AND startDate BETWEEN @From AND @To
+    )
+GO
+
+CREATE FUNCTION GenerateReservationMonthlyReport(@From Date, @To Date)
+RETURNS Table
+AS
+    RETURN (
+        SELECT
+            R.ReservationID,
+            R.startDate,
+            R.endDate,
+            R.Status,
+            O.ClientID,
+            DATEPART(MONTH, cast(O.OrderDate AS DATE)) AS 'Miesiac',
+            DATEPART(YEAR, cast(O.OrderDate AS DATE)) AS 'Rok',
+            count(OD.ProductID) AS 'Liczba zamowionych produktow'
+        FROM Reservation R
+            INNER JOIN Orders O on R.ReservationID = O.ReservationID
+            INNER JOIN OrderDetails OD on O.OrderID = OD.OrderID
+        WHERE
+            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
+            AND LOWER(O.OrderStatus) NOT LIKE 'denied' AND LOWER(O.OrderStatus) NOT LIKE 'cancelled'
+            AND startDate BETWEEN @From AND @To
+        GROUP BY
+            R.ReservationID,
+            R.startDate,
+            R.endDate,
+            R.Status,
+            O.ClientID,
+            DATEPART(MONTH, cast(O.OrderDate AS DATE)),
+            DATEPART(YEAR, cast(O.OrderDate AS DATE))
+    )
+GO
+
+CREATE FUNCTION GenerateReservationWeeklyReport(@From Date, @To Date)
+RETURNS Table
+AS
+    RETURN (
+        SELECT
+            R.ReservationID,
+            R.startDate,
+            R.endDate,
+            R.Status,
+            O.ClientID,
+            DATEPART(iso_week, cast(O.OrderDate AS DATE)) AS 'Tydzien',
+            DATEPART(YEAR, cast(O.OrderDate AS DATE)) AS 'Rok',
+            count(OD.ProductID) AS 'Liczba zamowionych produktow'
+        FROM Reservation R
+            INNER JOIN Orders O on R.ReservationID = O.ReservationID
+            INNER JOIN OrderDetails OD on O.OrderID = OD.OrderID
+        WHERE
+            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
+            AND LOWER(O.OrderStatus) NOT LIKE 'denied' AND LOWER(O.OrderStatus) NOT LIKE 'cancelled'
+            AND startDate BETWEEN @From AND @To
+        GROUP BY
+            R.ReservationID,
+            R.startDate,
+            R.endDate,
+            R.Status,
+            O.ClientID,
+            DATEPART(iso_week, cast(O.OrderDate AS DATE)),
+            DATEPART(YEAR, cast(O.OrderDate AS DATE))
+        )
+
+GO
+
+CREATE FUNCTION GenerateMenuReport(@MenuID int)
+RETURNS @Report Table(
+                        Field nvarchar(100),
+                        Field_value nvarchar(100)
+                     )
+AS
+    BEGIN
+        IF NOT EXISTS(SELECT * FROM Menu WHERE MenuID = @MenuID)
+            BEGIN
+                INSERT @Report (Field, Field_value)
+                VALUES (
+                            N'Błąd',
+                            'Nie ma menu o takim ID'
+                       )
+                RETURN
+            END
+
+        DECLARE @StartDate DATETIME
+        DECLARE @EndDate DATETIME
+
+        SET @StartDate = (SELECT startDate FROM Menu WHERE MenuID = @MenuID)
+        SET @EndDate = (SELECT endDate FROM Menu WHERE MenuID = @MenuID)
+
+        INSERT @Report (Field, Field_value)
+        VALUES (
+                    'StartDate',
+                    @StartDate
+               )
+
+        INSERT @Report (Field, Field_value)
+        VALUES (
+                    'EndDate',
+                    @EndDate
+               )
+
+        INSERT @Report (Field, Field_value)
+        SELECT Name, ISNULL((SELECT SUM(Quantity) FROM OrderDetails INNER JOIN Orders O on O.OrderID = OrderDetails.OrderID WHERE P.ProductID = OrderDetails.ProductID AND OrderDate BETWEEN @StartDate AND @EndDate ), 0) FROM MenuDetails
+            INNER JOIN Products P on P.ProductID = MenuDetails.ProductID
+        WHERE MenuID = @MenuID
+
+        RETURN
+    END
+GO
