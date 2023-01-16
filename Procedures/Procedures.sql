@@ -19,6 +19,7 @@ CREATE PROCEDURE addCategory @CategoryName nvarchar(50), @Description nvarchar(1
     END
 GO
 -- Category add
+
 -- Modify table size 
 CREATE PROCEDURE ModifyTableSize @TableID int, @Size int
 AS
@@ -772,7 +773,7 @@ AS
 GO
 -- change Payment status for order
 -- order Insert Instant Pay
-CREATE PROCEDURE OrderInsertInstantPay @ClientID int,
+CREATE PROCEDURE AddOrderInstantPay @ClientID int,
                                     @OrderCompletionDate DATE,
                                     @PaymentStatusName_ varchar(50),
                                     @PaymentMethodName_ varchar(50),
@@ -827,7 +828,7 @@ END
 GO
 -- order Insert Instant Pay
 -- order Insert Month Pay
-CREATE PROCEDURE OrderInsertMonthPay  @ClientID int,
+CREATE PROCEDURE AddOrderMonthPay  @ClientID int,
                                     @OrderCompletionDate DATE,
                                     @PaymentStatusName_ varchar(50),
                                     @PaymentMethodName_ varchar(50),
@@ -1184,9 +1185,13 @@ AS
         DECLARE @ProductID INT
         SELECT @ProductID = ProductID FROM Products WHERE Name = @ProductName
 
+        IF EXISTS(SELECT * FROM OrderDetails WHERE OrderID = @OrderID AND ProductID = @ProductID)
+        BEGIN;
+            THROW 52000, N'Produkt jest już w zamówieniu!', 1
+        END
+
         DECLARE @BasePrice money
         SELECT @BasePrice = Price from CurrentMenu CM where CM.Name LIKE @ProductName
-
 
         DECLARE @CurrentValue money
         DECLARE @ClientID int
@@ -1213,6 +1218,8 @@ AS
         END CATCH
     END
 go
+
+
 -- add product to order
 
 -- employee assigned to the order
@@ -1511,6 +1518,43 @@ AS
         END CATCH
     END
 GO
+-- add discount var
+-- add discount
+CREATE PROCEDURE addDiscount @ClientID int, @DiscountType char(9)
+AS
+    BEGIN
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM IndividualClient WHERE ClientID = @ClientID)
+                BEGIN
+                    THROW 52000, N'Nie ma takiego klienta indywidualnego! ', 1
+                END
+            IF LOWER(@DiscountType) NOT IN('Permanent', 'Temporary')
+                BEGIN
+                    THROW 52000, N'Nie ma takiego typu zniżki! ', 1
+                END
+
+            DECLARE @VarID int
+            SET @VarID = (SELECT MAX(VarID) FROM DiscountsVar WHERE DiscountType LIKE @DiscountType)
+
+            IF @DiscountType LIKE 'Permanent'
+                BEGIN
+                    INSERT INTO Discounts(ClientID, VarID, AppliedDate, isUsed)
+                    VALUES(@ClientID, @VarID, GETDATE(), NULL)
+                END
+            ELSE
+                BEGIN
+                    INSERT INTO Discounts(ClientID, VarID, AppliedDate)
+                    VALUES(@ClientID, @VarID, GETDATE())
+                END
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = N'Błąd dodania zmiennej dotyczącej rabatu: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+
+-- add discount
 
 -- add Employee to Company 
 CREATE PROCEDURE addEmployeeToCompany @CompanyID int, @PersonID int
