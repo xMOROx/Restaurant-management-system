@@ -1,2489 +1,4515 @@
-EXEC addProductToOrder 2, 2, 'Chutney sauce';
-EXEC addProductToOrder 2, 2, 'Cereal';
-EXEC addProductToOrder 2, 2, 'Cookie sandwich';
-EXEC addProductToOrder 2, 2, 'Pepsi';
-EXEC addProductToOrder 2, 1, 'Americano';
-EXEC addProductToOrder 304, 1, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 304, 3, 'Fried zucchini';
-EXEC addProductToOrder 304, 3, 'Fried calamari';
-EXEC addProductToOrder 304, 1, 'American cheese';
-EXEC addProductToOrder 304, 2, 'Split pea soup';
-EXEC addProductToOrder 605, 2, 'Tomato juice';
-EXEC addProductToOrder 605, 2, 'Chocolate candy bar';
-EXEC addProductToOrder 605, 2, 'Peach custard';
-EXEC addProductToOrder 605, 1, 'Diet Sprite';
-EXEC addProductToOrder 605, 1, 'Apple';
-EXEC addProductToOrder 906, 3, 'Pasta with zucchini';
-EXEC addProductToOrder 906, 1, 'Beef soup';
-EXEC addProductToOrder 906, 1, 'Vegetable chili';
-EXEC addProductToOrder 906, 2, 'Cherry';
-EXEC addProductToOrder 906, 3, 'Cereal sandwich roll';
-EXEC addProductToOrder 907, 3, 'Caesar salad';
-EXEC addProductToOrder 907, 2, 'Chicken soup';
-EXEC addProductToOrder 907, 2, 'Guacamole';
-EXEC addProductToOrder 907, 2, 'Green tea';
-EXEC addProductToOrder 907, 2, 'Anise';
-EXEC addProductToOrder 908, 3, 'Basil';
-EXEC addProductToOrder 908, 3, 'Apple pudding';
-EXEC addProductToOrder 908, 3, 'Diet Pepsi';
-EXEC addProductToOrder 908, 2, 'Chicken and mushroom soup';
-EXEC addProductToOrder 908, 1, 'Cookie sandwich roll';
-EXEC addProductToOrder 909, 1, 'Vanilla pudding';
-EXEC addProductToOrder 909, 1, 'Mozzarella cheese';
-EXEC addProductToOrder 909, 3, 'Beef stew with potatoes';
-EXEC addProductToOrder 909, 3, 'Curry';
-EXEC addProductToOrder 909, 3, 'Yellow tea';
-EXEC addProductToOrder 910, 1, 'Peach custard';
-EXEC addProductToOrder 910, 1, 'Beef casserole';
-EXEC addProductToOrder 910, 2, 'Allspice';
-EXEC addProductToOrder 910, 2, 'Romano cheese';
-EXEC addProductToOrder 910, 1, 'Tzatziki';
-EXEC addProductToOrder 911, 2, 'Cheddar cheese';
-EXEC addProductToOrder 911, 3, 'Blackberry';
-EXEC addProductToOrder 911, 1, 'Diet Sierra Mist';
-EXEC addProductToOrder 911, 1, 'Americano';
-EXEC addProductToOrder 911, 2, 'Chocolate candy roll';
-EXEC addProductToOrder 912, 3, 'Beef stew with mushrooms';
-EXEC addProductToOrder 912, 2, 'Grilled octopus with a citrus marinade';
-EXEC addProductToOrder 912, 2, 'Beef stew with cabbage';
-EXEC addProductToOrder 912, 3, 'Pumpkin pudding';
-EXEC addProductToOrder 912, 3, 'Chicken tortilla soup';
-EXEC addProductToOrder 913, 2, 'Cinnamon';
-EXEC addProductToOrder 913, 2, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 913, 1, 'Americano';
-EXEC addProductToOrder 913, 2, 'Banana pudding';
-EXEC addProductToOrder 913, 1, 'Vegetable lasagna';
-EXEC addProductToOrder 914, 2, 'Café Cubano';
-EXEC addProductToOrder 914, 1, 'Gouda cheese';
-EXEC addProductToOrder 914, 3, 'Hummus';
-EXEC addProductToOrder 914, 3, 'Pistachio ice cream';
-EXEC addProductToOrder 914, 3, 'Strawberry pudding';
-EXEC addProductToOrder 915, 2, 'Chestnut';
-EXEC addProductToOrder 915, 2, 'Pasta with crab';
-EXEC addProductToOrder 915, 3, 'Café mocha';
-EXEC addProductToOrder 915, 3, 'Cashew';
-EXEC addProductToOrder 916, 1, 'Curry';
-EXEC addProductToOrder 916, 1, 'Pasta with zucchini';
-EXEC addProductToOrder 916, 1, 'Diet Mountain Dew';
-EXEC addProductToOrder 916, 3, 'Butter roll';
-EXEC addProductToOrder 916, 3, 'Chocolate chip cookie dough ice cream';
-EXEC addProductToOrder 917, 1, 'Diet Fanta';
-EXEC addProductToOrder 917, 1, 'Café de pico';
-EXEC addProductToOrder 917, 2, 'Macadamia';
-EXEC addProductToOrder 917, 1, 'Gruyere cheese';
-EXEC addProductToOrder 917, 3, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 918, 2, 'Brie cheese';
-EXEC addProductToOrder 918, 2, 'Fish';
-EXEC addProductToOrder 918, 1, 'Oysters Rockefeller  oysters baked with a spinach and butter sauce;';
-EXEC addProductToOrder 918, 2, 'Chef salad';
-EXEC addProductToOrder 918, 2, 'Lemon juice';
-EXEC addProductToOrder 919, 2, 'Cookie sandwich bun';
-EXEC addProductToOrder 919, 1, 'Walnut';
-EXEC addProductToOrder 919, 1, 'Strawberry ice cream';
-EXEC addProductToOrder 919, 1, '7 Up';
-EXEC addProductToOrder 919, 3, 'Muenster cheese';
-EXEC addProductToOrder 920, 2, 'Coca-Cola';
-EXEC addProductToOrder 920, 3, 'Chicken casserole';
-EXEC addProductToOrder 920, 3, 'Baked stuffed peppers';
-EXEC addProductToOrder 920, 3, 'Apple custard';
-EXEC addProductToOrder 920, 1, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 921, 1, 'Baked stuffed artichokes';
-EXEC addProductToOrder 921, 3, 'Pomegranate juice';
-EXEC addProductToOrder 921, 2, 'Chicken noodle soup';
-EXEC addProductToOrder 921, 3, 'Coconut cake';
-EXEC addProductToOrder 921, 2, 'Salsa';
-EXEC addProductToOrder 922, 3, 'Cinnamon';
-EXEC addProductToOrder 922, 3, 'White tea';
-EXEC addProductToOrder 922, 2, 'Corn chowder';
-EXEC addProductToOrder 922, 1, 'Corn salad';
-EXEC addProductToOrder 922, 2, 'Baguette';
-EXEC addProductToOrder 923, 2, 'Fish';
-EXEC addProductToOrder 923, 3, 'Carrot juice';
-EXEC addProductToOrder 923, 3, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 923, 2, 'Diet 7 Up';
-EXEC addProductToOrder 923, 1, 'Coriander';
-EXEC addProductToOrder 924, 3, 'Vegetable stir fry';
-EXEC addProductToOrder 924, 2, 'Curry';
-EXEC addProductToOrder 924, 1, 'Caprese salad';
-EXEC addProductToOrder 924, 1, 'Blueberry';
-EXEC addProductToOrder 924, 2, 'Provolone cheese';
-EXEC addProductToOrder 925, 3, 'Chicken and dumplings';
-EXEC addProductToOrder 925, 3, 'Split pea soup';
-EXEC addProductToOrder 925, 3, 'Chocolate chip ice cream';
-EXEC addProductToOrder 925, 2, 'Baked stuffed tomatoes';
-EXEC addProductToOrder 925, 3, 'Pu-erh tea';
-EXEC addProductToOrder 926, 1, 'Chicken tortilla soup';
-EXEC addProductToOrder 926, 3, 'Cortado';
-EXEC addProductToOrder 926, 2, 'Baked stuffed artichokes';
-EXEC addProductToOrder 926, 1, 'Banana pudding';
-EXEC addProductToOrder 926, 3, 'Cashew';
-EXEC addProductToOrder 927, 1, 'Avocado';
-EXEC addProductToOrder 927, 3, 'Coffee cake';
-EXEC addProductToOrder 927, 2, 'Fish stick';
-EXEC addProductToOrder 927, 1, 'Pasta with eggplant';
-EXEC addProductToOrder 927, 2, 'Bundt cake';
-EXEC addProductToOrder 928, 1, 'Baked stuffed shrimp';
-EXEC addProductToOrder 928, 1, 'Beef stew with dumplings';
-EXEC addProductToOrder 928, 1, 'Bundt cake';
-EXEC addProductToOrder 928, 3, 'Kiwi';
-EXEC addProductToOrder 928, 2, 'Peach custard';
-EXEC addProductToOrder 929, 3, 'Café mocha';
-EXEC addProductToOrder 929, 2, 'Boston cream cake';
-EXEC addProductToOrder 929, 2, 'Carrot juice';
-EXEC addProductToOrder 929, 2, 'Mate tea';
-EXEC addProductToOrder 929, 3, 'Brie cheese';
-EXEC addProductToOrder 930, 3, 'Coconut pudding';
-EXEC addProductToOrder 930, 3, 'Fish roll';
-EXEC addProductToOrder 930, 1, 'Chicken tortilla soup';
-EXEC addProductToOrder 930, 2, 'Breadstick';
-EXEC addProductToOrder 930, 3, 'Artichoke salad';
-EXEC addProductToOrder 931, 2, 'Cookie stick';
-EXEC addProductToOrder 931, 3, 'Rocky road ice cream';
-EXEC addProductToOrder 931, 1, 'Diet Sierra Mist';
-EXEC addProductToOrder 931, 3, 'Pistachio';
-EXEC addProductToOrder 931, 3, 'Café mocha';
-EXEC addProductToOrder 932, 1, 'Café Cubano';
-EXEC addProductToOrder 932, 3, 'Bleu cheese';
-EXEC addProductToOrder 932, 2, 'Muenster cheese';
-EXEC addProductToOrder 932, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 932, 2, 'Baked stuffed potatoes';
-EXEC addProductToOrder 933, 1, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 933, 2, 'Fish sandwich';
-EXEC addProductToOrder 933, 2, 'Fried green tomatoes';
-EXEC addProductToOrder 933, 2, 'Chili';
-EXEC addProductToOrder 933, 3, 'Pistachio ice cream';
-EXEC addProductToOrder 934, 2, 'Artichoke salad';
-EXEC addProductToOrder 934, 1, 'Chai tea';
-EXEC addProductToOrder 934, 3, 'Beef casserole';
-EXEC addProductToOrder 934, 1, 'Fried ravioli';
-EXEC addProductToOrder 934, 2, 'Mountain Dew';
-EXEC addProductToOrder 935, 1, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 935, 2, 'Fish stick';
-EXEC addProductToOrder 935, 2, 'Bechamel sauce';
-EXEC addProductToOrder 935, 3, 'Strawberry ice cream';
-EXEC addProductToOrder 935, 3, 'Potato salad';
-EXEC addProductToOrder 936, 3, 'Lemon';
-EXEC addProductToOrder 936, 3, 'Cole slaw';
-EXEC addProductToOrder 936, 1, 'Pasta with meatballs';
-EXEC addProductToOrder 936, 2, 'Chocolate cake';
-EXEC addProductToOrder 936, 1, 'Mountain Dew';
-EXEC addProductToOrder 937, 1, 'Hummus';
-EXEC addProductToOrder 937, 3, 'Cereal sandwich roll';
-EXEC addProductToOrder 937, 1, 'Boston cream cake';
-EXEC addProductToOrder 937, 1, 'Bread';
-EXEC addProductToOrder 937, 2, 'Café del mar';
-EXEC addProductToOrder 938, 2, 'Rocky road ice cream';
-EXEC addProductToOrder 938, 3, 'Vegetable soup';
-EXEC addProductToOrder 938, 3, 'Peach pudding';
-EXEC addProductToOrder 938, 1, 'Grapefruit';
-EXEC addProductToOrder 938, 1, 'Fried onion rings';
-EXEC addProductToOrder 939, 3, 'Curry';
-EXEC addProductToOrder 939, 2, 'Fried mushrooms';
-EXEC addProductToOrder 939, 3, 'Caesar salad';
-EXEC addProductToOrder 939, 1, 'Café de olla';
-EXEC addProductToOrder 939, 1, 'Diet Dr Pepper';
-EXEC addProductToOrder 940, 1, 'Pasta with clams';
-EXEC addProductToOrder 940, 2, 'Rooibos tea';
-EXEC addProductToOrder 940, 3, 'Pasta with salmon';
-EXEC addProductToOrder 940, 3, 'Butter pecan ice cream';
-EXEC addProductToOrder 940, 1, 'Diet Sierra Mist';
-EXEC addProductToOrder 941, 2, 'Asparagus salad';
-EXEC addProductToOrder 941, 3, 'Grapefruit juice';
-EXEC addProductToOrder 941, 2, 'Broccoli salad';
-EXEC addProductToOrder 941, 1, 'Artichoke salad';
-EXEC addProductToOrder 941, 3, 'Caraway';
-EXEC addProductToOrder 942, 1, 'Bisque sauce';
-EXEC addProductToOrder 942, 1, 'Tuna tartare with avocado and soy sauce';
-EXEC addProductToOrder 942, 1, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 942, 2, 'Lime juice';
-EXEC addProductToOrder 942, 3, 'Allspice';
-EXEC addProductToOrder 943, 1, 'Fish sandwich bun';
-EXEC addProductToOrder 943, 2, 'Cioppino  a seafood stew made with a variety of fish and shellfish;';
-EXEC addProductToOrder 943, 3, 'American cheese';
-EXEC addProductToOrder 943, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 943, 2, 'Chicken and dumplings';
-EXEC addProductToOrder 944, 3, 'Vegetable stir fry';
-EXEC addProductToOrder 944, 2, 'Baked oysters';
-EXEC addProductToOrder 944, 1, 'Chicken tortilla soup';
-EXEC addProductToOrder 944, 3, 'Beef stew with mushrooms';
-EXEC addProductToOrder 944, 2, 'Banana custard';
-EXEC addProductToOrder 945, 2, 'Goat cheese';
-EXEC addProductToOrder 945, 1, 'Café mélange';
-EXEC addProductToOrder 945, 3, 'Guacamole';
-EXEC addProductToOrder 945, 1, 'Coconut';
-EXEC addProductToOrder 945, 1, 'Raspberry juice';
-EXEC addProductToOrder 946, 2, 'Biscuit sandwich';
-EXEC addProductToOrder 946, 1, 'French onion soup';
-EXEC addProductToOrder 946, 2, 'Apple pudding';
-EXEC addProductToOrder 946, 2, 'Café irlandés';
-EXEC addProductToOrder 946, 2, 'Curry';
-EXEC addProductToOrder 947, 1, 'Celery seed';
-EXEC addProductToOrder 947, 3, 'Oysters Rockefeller  oysters baked with a spinach and butter sauce;';
-EXEC addProductToOrder 947, 3, 'Broccoli salad';
-EXEC addProductToOrder 947, 2, 'Diet Mountain Dew';
-EXEC addProductToOrder 947, 3, 'Diet Mountain Dew';
-EXEC addProductToOrder 948, 3, 'Caper sauce';
-EXEC addProductToOrder 948, 2, 'Fanta';
-EXEC addProductToOrder 948, 2, 'Beef stew with onions';
-EXEC addProductToOrder 948, 2, 'Fried calamari';
-EXEC addProductToOrder 948, 3, 'Cranberry';
-EXEC addProductToOrder 949, 1, 'Fish stick';
-EXEC addProductToOrder 949, 1, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 949, 1, 'Tossed salad';
-EXEC addProductToOrder 949, 1, 'Banana custard';
-EXEC addProductToOrder 949, 1, 'Baguette';
-EXEC addProductToOrder 950, 1, 'Cereal sandwich';
-EXEC addProductToOrder 950, 3, 'Cocktail sauce';
-EXEC addProductToOrder 950, 1, 'Diet Fanta';
-EXEC addProductToOrder 950, 1, 'Minestrone soup';
-EXEC addProductToOrder 950, 1, 'Café gourmand';
-EXEC addProductToOrder 951, 1, 'Fish roll';
-EXEC addProductToOrder 951, 3, 'Diet Coke';
-EXEC addProductToOrder 951, 3, 'Kiwi';
-EXEC addProductToOrder 951, 2, 'Pasta with chicken';
-EXEC addProductToOrder 951, 1, 'Butter roll';
-EXEC addProductToOrder 952, 1, 'Beef stew with carrots';
-EXEC addProductToOrder 952, 2, 'Chicken and rice soup';
-EXEC addProductToOrder 952, 3, 'Biscuit stick';
-EXEC addProductToOrder 952, 2, 'Fried okra';
-EXEC addProductToOrder 952, 2, 'Pasta with eggplant';
-EXEC addProductToOrder 953, 2, 'Baked brie';
-EXEC addProductToOrder 953, 3, 'Broccoli salad';
-EXEC addProductToOrder 953, 2, 'Vegetable lasagna';
-EXEC addProductToOrder 953, 3, 'Cookie';
-EXEC addProductToOrder 953, 1, 'Pasta with mussels';
-EXEC addProductToOrder 954, 2, 'Kiwi';
-EXEC addProductToOrder 954, 3, 'Basil';
-EXEC addProductToOrder 954, 3, 'Grape';
-EXEC addProductToOrder 954, 2, 'Bread';
-EXEC addProductToOrder 954, 3, 'Split pea soup';
-EXEC addProductToOrder 955, 2, 'Lime';
-EXEC addProductToOrder 955, 1, 'Coconut custard';
-EXEC addProductToOrder 955, 3, 'Chimichurri sauce';
-EXEC addProductToOrder 955, 2, 'Butter';
-EXEC addProductToOrder 955, 2, 'Pineapple juice';
-EXEC addProductToOrder 956, 2, 'Pepsi';
-EXEC addProductToOrder 956, 2, 'Fish sandwich roll';
-EXEC addProductToOrder 956, 1, 'Walnut';
-EXEC addProductToOrder 956, 2, 'Herbal tea';
-EXEC addProductToOrder 956, 3, 'Raspberry juice';
-EXEC addProductToOrder 957, 2, 'Latte';
-EXEC addProductToOrder 957, 3, 'Apple juice';
-EXEC addProductToOrder 957, 1, 'Spinach salad';
-EXEC addProductToOrder 957, 2, 'Cookie sandwich roll';
-EXEC addProductToOrder 957, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 958, 1, 'Apple custard';
-EXEC addProductToOrder 958, 3, 'Banana pudding';
-EXEC addProductToOrder 958, 3, 'Swiss cheese';
-EXEC addProductToOrder 958, 2, 'Baked stuffed peppers';
-EXEC addProductToOrder 958, 3, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 959, 2, 'Cashew';
-EXEC addProductToOrder 959, 1, 'Flat white';
-EXEC addProductToOrder 959, 1, 'Fish sandwich bun';
-EXEC addProductToOrder 959, 1, 'Cortado';
-EXEC addProductToOrder 959, 2, 'Fruit salad';
-EXEC addProductToOrder 960, 2, 'Fish sandwich bun';
-EXEC addProductToOrder 960, 2, 'Deviled eggs';
-EXEC addProductToOrder 960, 2, 'Biscuit sandwich';
-EXEC addProductToOrder 960, 3, 'Pasta with mussels';
-EXEC addProductToOrder 960, 3, 'Macchiato';
-EXEC addProductToOrder 961, 1, 'Diet Dr Pepper';
-EXEC addProductToOrder 961, 2, 'Vegetable soup';
-EXEC addProductToOrder 961, 2, 'Fried pickles';
-EXEC addProductToOrder 961, 1, 'Lime juice';
-EXEC addProductToOrder 961, 1, 'Macadamia';
-EXEC addProductToOrder 962, 1, 'Café bombón';
-EXEC addProductToOrder 962, 3, 'Cookie sandwich stick';
-EXEC addProductToOrder 962, 3, 'Fanta';
-EXEC addProductToOrder 962, 1, 'Orange juice';
-EXEC addProductToOrder 962, 1, 'Hazelnut';
-EXEC addProductToOrder 963, 2, 'Beef soup';
-EXEC addProductToOrder 963, 1, 'Guacamole';
-EXEC addProductToOrder 963, 1, 'Chili';
-EXEC addProductToOrder 963, 1, 'Pasta with eggplant';
-EXEC addProductToOrder 963, 1, 'Fish and chips  battered and fried fish served with French fries;';
-EXEC addProductToOrder 964, 1, 'Chocolate peanut butter ice cream';
-EXEC addProductToOrder 964, 1, 'Pasta with tuna';
-EXEC addProductToOrder 964, 3, 'Sprite';
-EXEC addProductToOrder 964, 1, 'Café de olla';
-EXEC addProductToOrder 964, 1, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 965, 1, 'Blueberry juice';
-EXEC addProductToOrder 965, 2, 'Chocolate bar';
-EXEC addProductToOrder 965, 1, 'Pecan';
-EXEC addProductToOrder 965, 1, 'Pasta with meatballs';
-EXEC addProductToOrder 965, 3, 'Coke Zero';
-EXEC addProductToOrder 966, 1, 'Parmesan cheese';
-EXEC addProductToOrder 966, 3, 'Allspice';
-EXEC addProductToOrder 966, 2, 'Kiwi';
-EXEC addProductToOrder 966, 1, 'Brie cheese';
-EXEC addProductToOrder 966, 1, 'Orange';
-EXEC addProductToOrder 967, 1, 'Pomegranate juice';
-EXEC addProductToOrder 967, 1, 'Chocolate candy';
-EXEC addProductToOrder 967, 3, 'Bleu cheese';
-EXEC addProductToOrder 967, 3, 'Chicken noodle soup';
-EXEC addProductToOrder 967, 1, 'Celery seed';
-EXEC addProductToOrder 968, 1, 'Fried onion rings';
-EXEC addProductToOrder 968, 1, 'Café mélange';
-EXEC addProductToOrder 968, 3, 'French onion soup';
-EXEC addProductToOrder 968, 1, 'French onion soup';
-EXEC addProductToOrder 968, 3, 'Walnut';
-EXEC addProductToOrder 969, 3, 'Pecan';
-EXEC addProductToOrder 969, 2, 'Café mocha';
-EXEC addProductToOrder 969, 3, 'Chocolate candy roll';
-EXEC addProductToOrder 969, 2, 'Coconut pudding';
-EXEC addProductToOrder 969, 2, 'Coca-Cola';
-EXEC addProductToOrder 970, 1, 'Breadstick';
-EXEC addProductToOrder 970, 2, 'Fish sandwich bun';
-EXEC addProductToOrder 970, 1, 'Pistachio';
-EXEC addProductToOrder 970, 1, 'Coconut';
-EXEC addProductToOrder 970, 1, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 971, 3, 'Breadstick';
-EXEC addProductToOrder 971, 1, 'Guacamole';
-EXEC addProductToOrder 971, 3, 'Café de pico';
-EXEC addProductToOrder 971, 3, 'Cereal sandwich';
-EXEC addProductToOrder 971, 2, 'Black forest cake';
-EXEC addProductToOrder 972, 3, 'Cheddar cheese';
-EXEC addProductToOrder 972, 2, 'Pasta with spinach';
-EXEC addProductToOrder 972, 3, 'Pasta with salmon';
-EXEC addProductToOrder 972, 3, 'Americano';
-EXEC addProductToOrder 972, 1, 'Fried okra';
-EXEC addProductToOrder 973, 2, 'Beef stew with mushrooms';
-EXEC addProductToOrder 973, 3, 'Peach custard';
-EXEC addProductToOrder 973, 3, 'Dr Pepper';
-EXEC addProductToOrder 973, 3, 'Café gourmand';
-EXEC addProductToOrder 973, 3, 'Carrot cake';
-EXEC addProductToOrder 974, 2, 'Baked stuffed peppers';
-EXEC addProductToOrder 974, 1, 'Vegetable stir fry';
-EXEC addProductToOrder 974, 2, 'Beef stew with celery';
-EXEC addProductToOrder 974, 3, 'Café de pico';
-EXEC addProductToOrder 974, 1, 'Café gourmand';
-EXEC addProductToOrder 975, 1, 'Grape';
-EXEC addProductToOrder 975, 1, 'Bundt cake';
-EXEC addProductToOrder 975, 3, 'Cereal';
-EXEC addProductToOrder 975, 3, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 975, 3, 'Diet Coke';
-EXEC addProductToOrder 976, 2, 'Cheesecake';
-EXEC addProductToOrder 976, 2, 'Café mocha';
-EXEC addProductToOrder 976, 3, 'Chocolate pudding';
-EXEC addProductToOrder 976, 2, 'Fish roll';
-EXEC addProductToOrder 976, 3, 'Pasta with tomatoes';
-EXEC addProductToOrder 977, 1, 'Chocolate ice cream';
-EXEC addProductToOrder 977, 1, 'Chocolate candy bar';
-EXEC addProductToOrder 977, 1, 'Diet 7 Up';
-EXEC addProductToOrder 977, 3, 'Allspice';
-EXEC addProductToOrder 977, 1, 'Pasta with mushrooms';
-EXEC addProductToOrder 978, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 978, 3, 'Grape';
-EXEC addProductToOrder 978, 2, 'Fish sandwich bun';
-EXEC addProductToOrder 978, 1, 'Bleu cheese';
-EXEC addProductToOrder 978, 1, 'Tomato salad';
-EXEC addProductToOrder 979, 1, 'Baked oysters';
-EXEC addProductToOrder 979, 3, 'Chestnut';
-EXEC addProductToOrder 979, 1, 'Biscuit stick';
-EXEC addProductToOrder 979, 1, 'Cookie sandwich bun';
-EXEC addProductToOrder 979, 3, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 980, 1, 'Dressing sauce';
-EXEC addProductToOrder 980, 1, 'Provolone cheese';
-EXEC addProductToOrder 980, 2, 'Chicken and barley soup';
-EXEC addProductToOrder 980, 3, 'Pasta with scallops';
-EXEC addProductToOrder 980, 3, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 981, 3, 'Baked stuffed zucchini';
-EXEC addProductToOrder 981, 2, 'Hazelnut';
-EXEC addProductToOrder 981, 1, 'Chicken and wild rice soup';
-EXEC addProductToOrder 981, 1, 'Biscuit';
-EXEC addProductToOrder 981, 3, 'Cereal sandwich stick';
-EXEC addProductToOrder 982, 2, 'Mate tea';
-EXEC addProductToOrder 982, 3, 'Lime juice';
-EXEC addProductToOrder 982, 3, 'Vegetable casserole';
-EXEC addProductToOrder 982, 1, 'Béarnaise sauce';
-EXEC addProductToOrder 982, 3, 'Cinnamon';
-EXEC addProductToOrder 983, 1, 'Biscotti';
-EXEC addProductToOrder 983, 1, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 983, 2, 'Café bombón';
-EXEC addProductToOrder 983, 3, 'Biscuit sandwich';
-EXEC addProductToOrder 983, 2, 'Cranberry juice';
-EXEC addProductToOrder 984, 1, 'Fried okra';
-EXEC addProductToOrder 984, 2, 'Bleu cheese';
-EXEC addProductToOrder 984, 1, 'Diet Dr Pepper';
-EXEC addProductToOrder 984, 3, 'Vanilla pudding';
-EXEC addProductToOrder 984, 2, 'Parmesan cheese';
-EXEC addProductToOrder 985, 1, 'Fish sandwich bun';
-EXEC addProductToOrder 985, 2, 'Café crema';
-EXEC addProductToOrder 985, 1, 'Cereal roll';
-EXEC addProductToOrder 985, 3, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 985, 3, 'Butter pecan ice cream';
-EXEC addProductToOrder 986, 1, 'Lemon';
-EXEC addProductToOrder 986, 1, 'Grapefruit juice';
-EXEC addProductToOrder 986, 1, 'Chocolate candy stick';
-EXEC addProductToOrder 986, 3, 'Gouda cheese';
-EXEC addProductToOrder 986, 2, 'Baked stuffed peppers';
-EXEC addProductToOrder 987, 1, 'Strawberry pudding';
-EXEC addProductToOrder 987, 2, 'Tomato salad';
-EXEC addProductToOrder 987, 1, 'Cucumber salad';
-EXEC addProductToOrder 987, 2, 'Avocado salad';
-EXEC addProductToOrder 987, 1, 'Cereal roll';
-EXEC addProductToOrder 988, 3, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 988, 1, 'Vanilla ice cream';
-EXEC addProductToOrder 988, 2, 'Chocolate ice cream';
-EXEC addProductToOrder 988, 1, 'Chocolate pudding';
-EXEC addProductToOrder 988, 3, 'Cardamom';
-EXEC addProductToOrder 989, 3, 'Chocolate custard';
-EXEC addProductToOrder 989, 3, 'Grapefruit juice';
-EXEC addProductToOrder 989, 2, 'Pasta with lobster';
-EXEC addProductToOrder 989, 3, 'Rooibos tea';
-EXEC addProductToOrder 989, 3, 'Rocky road ice cream';
-EXEC addProductToOrder 990, 2, 'Apple pudding';
-EXEC addProductToOrder 990, 2, 'Chocolate pudding';
-EXEC addProductToOrder 990, 2, 'Artichoke salad';
-EXEC addProductToOrder 990, 3, 'Chocolate bar';
-EXEC addProductToOrder 990, 2, 'Moose tracks ice cream';
-EXEC addProductToOrder 991, 2, 'Cortado';
-EXEC addProductToOrder 991, 1, 'Mango';
-EXEC addProductToOrder 991, 2, 'Chicken and barley soup';
-EXEC addProductToOrder 991, 2, 'Cereal';
-EXEC addProductToOrder 991, 2, 'Bun';
-EXEC addProductToOrder 992, 3, 'Café au lait';
-EXEC addProductToOrder 992, 1, 'Fanta';
-EXEC addProductToOrder 992, 2, 'Café de pico';
-EXEC addProductToOrder 992, 2, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 992, 1, 'Chocolate candy stick';
-EXEC addProductToOrder 993, 2, 'Pasta with zucchini';
-EXEC addProductToOrder 993, 1, 'Cucumber salad';
-EXEC addProductToOrder 993, 3, 'Mocha';
-EXEC addProductToOrder 993, 1, 'Apple';
-EXEC addProductToOrder 993, 2, 'Fried mozzarella sticks';
-EXEC addProductToOrder 994, 3, 'Cobb salad';
-EXEC addProductToOrder 994, 1, 'Curry';
-EXEC addProductToOrder 994, 2, 'Vegetable soup';
-EXEC addProductToOrder 994, 3, 'Curry sauce';
-EXEC addProductToOrder 994, 2, 'Vegetable casserole';
-EXEC addProductToOrder 995, 2, 'Salsa';
-EXEC addProductToOrder 995, 3, 'Crab cakes with a remoulade sauce';
-EXEC addProductToOrder 995, 1, 'Chocolate custard';
-EXEC addProductToOrder 995, 1, 'Shrimp scampi served over pasta';
-EXEC addProductToOrder 995, 3, 'Chicken casserole';
-EXEC addProductToOrder 996, 1, 'Chocolate candy stick';
-EXEC addProductToOrder 996, 3, 'Tomato juice';
-EXEC addProductToOrder 996, 3, 'Chicken and wild rice soup';
-EXEC addProductToOrder 996, 2, 'Baked stuffed squash';
-EXEC addProductToOrder 996, 3, 'Diet Fanta';
-EXEC addProductToOrder 997, 2, 'Chicken soup';
-EXEC addProductToOrder 997, 2, 'Cereal sandwich stick';
-EXEC addProductToOrder 997, 3, 'Pasta with sausage';
-EXEC addProductToOrder 997, 2, 'Apple custard';
-EXEC addProductToOrder 997, 3, 'Pasta with mushrooms';
-EXEC addProductToOrder 998, 2, 'Chocolate cake';
-EXEC addProductToOrder 998, 1, 'Café mélange';
-EXEC addProductToOrder 998, 2, 'Cheesecake';
-EXEC addProductToOrder 998, 1, 'Fried onion rings';
-EXEC addProductToOrder 998, 2, 'Salsa';
-EXEC addProductToOrder 999, 2, 'Breadstick';
-EXEC addProductToOrder 999, 3, 'Butter pecan ice cream';
-EXEC addProductToOrder 999, 3, 'Grilled octopus with a citrus marinade';
-EXEC addProductToOrder 999, 3, 'Cardamom';
-EXEC addProductToOrder 999, 1, 'Cookie stick';
-EXEC addProductToOrder 1000, 2, 'Brown sauce';
-EXEC addProductToOrder 1000, 3, 'Dr Pepper';
-EXEC addProductToOrder 1000, 3, 'Diet Dr Pepper';
-EXEC addProductToOrder 1000, 1, 'Broccoli salad';
-EXEC addProductToOrder 1000, 2, 'Pepper jack cheese';
-EXEC addProductToOrder 1001, 2, 'Diet Fanta';
-EXEC addProductToOrder 1001, 2, 'Vegetable casserole';
-EXEC addProductToOrder 1001, 2, 'Yellow tea';
-EXEC addProductToOrder 1001, 2, '7 Up';
-EXEC addProductToOrder 1001, 2, 'Americano';
-EXEC addProductToOrder 1002, 3, 'Apple';
-EXEC addProductToOrder 1002, 2, 'Flat white';
-EXEC addProductToOrder 1002, 1, 'Chef salad';
-EXEC addProductToOrder 1002, 3, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1002, 2, 'Café con leche';
-EXEC addProductToOrder 1003, 2, 'Café marrón';
-EXEC addProductToOrder 1003, 1, 'Biscuit stick';
-EXEC addProductToOrder 1003, 2, 'Caesar salad';
-EXEC addProductToOrder 1003, 3, 'Fanta';
-EXEC addProductToOrder 1003, 1, 'Asparagus salad';
-EXEC addProductToOrder 1004, 1, 'Café con leche';
-EXEC addProductToOrder 1004, 1, 'Beef soup';
-EXEC addProductToOrder 1004, 3, 'Baked crab dip';
-EXEC addProductToOrder 1004, 2, 'Baked brie';
-EXEC addProductToOrder 1004, 2, 'Fish sandwich stick';
-EXEC addProductToOrder 1005, 3, 'Grapefruit juice';
-EXEC addProductToOrder 1005, 3, 'Café marrón';
-EXEC addProductToOrder 1005, 2, 'Orange';
-EXEC addProductToOrder 1005, 1, 'Chocolate chip ice cream';
-EXEC addProductToOrder 1005, 3, 'Honeybush tea';
-EXEC addProductToOrder 1006, 3, 'Allspice';
-EXEC addProductToOrder 1006, 2, 'Pasta with chicken';
-EXEC addProductToOrder 1006, 2, 'Chocolate chip cookie dough ice cream';
-EXEC addProductToOrder 1006, 2, 'Green tea';
-EXEC addProductToOrder 1006, 2, 'Burrata cheese';
-EXEC addProductToOrder 1007, 1, 'Café mélange';
-EXEC addProductToOrder 1007, 2, 'Rocky road ice cream';
-EXEC addProductToOrder 1007, 3, 'Baked clams';
-EXEC addProductToOrder 1007, 2, 'Lemon pudding';
-EXEC addProductToOrder 1007, 2, 'Pasta with tuna';
-EXEC addProductToOrder 1008, 1, 'Dr Pepper';
-EXEC addProductToOrder 1008, 2, 'Brioche';
-EXEC addProductToOrder 1008, 3, 'Dr Pepper';
-EXEC addProductToOrder 1008, 3, 'Café gourmand';
-EXEC addProductToOrder 1008, 3, 'Pasta with tomatoes';
-EXEC addProductToOrder 1009, 1, 'Banana pudding';
-EXEC addProductToOrder 1009, 3, 'Antipasto salad';
-EXEC addProductToOrder 1009, 3, 'Espresso';
-EXEC addProductToOrder 1009, 2, 'Pu-erh tea';
-EXEC addProductToOrder 1009, 2, 'Béarnaise sauce';
-EXEC addProductToOrder 1010, 1, 'Peach pudding';
-EXEC addProductToOrder 1010, 1, 'Blueberry juice';
-EXEC addProductToOrder 1010, 3, 'Diet Pepsi';
-EXEC addProductToOrder 1010, 2, 'Caper sauce';
-EXEC addProductToOrder 1010, 1, 'Raspberry juice';
-EXEC addProductToOrder 1011, 3, 'Chutney sauce';
-EXEC addProductToOrder 1011, 1, 'Beef soup';
-EXEC addProductToOrder 1011, 3, 'Mate tea';
-EXEC addProductToOrder 1011, 2, 'Apricot';
-EXEC addProductToOrder 1011, 2, 'Diet Fanta';
-EXEC addProductToOrder 1012, 1, 'Baked stuffed tomatoes';
-EXEC addProductToOrder 1012, 3, 'Chicken and rice soup';
-EXEC addProductToOrder 1012, 3, 'Antipasto salad';
-EXEC addProductToOrder 1012, 2, 'Walnut';
-EXEC addProductToOrder 1012, 1, 'Chocolate bar';
-EXEC addProductToOrder 1013, 3, 'Potato salad';
-EXEC addProductToOrder 1013, 1, 'Cranberry juice';
-EXEC addProductToOrder 1013, 3, 'Cookie sandwich bun';
-EXEC addProductToOrder 1013, 3, 'Beet salad';
-EXEC addProductToOrder 1013, 2, 'Chicken casserole';
-EXEC addProductToOrder 1014, 3, 'Cortado';
-EXEC addProductToOrder 1014, 3, 'Fig';
-EXEC addProductToOrder 1014, 1, 'Chutney sauce';
-EXEC addProductToOrder 1014, 2, 'Potato soup';
-EXEC addProductToOrder 1014, 2, 'Chili';
-EXEC addProductToOrder 1015, 3, 'Blackberry';
-EXEC addProductToOrder 1015, 1, 'Cookie sandwich bun';
-EXEC addProductToOrder 1015, 1, 'Banana pudding';
-EXEC addProductToOrder 1015, 2, 'Grapefruit';
-EXEC addProductToOrder 1015, 2, 'Pasta with tomatoes';
-EXEC addProductToOrder 1016, 1, 'Fish';
-EXEC addProductToOrder 1016, 2, 'Baked stuffed peppers';
-EXEC addProductToOrder 1016, 1, 'Espresso';
-EXEC addProductToOrder 1016, 1, 'Blueberry juice';
-EXEC addProductToOrder 1016, 3, 'Cereal sandwich stick';
-EXEC addProductToOrder 1017, 1, 'Shrimp scampi served over pasta';
-EXEC addProductToOrder 1017, 3, 'Lemon';
-EXEC addProductToOrder 1017, 2, 'Macadamia';
-EXEC addProductToOrder 1017, 3, 'Swiss cheese';
-EXEC addProductToOrder 1017, 1, 'Biscotti';
-EXEC addProductToOrder 1018, 3, 'Pasta with broccoli';
-EXEC addProductToOrder 1018, 1, 'Apple';
-EXEC addProductToOrder 1018, 2, 'Pasta with mushrooms';
-EXEC addProductToOrder 1018, 2, 'Brie cheese';
-EXEC addProductToOrder 1018, 2, 'Chocolate candy stick';
-EXEC addProductToOrder 1019, 1, 'Carrot salad';
-EXEC addProductToOrder 1019, 3, 'Vegetable stir fry';
-EXEC addProductToOrder 1019, 2, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1019, 2, 'Bread';
-EXEC addProductToOrder 1019, 3, 'Chocolate pudding';
-EXEC addProductToOrder 1020, 1, 'Coca-Cola';
-EXEC addProductToOrder 1020, 2, 'Avocado salad';
-EXEC addProductToOrder 1020, 1, 'Chicken tortilla soup';
-EXEC addProductToOrder 1020, 3, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1020, 2, 'Carrot cake';
-EXEC addProductToOrder 1021, 1, 'Pasta with salmon';
-EXEC addProductToOrder 1021, 1, 'Fried ravioli';
-EXEC addProductToOrder 1021, 3, 'Salsa';
-EXEC addProductToOrder 1021, 1, 'Lemon custard';
-EXEC addProductToOrder 1021, 2, 'Biscuit sandwich roll';
-EXEC addProductToOrder 1022, 2, 'Clam chowder  a creamy soup made with clams;';
-EXEC addProductToOrder 1022, 3, 'Diet 7 Up';
-EXEC addProductToOrder 1022, 2, 'Pasta with sausage';
-EXEC addProductToOrder 1022, 3, 'Banana pudding';
-EXEC addProductToOrder 1022, 3, 'Pasta with mussels';
-EXEC addProductToOrder 1023, 2, 'Cumin';
-EXEC addProductToOrder 1023, 3, 'Tomato salad';
-EXEC addProductToOrder 1023, 3, 'Lemon pudding';
-EXEC addProductToOrder 1023, 1, 'Café irlandés';
-EXEC addProductToOrder 1023, 3, 'Baked stuffed eggplant';
-EXEC addProductToOrder 1024, 2, 'Fig';
-EXEC addProductToOrder 1024, 1, 'Cayenne';
-EXEC addProductToOrder 1024, 3, 'Bechamel sauce';
-EXEC addProductToOrder 1024, 3, 'Pasta with tomatoes';
-EXEC addProductToOrder 1024, 2, 'Butter pecan ice cream';
-EXEC addProductToOrder 1025, 3, 'Brie cheese';
-EXEC addProductToOrder 1025, 2, 'Biscuit';
-EXEC addProductToOrder 1025, 2, 'Diet 7 Up';
-EXEC addProductToOrder 1025, 1, 'Carrot cake';
-EXEC addProductToOrder 1025, 1, 'Macchiato';
-EXEC addProductToOrder 1026, 3, 'Café mélange';
-EXEC addProductToOrder 1026, 2, 'Coconut';
-EXEC addProductToOrder 1026, 2, 'Cortado';
-EXEC addProductToOrder 1026, 1, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1026, 2, 'Fried green tomatoes';
-EXEC addProductToOrder 1027, 2, 'Tzatziki';
-EXEC addProductToOrder 1027, 1, 'Lemon juice';
-EXEC addProductToOrder 1027, 2, 'Peach custard';
-EXEC addProductToOrder 1027, 3, 'Fish sandwich';
-EXEC addProductToOrder 1027, 3, 'Pasta with eggplant';
-EXEC addProductToOrder 1028, 1, 'Strawberry ice cream';
-EXEC addProductToOrder 1028, 2, 'Chicken and rice soup';
-EXEC addProductToOrder 1028, 1, 'Cookie sandwich bun';
-EXEC addProductToOrder 1028, 3, 'Café mélange';
-EXEC addProductToOrder 1028, 2, 'Pasta with lobster';
-EXEC addProductToOrder 1029, 2, 'Mate tea';
-EXEC addProductToOrder 1029, 1, 'Cappuccino';
-EXEC addProductToOrder 1029, 3, 'Feta cheese';
-EXEC addProductToOrder 1029, 2, 'Spinach salad';
-EXEC addProductToOrder 1029, 2, 'Pineapple juice';
-EXEC addProductToOrder 1030, 3, 'Bread';
-EXEC addProductToOrder 1030, 1, 'Café bombón';
-EXEC addProductToOrder 1030, 1, 'Vegetable casserole';
-EXEC addProductToOrder 1030, 3, 'Almond';
-EXEC addProductToOrder 1030, 3, 'Chocolate ice cream';
-EXEC addProductToOrder 1031, 1, 'Hazelnut';
-EXEC addProductToOrder 1031, 3, 'Carrot cake';
-EXEC addProductToOrder 1031, 2, 'Lime juice';
-EXEC addProductToOrder 1031, 1, 'Chicken and wild rice soup';
-EXEC addProductToOrder 1031, 1, 'Lemon pudding';
-EXEC addProductToOrder 1032, 3, 'Fish sandwich bun';
-EXEC addProductToOrder 1032, 2, 'Chicken tortilla soup';
-EXEC addProductToOrder 1032, 3, 'Butter';
-EXEC addProductToOrder 1032, 1, 'Cookie stick';
-EXEC addProductToOrder 1032, 3, 'Strawberry juice';
-EXEC addProductToOrder 1033, 3, 'Bundt cake';
-EXEC addProductToOrder 1033, 3, 'Cereal sandwich roll';
-EXEC addProductToOrder 1033, 3, 'Cookie sandwich roll';
-EXEC addProductToOrder 1033, 1, 'Potato soup';
-EXEC addProductToOrder 1033, 3, 'Bleu cheese';
-EXEC addProductToOrder 1034, 2, 'Beef stew with tomatoes';
-EXEC addProductToOrder 1034, 3, 'Fruit salad';
-EXEC addProductToOrder 1034, 3, 'Hummus';
-EXEC addProductToOrder 1034, 2, 'Chocolate candy sandwich';
-EXEC addProductToOrder 1034, 1, 'Mocha';
-EXEC addProductToOrder 1035, 1, 'Bread';
-EXEC addProductToOrder 1035, 3, 'Chicken and mushroom soup';
-EXEC addProductToOrder 1035, 1, 'Almond';
-EXEC addProductToOrder 1035, 3, 'Coconut';
-EXEC addProductToOrder 1035, 3, 'Fish and chips  battered and fried fish served with French fries;';
-EXEC addProductToOrder 1036, 2, 'Café zorro';
-EXEC addProductToOrder 1036, 3, 'Baked stuffed clams';
-EXEC addProductToOrder 1036, 3, 'Coke Zero';
-EXEC addProductToOrder 1036, 1, 'Lemon juice';
-EXEC addProductToOrder 1036, 2, 'Pasta with chicken';
-EXEC addProductToOrder 1037, 2, 'Herbal tea';
-EXEC addProductToOrder 1037, 2, 'Broccoli salad';
-EXEC addProductToOrder 1037, 1, 'Pasta with spinach';
-EXEC addProductToOrder 1037, 3, 'Parmesan cheese';
-EXEC addProductToOrder 1037, 2, 'Pasta with chicken';
-EXEC addProductToOrder 1038, 1, 'Pasta with lobster';
-EXEC addProductToOrder 1038, 2, 'Chicken casserole';
-EXEC addProductToOrder 1038, 1, 'Date';
-EXEC addProductToOrder 1038, 1, 'Cashew';
-EXEC addProductToOrder 1038, 2, 'Chestnut';
-EXEC addProductToOrder 1039, 3, 'Baked stuffed tomatoes';
-EXEC addProductToOrder 1039, 1, 'Chicken and mushroom soup';
-EXEC addProductToOrder 1039, 3, 'Diet Fanta';
-EXEC addProductToOrder 1039, 1, 'Vegetable soup';
-EXEC addProductToOrder 1039, 1, 'Baked stuffed eggplant';
-EXEC addProductToOrder 1040, 2, 'Vegetable lasagna';
-EXEC addProductToOrder 1040, 3, 'Affogato';
-EXEC addProductToOrder 1040, 1, 'Pasta with clams';
-EXEC addProductToOrder 1040, 2, 'Grape juice';
-EXEC addProductToOrder 1040, 3, 'Tomato juice';
-EXEC addProductToOrder 1041, 1, 'Diet Dr Pepper';
-EXEC addProductToOrder 1041, 1, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 1041, 1, 'Anise';
-EXEC addProductToOrder 1041, 2, 'Cereal sandwich roll';
-EXEC addProductToOrder 1041, 2, 'Fish sandwich roll';
-EXEC addProductToOrder 1042, 3, 'Blueberry';
-EXEC addProductToOrder 1042, 3, 'Blueberry juice';
-EXEC addProductToOrder 1042, 3, 'Pasta with lobster';
-EXEC addProductToOrder 1042, 2, 'Pasta with tomatoes';
-EXEC addProductToOrder 1042, 1, 'Crab cakes with a remoulade sauce';
-EXEC addProductToOrder 1043, 3, 'Chicken and mushroom soup';
-EXEC addProductToOrder 1043, 3, 'Greek salad';
-EXEC addProductToOrder 1043, 1, 'Peach custard';
-EXEC addProductToOrder 1043, 2, 'Fried calamari';
-EXEC addProductToOrder 1043, 3, 'Baked stuffed zucchini';
-EXEC addProductToOrder 1044, 3, 'Beef stew with mushrooms';
-EXEC addProductToOrder 1044, 1, 'Caper sauce';
-EXEC addProductToOrder 1044, 3, 'Lemon custard';
-EXEC addProductToOrder 1044, 2, 'Strawberry juice';
-EXEC addProductToOrder 1044, 3, 'Macadamia';
-EXEC addProductToOrder 1045, 1, 'Angel food cake';
-EXEC addProductToOrder 1045, 3, 'Café Cubano';
-EXEC addProductToOrder 1045, 2, 'Mango';
-EXEC addProductToOrder 1045, 1, 'Goat cheese';
-EXEC addProductToOrder 1045, 1, 'Cookie';
-EXEC addProductToOrder 1046, 3, 'Boursin cheese';
-EXEC addProductToOrder 1046, 3, 'Cobb salad';
-EXEC addProductToOrder 1046, 2, 'Cereal sandwich roll';
-EXEC addProductToOrder 1046, 3, 'Tzatziki';
-EXEC addProductToOrder 1046, 1, 'Mocha';
-EXEC addProductToOrder 1047, 2, 'Café gourmand';
-EXEC addProductToOrder 1047, 3, 'Chef salad';
-EXEC addProductToOrder 1047, 3, 'Caramel sauce';
-EXEC addProductToOrder 1047, 3, 'Basil';
-EXEC addProductToOrder 1047, 3, 'Chicken noodle soup';
-EXEC addProductToOrder 1048, 3, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1048, 3, 'Vegetable soup';
-EXEC addProductToOrder 1048, 1, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 1048, 3, 'Béarnaise sauce';
-EXEC addProductToOrder 1048, 3, 'Blueberry juice';
-EXEC addProductToOrder 1049, 2, 'Beef stew with dumplings';
-EXEC addProductToOrder 1049, 2, 'Cocktail sauce';
-EXEC addProductToOrder 1049, 2, 'Coffee cake';
-EXEC addProductToOrder 1049, 2, 'Antipasto salad';
-EXEC addProductToOrder 1049, 1, 'Fried mozzarella sticks';
-EXEC addProductToOrder 1050, 1, 'Café del mar';
-EXEC addProductToOrder 1050, 2, 'Minestrone soup';
-EXEC addProductToOrder 1050, 1, 'Grilled octopus with a citrus marinade';
-EXEC addProductToOrder 1050, 1, 'Bechamel sauce';
-EXEC addProductToOrder 1050, 1, 'Grape juice';
-EXEC addProductToOrder 1051, 3, 'Chutney sauce';
-EXEC addProductToOrder 1051, 2, 'Cole slaw';
-EXEC addProductToOrder 1051, 2, 'Beet salad';
-EXEC addProductToOrder 1051, 3, 'Apple';
-EXEC addProductToOrder 1051, 1, 'Brioche';
-EXEC addProductToOrder 1052, 2, 'Baked stuffed eggplant';
-EXEC addProductToOrder 1052, 2, 'Apple juice';
-EXEC addProductToOrder 1052, 3, 'Banana';
-EXEC addProductToOrder 1052, 1, 'Café con leche';
-EXEC addProductToOrder 1052, 2, 'Cheddar cheese';
-EXEC addProductToOrder 1053, 2, 'Chai tea';
-EXEC addProductToOrder 1053, 3, 'Café con leche';
-EXEC addProductToOrder 1053, 3, 'Rice pudding';
-EXEC addProductToOrder 1053, 3, 'Diet 7 Up';
-EXEC addProductToOrder 1053, 2, 'Strawberry juice';
-EXEC addProductToOrder 1054, 1, 'Chocolate candy sandwich';
-EXEC addProductToOrder 1054, 2, 'Moose tracks ice cream';
-EXEC addProductToOrder 1054, 2, 'Diet Dr Pepper';
-EXEC addProductToOrder 1054, 1, 'Banana custard';
-EXEC addProductToOrder 1054, 1, 'Angel food cake';
-EXEC addProductToOrder 1055, 1, 'Chicken soup';
-EXEC addProductToOrder 1055, 2, 'Butter pecan ice cream';
-EXEC addProductToOrder 1055, 3, 'Mango';
-EXEC addProductToOrder 1055, 1, 'Pumpkin pudding';
-EXEC addProductToOrder 1055, 3, 'Bechamel sauce';
-EXEC addProductToOrder 1056, 2, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 1056, 2, 'Gruyere cheese';
-EXEC addProductToOrder 1056, 3, 'Asiago cheese';
-EXEC addProductToOrder 1056, 2, 'Beef casserole';
-EXEC addProductToOrder 1056, 3, 'Apricot';
-EXEC addProductToOrder 1057, 2, 'Potato soup';
-EXEC addProductToOrder 1057, 2, 'Rice pudding';
-EXEC addProductToOrder 1057, 2, 'Corn salad';
-EXEC addProductToOrder 1057, 3, 'Pasta with eggplant';
-EXEC addProductToOrder 1057, 3, 'Apple juice';
-EXEC addProductToOrder 1058, 1, 'Café irlandés';
-EXEC addProductToOrder 1058, 1, 'Pistachio ice cream';
-EXEC addProductToOrder 1058, 3, 'Vanilla pudding';
-EXEC addProductToOrder 1058, 2, 'Apple pudding';
-EXEC addProductToOrder 1058, 3, 'Cookie sandwich bun';
-EXEC addProductToOrder 1059, 3, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1059, 2, 'Café con leche';
-EXEC addProductToOrder 1059, 3, 'Chocolate cake';
-EXEC addProductToOrder 1059, 1, 'Guava';
-EXEC addProductToOrder 1059, 2, 'Béarnaise sauce';
-EXEC addProductToOrder 1060, 2, 'Blueberry';
-EXEC addProductToOrder 1060, 1, 'Cocktail sauce';
-EXEC addProductToOrder 1060, 2, 'Fish stick';
-EXEC addProductToOrder 1060, 3, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 1060, 3, 'Pasta with onions';
-EXEC addProductToOrder 1061, 3, 'Pasta with zucchini';
-EXEC addProductToOrder 1061, 3, 'Dressing sauce';
-EXEC addProductToOrder 1061, 1, 'Beef stew with onions';
-EXEC addProductToOrder 1061, 3, 'Cereal stick';
-EXEC addProductToOrder 1061, 3, 'Banana';
-EXEC addProductToOrder 1062, 1, 'Diet 7 Up';
-EXEC addProductToOrder 1062, 1, 'Blueberry juice';
-EXEC addProductToOrder 1062, 3, 'Beef stew with cabbage';
-EXEC addProductToOrder 1062, 1, 'Walnut';
-EXEC addProductToOrder 1062, 1, 'Beef stew with mushrooms';
-EXEC addProductToOrder 1063, 2, 'Chicken and mushroom soup';
-EXEC addProductToOrder 1063, 3, 'Cookie sandwich';
-EXEC addProductToOrder 1063, 2, 'Dressing sauce';
-EXEC addProductToOrder 1063, 2, 'Café marrón';
-EXEC addProductToOrder 1063, 2, 'Gruyere cheese';
-EXEC addProductToOrder 1064, 3, 'Café con leche';
-EXEC addProductToOrder 1064, 2, 'Café de olla';
-EXEC addProductToOrder 1064, 1, 'Vegetable stew';
-EXEC addProductToOrder 1064, 1, 'Guacamole';
-EXEC addProductToOrder 1064, 3, 'Chocolate candy roll';
-EXEC addProductToOrder 1065, 3, 'Cole slaw';
-EXEC addProductToOrder 1065, 3, 'Fried mushrooms';
-EXEC addProductToOrder 1065, 2, 'Honeybush tea';
-EXEC addProductToOrder 1065, 2, 'Cereal sandwich roll';
-EXEC addProductToOrder 1065, 3, 'Coconut cake';
-EXEC addProductToOrder 1066, 3, 'Cereal sandwich';
-EXEC addProductToOrder 1066, 1, 'Vegetable stew';
-EXEC addProductToOrder 1066, 3, 'Peach pudding';
-EXEC addProductToOrder 1066, 1, 'Coconut';
-EXEC addProductToOrder 1066, 3, 'Diet Coke';
-EXEC addProductToOrder 1067, 3, 'Cookie';
-EXEC addProductToOrder 1067, 2, 'Coffee cake';
-EXEC addProductToOrder 1067, 1, '7 Up';
-EXEC addProductToOrder 1067, 1, 'Chicken and corn chowder';
-EXEC addProductToOrder 1067, 3, 'Caraway';
-EXEC addProductToOrder 1068, 2, 'Carrot juice';
-EXEC addProductToOrder 1068, 2, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 1068, 2, 'Cranberry juice';
-EXEC addProductToOrder 1068, 3, 'Carrot salad';
-EXEC addProductToOrder 1068, 3, 'Brioche';
-EXEC addProductToOrder 1069, 1, 'Chestnut';
-EXEC addProductToOrder 1069, 3, 'Kiwi';
-EXEC addProductToOrder 1069, 1, 'Chai tea';
-EXEC addProductToOrder 1069, 2, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1069, 2, 'Almond';
-EXEC addProductToOrder 1070, 2, 'Pasta with cauliflower';
-EXEC addProductToOrder 1070, 1, 'Sierra Mist';
-EXEC addProductToOrder 1070, 1, 'Carrot cake';
-EXEC addProductToOrder 1070, 2, 'Fried calamari';
-EXEC addProductToOrder 1070, 3, 'Strawberry pudding';
-EXEC addProductToOrder 1071, 1, 'Chestnut';
-EXEC addProductToOrder 1071, 3, 'Chocolate candy';
-EXEC addProductToOrder 1071, 3, 'Café Cubano';
-EXEC addProductToOrder 1071, 1, 'Affogato';
-EXEC addProductToOrder 1071, 2, 'Peach custard';
-EXEC addProductToOrder 1072, 2, 'Fried calamari';
-EXEC addProductToOrder 1072, 3, 'Apple custard';
-EXEC addProductToOrder 1072, 1, 'Romano cheese';
-EXEC addProductToOrder 1072, 1, 'Café Cubano';
-EXEC addProductToOrder 1072, 2, 'Cereal sandwich';
-EXEC addProductToOrder 1073, 1, 'Americano';
-EXEC addProductToOrder 1073, 1, 'Minestrone soup';
-EXEC addProductToOrder 1073, 3, 'Green tea';
-EXEC addProductToOrder 1073, 3, 'Cheesecake';
-EXEC addProductToOrder 1073, 1, 'Tzatziki';
-EXEC addProductToOrder 1074, 3, 'Pomegranate juice';
-EXEC addProductToOrder 1074, 3, 'Oysters Rockefeller  oysters baked with a spinach and butter sauce;';
-EXEC addProductToOrder 1074, 3, 'Pasta with zucchini';
-EXEC addProductToOrder 1074, 2, 'Cereal';
-EXEC addProductToOrder 1074, 1, 'Peanut';
-EXEC addProductToOrder 1075, 1, 'Fig';
-EXEC addProductToOrder 1075, 3, 'Carrot juice';
-EXEC addProductToOrder 1075, 1, 'Cherry';
-EXEC addProductToOrder 1075, 1, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 1075, 3, 'Corn chowder';
-EXEC addProductToOrder 1076, 3, 'Latte';
-EXEC addProductToOrder 1076, 1, 'Beef stew with potatoes';
-EXEC addProductToOrder 1076, 1, 'Romano cheese';
-EXEC addProductToOrder 1076, 2, 'Chocolate custard';
-EXEC addProductToOrder 1076, 2, 'Guava';
-EXEC addProductToOrder 1077, 1, 'Grilled octopus with a citrus marinade';
-EXEC addProductToOrder 1077, 2, 'Carrot salad';
-EXEC addProductToOrder 1077, 1, 'Beef stew with potatoes';
-EXEC addProductToOrder 1077, 3, 'Cranberry';
-EXEC addProductToOrder 1077, 2, 'Pasta with crab';
-EXEC addProductToOrder 1078, 2, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 1078, 1, 'Fried mushrooms';
-EXEC addProductToOrder 1078, 1, 'Lentil soup';
-EXEC addProductToOrder 1078, 3, 'Caprese salad';
-EXEC addProductToOrder 1078, 1, 'Flat white';
-EXEC addProductToOrder 1079, 2, 'Fig';
-EXEC addProductToOrder 1079, 2, 'Coffee cake';
-EXEC addProductToOrder 1079, 3, 'Latte';
-EXEC addProductToOrder 1079, 2, 'Chocolate candy';
-EXEC addProductToOrder 1079, 3, 'Greek salad';
-EXEC addProductToOrder 1080, 1, 'Biscuit sandwich bun';
-EXEC addProductToOrder 1080, 1, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1080, 1, 'Baked clams';
-EXEC addProductToOrder 1080, 1, 'Pistachio ice cream';
-EXEC addProductToOrder 1080, 1, 'Fried potato skins';
-EXEC addProductToOrder 1081, 2, 'Chocolate candy';
-EXEC addProductToOrder 1081, 3, 'Grapefruit';
-EXEC addProductToOrder 1081, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 1081, 3, 'Blueberry';
-EXEC addProductToOrder 1081, 1, 'Tzatziki';
-EXEC addProductToOrder 1082, 2, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1082, 2, 'Green tea';
-EXEC addProductToOrder 1082, 3, 'Rocky road ice cream';
-EXEC addProductToOrder 1082, 3, 'Baked stuffed squash';
-EXEC addProductToOrder 1082, 3, 'Black forest cake';
-EXEC addProductToOrder 1083, 1, 'Café marrón';
-EXEC addProductToOrder 1083, 3, 'Bread';
-EXEC addProductToOrder 1083, 1, 'Cookie sandwich roll';
-EXEC addProductToOrder 1083, 3, 'Fried potato skins';
-EXEC addProductToOrder 1083, 2, 'Chestnut';
-EXEC addProductToOrder 1084, 2, 'Chocolate peanut butter ice cream';
-EXEC addProductToOrder 1084, 1, 'Blackberry';
-EXEC addProductToOrder 1084, 2, 'Chicken casserole';
-EXEC addProductToOrder 1084, 1, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 1084, 3, 'Americano';
-EXEC addProductToOrder 1085, 1, 'Lime juice';
-EXEC addProductToOrder 1085, 1, 'Pasta with shrimp';
-EXEC addProductToOrder 1085, 3, 'Beef stew with celery';
-EXEC addProductToOrder 1085, 1, 'Fried okra';
-EXEC addProductToOrder 1085, 1, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 1086, 2, 'Potato soup';
-EXEC addProductToOrder 1086, 3, 'Broccoli salad';
-EXEC addProductToOrder 1086, 3, 'Tomato juice';
-EXEC addProductToOrder 1086, 3, 'Café au lait';
-EXEC addProductToOrder 1086, 3, 'Baked stuffed potatoes';
-EXEC addProductToOrder 1087, 2, 'Beef stew with tomatoes';
-EXEC addProductToOrder 1087, 1, 'Fruit salad';
-EXEC addProductToOrder 1087, 3, 'Anise';
-EXEC addProductToOrder 1087, 3, 'Fried zucchini';
-EXEC addProductToOrder 1087, 2, 'Vegetable casserole';
-EXEC addProductToOrder 1088, 1, 'Beef stew with carrots';
-EXEC addProductToOrder 1088, 1, 'Chicken noodle soup';
-EXEC addProductToOrder 1088, 2, 'Matcha tea';
-EXEC addProductToOrder 1088, 3, 'Coconut pudding';
-EXEC addProductToOrder 1088, 1, 'Café au lait';
-EXEC addProductToOrder 1089, 1, 'Pasta with salmon';
-EXEC addProductToOrder 1089, 3, 'Chocolate candy stick';
-EXEC addProductToOrder 1089, 3, 'Cucumber salad';
-EXEC addProductToOrder 1089, 2, 'Fried green tomatoes';
-EXEC addProductToOrder 1089, 1, 'Brioche';
-EXEC addProductToOrder 1090, 1, 'Pasta with zucchini';
-EXEC addProductToOrder 1090, 2, 'Cookie sandwich';
-EXEC addProductToOrder 1090, 3, 'Pasta with tomatoes';
-EXEC addProductToOrder 1090, 1, 'Diet Mountain Dew';
-EXEC addProductToOrder 1090, 1, 'Caper sauce';
-EXEC addProductToOrder 1091, 2, 'Cole slaw';
-EXEC addProductToOrder 1091, 1, 'Baked stuffed artichokes';
-EXEC addProductToOrder 1091, 1, 'Vegetable soup';
-EXEC addProductToOrder 1091, 1, 'Fried onion rings';
-EXEC addProductToOrder 1091, 3, 'Vegetable casserole';
-EXEC addProductToOrder 1092, 2, 'Chocolate candy bar';
-EXEC addProductToOrder 1092, 1, 'Mate tea';
-EXEC addProductToOrder 1092, 1, 'Oolong tea';
-EXEC addProductToOrder 1092, 2, 'Asparagus salad';
-EXEC addProductToOrder 1092, 2, 'Walnut';
-EXEC addProductToOrder 1093, 3, 'Clam chowder  a creamy soup made with clams;';
-EXEC addProductToOrder 1093, 1, 'Banana cake';
-EXEC addProductToOrder 1093, 3, 'Cereal roll';
-EXEC addProductToOrder 1093, 1, 'Goat cheese';
-EXEC addProductToOrder 1093, 3, 'Potato salad';
-EXEC addProductToOrder 1094, 3, 'Pasta with mushrooms';
-EXEC addProductToOrder 1094, 2, 'Green tea';
-EXEC addProductToOrder 1094, 1, 'Chocolate pudding';
-EXEC addProductToOrder 1094, 1, 'Chocolate custard';
-EXEC addProductToOrder 1094, 1, 'Allspice';
-EXEC addProductToOrder 1095, 2, 'Cookie sandwich stick';
-EXEC addProductToOrder 1095, 1, 'Latte';
-EXEC addProductToOrder 1095, 3, 'Vanilla pudding';
-EXEC addProductToOrder 1095, 1, 'Fig';
-EXEC addProductToOrder 1095, 3, 'Baked stuffed tomatoes';
-EXEC addProductToOrder 1096, 1, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 1096, 1, 'Pineapple juice';
-EXEC addProductToOrder 1096, 3, 'Butter roll';
-EXEC addProductToOrder 1096, 2, 'Dr Pepper';
-EXEC addProductToOrder 1096, 2, 'Allspice';
-EXEC addProductToOrder 1097, 1, 'Pasta with chicken';
-EXEC addProductToOrder 1097, 1, 'Chocolate chip cookie dough ice cream';
-EXEC addProductToOrder 1097, 3, 'Baguette';
-EXEC addProductToOrder 1097, 3, 'Diet Coke';
-EXEC addProductToOrder 1097, 1, 'Shrimp scampi served over pasta';
-EXEC addProductToOrder 1098, 2, 'Cocktail sauce';
-EXEC addProductToOrder 1098, 3, 'Caper sauce';
-EXEC addProductToOrder 1098, 1, 'Pasta with clams';
-EXEC addProductToOrder 1098, 3, 'Baked stuffed tomatoes';
-EXEC addProductToOrder 1098, 2, 'Pasta with cauliflower';
-EXEC addProductToOrder 1099, 2, 'Potato salad';
-EXEC addProductToOrder 1099, 3, 'Beef stew with cabbage';
-EXEC addProductToOrder 1099, 2, 'Coconut';
-EXEC addProductToOrder 1099, 2, 'Coke Zero';
-EXEC addProductToOrder 1099, 1, 'Tuna tartare with avocado and soy sauce';
-EXEC addProductToOrder 1100, 2, 'Pineapple juice';
-EXEC addProductToOrder 1100, 3, 'Pasta with mushrooms';
-EXEC addProductToOrder 1100, 2, 'Chocolate peanut butter ice cream';
-EXEC addProductToOrder 1100, 2, 'Café mélange';
-EXEC addProductToOrder 1100, 1, 'Pasta with shrimp';
-EXEC addProductToOrder 1101, 1, 'Pumpkin pudding';
-EXEC addProductToOrder 1101, 1, 'Sprite';
-EXEC addProductToOrder 1101, 2, 'Cranberry';
-EXEC addProductToOrder 1101, 3, 'Cortado';
-EXEC addProductToOrder 1101, 3, 'Espresso';
-EXEC addProductToOrder 1102, 3, 'Baked stuffed potatoes';
-EXEC addProductToOrder 1102, 1, 'Hazelnut';
-EXEC addProductToOrder 1102, 2, 'Flat white';
-EXEC addProductToOrder 1102, 2, 'Chicken and wild rice soup';
-EXEC addProductToOrder 1102, 2, 'Artichoke salad';
-EXEC addProductToOrder 1104, 3, 'Café de olla';
-EXEC addProductToOrder 1104, 2, 'Bechamel sauce';
-EXEC addProductToOrder 1104, 2, 'Grape';
-EXEC addProductToOrder 1104, 3, 'Fish and chips  battered and fried fish served with French fries;';
-EXEC addProductToOrder 1104, 1, 'Deviled eggs';
-EXEC addProductToOrder 1105, 1, 'Lemon pudding';
-EXEC addProductToOrder 1105, 2, 'Café marrón';
-EXEC addProductToOrder 1105, 3, 'Pasta with shrimp';
-EXEC addProductToOrder 1105, 3, 'Shrimp scampi served over pasta';
-EXEC addProductToOrder 1105, 2, 'Split pea soup';
-EXEC addProductToOrder 1106, 2, 'Pasta with crab';
-EXEC addProductToOrder 1106, 1, 'Pineapple juice';
-EXEC addProductToOrder 1106, 1, 'Pasta with sausage';
-EXEC addProductToOrder 1106, 2, 'Carrot cake';
-EXEC addProductToOrder 1106, 2, 'Pasta with lobster';
-EXEC addProductToOrder 1107, 3, 'Hummus';
-EXEC addProductToOrder 1107, 1, 'Romano cheese';
-EXEC addProductToOrder 1107, 2, 'Fried okra';
-EXEC addProductToOrder 1107, 2, 'Baked crab dip';
-EXEC addProductToOrder 1107, 2, 'Mountain Dew';
-EXEC addProductToOrder 1108, 1, 'Banana custard';
-EXEC addProductToOrder 1108, 1, 'Cereal stick';
-EXEC addProductToOrder 1108, 3, 'Rocky road ice cream';
-EXEC addProductToOrder 1108, 3, 'Lemon pudding';
-EXEC addProductToOrder 1108, 3, 'Vanilla pudding';
-EXEC addProductToOrder 1109, 2, 'Cucumber salad';
-EXEC addProductToOrder 1109, 1, 'Chicken and dumplings';
-EXEC addProductToOrder 1109, 3, 'Pasta with mushrooms';
-EXEC addProductToOrder 1109, 1, 'Fried onion rings';
-EXEC addProductToOrder 1109, 2, 'Angel food cake';
-EXEC addProductToOrder 1110, 2, 'Pomegranate juice';
-EXEC addProductToOrder 1110, 2, 'Beef stew with carrots';
-EXEC addProductToOrder 1110, 3, 'Deviled eggs';
-EXEC addProductToOrder 1110, 3, 'Herbal tea';
-EXEC addProductToOrder 1110, 1, 'Caesar salad';
-EXEC addProductToOrder 1111, 2, 'Oysters Rockefeller  oysters baked with a spinach and butter sauce;';
-EXEC addProductToOrder 1111, 3, 'Cookie sandwich bun';
-EXEC addProductToOrder 1111, 1, 'Lemon custard';
-EXEC addProductToOrder 1111, 2, 'Banana custard';
-EXEC addProductToOrder 1111, 2, 'Swiss cheese';
-EXEC addProductToOrder 1112, 3, 'Baked clams';
-EXEC addProductToOrder 1112, 3, 'Raspberry juice';
-EXEC addProductToOrder 1112, 2, 'Clam chowder  a creamy soup made with clams;';
-EXEC addProductToOrder 1112, 1, 'Guacamole';
-EXEC addProductToOrder 1112, 1, 'Lemon custard';
-EXEC addProductToOrder 1113, 3, 'Chocolate candy sandwich';
-EXEC addProductToOrder 1113, 1, 'Vanilla ice cream';
-EXEC addProductToOrder 1113, 1, 'Lemon';
-EXEC addProductToOrder 1113, 2, 'Split pea soup';
-EXEC addProductToOrder 1113, 2, 'Fish stick';
-EXEC addProductToOrder 1114, 3, 'Apple';
-EXEC addProductToOrder 1114, 2, 'Sierra Mist';
-EXEC addProductToOrder 1114, 2, 'Diet Pepsi';
-EXEC addProductToOrder 1114, 3, 'Garden salad';
-EXEC addProductToOrder 1114, 2, 'Chocolate candy roll';
-EXEC addProductToOrder 1115, 2, 'Alfredo sauce';
-EXEC addProductToOrder 1115, 1, 'Banana';
-EXEC addProductToOrder 1115, 2, 'Cheesecake';
-EXEC addProductToOrder 1115, 2, 'Fried ravioli';
-EXEC addProductToOrder 1115, 2, 'Lemon custard';
-EXEC addProductToOrder 1116, 2, 'Spinach salad';
-EXEC addProductToOrder 1116, 3, 'Chicken tortilla soup';
-EXEC addProductToOrder 1116, 1, 'Curry sauce';
-EXEC addProductToOrder 1116, 2, 'Almond';
-EXEC addProductToOrder 1116, 1, 'White tea';
-EXEC addProductToOrder 1117, 3, 'Breadstick';
-EXEC addProductToOrder 1117, 2, 'Carrot juice';
-EXEC addProductToOrder 1117, 2, 'Pasta with tomatoes';
-EXEC addProductToOrder 1117, 1, 'Cranberry';
-EXEC addProductToOrder 1117, 1, 'Vegetable soup';
-EXEC addProductToOrder 1118, 3, 'Coconut cake';
-EXEC addProductToOrder 1118, 3, 'Fruit salad';
-EXEC addProductToOrder 1118, 2, 'Café de olla';
-EXEC addProductToOrder 1118, 3, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1118, 3, 'Café mocha';
-EXEC addProductToOrder 1119, 3, 'Spinach salad';
-EXEC addProductToOrder 1119, 3, 'Beef stew with celery';
-EXEC addProductToOrder 1119, 1, 'Baked oysters';
-EXEC addProductToOrder 1119, 3, 'Rocky road ice cream';
-EXEC addProductToOrder 1119, 3, 'Macchiato';
-EXEC addProductToOrder 1120, 2, 'Caper sauce';
-EXEC addProductToOrder 1120, 3, 'Cucumber salad';
-EXEC addProductToOrder 1120, 1, 'Pasta with tuna';
-EXEC addProductToOrder 1120, 1, 'Chocolate candy';
-EXEC addProductToOrder 1120, 2, 'Vegetable soup';
-EXEC addProductToOrder 1121, 3, 'Artichoke salad';
-EXEC addProductToOrder 1121, 3, 'Mango';
-EXEC addProductToOrder 1121, 2, 'Green tea';
-EXEC addProductToOrder 1121, 1, 'Cardamom';
-EXEC addProductToOrder 1121, 1, 'Peach custard';
-EXEC addProductToOrder 1122, 3, 'Chimichurri sauce';
-EXEC addProductToOrder 1122, 3, 'Biscuit sandwich bun';
-EXEC addProductToOrder 1122, 3, 'Baked stuffed artichokes';
-EXEC addProductToOrder 1122, 2, 'Grilled octopus with a citrus marinade';
-EXEC addProductToOrder 1122, 3, 'Beef stew with carrots';
-EXEC addProductToOrder 1123, 1, 'Caper sauce';
-EXEC addProductToOrder 1123, 1, 'Sprite';
-EXEC addProductToOrder 1123, 2, 'Kombucha tea';
-EXEC addProductToOrder 1123, 2, 'Sierra Mist';
-EXEC addProductToOrder 1123, 3, 'Pepsi';
-EXEC addProductToOrder 1124, 3, 'French onion soup';
-EXEC addProductToOrder 1124, 2, 'Vegetable soup';
-EXEC addProductToOrder 1124, 1, 'Brie cheese';
-EXEC addProductToOrder 1124, 3, 'Banana pudding';
-EXEC addProductToOrder 1124, 1, 'Grapefruit';
-EXEC addProductToOrder 1125, 2, 'Café marrón';
-EXEC addProductToOrder 1125, 1, 'Espresso';
-EXEC addProductToOrder 1125, 1, 'Rooibos tea';
-EXEC addProductToOrder 1125, 3, 'Lemon';
-EXEC addProductToOrder 1125, 3, 'Burrata cheese';
-EXEC addProductToOrder 1126, 1, 'Strawberry pudding';
-EXEC addProductToOrder 1126, 3, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1126, 2, 'Carrot juice';
-EXEC addProductToOrder 1126, 2, 'Carrot cake';
-EXEC addProductToOrder 1126, 3, 'Baguette';
-EXEC addProductToOrder 1127, 1, 'Pasta with chicken';
-EXEC addProductToOrder 1127, 1, 'Pasta with shrimp';
-EXEC addProductToOrder 1127, 1, 'Pineapple juice';
-EXEC addProductToOrder 1127, 3, 'Gruyere cheese';
-EXEC addProductToOrder 1127, 2, 'Bay leaf';
-EXEC addProductToOrder 1128, 3, 'Fanta';
-EXEC addProductToOrder 1128, 3, 'Peach custard';
-EXEC addProductToOrder 1128, 3, 'Strawberry pudding';
-EXEC addProductToOrder 1128, 3, 'Pu-erh tea';
-EXEC addProductToOrder 1128, 1, 'Vanilla pudding';
-EXEC addProductToOrder 1129, 3, 'Americano';
-EXEC addProductToOrder 1129, 1, 'Chicken tortilla soup';
-EXEC addProductToOrder 1129, 3, 'Pasta with mushrooms';
-EXEC addProductToOrder 1129, 3, 'Coconut pudding';
-EXEC addProductToOrder 1129, 1, 'Crab cakes with a remoulade sauce';
-EXEC addProductToOrder 1130, 3, 'Bleu cheese';
-EXEC addProductToOrder 1130, 3, 'Herbal tea';
-EXEC addProductToOrder 1130, 1, 'Chutney sauce';
-EXEC addProductToOrder 1130, 1, 'Strawberry ice cream';
-EXEC addProductToOrder 1130, 3, 'Yellow tea';
-EXEC addProductToOrder 1131, 3, 'Baked stuffed clams';
-EXEC addProductToOrder 1131, 3, 'Vegetable soup';
-EXEC addProductToOrder 1131, 1, 'Brown sauce';
-EXEC addProductToOrder 1131, 3, 'Rocky road ice cream';
-EXEC addProductToOrder 1131, 2, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1132, 2, 'Spinach salad';
-EXEC addProductToOrder 1132, 2, 'Béarnaise sauce';
-EXEC addProductToOrder 1132, 1, 'Peach pudding';
-EXEC addProductToOrder 1132, 3, 'Macaroni salad';
-EXEC addProductToOrder 1132, 3, 'Café de olla';
-EXEC addProductToOrder 1133, 3, 'Café crema';
-EXEC addProductToOrder 1133, 3, 'Vegetable casserole';
-EXEC addProductToOrder 1133, 1, 'Lemon pudding';
-EXEC addProductToOrder 1133, 1, 'Baked stuffed artichokes';
-EXEC addProductToOrder 1133, 2, 'Cappuccino';
-EXEC addProductToOrder 1134, 3, 'Chicken and barley soup';
-EXEC addProductToOrder 1134, 1, 'Hummus';
-EXEC addProductToOrder 1134, 1, 'Bechamel sauce';
-EXEC addProductToOrder 1134, 3, 'Baked stuffed peppers';
-EXEC addProductToOrder 1134, 1, 'Fried okra';
-EXEC addProductToOrder 1135, 1, 'Café Cubano';
-EXEC addProductToOrder 1135, 1, 'Oolong tea';
-EXEC addProductToOrder 1135, 3, 'Café con leche';
-EXEC addProductToOrder 1135, 2, 'Cocktail sauce';
-EXEC addProductToOrder 1135, 3, 'Fried mushrooms';
-EXEC addProductToOrder 1136, 1, 'Basil';
-EXEC addProductToOrder 1136, 1, 'Café con leche';
-EXEC addProductToOrder 1136, 3, 'Pumpkin pudding';
-EXEC addProductToOrder 1136, 2, 'Angel food cake';
-EXEC addProductToOrder 1136, 2, 'Anise';
-EXEC addProductToOrder 1137, 1, 'Allspice';
-EXEC addProductToOrder 1137, 3, 'Espresso';
-EXEC addProductToOrder 1137, 2, 'Chocolate candy roll';
-EXEC addProductToOrder 1137, 1, 'Sprite';
-EXEC addProductToOrder 1137, 2, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1138, 2, 'Café Cubano';
-EXEC addProductToOrder 1138, 2, 'Hummus';
-EXEC addProductToOrder 1138, 2, 'Fish sandwich bun';
-EXEC addProductToOrder 1138, 1, 'Kombucha tea';
-EXEC addProductToOrder 1138, 3, 'Tuna tartare with avocado and soy sauce';
-EXEC addProductToOrder 1139, 2, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1139, 2, 'Tomato salad';
-EXEC addProductToOrder 1139, 3, 'Kiwi';
-EXEC addProductToOrder 1139, 3, 'Beet salad';
-EXEC addProductToOrder 1139, 1, 'Mate tea';
-EXEC addProductToOrder 1140, 2, 'Rocky road ice cream';
-EXEC addProductToOrder 1140, 2, 'Cashew';
-EXEC addProductToOrder 1140, 3, 'Alfredo sauce';
-EXEC addProductToOrder 1140, 2, 'Chicken casserole';
-EXEC addProductToOrder 1140, 2, 'Peach pudding';
-EXEC addProductToOrder 1141, 1, 'Diet Mountain Dew';
-EXEC addProductToOrder 1141, 1, 'Fried onion rings';
-EXEC addProductToOrder 1141, 2, 'Banana cake';
-EXEC addProductToOrder 1141, 3, 'Pasta with cauliflower';
-EXEC addProductToOrder 1141, 3, 'Dr Pepper';
-EXEC addProductToOrder 1142, 3, 'Vegetable stew';
-EXEC addProductToOrder 1142, 2, 'Baked stuffed potatoes';
-EXEC addProductToOrder 1142, 1, 'Fried okra';
-EXEC addProductToOrder 1142, 1, 'Caprese salad';
-EXEC addProductToOrder 1142, 1, 'Cereal';
-EXEC addProductToOrder 1143, 2, 'Pasta with mushrooms';
-EXEC addProductToOrder 1143, 3, 'Bechamel sauce';
-EXEC addProductToOrder 1143, 1, 'Coconut cake';
-EXEC addProductToOrder 1143, 2, 'Tomato juice';
-EXEC addProductToOrder 1143, 2, 'Beef stew with potatoes';
-EXEC addProductToOrder 1144, 3, 'Carrot juice';
-EXEC addProductToOrder 1144, 1, 'Beet salad';
-EXEC addProductToOrder 1144, 1, 'Cherry';
-EXEC addProductToOrder 1144, 1, 'Fish roll';
-EXEC addProductToOrder 1144, 2, 'Moose tracks ice cream';
-EXEC addProductToOrder 1145, 2, 'Guacamole';
-EXEC addProductToOrder 1145, 3, 'Baked stuffed tomatoes';
-EXEC addProductToOrder 1145, 2, 'Fried okra';
-EXEC addProductToOrder 1145, 2, 'Green tea';
-EXEC addProductToOrder 1145, 1, 'Beef casserole';
-EXEC addProductToOrder 1146, 1, 'Cobb salad';
-EXEC addProductToOrder 1146, 2, 'Cherry';
-EXEC addProductToOrder 1146, 1, 'Café bombón';
-EXEC addProductToOrder 1146, 1, 'Asiago cheese';
-EXEC addProductToOrder 1146, 2, 'Carrot salad';
-EXEC addProductToOrder 1147, 2, 'Garden salad';
-EXEC addProductToOrder 1147, 2, 'Pasta with salmon';
-EXEC addProductToOrder 1147, 1, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 1147, 3, 'Beef stew with mushrooms';
-EXEC addProductToOrder 1147, 1, 'Café au lait';
-EXEC addProductToOrder 1148, 3, 'Baked clams';
-EXEC addProductToOrder 1148, 2, 'Fish and chips  battered and fried fish served with French fries;';
-EXEC addProductToOrder 1148, 3, 'Coconut custard';
-EXEC addProductToOrder 1148, 3, 'Cappuccino';
-EXEC addProductToOrder 1148, 3, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1149, 2, 'Baguette';
-EXEC addProductToOrder 1149, 1, '7 Up';
-EXEC addProductToOrder 1149, 2, 'Moose tracks ice cream';
-EXEC addProductToOrder 1149, 1, 'Diet Dr Pepper';
-EXEC addProductToOrder 1149, 1, 'Café con leche';
-EXEC addProductToOrder 1150, 2, 'Carrot juice';
-EXEC addProductToOrder 1150, 3, 'Hazelnut';
-EXEC addProductToOrder 1150, 2, 'Butter pecan ice cream';
-EXEC addProductToOrder 1150, 2, 'Beef stew with carrots';
-EXEC addProductToOrder 1150, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 1151, 2, 'Cayenne';
-EXEC addProductToOrder 1151, 1, 'Apple';
-EXEC addProductToOrder 1151, 1, 'Cookie roll';
-EXEC addProductToOrder 1151, 1, 'Chicken and mushroom soup';
-EXEC addProductToOrder 1151, 3, 'Flat white';
-EXEC addProductToOrder 1152, 1, 'Tomato salad';
-EXEC addProductToOrder 1152, 3, 'Chimichurri sauce';
-EXEC addProductToOrder 1152, 3, 'Café con leche';
-EXEC addProductToOrder 1152, 2, 'Chocolate chip cookie dough ice cream';
-EXEC addProductToOrder 1152, 2, 'Banana custard';
-EXEC addProductToOrder 1153, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 1153, 1, 'Rooibos tea';
-EXEC addProductToOrder 1153, 3, 'Beef stew with onions';
-EXEC addProductToOrder 1153, 2, 'Orange juice';
-EXEC addProductToOrder 1153, 2, 'Allspice';
-EXEC addProductToOrder 1154, 1, 'Biscuit stick';
-EXEC addProductToOrder 1154, 3, 'Biscuit sandwich';
-EXEC addProductToOrder 1154, 1, 'Pasta with tomatoes';
-EXEC addProductToOrder 1154, 3, 'Lemon juice';
-EXEC addProductToOrder 1154, 2, 'Apple custard';
-EXEC addProductToOrder 1155, 3, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 1155, 3, 'Carrot salad';
-EXEC addProductToOrder 1155, 1, 'Mountain Dew';
-EXEC addProductToOrder 1155, 3, 'Minestrone soup';
-EXEC addProductToOrder 1155, 2, 'Blackberry';
-EXEC addProductToOrder 1156, 2, 'Yellow tea';
-EXEC addProductToOrder 1156, 1, 'Brie cheese';
-EXEC addProductToOrder 1156, 2, 'Beef soup';
-EXEC addProductToOrder 1156, 1, 'Pasta with cauliflower';
-EXEC addProductToOrder 1156, 2, 'Fried zucchini';
-EXEC addProductToOrder 1157, 1, 'Pecan';
-EXEC addProductToOrder 1157, 1, 'Béarnaise sauce';
-EXEC addProductToOrder 1157, 1, 'Americano';
-EXEC addProductToOrder 1157, 3, 'Potato salad';
-EXEC addProductToOrder 1157, 3, 'Allspice';
-EXEC addProductToOrder 1158, 1, 'Chili';
-EXEC addProductToOrder 1158, 2, 'Kombucha tea';
-EXEC addProductToOrder 1158, 1, 'Fried zucchini';
-EXEC addProductToOrder 1158, 2, 'Rooibos tea';
-EXEC addProductToOrder 1158, 1, 'Asparagus salad';
-EXEC addProductToOrder 1159, 1, 'Café con leche';
-EXEC addProductToOrder 1159, 1, 'Baked brie';
-EXEC addProductToOrder 1159, 2, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 1159, 3, 'Flat white';
-EXEC addProductToOrder 1159, 1, 'Lentil soup';
-EXEC addProductToOrder 1160, 1, 'Beet salad';
-EXEC addProductToOrder 1160, 1, 'Café mélange';
-EXEC addProductToOrder 1160, 1, 'Curry';
-EXEC addProductToOrder 1160, 2, 'Carrot juice';
-EXEC addProductToOrder 1160, 3, 'Pasta with spinach';
-EXEC addProductToOrder 1161, 2, 'Green tea';
-EXEC addProductToOrder 1161, 2, 'Chocolate chip ice cream';
-EXEC addProductToOrder 1161, 2, 'Baked stuffed peppers';
-EXEC addProductToOrder 1161, 1, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 1161, 3, 'Diet Sprite';
-EXEC addProductToOrder 1162, 2, 'Caraway';
-EXEC addProductToOrder 1162, 1, 'Allspice';
-EXEC addProductToOrder 1162, 2, 'Baguette';
-EXEC addProductToOrder 1162, 1, 'Café marrón';
-EXEC addProductToOrder 1162, 2, 'Garden salad';
-EXEC addProductToOrder 1163, 3, 'Chocolate candy stick';
-EXEC addProductToOrder 1163, 3, 'Café bombón';
-EXEC addProductToOrder 1163, 1, 'Sierra Mist';
-EXEC addProductToOrder 1163, 3, 'Lime juice';
-EXEC addProductToOrder 1163, 2, 'Rooibos tea';
-EXEC addProductToOrder 1164, 1, 'Butter';
-EXEC addProductToOrder 1164, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 1164, 3, 'Feta cheese';
-EXEC addProductToOrder 1164, 3, 'Pistachio';
-EXEC addProductToOrder 1164, 2, 'Biscuit';
-EXEC addProductToOrder 1165, 2, 'Gouda cheese';
-EXEC addProductToOrder 1165, 1, 'French onion soup';
-EXEC addProductToOrder 1165, 1, 'Beef stew with onions';
-EXEC addProductToOrder 1165, 2, 'Cranberry juice';
-EXEC addProductToOrder 1165, 3, 'Biscuit stick';
-EXEC addProductToOrder 1166, 2, 'Biscuit sandwich roll';
-EXEC addProductToOrder 1166, 2, 'Pasta with zucchini';
-EXEC addProductToOrder 1166, 3, 'Pepper jack cheese';
-EXEC addProductToOrder 1166, 1, 'Tossed salad';
-EXEC addProductToOrder 1166, 1, 'Curry';
-EXEC addProductToOrder 1167, 2, 'Pasta with shrimp';
-EXEC addProductToOrder 1167, 3, 'Vegetable soup';
-EXEC addProductToOrder 1167, 2, 'Grape';
-EXEC addProductToOrder 1167, 2, 'Flat white';
-EXEC addProductToOrder 1167, 1, 'Vanilla pudding';
-EXEC addProductToOrder 1168, 1, 'Bun';
-EXEC addProductToOrder 1168, 1, 'Coconut cake';
-EXEC addProductToOrder 1168, 3, 'Bay leaf';
-EXEC addProductToOrder 1168, 1, 'Goat cheese';
-EXEC addProductToOrder 1168, 2, 'Avocado';
-EXEC addProductToOrder 1169, 3, 'Rooibos tea';
-EXEC addProductToOrder 1169, 3, 'Baked oysters';
-EXEC addProductToOrder 1169, 3, 'Mango';
-EXEC addProductToOrder 1169, 3, 'Lemon pudding';
-EXEC addProductToOrder 1169, 2, 'Beef stew with celery';
-EXEC addProductToOrder 1170, 3, 'Guava';
-EXEC addProductToOrder 1170, 1, 'Cranberry juice';
-EXEC addProductToOrder 1170, 1, 'Grapefruit';
-EXEC addProductToOrder 1170, 3, 'Garden salad';
-EXEC addProductToOrder 1170, 3, 'Chicken and barley soup';
-EXEC addProductToOrder 1171, 1, 'Apple custard';
-EXEC addProductToOrder 1171, 3, 'Breadstick';
-EXEC addProductToOrder 1171, 2, 'Chai tea';
-EXEC addProductToOrder 1171, 3, 'Curry sauce';
-EXEC addProductToOrder 1171, 3, 'Beef soup';
-EXEC addProductToOrder 1172, 1, 'Banana pudding';
-EXEC addProductToOrder 1172, 1, 'Pasta with sausage';
-EXEC addProductToOrder 1172, 2, 'Moose tracks ice cream';
-EXEC addProductToOrder 1172, 3, 'Cherry';
-EXEC addProductToOrder 1172, 2, 'Fried mushrooms';
-EXEC addProductToOrder 1173, 3, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 1173, 3, 'Melon';
-EXEC addProductToOrder 1173, 1, 'Vegetable soup';
-EXEC addProductToOrder 1173, 1, 'Black forest cake';
-EXEC addProductToOrder 1173, 2, 'Pasta with tomatoes';
-EXEC addProductToOrder 1174, 2, 'Mocha';
-EXEC addProductToOrder 1174, 3, 'Chocolate candy roll';
-EXEC addProductToOrder 1174, 3, 'Chocolate candy bar';
-EXEC addProductToOrder 1174, 1, 'Potato soup';
-EXEC addProductToOrder 1174, 2, 'Chai tea';
-EXEC addProductToOrder 1175, 3, 'Grapefruit juice';
-EXEC addProductToOrder 1175, 2, 'Chicken soup';
-EXEC addProductToOrder 1175, 3, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1175, 2, 'Beef stew with cabbage';
-EXEC addProductToOrder 1175, 3, 'Cookie sandwich roll';
-EXEC addProductToOrder 1176, 1, 'Beef stew with onions';
-EXEC addProductToOrder 1176, 2, 'Cortado';
-EXEC addProductToOrder 1176, 2, 'Fried calamari';
-EXEC addProductToOrder 1176, 1, 'Pasta with shrimp';
-EXEC addProductToOrder 1176, 1, 'Butter pecan ice cream';
-EXEC addProductToOrder 1177, 1, 'Chai tea';
-EXEC addProductToOrder 1177, 1, 'Fried ravioli';
-EXEC addProductToOrder 1177, 3, 'Guacamole';
-EXEC addProductToOrder 1177, 1, 'Burrata cheese';
-EXEC addProductToOrder 1177, 3, 'Pu-erh tea';
-EXEC addProductToOrder 1178, 3, 'Chicken soup';
-EXEC addProductToOrder 1178, 3, 'Pumpkin pudding';
-EXEC addProductToOrder 1178, 1, 'Chili';
-EXEC addProductToOrder 1178, 1, 'Béarnaise sauce';
-EXEC addProductToOrder 1178, 3, 'Baked stuffed clams';
-EXEC addProductToOrder 1179, 1, 'Vegetable lasagna';
-EXEC addProductToOrder 1179, 2, 'Artichoke salad';
-EXEC addProductToOrder 1179, 1, 'Café de pico';
-EXEC addProductToOrder 1179, 1, 'Yellow tea';
-EXEC addProductToOrder 1179, 3, 'Cappuccino';
-EXEC addProductToOrder 1180, 2, 'Clam chowder  a creamy soup made with clams;';
-EXEC addProductToOrder 1180, 2, 'Chocolate candy sandwich';
-EXEC addProductToOrder 1180, 3, 'Broccoli salad';
-EXEC addProductToOrder 1180, 2, 'Diet Coke';
-EXEC addProductToOrder 1180, 2, 'Cioppino  a seafood stew made with a variety of fish and shellfish;';
-EXEC addProductToOrder 1181, 2, 'Café del mar';
-EXEC addProductToOrder 1181, 3, 'Peanut';
-EXEC addProductToOrder 1181, 3, 'Diet Fanta';
-EXEC addProductToOrder 1181, 2, 'Chai tea';
-EXEC addProductToOrder 1181, 3, 'Potato soup';
-EXEC addProductToOrder 1182, 2, 'Lemon juice';
-EXEC addProductToOrder 1182, 3, 'Café zorro';
-EXEC addProductToOrder 1182, 3, 'Green tea';
-EXEC addProductToOrder 1182, 3, 'Chimichurri sauce';
-EXEC addProductToOrder 1182, 2, 'Cereal sandwich stick';
-EXEC addProductToOrder 1183, 3, 'Cereal sandwich';
-EXEC addProductToOrder 1183, 2, 'Cereal';
-EXEC addProductToOrder 1183, 2, 'Biscuit sandwich bun';
-EXEC addProductToOrder 1183, 3, 'Cookie roll';
-EXEC addProductToOrder 1183, 1, 'Affogato';
-EXEC addProductToOrder 1184, 1, 'Honeybush tea';
-EXEC addProductToOrder 1184, 2, 'Chimichurri sauce';
-EXEC addProductToOrder 1184, 2, 'Coriander';
-EXEC addProductToOrder 1184, 3, 'Fish stick';
-EXEC addProductToOrder 1184, 1, 'Peach pudding';
-EXEC addProductToOrder 1185, 2, 'Sprite';
-EXEC addProductToOrder 1185, 1, 'Americano';
-EXEC addProductToOrder 1185, 1, 'Pasta with clams';
-EXEC addProductToOrder 1185, 1, 'Cookie';
-EXEC addProductToOrder 1185, 2, 'Oolong tea';
-EXEC addProductToOrder 1186, 1, 'Café mélange';
-EXEC addProductToOrder 1186, 3, 'Blueberry juice';
-EXEC addProductToOrder 1186, 2, 'Herbal tea';
-EXEC addProductToOrder 1186, 1, 'Beef stew with onions';
-EXEC addProductToOrder 1186, 2, 'Beef stew with potatoes';
-EXEC addProductToOrder 1187, 2, 'Goat cheese';
-EXEC addProductToOrder 1187, 3, 'Cherry';
-EXEC addProductToOrder 1187, 2, 'Grape';
-EXEC addProductToOrder 1187, 3, 'Café de pico';
-EXEC addProductToOrder 1187, 3, 'Diet Fanta';
-EXEC addProductToOrder 1188, 3, 'Alfredo sauce';
-EXEC addProductToOrder 1188, 3, 'Chutney sauce';
-EXEC addProductToOrder 1188, 3, 'Swiss cheese';
-EXEC addProductToOrder 1188, 2, 'Pasta with shrimp';
-EXEC addProductToOrder 1188, 2, 'Pasta with salmon';
-EXEC addProductToOrder 1189, 3, 'Bread';
-EXEC addProductToOrder 1189, 3, 'Mountain Dew';
-EXEC addProductToOrder 1189, 1, 'Dip';
-EXEC addProductToOrder 1189, 1, 'Vegetable lasagna';
-EXEC addProductToOrder 1189, 1, 'Raspberry juice';
-EXEC addProductToOrder 1190, 2, 'Cinnamon';
-EXEC addProductToOrder 1190, 2, 'Dip';
-EXEC addProductToOrder 1190, 3, 'Vanilla pudding';
-EXEC addProductToOrder 1190, 3, 'Chili';
-EXEC addProductToOrder 1190, 2, 'American cheese';
-EXEC addProductToOrder 1191, 3, 'Black tea';
-EXEC addProductToOrder 1191, 1, 'Caprese salad';
-EXEC addProductToOrder 1191, 2, 'Caraway';
-EXEC addProductToOrder 1191, 2, 'Tomato soup';
-EXEC addProductToOrder 1191, 1, 'Mozzarella cheese';
-EXEC addProductToOrder 1192, 1, 'Fanta';
-EXEC addProductToOrder 1192, 3, 'Grape juice';
-EXEC addProductToOrder 1192, 1, 'Bun';
-EXEC addProductToOrder 1192, 1, 'Chicken tortilla soup';
-EXEC addProductToOrder 1192, 2, 'Pomegranate juice';
-EXEC addProductToOrder 1193, 2, 'Allspice';
-EXEC addProductToOrder 1193, 2, 'Espresso';
-EXEC addProductToOrder 1193, 2, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1193, 1, 'Banana pudding';
-EXEC addProductToOrder 1193, 1, 'Vanilla ice cream';
-EXEC addProductToOrder 1194, 3, 'Biscuit sandwich';
-EXEC addProductToOrder 1194, 1, 'Café mélange';
-EXEC addProductToOrder 1194, 3, 'Pumpkin pudding';
-EXEC addProductToOrder 1194, 2, 'Curry';
-EXEC addProductToOrder 1194, 3, 'Chocolate custard';
-EXEC addProductToOrder 1195, 1, 'Pasta with onions';
-EXEC addProductToOrder 1195, 2, 'Deviled eggs';
-EXEC addProductToOrder 1195, 3, 'Blueberry juice';
-EXEC addProductToOrder 1195, 3, 'Pasta with shrimp';
-EXEC addProductToOrder 1195, 2, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 1196, 3, 'Vanilla pudding';
-EXEC addProductToOrder 1196, 3, 'Chestnut';
-EXEC addProductToOrder 1196, 1, 'Mozzarella cheese';
-EXEC addProductToOrder 1196, 1, 'Pepsi';
-EXEC addProductToOrder 1196, 1, 'Potato soup';
-EXEC addProductToOrder 1197, 3, 'Pasta with salmon';
-EXEC addProductToOrder 1197, 2, 'Tomato soup';
-EXEC addProductToOrder 1197, 1, 'Fish roll';
-EXEC addProductToOrder 1197, 3, 'Raspberry juice';
-EXEC addProductToOrder 1197, 2, 'Biscuit sandwich roll';
-EXEC addProductToOrder 1198, 2, 'Yellow tea';
-EXEC addProductToOrder 1198, 1, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1198, 2, 'Chicken and dumplings';
-EXEC addProductToOrder 1198, 1, 'Pistachio ice cream';
-EXEC addProductToOrder 1198, 2, 'Bundt cake';
-EXEC addProductToOrder 1199, 1, 'Fried mozzarella sticks';
-EXEC addProductToOrder 1199, 1, 'Grapefruit';
-EXEC addProductToOrder 1199, 2, 'Oysters Rockefeller  oysters baked with a spinach and butter sauce;';
-EXEC addProductToOrder 1199, 2, 'Date';
-EXEC addProductToOrder 1199, 3, 'Biscuit sandwich';
-EXEC addProductToOrder 1200, 2, 'Boursin cheese';
-EXEC addProductToOrder 1200, 2, 'Alfredo sauce';
-EXEC addProductToOrder 1200, 2, 'Chicken noodle soup';
-EXEC addProductToOrder 1200, 2, 'Carrot cake';
-EXEC addProductToOrder 1200, 3, 'Carrot salad';
-EXEC addProductToOrder 1201, 2, 'Lemon juice';
-EXEC addProductToOrder 1201, 3, 'Bay leaf';
-EXEC addProductToOrder 1201, 3, 'Deviled eggs';
-EXEC addProductToOrder 1201, 3, 'Banana cake';
-EXEC addProductToOrder 1201, 2, 'Deviled eggs';
-EXEC addProductToOrder 1202, 3, 'Guacamole';
-EXEC addProductToOrder 1202, 1, 'Coke Zero';
-EXEC addProductToOrder 1202, 2, 'Fried calamari';
-EXEC addProductToOrder 1202, 2, 'Cereal sandwich';
-EXEC addProductToOrder 1202, 3, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 1203, 2, 'Apple juice';
-EXEC addProductToOrder 1203, 1, 'Café bombón';
-EXEC addProductToOrder 1203, 2, 'Bay leaf';
-EXEC addProductToOrder 1203, 3, 'Chicken and wild rice soup';
-EXEC addProductToOrder 1203, 3, 'Gouda cheese';
-EXEC addProductToOrder 1204, 2, 'Brioche';
-EXEC addProductToOrder 1204, 2, 'Béarnaise sauce';
-EXEC addProductToOrder 1204, 3, 'Blueberry';
-EXEC addProductToOrder 1204, 2, 'Chocolate peanut butter ice cream';
-EXEC addProductToOrder 1204, 2, 'Deviled eggs';
-EXEC addProductToOrder 1205, 2, 'Fish sandwich';
-EXEC addProductToOrder 1205, 2, 'Caesar salad';
-EXEC addProductToOrder 1205, 2, 'Spinach salad';
-EXEC addProductToOrder 1205, 3, 'Matcha tea';
-EXEC addProductToOrder 1205, 2, 'Pistachio';
-EXEC addProductToOrder 1206, 3, 'Chicken and rice soup';
-EXEC addProductToOrder 1206, 2, 'Fried onion rings';
-EXEC addProductToOrder 1206, 1, 'Pasta with chicken';
-EXEC addProductToOrder 1206, 3, 'Café zorro';
-EXEC addProductToOrder 1206, 2, 'Banana custard';
-EXEC addProductToOrder 1207, 3, 'Vanilla ice cream';
-EXEC addProductToOrder 1207, 3, 'Mountain Dew';
-EXEC addProductToOrder 1207, 2, 'Sierra Mist';
-EXEC addProductToOrder 1207, 2, 'Chicken and broccoli soup';
-EXEC addProductToOrder 1207, 1, 'Pasta with spinach';
-EXEC addProductToOrder 1208, 3, 'Carrot salad';
-EXEC addProductToOrder 1208, 1, 'Split pea soup';
-EXEC addProductToOrder 1208, 1, 'Vegetable stir fry';
-EXEC addProductToOrder 1208, 1, 'Breadstick';
-EXEC addProductToOrder 1208, 3, 'Pasta with scallops';
-EXEC addProductToOrder 1209, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 1209, 1, 'Espresso';
-EXEC addProductToOrder 1209, 1, 'Butter roll';
-EXEC addProductToOrder 1209, 2, 'Corn salad';
-EXEC addProductToOrder 1209, 3, 'Vegetable stew';
-EXEC addProductToOrder 1210, 1, 'Pasta with onions';
-EXEC addProductToOrder 1210, 3, 'Tomato soup';
-EXEC addProductToOrder 1210, 2, 'Biscuit sandwich';
-EXEC addProductToOrder 1210, 3, 'Goat cheese';
-EXEC addProductToOrder 1210, 3, 'Baked stuffed clams';
-EXEC addProductToOrder 1211, 3, 'Diet Mountain Dew';
-EXEC addProductToOrder 1211, 3, 'Biscuit sandwich bun';
-EXEC addProductToOrder 1211, 2, 'Chicken and mushroom soup';
-EXEC addProductToOrder 1211, 1, 'Boston cream cake';
-EXEC addProductToOrder 1211, 3, 'Pistachio ice cream';
-EXEC addProductToOrder 1212, 1, 'Cereal sandwich stick';
-EXEC addProductToOrder 1212, 3, 'Chili';
-EXEC addProductToOrder 1212, 1, 'Bay leaf';
-EXEC addProductToOrder 1212, 2, 'Banana pudding';
-EXEC addProductToOrder 1212, 2, 'Cookie';
-EXEC addProductToOrder 1213, 3, 'Macaroni salad';
-EXEC addProductToOrder 1213, 3, 'Raspberry juice';
-EXEC addProductToOrder 1213, 1, 'Pepper jack cheese';
-EXEC addProductToOrder 1213, 2, 'Fried potato skins';
-EXEC addProductToOrder 1213, 1, 'Coconut cake';
-EXEC addProductToOrder 1214, 1, 'Chicken and wild rice soup';
-EXEC addProductToOrder 1214, 3, 'Fruit salad';
-EXEC addProductToOrder 1214, 2, 'Gouda cheese';
-EXEC addProductToOrder 1214, 1, 'Brie cheese';
-EXEC addProductToOrder 1214, 2, 'Chocolate candy stick';
-EXEC addProductToOrder 1215, 1, 'Guacamole';
-EXEC addProductToOrder 1215, 3, 'Vegetable soup';
-EXEC addProductToOrder 1215, 2, 'Beef stew with tomatoes';
-EXEC addProductToOrder 1215, 1, 'Coconut cake';
-EXEC addProductToOrder 1215, 2, 'Fruit salad';
-EXEC addProductToOrder 1216, 2, 'Greek salad';
-EXEC addProductToOrder 1216, 3, 'Latte';
-EXEC addProductToOrder 1216, 3, 'Pistachio';
-EXEC addProductToOrder 1216, 3, 'Lentil soup';
-EXEC addProductToOrder 1216, 3, 'Chicken and wild rice soup';
-EXEC addProductToOrder 1217, 3, 'Banana pudding';
-EXEC addProductToOrder 1217, 3, 'Anise';
-EXEC addProductToOrder 1217, 3, 'Cookie sandwich stick';
-EXEC addProductToOrder 1217, 3, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 1217, 1, 'Apple juice';
-EXEC addProductToOrder 1218, 2, 'Cinnamon';
-EXEC addProductToOrder 1218, 1, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1218, 3, 'Curry sauce';
-EXEC addProductToOrder 1218, 1, 'Carrot cake';
-EXEC addProductToOrder 1218, 2, 'Grilled salmon with a lemon butter sauce';
-EXEC addProductToOrder 1219, 2, 'Kombucha tea';
-EXEC addProductToOrder 1219, 3, 'Cookie sandwich stick';
-EXEC addProductToOrder 1219, 3, 'Dressing sauce';
-EXEC addProductToOrder 1219, 2, 'Clam chowder  a creamy soup made with clams;';
-EXEC addProductToOrder 1219, 3, 'Biscotti';
-EXEC addProductToOrder 1220, 2, 'Cucumber salad';
-EXEC addProductToOrder 1220, 2, 'Pineapple juice';
-EXEC addProductToOrder 1220, 2, 'Americano';
-EXEC addProductToOrder 1220, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 1220, 3, 'Tomato salad';
-EXEC addProductToOrder 1221, 3, 'Pasta with salmon';
-EXEC addProductToOrder 1221, 3, 'Diet Fanta';
-EXEC addProductToOrder 1221, 3, 'Banana pudding';
-EXEC addProductToOrder 1221, 3, 'Fried okra';
-EXEC addProductToOrder 1221, 3, 'Curry';
-EXEC addProductToOrder 1222, 1, 'Chocolate cake';
-EXEC addProductToOrder 1222, 3, 'Pasta with meatballs';
-EXEC addProductToOrder 1222, 2, 'Romano cheese';
-EXEC addProductToOrder 1222, 1, 'Baked stuffed eggplant';
-EXEC addProductToOrder 1222, 3, 'Fish sandwich stick';
-EXEC addProductToOrder 1223, 1, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 1223, 2, 'Banana pudding';
-EXEC addProductToOrder 1223, 3, 'Beef stew with cabbage';
-EXEC addProductToOrder 1223, 3, 'Provolone cheese';
-EXEC addProductToOrder 1223, 2, 'Baked stuffed clams';
-EXEC addProductToOrder 1224, 2, 'Baguette';
-EXEC addProductToOrder 1224, 2, 'Dip';
-EXEC addProductToOrder 1224, 2, 'Cookie';
-EXEC addProductToOrder 1224, 1, 'Cranberry';
-EXEC addProductToOrder 1224, 2, 'Vegetable curry';
-EXEC addProductToOrder 1225, 1, 'Coconut cake';
-EXEC addProductToOrder 1225, 1, 'Pistachio ice cream';
-EXEC addProductToOrder 1225, 2, 'Clam chowder  a creamy soup made with clams;';
-EXEC addProductToOrder 1225, 1, 'Provolone cheese';
-EXEC addProductToOrder 1225, 3, 'Cookie sandwich roll';
-EXEC addProductToOrder 1226, 3, 'Fish';
-EXEC addProductToOrder 1226, 2, 'Avocado';
-EXEC addProductToOrder 1226, 2, 'Baked stuffed potatoes';
-EXEC addProductToOrder 1226, 2, 'Broccoli salad';
-EXEC addProductToOrder 1226, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 1227, 3, 'Hummus';
-EXEC addProductToOrder 1227, 2, 'Allspice';
-EXEC addProductToOrder 1227, 2, 'Fanta';
-EXEC addProductToOrder 1227, 3, 'Banana pudding';
-EXEC addProductToOrder 1227, 3, 'Strawberry ice cream';
-EXEC addProductToOrder 1228, 1, 'Feta cheese';
-EXEC addProductToOrder 1228, 1, 'Date';
-EXEC addProductToOrder 1228, 2, 'Fried mushrooms';
-EXEC addProductToOrder 1228, 2, 'Chocolate candy bar';
-EXEC addProductToOrder 1228, 1, 'Apricot';
-EXEC addProductToOrder 1229, 3, 'White tea';
-EXEC addProductToOrder 1229, 2, 'Coffee cake';
-EXEC addProductToOrder 1229, 1, 'Baked stuffed peppers';
-EXEC addProductToOrder 1229, 1, 'Cereal sandwich';
-EXEC addProductToOrder 1229, 1, 'Mango';
-EXEC addProductToOrder 1230, 3, 'Mate tea';
-EXEC addProductToOrder 1230, 2, 'Almond';
-EXEC addProductToOrder 1230, 2, 'Butter';
-EXEC addProductToOrder 1230, 3, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 1230, 2, 'Bleu cheese';
-EXEC addProductToOrder 1231, 2, 'Baked clams';
-EXEC addProductToOrder 1231, 2, 'Chocolate candy roll';
-EXEC addProductToOrder 1231, 3, 'Vegetable stir fry';
-EXEC addProductToOrder 1231, 2, 'Café zorro';
-EXEC addProductToOrder 1231, 3, 'Cappuccino';
-EXEC addProductToOrder 1232, 2, 'Cobb salad';
-EXEC addProductToOrder 1232, 2, 'Baked stuffed potatoes';
-EXEC addProductToOrder 1232, 1, 'Café de pico';
-EXEC addProductToOrder 1232, 3, 'Vegetable soup';
-EXEC addProductToOrder 1232, 1, 'Mango';
-EXEC addProductToOrder 1233, 1, 'Flat white';
-EXEC addProductToOrder 1233, 1, 'Chicken casserole';
-EXEC addProductToOrder 1233, 3, 'Cookie sandwich stick';
-EXEC addProductToOrder 1233, 1, 'Café crema';
-EXEC addProductToOrder 1233, 1, 'Vegetable chili';
-EXEC addProductToOrder 1234, 1, 'Brown sauce';
-EXEC addProductToOrder 1234, 3, 'Romano cheese';
-EXEC addProductToOrder 1234, 2, 'Diet Pepsi';
-EXEC addProductToOrder 1234, 3, 'Cioppino  a seafood stew made with a variety of fish and shellfish;';
-EXEC addProductToOrder 1234, 2, 'Anise';
-EXEC addProductToOrder 1235, 3, 'Artichoke salad';
-EXEC addProductToOrder 1235, 3, 'Minestrone soup';
-EXEC addProductToOrder 1235, 3, 'Pasta with mussels';
-EXEC addProductToOrder 1235, 1, 'Pistachio ice cream';
-EXEC addProductToOrder 1235, 2, 'Café del mar';
-EXEC addProductToOrder 1236, 3, 'Strawberry pudding';
-EXEC addProductToOrder 1236, 3, 'Baked oysters';
-EXEC addProductToOrder 1236, 2, 'Lentil soup';
-EXEC addProductToOrder 1236, 3, 'Tomato salad';
-EXEC addProductToOrder 1236, 3, 'Lemon pudding';
-EXEC addProductToOrder 1237, 3, 'Diet 7 Up';
-EXEC addProductToOrder 1237, 3, 'Fruit salad';
-EXEC addProductToOrder 1237, 1, 'Shrimp scampi served over pasta';
-EXEC addProductToOrder 1237, 3, 'Cucumber salad';
-EXEC addProductToOrder 1237, 3, 'Americano';
-EXEC addProductToOrder 1238, 3, 'Feta cheese';
-EXEC addProductToOrder 1238, 2, 'Biscuit';
-EXEC addProductToOrder 1238, 1, 'Café zorro';
-EXEC addProductToOrder 1238, 1, 'Chocolate bar';
-EXEC addProductToOrder 1238, 1, 'Butter pecan ice cream';
-EXEC addProductToOrder 1239, 3, 'Butter pecan ice cream';
-EXEC addProductToOrder 1239, 1, 'Tomato juice';
-EXEC addProductToOrder 1239, 3, 'White tea';
-EXEC addProductToOrder 1239, 3, 'Cranberry';
-EXEC addProductToOrder 1239, 2, 'Guacamole';
-EXEC addProductToOrder 1240, 3, 'Lentil soup';
-EXEC addProductToOrder 1240, 2, 'Pasta with clams';
-EXEC addProductToOrder 1240, 1, 'Calamari fritti  deep-fried squid;';
-EXEC addProductToOrder 1240, 2, 'Pineapple juice';
-EXEC addProductToOrder 1240, 3, 'Lime';
-EXEC addProductToOrder 1241, 1, 'French onion soup';
-EXEC addProductToOrder 1241, 1, 'Diet Pepsi';
-EXEC addProductToOrder 1241, 3, 'Cappuccino';
-EXEC addProductToOrder 1241, 1, 'Cucumber salad';
-EXEC addProductToOrder 1241, 3, 'Tzatziki';
-EXEC addProductToOrder 1242, 1, 'Baked stuffed clams';
-EXEC addProductToOrder 1242, 3, 'Pasta with clams';
-EXEC addProductToOrder 1242, 3, 'Angel food cake';
-EXEC addProductToOrder 1242, 3, 'Basil';
-EXEC addProductToOrder 1242, 3, 'Baked stuffed tomatoes';
-EXEC addProductToOrder 1243, 1, 'Cereal stick';
-EXEC addProductToOrder 1243, 3, 'Fanta';
-EXEC addProductToOrder 1243, 1, 'Dr Pepper';
-EXEC addProductToOrder 1243, 3, 'Cortado';
-EXEC addProductToOrder 1243, 2, 'Orange juice';
-EXEC addProductToOrder 1244, 3, 'Fish sandwich bun';
-EXEC addProductToOrder 1244, 3, 'Matcha tea';
-EXEC addProductToOrder 1244, 2, 'Chestnut';
-EXEC addProductToOrder 1244, 2, 'Pecan';
-EXEC addProductToOrder 1244, 3, 'Avocado salad';
-EXEC addProductToOrder 1245, 1, 'Almond';
-EXEC addProductToOrder 1245, 1, 'Green tea';
-EXEC addProductToOrder 1245, 3, 'Pasta with mushrooms';
-EXEC addProductToOrder 1245, 1, 'Raspberry juice';
-EXEC addProductToOrder 1245, 2, 'Angel food cake';
-EXEC addProductToOrder 1246, 1, 'Cortado';
-EXEC addProductToOrder 1246, 2, 'Beef stew with cabbage';
-EXEC addProductToOrder 1246, 1, 'Espresso';
-EXEC addProductToOrder 1246, 1, 'Pistachio';
-EXEC addProductToOrder 1246, 3, 'Mozzarella cheese';
-EXEC addProductToOrder 1247, 3, 'Bechamel sauce';
-EXEC addProductToOrder 1247, 2, 'Pasta with shrimp';
-EXEC addProductToOrder 1247, 1, 'Biscotti';
-EXEC addProductToOrder 1247, 1, 'Avocado salad';
-EXEC addProductToOrder 1247, 2, 'Artichoke salad';
-EXEC addProductToOrder 1248, 2, 'Beef stew with onions';
-EXEC addProductToOrder 1248, 1, 'Mozzarella cheese';
-EXEC addProductToOrder 1248, 3, 'Vegetable soup';
-EXEC addProductToOrder 1248, 1, 'Yellow tea';
-EXEC addProductToOrder 1248, 3, 'Caesar salad';
-EXEC addProductToOrder 1249, 1, 'Pasta with chicken';
-EXEC addProductToOrder 1249, 1, 'Pasta with chicken';
-EXEC addProductToOrder 1249, 2, 'Diet Sierra Mist';
-EXEC addProductToOrder 1249, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 1249, 2, 'Brioche';
-EXEC addProductToOrder 1250, 3, 'Café de pico';
-EXEC addProductToOrder 1250, 2, 'Boursin cheese';
-EXEC addProductToOrder 1250, 2, 'Tomato juice';
-EXEC addProductToOrder 1250, 3, 'Vegetable stir fry';
-EXEC addProductToOrder 1250, 3, 'Lemon pudding';
-EXEC addProductToOrder 1251, 3, 'Coca-Cola';
-EXEC addProductToOrder 1251, 1, 'Grape juice';
-EXEC addProductToOrder 1251, 2, 'Chocolate candy';
-EXEC addProductToOrder 1251, 3, 'Pomegranate juice';
-EXEC addProductToOrder 1251, 1, 'Broccoli salad';
-EXEC addProductToOrder 1252, 3, 'Cumin';
-EXEC addProductToOrder 1252, 2, 'Fish sandwich stick';
-EXEC addProductToOrder 1252, 2, 'Beef stew with celery';
-EXEC addProductToOrder 1252, 1, 'Carrot juice';
-EXEC addProductToOrder 1252, 1, 'Butter pecan ice cream';
-EXEC addProductToOrder 1253, 2, 'Beet salad';
-EXEC addProductToOrder 1253, 2, 'Cookie';
-EXEC addProductToOrder 1253, 1, 'Café marrón';
-EXEC addProductToOrder 1253, 2, 'Diet Pepsi';
-EXEC addProductToOrder 1253, 3, 'Cayenne';
-EXEC addProductToOrder 1254, 1, 'Beef stew with celery';
-EXEC addProductToOrder 1254, 2, 'Sierra Mist';
-EXEC addProductToOrder 1254, 2, 'Cumin';
-EXEC addProductToOrder 1254, 3, 'Lemon';
-EXEC addProductToOrder 1254, 1, 'Pasta with chicken';
-EXEC addProductToOrder 1255, 1, 'Coke Zero';
-EXEC addProductToOrder 1255, 3, 'Crab cakes with a remoulade sauce';
-EXEC addProductToOrder 1255, 2, 'Orange juice';
-EXEC addProductToOrder 1255, 2, 'Black forest cake';
-EXEC addProductToOrder 1255, 3, 'Chocolate candy bar';
-EXEC addProductToOrder 1256, 1, 'Muenster cheese';
-EXEC addProductToOrder 1256, 3, 'Chocolate';
-EXEC addProductToOrder 1256, 2, 'Guava';
-EXEC addProductToOrder 1256, 3, 'Pasta with spinach';
-EXEC addProductToOrder 1256, 1, 'Mountain Dew';
-EXEC addProductToOrder 1257, 3, 'Mountain Dew';
-EXEC addProductToOrder 1257, 2, 'Fried onion rings';
-EXEC addProductToOrder 1257, 1, 'American cheese';
-EXEC addProductToOrder 1257, 2, 'Pasta with shrimp';
-EXEC addProductToOrder 1257, 3, 'Blueberry juice';
-EXEC addProductToOrder 1258, 3, 'Sprite';
-EXEC addProductToOrder 1258, 1, 'Affogato';
-EXEC addProductToOrder 1258, 3, 'Brown sauce';
-EXEC addProductToOrder 1258, 2, 'Rooibos tea';
-EXEC addProductToOrder 1258, 2, 'Peach custard';
-EXEC addProductToOrder 1259, 2, 'Fish sandwich bun';
-EXEC addProductToOrder 1259, 2, 'Cobb salad';
-EXEC addProductToOrder 1259, 1, 'Deviled eggs';
-EXEC addProductToOrder 1259, 1, 'Clam chowder  a creamy soup made with clams;';
-EXEC addProductToOrder 1259, 3, 'Beef stew with carrots';
-EXEC addProductToOrder 1260, 2, 'Café de olla';
-EXEC addProductToOrder 1260, 2, 'Cioppino  a seafood stew made with a variety of fish and shellfish;';
-EXEC addProductToOrder 1260, 2, 'Fried pickles';
-EXEC addProductToOrder 1260, 2, 'Pasta with cauliflower';
-EXEC addProductToOrder 1260, 2, 'Vegetable casserole';
-EXEC addProductToOrder 1261, 1, 'Salsa';
-EXEC addProductToOrder 1261, 1, 'Artichoke salad';
-EXEC addProductToOrder 1261, 3, 'Coriander';
-EXEC addProductToOrder 1261, 2, 'Muenster cheese';
-EXEC addProductToOrder 1261, 2, 'Hummus';
-EXEC addProductToOrder 1262, 3, 'Macadamia';
-EXEC addProductToOrder 1262, 2, 'Vegetable casserole';
-EXEC addProductToOrder 1262, 2, 'Cookie stick';
-EXEC addProductToOrder 1262, 2, 'Cheesecake';
-EXEC addProductToOrder 1262, 3, 'Banana';
-EXEC addProductToOrder 1263, 2, 'Chef salad';
-EXEC addProductToOrder 1263, 3, 'Rocky road ice cream';
-EXEC addProductToOrder 1263, 1, 'Fish sandwich';
-EXEC addProductToOrder 1263, 2, 'Apple pudding';
-EXEC addProductToOrder 1263, 3, 'Tzatziki';
-EXEC addProductToOrder 1264, 3, 'Shrimp scampi served over pasta';
-EXEC addProductToOrder 1264, 3, 'Cereal sandwich stick';
-EXEC addProductToOrder 1264, 2, 'Lemon pudding';
-EXEC addProductToOrder 1264, 2, 'Vanilla ice cream';
-EXEC addProductToOrder 1264, 3, 'Carrot juice';
-EXEC addProductToOrder 1265, 3, 'Biscuit sandwich';
-EXEC addProductToOrder 1265, 3, 'Fruit salad';
-EXEC addProductToOrder 1265, 1, 'Baked crab dip';
-EXEC addProductToOrder 1265, 3, 'Curry sauce';
-EXEC addProductToOrder 1265, 3, 'Pineapple juice';
-EXEC addProductToOrder 1266, 1, 'Bisque sauce';
-EXEC addProductToOrder 1266, 2, 'Bundt cake';
-EXEC addProductToOrder 1266, 1, 'Caraway';
-EXEC addProductToOrder 1266, 2, 'Pasta with tomatoes';
-EXEC addProductToOrder 1266, 2, 'Cioppino  a seafood stew made with a variety of fish and shellfish;';
-EXEC addProductToOrder 1267, 1, 'Béarnaise sauce';
-EXEC addProductToOrder 1267, 1, 'Butter';
-EXEC addProductToOrder 1267, 2, 'Honeybush tea';
-EXEC addProductToOrder 1267, 3, 'Deviled eggs';
-EXEC addProductToOrder 1267, 3, 'Biscuit sandwich';
-EXEC addProductToOrder 1268, 2, 'Black tea';
-EXEC addProductToOrder 1268, 2, 'Broccoli salad';
-EXEC addProductToOrder 1268, 1, 'Chocolate cake';
-EXEC addProductToOrder 1268, 2, 'Diet Mountain Dew';
-EXEC addProductToOrder 1268, 2, 'Béarnaise sauce';
-EXEC addProductToOrder 1269, 3, 'Beef stew with onions';
-EXEC addProductToOrder 1269, 1, 'Grapefruit juice';
-EXEC addProductToOrder 1269, 1, 'Baked stuffed eggplant';
-EXEC addProductToOrder 1269, 2, 'Chestnut';
-EXEC addProductToOrder 1269, 2, 'Cucumber salad';
-EXEC addProductToOrder 1270, 3, 'Parmesan cheese';
-EXEC addProductToOrder 1270, 3, 'Pasta with spinach';
-EXEC addProductToOrder 1270, 3, 'Tomato juice';
-EXEC addProductToOrder 1270, 1, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1270, 2, 'Butter';
-EXEC addProductToOrder 1271, 3, 'Chicken noodle soup';
-EXEC addProductToOrder 1271, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 1271, 2, 'Sierra Mist';
-EXEC addProductToOrder 1271, 2, 'Grilled octopus with a citrus marinade';
-EXEC addProductToOrder 1271, 2, 'Guacamole';
-EXEC addProductToOrder 1272, 1, 'Pasta with sausage';
-EXEC addProductToOrder 1272, 2, 'Pasta with shrimp';
-EXEC addProductToOrder 1272, 3, 'Greek salad';
-EXEC addProductToOrder 1272, 1, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1272, 2, 'Boston cream cake';
-EXEC addProductToOrder 1273, 2, 'Boursin cheese';
-EXEC addProductToOrder 1273, 3, 'Curry';
-EXEC addProductToOrder 1273, 2, 'Brioche';
-EXEC addProductToOrder 1273, 1, 'Chicken soup';
-EXEC addProductToOrder 1273, 2, 'Chestnut';
-EXEC addProductToOrder 1274, 3, 'Diet Dr Pepper';
-EXEC addProductToOrder 1274, 1, 'Chocolate chip ice cream';
-EXEC addProductToOrder 1274, 1, 'Lemon pudding';
-EXEC addProductToOrder 1274, 1, 'Caper sauce';
-EXEC addProductToOrder 1274, 1, 'Greek salad';
-EXEC addProductToOrder 1275, 2, 'Oolong tea';
-EXEC addProductToOrder 1275, 3, 'Café del mar';
-EXEC addProductToOrder 1275, 3, 'Chai tea';
-EXEC addProductToOrder 1275, 2, 'Diet Pepsi';
-EXEC addProductToOrder 1275, 3, 'Celery seed';
-EXEC addProductToOrder 1276, 1, 'Coriander';
-EXEC addProductToOrder 1276, 2, 'Baked stuffed zucchini';
-EXEC addProductToOrder 1276, 1, 'Café au lait';
-EXEC addProductToOrder 1276, 2, 'Lemon pudding';
-EXEC addProductToOrder 1276, 3, 'Guacamole';
-EXEC addProductToOrder 1277, 2, 'Lentil soup';
-EXEC addProductToOrder 1277, 1, 'Fish stick';
-EXEC addProductToOrder 1277, 2, 'Coconut custard';
-EXEC addProductToOrder 1277, 1, 'Fanta';
-EXEC addProductToOrder 1277, 1, 'Tomato salad';
-EXEC addProductToOrder 1278, 3, 'Pasta with chicken';
-EXEC addProductToOrder 1278, 1, 'Kombucha tea';
-EXEC addProductToOrder 1278, 2, 'Chef salad';
-EXEC addProductToOrder 1278, 1, 'Diet 7 Up';
-EXEC addProductToOrder 1278, 1, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1279, 3, 'Blueberry juice';
-EXEC addProductToOrder 1279, 1, 'Pecan';
-EXEC addProductToOrder 1279, 2, 'Breadstick';
-EXEC addProductToOrder 1279, 3, 'Fish roll';
-EXEC addProductToOrder 1279, 2, 'Potato salad';
-EXEC addProductToOrder 1280, 3, 'Café au lait';
-EXEC addProductToOrder 1280, 2, 'Rocky road ice cream';
-EXEC addProductToOrder 1280, 2, 'Fried zucchini';
-EXEC addProductToOrder 1280, 1, 'Dip';
-EXEC addProductToOrder 1280, 3, 'Chocolate';
-EXEC addProductToOrder 1281, 3, 'Cheddar cheese';
-EXEC addProductToOrder 1281, 3, 'Caesar salad';
-EXEC addProductToOrder 1281, 1, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1281, 3, 'Baked crab dip';
-EXEC addProductToOrder 1281, 2, 'Kiwi';
-EXEC addProductToOrder 1282, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 1282, 1, 'Cookie sandwich stick';
-EXEC addProductToOrder 1282, 3, 'White tea';
-EXEC addProductToOrder 1282, 1, 'Dressing sauce';
-EXEC addProductToOrder 1282, 2, 'Basil';
-EXEC addProductToOrder 1283, 2, 'Chef salad';
-EXEC addProductToOrder 1283, 3, 'Cloves';
-EXEC addProductToOrder 1283, 3, 'Diet Coke';
-EXEC addProductToOrder 1283, 2, 'Cinnamon';
-EXEC addProductToOrder 1283, 1, 'Cereal';
-EXEC addProductToOrder 1284, 3, 'Lemon';
-EXEC addProductToOrder 1284, 2, 'Chicken and broccoli soup';
-EXEC addProductToOrder 1284, 3, 'Moose tracks ice cream';
-EXEC addProductToOrder 1284, 3, 'Almond';
-EXEC addProductToOrder 1284, 1, 'Apple juice';
-EXEC addProductToOrder 1285, 3, 'Pumpkin pudding';
-EXEC addProductToOrder 1285, 2, 'Vegetable curry';
-EXEC addProductToOrder 1285, 1, 'Cookie sandwich bun';
-EXEC addProductToOrder 1285, 1, 'Café con leche';
-EXEC addProductToOrder 1285, 3, 'Chicken soup';
-EXEC addProductToOrder 1286, 3, 'Chicken and rice soup';
-EXEC addProductToOrder 1286, 2, 'Avocado salad';
-EXEC addProductToOrder 1286, 1, 'Burrata cheese';
-EXEC addProductToOrder 1286, 2, 'Butter pecan ice cream';
-EXEC addProductToOrder 1286, 1, 'Fruit salad';
-EXEC addProductToOrder 1287, 2, 'Pistachio';
-EXEC addProductToOrder 1287, 3, 'Chicken and wild rice soup';
-EXEC addProductToOrder 1287, 3, 'Potato soup';
-EXEC addProductToOrder 1287, 3, 'Cereal stick';
-EXEC addProductToOrder 1287, 1, 'Fruit salad';
-EXEC addProductToOrder 1288, 2, 'Strawberry pudding';
-EXEC addProductToOrder 1288, 3, 'Oysters Rockefeller  oysters baked with a spinach and butter sauce;';
-EXEC addProductToOrder 1288, 2, 'Pu-erh tea';
-EXEC addProductToOrder 1288, 1, 'Pasta with shrimp';
-EXEC addProductToOrder 1288, 2, 'Chocolate';
-EXEC addProductToOrder 1289, 3, 'Bundt cake';
-EXEC addProductToOrder 1289, 2, 'Mocha';
-EXEC addProductToOrder 1289, 1, 'Chimichurri sauce';
-EXEC addProductToOrder 1289, 1, 'Parmesan cheese';
-EXEC addProductToOrder 1289, 1, 'Mozzarella cheese';
-EXEC addProductToOrder 1290, 2, 'Pasta with onions';
-EXEC addProductToOrder 1290, 1, 'Fried ravioli';
-EXEC addProductToOrder 1290, 1, 'Flat white';
-EXEC addProductToOrder 1290, 3, 'Grapefruit';
-EXEC addProductToOrder 1290, 1, 'Macadamia';
-EXEC addProductToOrder 1291, 3, 'Café mélange';
-EXEC addProductToOrder 1291, 1, 'Biscuit stick';
-EXEC addProductToOrder 1291, 2, 'Chicken and rice soup';
-EXEC addProductToOrder 1291, 2, 'Grapefruit';
-EXEC addProductToOrder 1291, 2, 'Strawberry pudding';
-EXEC addProductToOrder 1292, 3, 'Spinach salad';
-EXEC addProductToOrder 1292, 3, 'Café au lait';
-EXEC addProductToOrder 1292, 1, 'Blackberry';
-EXEC addProductToOrder 1292, 2, 'Banana';
-EXEC addProductToOrder 1292, 2, 'Fruit salad';
-EXEC addProductToOrder 1293, 1, 'Chocolate candy roll';
-EXEC addProductToOrder 1293, 1, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 1293, 3, 'Vanilla pudding';
-EXEC addProductToOrder 1293, 1, 'Potato soup';
-EXEC addProductToOrder 1293, 3, 'Fried calamari';
-EXEC addProductToOrder 1294, 1, 'Pasta with mushrooms';
-EXEC addProductToOrder 1294, 1, 'Pasta with clams';
-EXEC addProductToOrder 1294, 1, 'Cole slaw';
-EXEC addProductToOrder 1294, 3, 'Fried mushrooms';
-EXEC addProductToOrder 1294, 1, 'Allspice';
-EXEC addProductToOrder 1295, 1, 'Dr Pepper';
-EXEC addProductToOrder 1295, 2, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1295, 1, 'Pistachio ice cream';
-EXEC addProductToOrder 1295, 2, 'Pasta with mushrooms';
-EXEC addProductToOrder 1295, 2, 'Vanilla pudding';
-EXEC addProductToOrder 1296, 1, 'Pistachio';
-EXEC addProductToOrder 1296, 1, 'Chocolate candy stick';
-EXEC addProductToOrder 1296, 2, 'Grilled salmon with a lemon butter sauce';
-EXEC addProductToOrder 1296, 2, 'Pepsi';
-EXEC addProductToOrder 1296, 2, 'Cranberry';
-EXEC addProductToOrder 1297, 1, 'Tomato salad';
-EXEC addProductToOrder 1297, 1, 'Beet salad';
-EXEC addProductToOrder 1297, 2, 'Asparagus salad';
-EXEC addProductToOrder 1297, 3, 'Curry sauce';
-EXEC addProductToOrder 1297, 1, 'Mountain Dew';
-EXEC addProductToOrder 1298, 3, 'Fish sandwich bun';
-EXEC addProductToOrder 1298, 2, 'Butter pecan ice cream';
-EXEC addProductToOrder 1298, 1, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1298, 1, 'Kiwi';
-EXEC addProductToOrder 1298, 2, 'Moose tracks ice cream';
-EXEC addProductToOrder 1299, 3, 'Curry sauce';
-EXEC addProductToOrder 1299, 3, 'Butter roll';
-EXEC addProductToOrder 1299, 2, 'Hazelnut';
-EXEC addProductToOrder 1299, 1, 'Bechamel sauce';
-EXEC addProductToOrder 1299, 2, 'Lemon custard';
-EXEC addProductToOrder 1300, 2, 'Baked crab dip';
-EXEC addProductToOrder 1300, 1, 'Grilled salmon with a lemon butter sauce';
-EXEC addProductToOrder 1300, 1, 'Tomato salad';
-EXEC addProductToOrder 1300, 1, 'Corn chowder';
-EXEC addProductToOrder 1300, 1, 'Café con leche';
-EXEC addProductToOrder 1301, 3, 'Baked stuffed squash';
-EXEC addProductToOrder 1301, 1, 'Café irlandés';
-EXEC addProductToOrder 1301, 2, 'Feta cheese';
-EXEC addProductToOrder 1301, 3, 'Coconut';
-EXEC addProductToOrder 1301, 3, 'Pasta with clams';
-EXEC addProductToOrder 1302, 2, 'Bread';
-EXEC addProductToOrder 1302, 2, 'Grapefruit';
-EXEC addProductToOrder 1302, 1, 'Moose tracks ice cream';
-EXEC addProductToOrder 1302, 1, 'Tzatziki';
-EXEC addProductToOrder 1302, 1, 'Banana custard';
-EXEC addProductToOrder 1304, 2, 'Cayenne';
-EXEC addProductToOrder 1304, 2, 'Corn salad';
-EXEC addProductToOrder 1304, 1, 'Fish sandwich stick';
-EXEC addProductToOrder 1304, 1, 'Diet Sierra Mist';
-EXEC addProductToOrder 1304, 3, 'Diet Dr Pepper';
-EXEC addProductToOrder 1305, 3, 'Grape';
-EXEC addProductToOrder 1305, 2, 'Hazelnut';
-EXEC addProductToOrder 1305, 3, 'Tossed salad';
-EXEC addProductToOrder 1305, 3, 'Vanilla ice cream';
-EXEC addProductToOrder 1305, 2, 'Chocolate candy bar';
-EXEC addProductToOrder 1306, 3, 'Dip';
-EXEC addProductToOrder 1306, 2, 'Cobb salad';
-EXEC addProductToOrder 1306, 3, 'Chocolate pudding';
-EXEC addProductToOrder 1306, 2, 'Corn chowder';
-EXEC addProductToOrder 1306, 2, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1307, 3, 'Biscotti';
-EXEC addProductToOrder 1307, 1, 'Black forest cake';
-EXEC addProductToOrder 1307, 2, 'Rooibos tea';
-EXEC addProductToOrder 1307, 1, 'Fried pickles';
-EXEC addProductToOrder 1307, 3, 'Hummus';
-EXEC addProductToOrder 1308, 3, 'Macaroni salad';
-EXEC addProductToOrder 1308, 2, 'Chicken and broccoli soup';
-EXEC addProductToOrder 1308, 3, 'Fried pickles';
-EXEC addProductToOrder 1308, 3, 'Lentil soup';
-EXEC addProductToOrder 1308, 2, 'Guacamole';
-EXEC addProductToOrder 1309, 3, 'Fried okra';
-EXEC addProductToOrder 1309, 3, 'Black forest cake';
-EXEC addProductToOrder 1309, 3, 'Parmesan cheese';
-EXEC addProductToOrder 1309, 2, 'Mate tea';
-EXEC addProductToOrder 1309, 3, 'Date';
-EXEC addProductToOrder 1310, 3, 'Coke Zero';
-EXEC addProductToOrder 1310, 1, 'Diet Sprite';
-EXEC addProductToOrder 1310, 2, 'Baked stuffed zucchini';
-EXEC addProductToOrder 1310, 2, 'Baked brie';
-EXEC addProductToOrder 1310, 1, 'Chocolate candy stick';
-EXEC addProductToOrder 1311, 1, 'Baked stuffed squash';
-EXEC addProductToOrder 1311, 3, 'Diet 7 Up';
-EXEC addProductToOrder 1311, 3, 'Cookie';
-EXEC addProductToOrder 1311, 1, 'Café mélange';
-EXEC addProductToOrder 1311, 2, 'Dip';
-EXEC addProductToOrder 1312, 1, 'Mocha';
-EXEC addProductToOrder 1312, 1, 'Coffee cake';
-EXEC addProductToOrder 1312, 2, 'Split pea soup';
-EXEC addProductToOrder 1312, 1, 'Fried calamari';
-EXEC addProductToOrder 1312, 2, 'Baguette';
-EXEC addProductToOrder 1313, 3, 'Pasta with eggplant';
-EXEC addProductToOrder 1313, 2, 'Chicken tortilla soup';
-EXEC addProductToOrder 1313, 2, 'Green tea';
-EXEC addProductToOrder 1313, 1, 'Coca-Cola';
-EXEC addProductToOrder 1313, 3, 'Baked stuffed peppers';
-EXEC addProductToOrder 1314, 1, 'Blueberry';
-EXEC addProductToOrder 1314, 2, 'Vanilla ice cream';
-EXEC addProductToOrder 1314, 3, 'Apple';
-EXEC addProductToOrder 1314, 3, 'Avocado';
-EXEC addProductToOrder 1314, 2, 'Chocolate ice cream';
-EXEC addProductToOrder 1315, 3, 'Biscuit sandwich bun';
-EXEC addProductToOrder 1315, 2, 'Coconut cake';
-EXEC addProductToOrder 1315, 3, 'Coconut';
-EXEC addProductToOrder 1315, 2, 'Chicken soup';
-EXEC addProductToOrder 1315, 2, 'Fish';
-EXEC addProductToOrder 1316, 1, 'Fried okra';
-EXEC addProductToOrder 1316, 1, 'Peach custard';
-EXEC addProductToOrder 1316, 3, 'Baked oysters';
-EXEC addProductToOrder 1316, 2, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1316, 1, 'Baked stuffed peppers';
-EXEC addProductToOrder 1317, 2, 'Cookie stick';
-EXEC addProductToOrder 1317, 2, 'Kiwi';
-EXEC addProductToOrder 1317, 1, 'Pasta with clams';
-EXEC addProductToOrder 1317, 3, 'Fanta';
-EXEC addProductToOrder 1317, 2, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1318, 2, 'Strawberry pudding';
-EXEC addProductToOrder 1318, 1, 'Cookie sandwich roll';
-EXEC addProductToOrder 1318, 3, 'Beef stew with cabbage';
-EXEC addProductToOrder 1318, 1, 'Apricot';
-EXEC addProductToOrder 1318, 1, 'Hummus';
-EXEC addProductToOrder 1319, 3, 'Mint chocolate chip ice cream';
-EXEC addProductToOrder 1319, 3, 'Coconut pudding';
-EXEC addProductToOrder 1319, 2, 'Chili';
-EXEC addProductToOrder 1319, 1, 'Chicken and broccoli soup';
-EXEC addProductToOrder 1319, 3, '7 Up';
-EXEC addProductToOrder 1320, 1, 'Cereal';
-EXEC addProductToOrder 1320, 3, 'Espresso';
-EXEC addProductToOrder 1320, 1, 'Macchiato';
-EXEC addProductToOrder 1320, 1, 'Apple pudding';
-EXEC addProductToOrder 1320, 1, 'Gouda cheese';
-EXEC addProductToOrder 1321, 2, 'Biscuit sandwich bun';
-EXEC addProductToOrder 1321, 3, 'Macadamia';
-EXEC addProductToOrder 1321, 1, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1321, 1, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 1321, 2, 'Baked stuffed shrimp';
-EXEC addProductToOrder 1322, 2, 'Cookie';
-EXEC addProductToOrder 1322, 1, 'Bread';
-EXEC addProductToOrder 1322, 3, 'American cheese';
-EXEC addProductToOrder 1322, 2, 'Chicken and barley soup';
-EXEC addProductToOrder 1322, 2, 'Café mocha';
-EXEC addProductToOrder 1323, 2, 'Curry sauce';
-EXEC addProductToOrder 1323, 1, 'Guacamole';
-EXEC addProductToOrder 1323, 1, 'American cheese';
-EXEC addProductToOrder 1323, 3, 'Carrot juice';
-EXEC addProductToOrder 1323, 3, 'Chocolate custard';
-EXEC addProductToOrder 1324, 2, 'Pasta with tuna';
-EXEC addProductToOrder 1324, 2, 'Beef casserole';
-EXEC addProductToOrder 1324, 2, 'Vegetable casserole';
-EXEC addProductToOrder 1324, 2, 'Pasta with broccoli';
-EXEC addProductToOrder 1324, 1, 'Tzatziki';
-EXEC addProductToOrder 1325, 1, 'White tea';
-EXEC addProductToOrder 1325, 2, 'Pecan';
-EXEC addProductToOrder 1325, 1, 'Hazelnut';
-EXEC addProductToOrder 1325, 2, 'Beef casserole';
-EXEC addProductToOrder 1325, 2, 'Macadamia';
-EXEC addProductToOrder 1326, 3, 'Blackberry';
-EXEC addProductToOrder 1326, 2, 'Pistachio ice cream';
-EXEC addProductToOrder 1326, 3, 'Cocktail sauce';
-EXEC addProductToOrder 1326, 3, 'Cardamom';
-EXEC addProductToOrder 1326, 2, 'Diet Dr Pepper';
-EXEC addProductToOrder 1327, 1, 'Butter pecan ice cream';
-EXEC addProductToOrder 1327, 2, 'Herbal tea';
-EXEC addProductToOrder 1327, 1, 'Banana';
-EXEC addProductToOrder 1327, 2, 'French onion soup';
-EXEC addProductToOrder 1327, 2, 'Grapefruit';
-EXEC addProductToOrder 1328, 1, 'Baked brie';
-EXEC addProductToOrder 1328, 3, 'Garden salad';
-EXEC addProductToOrder 1328, 2, 'Cashew';
-EXEC addProductToOrder 1328, 1, 'Dr Pepper';
-EXEC addProductToOrder 1328, 1, 'Allspice';
-EXEC addProductToOrder 1329, 1, 'Café zorro';
-EXEC addProductToOrder 1329, 1, 'Café bombón';
-EXEC addProductToOrder 1329, 1, 'Carrot cake';
-EXEC addProductToOrder 1329, 3, 'Blackberry';
-EXEC addProductToOrder 1329, 1, 'Cranberry';
-EXEC addProductToOrder 1330, 2, 'Alfredo sauce';
-EXEC addProductToOrder 1330, 2, 'Latte';
-EXEC addProductToOrder 1330, 2, 'Feta cheese';
-EXEC addProductToOrder 1330, 2, 'Beef stew with mushrooms';
-EXEC addProductToOrder 1330, 2, 'Beef stew with mushrooms';
-EXEC addProductToOrder 1331, 2, 'Chutney sauce';
-EXEC addProductToOrder 1331, 1, 'Chocolate bar';
-EXEC addProductToOrder 1331, 3, 'Fish roll';
-EXEC addProductToOrder 1331, 1, 'Romano cheese';
-EXEC addProductToOrder 1331, 3, 'Black tea';
-EXEC addProductToOrder 1332, 2, 'Chicken and corn chowder';
-EXEC addProductToOrder 1332, 2, 'Pasta with broccoli';
-EXEC addProductToOrder 1332, 1, 'Beef stew with mushrooms';
-EXEC addProductToOrder 1332, 2, '7 Up';
-EXEC addProductToOrder 1332, 2, 'Beef stew with potatoes';
-EXEC addProductToOrder 1333, 1, 'Apricot';
-EXEC addProductToOrder 1333, 2, 'Pasta with lobster';
-EXEC addProductToOrder 1333, 3, 'Peach custard';
-EXEC addProductToOrder 1333, 2, 'Diet Sprite';
-EXEC addProductToOrder 1333, 1, 'Anise';
-EXEC addProductToOrder 1334, 2, 'Cashew';
-EXEC addProductToOrder 1334, 2, 'Date';
-EXEC addProductToOrder 1334, 1, 'Cookie stick';
-EXEC addProductToOrder 1334, 3, 'Beef stew with potatoes';
-EXEC addProductToOrder 1334, 1, 'Lime';
-EXEC addProductToOrder 1335, 3, 'Oolong tea';
-EXEC addProductToOrder 1335, 1, 'Beef stew with cabbage';
-EXEC addProductToOrder 1335, 2, 'White tea';
-EXEC addProductToOrder 1335, 3, 'Lobster tail with drawn butter';
-EXEC addProductToOrder 1335, 3, 'Pasta with tuna';
-EXEC addProductToOrder 1336, 2, 'Blueberry';
-EXEC addProductToOrder 1336, 1, 'Coconut';
-EXEC addProductToOrder 1336, 3, 'Sprite';
-EXEC addProductToOrder 1336, 1, 'Chocolate';
-EXEC addProductToOrder 1336, 3, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 1337, 1, 'Lemon pudding';
-EXEC addProductToOrder 1337, 3, 'Brioche';
-EXEC addProductToOrder 1337, 2, 'Pasta with cauliflower';
-EXEC addProductToOrder 1337, 2, 'Chocolate candy sandwich';
-EXEC addProductToOrder 1337, 3, 'Cereal stick';
-EXEC addProductToOrder 1338, 3, 'Brown sauce';
-EXEC addProductToOrder 1338, 2, 'Baked stuffed squash';
-EXEC addProductToOrder 1338, 1, 'Fried potato skins';
-EXEC addProductToOrder 1338, 3, 'Pistachio ice cream';
-EXEC addProductToOrder 1338, 3, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 1339, 3, 'Coke Zero';
-EXEC addProductToOrder 1339, 2, 'Cereal sandwich';
-EXEC addProductToOrder 1339, 1, 'Pineapple juice';
-EXEC addProductToOrder 1339, 1, 'Fruit salad';
-EXEC addProductToOrder 1339, 1, 'Moose tracks ice cream';
-EXEC addProductToOrder 1340, 1, 'Gruyere cheese';
-EXEC addProductToOrder 1340, 3, 'Cookie sandwich';
-EXEC addProductToOrder 1340, 3, 'Biscuit sandwich roll';
-EXEC addProductToOrder 1340, 1, 'Cappuccino';
-EXEC addProductToOrder 1340, 2, 'Chai tea';
-EXEC addProductToOrder 1341, 3, 'Fried zucchini';
-EXEC addProductToOrder 1341, 3, 'Greek salad';
-EXEC addProductToOrder 1341, 3, 'Diet Coke';
-EXEC addProductToOrder 1341, 1, 'Coke Zero';
-EXEC addProductToOrder 1341, 3, 'Caramel sauce';
-EXEC addProductToOrder 1342, 1, 'Bechamel sauce';
-EXEC addProductToOrder 1342, 3, 'Lemon pudding';
-EXEC addProductToOrder 1342, 3, 'Mango';
-EXEC addProductToOrder 1342, 2, 'Strawberry pudding';
-EXEC addProductToOrder 1342, 3, 'Mango';
-EXEC addProductToOrder 1343, 3, 'Garden salad';
-EXEC addProductToOrder 1343, 3, 'Butter pecan ice cream';
-EXEC addProductToOrder 1343, 2, 'Baked oysters';
-EXEC addProductToOrder 1343, 3, 'Allspice';
-EXEC addProductToOrder 1343, 2, 'Apple custard';
-EXEC addProductToOrder 1344, 3, 'Café irlandés';
-EXEC addProductToOrder 1344, 2, 'Fried mozzarella sticks';
-EXEC addProductToOrder 1344, 2, 'Biscuit sandwich stick';
-EXEC addProductToOrder 1344, 1, 'Pasta with eggplant';
-EXEC addProductToOrder 1344, 1, 'Feta cheese';
-EXEC addProductToOrder 1345, 3, 'Vegetable curry';
-EXEC addProductToOrder 1345, 2, 'Bun';
-EXEC addProductToOrder 1345, 2, 'Beet salad';
-EXEC addProductToOrder 1345, 3, 'Pasta with eggplant';
-EXEC addProductToOrder 1345, 3, 'Biscuit sandwich stick';
-EXEC addProductToOrder 1346, 1, 'Fish sandwich stick';
-EXEC addProductToOrder 1346, 2, 'Caesar salad';
-EXEC addProductToOrder 1346, 2, 'Baked stuffed zucchini';
-EXEC addProductToOrder 1346, 1, 'Cereal';
-EXEC addProductToOrder 1346, 3, 'Chicken and broccoli soup';
-EXEC addProductToOrder 1347, 1, 'Dr Pepper';
-EXEC addProductToOrder 1347, 3, 'Butter pecan ice cream';
-EXEC addProductToOrder 1347, 2, 'Chef salad';
-EXEC addProductToOrder 1347, 1, 'Lemon custard';
-EXEC addProductToOrder 1347, 1, 'Artichoke salad';
-EXEC addProductToOrder 1348, 3, 'Cappuccino';
-EXEC addProductToOrder 1348, 2, 'Cookie roll';
-EXEC addProductToOrder 1348, 2, 'Café zorro';
-EXEC addProductToOrder 1348, 3, 'Coconut cake';
-EXEC addProductToOrder 1348, 3, 'Breadstick';
-EXEC addProductToOrder 1349, 1, 'Cheesecake';
-EXEC addProductToOrder 1349, 3, 'Potato soup';
-EXEC addProductToOrder 1349, 1, 'Kombucha tea';
-EXEC addProductToOrder 1349, 3, 'Beef stew with carrots';
-EXEC addProductToOrder 1349, 1, 'Cioppino  a seafood stew made with a variety of fish and shellfish;';
-EXEC addProductToOrder 1350, 2, 'Blueberry juice';
-EXEC addProductToOrder 1350, 1, 'Rocky road ice cream';
-EXEC addProductToOrder 1350, 3, 'Cookie';
-EXEC addProductToOrder 1350, 2, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 1350, 1, 'Café zorro';
-EXEC addProductToOrder 1351, 1, 'Vegetable stir fry';
-EXEC addProductToOrder 1351, 2, 'Cucumber salad';
-EXEC addProductToOrder 1351, 3, 'Brown sauce';
-EXEC addProductToOrder 1351, 1, 'Americano';
-EXEC addProductToOrder 1351, 2, 'Banana';
-EXEC addProductToOrder 1352, 3, 'Baked clams';
-EXEC addProductToOrder 1352, 3, 'Date';
-EXEC addProductToOrder 1352, 2, 'Cioppino  a seafood stew made with a variety of fish and shellfish;';
-EXEC addProductToOrder 1352, 3, 'Chocolate candy';
-EXEC addProductToOrder 1352, 2, 'Grapefruit';
-EXEC addProductToOrder 1353, 1, 'Banana custard';
-EXEC addProductToOrder 1353, 1, 'Guava';
-EXEC addProductToOrder 1353, 2, 'Baked oysters';
-EXEC addProductToOrder 1353, 2, 'Pistachio ice cream';
-EXEC addProductToOrder 1353, 1, 'Diet Fanta';
-EXEC addProductToOrder 1354, 3, 'Fish sandwich bun';
-EXEC addProductToOrder 1354, 2, 'Pasta with crab';
-EXEC addProductToOrder 1354, 2, 'Tomato juice';
-EXEC addProductToOrder 1354, 3, 'Black forest cake';
-EXEC addProductToOrder 1354, 2, 'Butter';
-EXEC addProductToOrder 1355, 1, 'Swiss cheese';
-EXEC addProductToOrder 1355, 3, 'Chocolate candy sandwich roll';
-EXEC addProductToOrder 1355, 2, 'Hazelnut';
-EXEC addProductToOrder 1355, 3, 'Corn salad';
-EXEC addProductToOrder 1355, 3, 'Cookie sandwich bun';
-EXEC addProductToOrder 1356, 3, 'Bechamel sauce';
-EXEC addProductToOrder 1356, 2, 'Cookie sandwich bun';
-EXEC addProductToOrder 1356, 3, 'Macadamia';
-EXEC addProductToOrder 1356, 2, 'Cookie sandwich roll';
-EXEC addProductToOrder 1356, 3, 'Pumpkin pudding';
-EXEC addProductToOrder 1357, 2, 'Chicken noodle soup';
-EXEC addProductToOrder 1357, 1, 'Baked stuffed zucchini';
-EXEC addProductToOrder 1357, 2, 'Fried zucchini';
-EXEC addProductToOrder 1357, 3, 'Biscuit roll';
-EXEC addProductToOrder 1357, 1, 'Curry';
-EXEC addProductToOrder 1358, 2, 'Lemon juice';
-EXEC addProductToOrder 1358, 3, 'Antipasto salad';
-EXEC addProductToOrder 1358, 2, 'Brioche';
-EXEC addProductToOrder 1358, 2, 'Hazelnut';
-EXEC addProductToOrder 1358, 3, 'Fish and chips  battered and fried fish served with French fries;';
-EXEC addProductToOrder 1359, 3, 'Pan-seared scallops with a white wine sauce';
-EXEC addProductToOrder 1359, 1, 'Butter pecan ice cream';
-EXEC addProductToOrder 1359, 1, 'Lime juice';
-EXEC addProductToOrder 1359, 2, 'Cobb salad';
-EXEC addProductToOrder 1359, 3, 'Sprite';
-EXEC addProductToOrder 1360, 2, 'Fish sandwich stick';
-EXEC addProductToOrder 1360, 3, 'Chocolate pudding';
-EXEC addProductToOrder 1360, 1, 'Garden salad';
-EXEC addProductToOrder 1360, 2, 'White tea';
-EXEC addProductToOrder 1360, 2, 'Café mocha';
-EXEC addProductToOrder 1361, 2, 'Biscotti';
-EXEC addProductToOrder 1361, 2, 'Orange juice';
-EXEC addProductToOrder 1361, 3, 'Cranberry juice';
-EXEC addProductToOrder 1361, 2, 'Beef stew with celery';
-EXEC addProductToOrder 1361, 3, 'Matcha tea';
-EXEC addProductToOrder 1362, 2, 'Fish sandwich stick';
-EXEC addProductToOrder 1362, 3, 'Deviled eggs';
-EXEC addProductToOrder 1362, 1, 'Potato soup';
-EXEC addProductToOrder 1362, 2, 'Diet Sprite';
-EXEC addProductToOrder 1362, 2, 'Green tea';
-EXEC addProductToOrder 1363, 2, 'Diet Sierra Mist';
-EXEC addProductToOrder 1363, 3, 'Fish sandwich bun';
-EXEC addProductToOrder 1363, 3, 'Celery seed';
-EXEC addProductToOrder 1363, 2, 'Cardamom';
-EXEC addProductToOrder 1363, 1, 'Mocha';
-EXEC addProductToOrder 1364, 1, 'Pasta with shrimp';
-EXEC addProductToOrder 1364, 1, 'Moose tracks ice cream';
-EXEC addProductToOrder 1364, 2, 'Clam chowder';
-EXEC addProductToOrder 1364, 1, 'Fried potato skins';
-EXEC addProductToOrder 1364, 2, 'Beef stew with dumplings';
-EXEC addProductToOrder 1365, 2, 'Angel food cake';
-EXEC addProductToOrder 1365, 1, 'Fish sandwich bun';
-EXEC addProductToOrder 1365, 2, 'Bleu cheese';
-EXEC addProductToOrder 1365, 2, 'Herbal tea';
-EXEC addProductToOrder 1365, 3, 'Cereal sandwich stick';
-EXEC addProductToOrder 1366, 3, 'Cookies and cream ice cream';
-EXEC addProductToOrder 1366, 2, 'Bechamel sauce';
-EXEC addProductToOrder 1366, 2, 'Café zorro';
-EXEC addProductToOrder 1366, 1, 'Fried onion rings';
-EXEC addProductToOrder 1366, 2, 'Clam chowder';
-EXEC addProductToOrder 1367, 2, 'Vegetable stir fry';
-EXEC addProductToOrder 1367, 1, 'Baked stuffed clams';
-EXEC addProductToOrder 1367, 2, 'Cashew';
-EXEC addProductToOrder 1367, 1, 'Fried mushrooms';
-EXEC addProductToOrder 1367, 1, 'Rooibos tea';
-EXEC addProductToOrder 1368, 1, 'Chef salad';
-EXEC addProductToOrder 1368, 1, 'Café del mar';
-EXEC addProductToOrder 1368, 2, 'Banana custard';
-EXEC addProductToOrder 1368, 2, 'Lentil soup';
-EXEC addProductToOrder 1368, 1, 'Strawberry pudding';
-EXEC addProductToOrder 1369, 1, 'Diet Coke';
-EXEC addProductToOrder 1369, 1, 'Grilled octopus with a citrus marinade';
-EXEC addProductToOrder 1369, 1, 'Cereal sandwich stick';
-EXEC addProductToOrder 1369, 2, 'Garden salad';
-EXEC addProductToOrder 1369, 2, 'Artichoke salad';
-EXEC addProductToOrder 1370, 3, 'Carrot cake';
-EXEC addProductToOrder 1370, 2, 'Angel food cake';
-EXEC addProductToOrder 1370, 3, 'Curry sauce';
-EXEC addProductToOrder 1370, 3, 'Cappuccino';
-EXEC addProductToOrder 1370, 1, 'Chicken and mushroom soup';
-EXEC addProductToOrder 1371, 1, 'Blueberry';
-EXEC addProductToOrder 1371, 2, 'Butter roll';
-EXEC addProductToOrder 1371, 1, 'Pineapple juice';
-EXEC addProductToOrder 1371, 1, 'Espresso';
-EXEC addProductToOrder 1371, 1, 'Greek salad';
-EXEC addProductToOrder 1372, 2, 'Lemon custard';
-EXEC addProductToOrder 1372, 1, 'Chocolate cake';
-EXEC addProductToOrder 1372, 1, 'Rice pudding';
-EXEC addProductToOrder 1372, 3, 'Coconut pudding';
-EXEC addProductToOrder 1372, 1, 'Chocolate ice cream';
-EXEC addProductToOrder 1373, 3, 'Biscuit roll';
-EXEC addProductToOrder 1373, 1, 'Fish sandwich bun';
-EXEC addProductToOrder 1373, 1, 'Cookie sandwich stick';
-EXEC addProductToOrder 1373, 3, 'Bundt cake';
-EXEC addProductToOrder 1373, 3, 'Banana cake';
-EXEC addProductToOrder 1374, 1, 'Chicken soup';
-EXEC addProductToOrder 1374, 3, 'Dressing sauce';
-EXEC addProductToOrder 1374, 3, 'Cereal stick';
-EXEC addProductToOrder 1374, 3, 'Beef stew with mushrooms';
-EXEC addProductToOrder 1374, 2, 'Banana';
-EXEC addProductToOrder 1375, 3, 'Burrata cheese';
-EXEC addProductToOrder 1375, 1, 'Feta cheese';
-EXEC addProductToOrder 1375, 3, 'Diet 7 Up';
-EXEC addProductToOrder 1375, 3, 'Chicken and rice soup';
-EXEC addProductToOrder 1375, 3, 'Vegetable casserole';
-EXEC addProductToOrder 1376, 3, 'Café au lait';
-EXEC addProductToOrder 1376, 2, 'Chicken casserole';
-EXEC addProductToOrder 1376, 1, 'Oolong tea';
-EXEC addProductToOrder 1376, 2, 'Blueberry';
-EXEC addProductToOrder 1376, 1, 'Café con leche';
-EXEC addProductToOrder 1377, 3, 'Deviled eggs';
-EXEC addProductToOrder 1377, 3, 'Clam chowder';
-EXEC addProductToOrder 1377, 3, 'Pepsi';
-EXEC addProductToOrder 1377, 3, 'Baked stuffed eggplant';
-EXEC addProductToOrder 1377, 1, 'Pasta with zucchini';
-EXEC addProductToOrder 1378, 2, 'Macchiato';
-EXEC addProductToOrder 1378, 2, 'Biscuit stick';
-EXEC addProductToOrder 1378, 1, 'Kombucha tea';
-EXEC addProductToOrder 1378, 2, 'Tzatziki';
-EXEC addProductToOrder 1378, 3, 'Café mélange';
-EXEC addProductToOrder 1379, 3, 'Chicken and broccoli soup';
-EXEC addProductToOrder 1379, 2, 'Herbal tea';
-EXEC addProductToOrder 1379, 2, 'Anise';
-EXEC addProductToOrder 1379, 1, 'Lemon';
-EXEC addProductToOrder 1379, 1, 'Biscuit sandwich';
-EXEC addProductToOrder 1380, 2, 'Baked clams';
-EXEC addProductToOrder 1380, 3, 'Coconut';
-EXEC addProductToOrder 1380, 1, 'Pasta with meatballs';
-EXEC addProductToOrder 1380, 2, 'Black forest cake';
-EXEC addProductToOrder 1380, 2, 'Hazelnut';
-EXEC addProductToOrder 1381, 3, 'Potato soup';
-EXEC addProductToOrder 1381, 1, 'Cookie sandwich stick';
-EXEC addProductToOrder 1381, 1, 'Café mocha';
-EXEC addProductToOrder 1381, 3, 'Mountain Dew';
-EXEC addProductToOrder 1381, 3, 'Orange juice';
-EXEC addProductToOrder 1382, 2, 'Baked crab dip';
-EXEC addProductToOrder 1382, 1, 'Corn salad';
-EXEC addProductToOrder 1382, 1, 'Lemon';
-EXEC addProductToOrder 1382, 1, 'Café de pico';
-EXEC addProductToOrder 1382, 2, 'Cereal';
-EXEC addProductToOrder 1383, 1, '7 Up';
-EXEC addProductToOrder 1383, 2, 'Pasta with meatballs';
-EXEC addProductToOrder 1383, 2, 'Mate tea';
-EXEC addProductToOrder 1383, 1, 'Corn chowder';
-EXEC addProductToOrder 1383, 1, 'Bay leaf';
-EXEC addProductToOrder 1384, 3, 'Dressing sauce';
-EXEC addProductToOrder 1384, 1, 'Avocado salad';
-EXEC addProductToOrder 1384, 2, 'Green tea';
-EXEC addProductToOrder 1384, 1, 'Cinnamon';
-EXEC addProductToOrder 1384, 2, 'Coconut';
-EXEC addProductToOrder 1385, 3, 'Orange juice';
-EXEC addProductToOrder 1385, 2, 'Cranberry';
-EXEC addProductToOrder 1385, 1, 'Chicken tortilla soup';
-EXEC addProductToOrder 1385, 1, 'Chicken and wild rice soup';
-EXEC addProductToOrder 1385, 3, 'Pasta with sausage';
-EXEC addProductToOrder 1386, 2, 'Potato soup';
-EXEC addProductToOrder 1386, 3, 'Biscuit';
-EXEC addProductToOrder 1386, 3, 'Sprite';
-EXEC addProductToOrder 1386, 1, 'Salsa';
-EXEC addProductToOrder 1386, 3, 'Romano cheese';
-EXEC addProductToOrder 1387, 3, 'Fish roll';
-EXEC addProductToOrder 1387, 1, 'Brie cheese';
-EXEC addProductToOrder 1387, 2, 'Biscuit sandwich roll';
-EXEC addProductToOrder 1387, 3, 'Clam chowder';
-EXEC addProductToOrder 1387, 1, 'Beef casserole';
-EXEC addProductToOrder 1388, 2, 'Honeybush tea';
-EXEC addProductToOrder 1388, 1, 'Dressing sauce';
-EXEC addProductToOrder 1388, 2, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 1388, 3, 'Cookie sandwich';
-EXEC addProductToOrder 1388, 2, 'Carrot salad';
-EXEC addProductToOrder 1389, 3, 'Macadamia';
-EXEC addProductToOrder 1389, 2, 'Pineapple juice';
-EXEC addProductToOrder 1389, 1, 'Tomato juice';
-EXEC addProductToOrder 1389, 2, 'Bisque sauce';
-EXEC addProductToOrder 1389, 3, 'Baked oysters';
-EXEC addProductToOrder 1390, 3, 'Apricot';
-EXEC addProductToOrder 1390, 2, 'Café mocha';
-EXEC addProductToOrder 1390, 3, 'Peach custard';
-EXEC addProductToOrder 1390, 1, 'Butter pecan ice cream';
-EXEC addProductToOrder 1390, 1, 'Apple juice';
-EXEC addProductToOrder 1391, 2, 'Diet 7 Up';
-EXEC addProductToOrder 1391, 2, 'Fried ravioli';
-EXEC addProductToOrder 1391, 2, 'Chocolate candy stick';
-EXEC addProductToOrder 1391, 3, 'Vegetable stew';
-EXEC addProductToOrder 1391, 2, 'Coconut custard';
-EXEC addProductToOrder 1392, 1, 'Chocolate ice cream';
-EXEC addProductToOrder 1392, 3, 'Café del mar';
-EXEC addProductToOrder 1392, 2, 'Cappuccino';
-EXEC addProductToOrder 1392, 1, 'Mango';
-EXEC addProductToOrder 1392, 2, 'Vegetable chili';
-EXEC addProductToOrder 1393, 3, 'Brioche';
-EXEC addProductToOrder 1393, 3, 'Strawberry ice cream';
-EXEC addProductToOrder 1393, 3, 'Minestrone soup';
-EXEC addProductToOrder 1393, 1, 'Macchiato';
-EXEC addProductToOrder 1393, 3, 'Pasta with mussels';
-EXEC addProductToOrder 1394, 1, 'Tossed salad';
-EXEC addProductToOrder 1394, 3, 'Baguette';
-EXEC addProductToOrder 1394, 2, 'Café marrón';
-EXEC addProductToOrder 1394, 2, 'Brown sauce';
-EXEC addProductToOrder 1394, 3, 'Chocolate ice cream';
-EXEC addProductToOrder 1395, 2, 'Béarnaise sauce';
-EXEC addProductToOrder 1395, 2, 'Brown sauce';
-EXEC addProductToOrder 1395, 2, 'Caesar salad';
-EXEC addProductToOrder 1395, 2, 'Chocolate';
-EXEC addProductToOrder 1395, 3, 'Dressing sauce';
-EXEC addProductToOrder 1396, 2, 'Chocolate candy roll';
-EXEC addProductToOrder 1396, 1, 'Coconut';
-EXEC addProductToOrder 1396, 3, 'Blueberry';
-EXEC addProductToOrder 1396, 1, 'Mango';
-EXEC addProductToOrder 1396, 2, 'Baked stuffed artichokes';
-EXEC addProductToOrder 1397, 1, 'Fried onion rings';
-EXEC addProductToOrder 1397, 2, 'Café mélange';
-EXEC addProductToOrder 1397, 2, 'Pasta with lobster';
-EXEC addProductToOrder 1397, 1, 'Pasta with clams';
-EXEC addProductToOrder 1397, 2, 'Biscuit roll';
-EXEC addProductToOrder 1398, 1, 'Pistachio';
-EXEC addProductToOrder 1398, 3, 'Baked stuffed zucchini';
-EXEC addProductToOrder 1398, 2, 'Pasta with crab';
-EXEC addProductToOrder 1398, 3, 'Pumpkin pudding';
-EXEC addProductToOrder 1398, 2, 'Hazelnut';
-EXEC addProductToOrder 1399, 1, 'Cobb salad';
-EXEC addProductToOrder 1399, 3, 'Chocolate';
-EXEC addProductToOrder 1399, 2, 'Bisque sauce';
-EXEC addProductToOrder 1399, 2, 'Coffee cake';
-EXEC addProductToOrder 1399, 1, 'Baked crab dip';
-EXEC addProductToOrder 1400, 3, 'Beef stew with cabbage';
-EXEC addProductToOrder 1400, 2, 'Dr Pepper';
-EXEC addProductToOrder 1400, 3, 'Parmesan cheese';
-EXEC addProductToOrder 1400, 1, 'Potato salad';
-EXEC addProductToOrder 1400, 1, 'Carrot cake';
-EXEC addProductToOrder 1401, 3, 'Pasta with broccoli';
-EXEC addProductToOrder 1401, 1, 'Biscuit sandwich bun';
-EXEC addProductToOrder 1401, 3, 'Chocolate candy';
-EXEC addProductToOrder 1401, 3, 'Asiago cheese';
-EXEC addProductToOrder 1401, 1, 'Biscotti';
-EXEC addProductToOrder 1402, 3, 'Chestnut';
-EXEC addProductToOrder 1402, 3, 'Baked stuffed mushrooms';
-EXEC addProductToOrder 1402, 3, 'Potato salad';
-EXEC addProductToOrder 1402, 1, 'Pasta with mushrooms';
-EXEC addProductToOrder 1402, 1, 'Fanta';
+EXEC addProductToOrder 2, 3, 'Chicken and dumplings'
+EXEC addProductToOrder 2, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 2, 3, 'Cole slaw'
+EXEC addProductToOrder 2, 1, 'Cereal sandwich roll'
+EXEC addProductToOrder 2, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 304, 2, 'Café irlandés'
+EXEC addProductToOrder 304, 1, 'Fish'
+EXEC addProductToOrder 304, 2, 'Butter'
+EXEC addProductToOrder 304, 1, 'Tomato salad'
+EXEC addProductToOrder 304, 2, 'Beef stew with onions'
+EXEC addProductToOrder 605, 2, 'Chicken and mushroom soup'
+EXEC addProductToOrder 605, 1, 'White tea'
+EXEC addProductToOrder 605, 1, 'Café de olla'
+EXEC addProductToOrder 605, 2, 'Café bombón'
+EXEC addProductToOrder 605, 3, 'Yellow tea'
+EXEC addProductToOrder 906, 3, 'Bay leaf'
+EXEC addProductToOrder 906, 1, 'Café con leche'
+EXEC addProductToOrder 906, 1, 'Lemon custard'
+EXEC addProductToOrder 906, 2, 'Baked stuffed squash'
+EXEC addProductToOrder 906, 3, 'Garden salad'
+EXEC addProductToOrder 907, 2, 'Pepper jack cheese'
+EXEC addProductToOrder 907, 2, 'Fried green tomatoes'
+EXEC addProductToOrder 907, 3, 'Alfredo sauce'
+EXEC addProductToOrder 907, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 907, 1, 'Dressing sauce'
+EXEC addProductToOrder 908, 2, 'Banana cake'
+EXEC addProductToOrder 908, 3, 'Oolong tea'
+EXEC addProductToOrder 908, 2, 'Chai tea'
+EXEC addProductToOrder 908, 2, 'Pasta with spinach'
+EXEC addProductToOrder 908, 1, 'Peanut'
+EXEC addProductToOrder 909, 1, 'Beef stew with onions'
+EXEC addProductToOrder 909, 3, 'Swiss cheese'
+EXEC addProductToOrder 909, 2, 'Lemon custard'
+EXEC addProductToOrder 909, 1, 'Hummus'
+EXEC addProductToOrder 909, 3, 'Green tea'
+EXEC addProductToOrder 910, 2, 'Rocky road ice cream'
+EXEC addProductToOrder 910, 3, 'Coconut custard'
+EXEC addProductToOrder 910, 2, 'Raspberry juice'
+EXEC addProductToOrder 910, 1, 'Pasta with tuna'
+EXEC addProductToOrder 910, 3, 'Hazelnut'
+EXEC addProductToOrder 911, 2, 'Lemon'
+EXEC addProductToOrder 911, 1, 'French onion soup'
+EXEC addProductToOrder 911, 3, 'Sprite'
+EXEC addProductToOrder 911, 1, 'Beef stew with carrots'
+EXEC addProductToOrder 911, 2, 'Potato salad'
+EXEC addProductToOrder 912, 1, 'Baked stuffed shrimp'
+EXEC addProductToOrder 912, 2, 'Café marrón'
+EXEC addProductToOrder 912, 2, 'Cereal stick'
+EXEC addProductToOrder 912, 1, 'Diet Fanta'
+EXEC addProductToOrder 912, 1, 'Pasta with tomatoes'
+EXEC addProductToOrder 913, 3, 'Lime juice'
+EXEC addProductToOrder 913, 2, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 913, 1, 'Cranberry'
+EXEC addProductToOrder 913, 3, 'Café gourmand'
+EXEC addProductToOrder 913, 1, 'Carrot salad'
+EXEC addProductToOrder 914, 3, 'Cloves'
+EXEC addProductToOrder 914, 2, 'Cole slaw'
+EXEC addProductToOrder 914, 1, 'Beef stew with dumplings'
+EXEC addProductToOrder 914, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 914, 1, 'Butter pecan ice cream'
+EXEC addProductToOrder 915, 3, 'Chicken and rice soup'
+EXEC addProductToOrder 915, 1, 'Lentil soup'
+EXEC addProductToOrder 915, 1, 'Beet salad'
+EXEC addProductToOrder 915, 2, 'Tomato juice'
+EXEC addProductToOrder 915, 3, 'Cereal sandwich roll'
+EXEC addProductToOrder 916, 2, 'Greek salad'
+EXEC addProductToOrder 916, 2, 'Chocolate cake'
+EXEC addProductToOrder 916, 3, 'Baguette'
+EXEC addProductToOrder 916, 2, 'Baked oysters'
+EXEC addProductToOrder 916, 2, 'Chicken casserole'
+EXEC addProductToOrder 917, 1, 'Peanut'
+EXEC addProductToOrder 917, 3, 'Biscuit sandwich'
+EXEC addProductToOrder 917, 2, 'Café Cubano'
+EXEC addProductToOrder 917, 2, 'Affogato'
+EXEC addProductToOrder 917, 2, 'Gouda cheese'
+EXEC addProductToOrder 918, 1, 'Fig'
+EXEC addProductToOrder 918, 2, 'Antipasto salad'
+EXEC addProductToOrder 918, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 918, 1, 'Lemon custard'
+EXEC addProductToOrder 918, 3, 'Dip'
+EXEC addProductToOrder 919, 3, 'Parmesan cheese'
+EXEC addProductToOrder 919, 2, 'Moose tracks ice cream'
+EXEC addProductToOrder 919, 3, 'Pasta with eggplant'
+EXEC addProductToOrder 919, 1, 'Pistachio'
+EXEC addProductToOrder 919, 1, 'Fish sandwich'
+EXEC addProductToOrder 920, 2, 'Café zorro'
+EXEC addProductToOrder 920, 1, 'Biscuit sandwich'
+EXEC addProductToOrder 920, 3, 'Asiago cheese'
+EXEC addProductToOrder 920, 2, 'Chicken and mushroom soup'
+EXEC addProductToOrder 920, 2, 'Chai tea'
+EXEC addProductToOrder 921, 1, 'Fried mushrooms'
+EXEC addProductToOrder 921, 2, 'Coconut pudding'
+EXEC addProductToOrder 921, 3, 'Caraway'
+EXEC addProductToOrder 921, 1, 'Banana cake'
+EXEC addProductToOrder 921, 1, 'Muenster cheese'
+EXEC addProductToOrder 922, 3, 'Peach pudding'
+EXEC addProductToOrder 922, 1, 'Lime juice'
+EXEC addProductToOrder 922, 1, 'Pepsi'
+EXEC addProductToOrder 922, 3, 'Lemon custard'
+EXEC addProductToOrder 922, 2, 'Cloves'
+EXEC addProductToOrder 923, 3, 'Vanilla ice cream'
+EXEC addProductToOrder 923, 3, 'Fish roll'
+EXEC addProductToOrder 923, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 923, 3, 'Biscuit stick'
+EXEC addProductToOrder 923, 1, 'Alfredo sauce'
+EXEC addProductToOrder 924, 2, 'Mountain Dew'
+EXEC addProductToOrder 924, 2, 'Moose tracks ice cream'
+EXEC addProductToOrder 924, 3, 'Bun'
+EXEC addProductToOrder 924, 3, 'Pumpkin pudding'
+EXEC addProductToOrder 924, 2, 'Tossed salad'
+EXEC addProductToOrder 925, 2, 'Baked stuffed squash'
+EXEC addProductToOrder 925, 2, 'Pepsi'
+EXEC addProductToOrder 925, 3, 'Asiago cheese'
+EXEC addProductToOrder 925, 3, 'Apple pudding'
+EXEC addProductToOrder 925, 1, 'Apple'
+EXEC addProductToOrder 926, 3, 'Vegetable stew'
+EXEC addProductToOrder 926, 1, 'Chocolate candy roll'
+EXEC addProductToOrder 926, 3, 'Apple pudding'
+EXEC addProductToOrder 926, 3, 'Biscuit sandwich bun'
+EXEC addProductToOrder 926, 2, 'Vegetable lasagna'
+EXEC addProductToOrder 927, 1, 'Breadstick'
+EXEC addProductToOrder 927, 1, 'Corn salad'
+EXEC addProductToOrder 927, 2, 'Guava'
+EXEC addProductToOrder 927, 2, 'Bay leaf'
+EXEC addProductToOrder 927, 3, 'Pasta with tuna'
+EXEC addProductToOrder 928, 2, 'Pasta with lobster'
+EXEC addProductToOrder 928, 3, 'Diet Sierra Mist'
+EXEC addProductToOrder 928, 1, 'Pistachio ice cream'
+EXEC addProductToOrder 928, 1, 'Baked stuffed clams'
+EXEC addProductToOrder 928, 2, 'Vegetable stir fry'
+EXEC addProductToOrder 929, 1, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 929, 2, 'Cookie sandwich bun'
+EXEC addProductToOrder 929, 3, 'Café irlandés'
+EXEC addProductToOrder 929, 3, 'Biscuit'
+EXEC addProductToOrder 929, 3, 'Guacamole'
+EXEC addProductToOrder 930, 1, 'Brioche'
+EXEC addProductToOrder 930, 2, 'Chocolate candy bar'
+EXEC addProductToOrder 930, 2, 'Chicken and corn chowder'
+EXEC addProductToOrder 930, 1, 'Dip'
+EXEC addProductToOrder 930, 2, 'Blackberry'
+EXEC addProductToOrder 931, 2, 'Baked crab dip'
+EXEC addProductToOrder 931, 3, 'Cayenne'
+EXEC addProductToOrder 931, 1, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 931, 3, 'Blueberry'
+EXEC addProductToOrder 931, 3, 'Black tea'
+EXEC addProductToOrder 932, 3, 'Cookie stick'
+EXEC addProductToOrder 932, 3, 'Blueberry juice'
+EXEC addProductToOrder 932, 2, 'Grapefruit'
+EXEC addProductToOrder 932, 3, 'Brioche'
+EXEC addProductToOrder 932, 3, 'Fried zucchini'
+EXEC addProductToOrder 933, 3, 'Bundt cake'
+EXEC addProductToOrder 933, 2, 'Café de pico'
+EXEC addProductToOrder 933, 3, 'Butter'
+EXEC addProductToOrder 933, 2, 'Celery seed'
+EXEC addProductToOrder 933, 1, 'Chicken and mushroom soup'
+EXEC addProductToOrder 934, 2, 'Coconut'
+EXEC addProductToOrder 934, 3, 'Pepper jack cheese'
+EXEC addProductToOrder 934, 1, 'Fruit salad'
+EXEC addProductToOrder 934, 3, 'Cheesecake'
+EXEC addProductToOrder 934, 1, 'Café mélange'
+EXEC addProductToOrder 935, 1, 'Fish roll'
+EXEC addProductToOrder 935, 3, 'Peach custard'
+EXEC addProductToOrder 935, 3, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 935, 1, 'Chocolate ice cream'
+EXEC addProductToOrder 935, 3, 'Pepsi'
+EXEC addProductToOrder 936, 1, 'Fish sandwich stick'
+EXEC addProductToOrder 936, 3, 'Blueberry juice'
+EXEC addProductToOrder 936, 3, 'Pasta with mussels'
+EXEC addProductToOrder 936, 1, 'Pasta with broccoli'
+EXEC addProductToOrder 936, 1, 'Café zorro'
+EXEC addProductToOrder 937, 2, 'Pomegranate juice'
+EXEC addProductToOrder 937, 3, 'Macaroni salad'
+EXEC addProductToOrder 937, 2, 'Fish sandwich'
+EXEC addProductToOrder 937, 2, 'Diet Sprite'
+EXEC addProductToOrder 937, 2, 'Café mélange'
+EXEC addProductToOrder 938, 1, 'Coke Zero'
+EXEC addProductToOrder 938, 3, 'Chicken casserole'
+EXEC addProductToOrder 938, 1, 'Swiss cheese'
+EXEC addProductToOrder 938, 2, 'Cinnamon'
+EXEC addProductToOrder 938, 1, 'Chicken and rice soup'
+EXEC addProductToOrder 939, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 939, 1, 'Beef soup'
+EXEC addProductToOrder 939, 2, 'Biscuit sandwich roll'
+EXEC addProductToOrder 939, 2, 'Vegetable stir fry'
+EXEC addProductToOrder 939, 1, 'Green tea'
+EXEC addProductToOrder 940, 2, 'Sprite'
+EXEC addProductToOrder 940, 1, 'Béarnaise sauce'
+EXEC addProductToOrder 940, 2, 'Burrata cheese'
+EXEC addProductToOrder 940, 1, 'Chicken tortilla soup'
+EXEC addProductToOrder 940, 2, 'Butter roll'
+EXEC addProductToOrder 941, 3, 'Provolone cheese'
+EXEC addProductToOrder 941, 3, 'Oolong tea'
+EXEC addProductToOrder 941, 3, 'Chutney sauce'
+EXEC addProductToOrder 941, 3, 'Pasta with chicken'
+EXEC addProductToOrder 941, 3, 'Carrot juice'
+EXEC addProductToOrder 942, 1, 'Cookie stick'
+EXEC addProductToOrder 942, 1, 'Cookie sandwich stick'
+EXEC addProductToOrder 942, 3, 'Coconut'
+EXEC addProductToOrder 942, 2, 'Cookie'
+EXEC addProductToOrder 942, 3, 'Chocolate ice cream'
+EXEC addProductToOrder 943, 3, 'Coca-Cola'
+EXEC addProductToOrder 943, 1, 'Café de olla'
+EXEC addProductToOrder 943, 2, 'Date'
+EXEC addProductToOrder 943, 2, 'Lentil soup'
+EXEC addProductToOrder 943, 3, 'Blueberry'
+EXEC addProductToOrder 944, 1, 'Baked stuffed potatoes'
+EXEC addProductToOrder 944, 1, 'Butter'
+EXEC addProductToOrder 944, 3, 'Sierra Mist'
+EXEC addProductToOrder 944, 1, 'Vegetable soup'
+EXEC addProductToOrder 944, 1, 'Mate tea'
+EXEC addProductToOrder 945, 3, 'Date'
+EXEC addProductToOrder 945, 1, 'Apple custard'
+EXEC addProductToOrder 945, 2, 'Bay leaf'
+EXEC addProductToOrder 945, 2, 'Lime'
+EXEC addProductToOrder 945, 3, 'Basil'
+EXEC addProductToOrder 946, 1, 'Chicken and broccoli soup'
+EXEC addProductToOrder 946, 1, 'Bisque sauce'
+EXEC addProductToOrder 946, 2, 'Apricot'
+EXEC addProductToOrder 946, 2, 'Sprite'
+EXEC addProductToOrder 946, 3, 'Vegetable stir fry'
+EXEC addProductToOrder 947, 3, 'Provolone cheese'
+EXEC addProductToOrder 947, 1, 'Mango'
+EXEC addProductToOrder 947, 2, 'Alfredo sauce'
+EXEC addProductToOrder 947, 1, 'Café de pico'
+EXEC addProductToOrder 947, 3, 'Burrata cheese'
+EXEC addProductToOrder 948, 1, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 948, 3, 'Walnut'
+EXEC addProductToOrder 948, 2, 'Pepper jack cheese'
+EXEC addProductToOrder 948, 3, 'Baked brie'
+EXEC addProductToOrder 948, 3, 'Asiago cheese'
+EXEC addProductToOrder 949, 2, 'Vegetable stew'
+EXEC addProductToOrder 949, 2, 'Greek salad'
+EXEC addProductToOrder 949, 3, 'Cinnamon'
+EXEC addProductToOrder 949, 3, 'Café marrón'
+EXEC addProductToOrder 949, 3, 'Baked brie'
+EXEC addProductToOrder 950, 3, 'Swiss cheese'
+EXEC addProductToOrder 950, 1, 'Asiago cheese'
+EXEC addProductToOrder 950, 1, 'Tomato salad'
+EXEC addProductToOrder 950, 1, 'Avocado'
+EXEC addProductToOrder 950, 1, 'Café crema'
+EXEC addProductToOrder 951, 2, 'Garden salad'
+EXEC addProductToOrder 951, 3, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 951, 2, 'Vanilla pudding'
+EXEC addProductToOrder 951, 3, 'Fried ravioli'
+EXEC addProductToOrder 951, 1, 'Pasta with scallops'
+EXEC addProductToOrder 952, 2, 'Vegetable curry'
+EXEC addProductToOrder 952, 1, 'Blueberry juice'
+EXEC addProductToOrder 952, 3, 'Pepper jack cheese'
+EXEC addProductToOrder 952, 1, 'Coffee cake'
+EXEC addProductToOrder 952, 1, 'Tomato soup'
+EXEC addProductToOrder 953, 1, 'Baked stuffed eggplant'
+EXEC addProductToOrder 953, 3, 'Garden salad'
+EXEC addProductToOrder 953, 2, 'Beef stew with dumplings'
+EXEC addProductToOrder 953, 2, 'Lemon juice'
+EXEC addProductToOrder 953, 3, 'Banana cake'
+EXEC addProductToOrder 954, 3, 'Vegetable curry'
+EXEC addProductToOrder 954, 1, 'Cereal stick'
+EXEC addProductToOrder 954, 3, 'Cocktail sauce'
+EXEC addProductToOrder 954, 3, 'Yellow tea'
+EXEC addProductToOrder 954, 1, 'Vegetable chili'
+EXEC addProductToOrder 955, 3, 'Herbal tea'
+EXEC addProductToOrder 955, 2, 'Diet Sprite'
+EXEC addProductToOrder 955, 1, 'Chocolate cake'
+EXEC addProductToOrder 955, 2, '7 Up'
+EXEC addProductToOrder 955, 1, 'Cheddar cheese'
+EXEC addProductToOrder 956, 2, 'Cookie stick'
+EXEC addProductToOrder 956, 3, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 956, 2, 'Americano'
+EXEC addProductToOrder 956, 1, 'Cumin'
+EXEC addProductToOrder 956, 1, 'Dr Pepper'
+EXEC addProductToOrder 957, 2, 'Fish roll'
+EXEC addProductToOrder 957, 3, 'Apple'
+EXEC addProductToOrder 957, 1, 'Muenster cheese'
+EXEC addProductToOrder 957, 2, 'Coconut pudding'
+EXEC addProductToOrder 957, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 958, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 958, 2, 'Apple pudding'
+EXEC addProductToOrder 958, 3, 'Rooibos tea'
+EXEC addProductToOrder 958, 3, 'Chocolate candy roll'
+EXEC addProductToOrder 958, 1, 'Fried onion rings'
+EXEC addProductToOrder 959, 2, 'Broccoli salad'
+EXEC addProductToOrder 959, 2, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 959, 1, 'Banana custard'
+EXEC addProductToOrder 959, 3, 'Matcha tea'
+EXEC addProductToOrder 959, 3, 'Pineapple juice'
+EXEC addProductToOrder 960, 2, 'Pasta with sausage'
+EXEC addProductToOrder 960, 3, 'Guava'
+EXEC addProductToOrder 960, 2, 'Fish sandwich bun'
+EXEC addProductToOrder 960, 2, 'Pasta with chicken'
+EXEC addProductToOrder 960, 2, 'Café gourmand'
+EXEC addProductToOrder 961, 3, 'Fish sandwich'
+EXEC addProductToOrder 961, 1, 'Baked stuffed shrimp'
+EXEC addProductToOrder 961, 3, 'Chocolate candy sandwich'
+EXEC addProductToOrder 961, 1, 'Potato salad'
+EXEC addProductToOrder 961, 1, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 962, 2, 'Cocktail sauce'
+EXEC addProductToOrder 962, 2, 'Fried mushrooms'
+EXEC addProductToOrder 962, 2, 'Beef stew with dumplings'
+EXEC addProductToOrder 962, 2, 'Cherry'
+EXEC addProductToOrder 962, 1, 'Diet Fanta'
+EXEC addProductToOrder 963, 1, 'Apple custard'
+EXEC addProductToOrder 963, 3, 'Fried ravioli'
+EXEC addProductToOrder 963, 1, 'Tossed salad'
+EXEC addProductToOrder 963, 3, 'Coconut'
+EXEC addProductToOrder 963, 2, 'Pasta with crab'
+EXEC addProductToOrder 964, 2, 'Chocolate candy roll'
+EXEC addProductToOrder 964, 3, 'Chicken and barley soup'
+EXEC addProductToOrder 964, 2, 'Beef stew with dumplings'
+EXEC addProductToOrder 964, 2, 'Cortado'
+EXEC addProductToOrder 964, 1, 'Chocolate ice cream'
+EXEC addProductToOrder 965, 2, 'Baked oysters'
+EXEC addProductToOrder 965, 2, 'Cappuccino'
+EXEC addProductToOrder 965, 1, 'Cookie sandwich stick'
+EXEC addProductToOrder 965, 2, 'Apricot'
+EXEC addProductToOrder 965, 3, 'Asiago cheese'
+EXEC addProductToOrder 966, 1, 'Dr Pepper'
+EXEC addProductToOrder 966, 2, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 966, 1, 'Grapefruit'
+EXEC addProductToOrder 966, 1, 'Fried pickles'
+EXEC addProductToOrder 966, 1, 'Breadstick'
+EXEC addProductToOrder 967, 3, 'Coriander'
+EXEC addProductToOrder 967, 1, 'Cookie sandwich stick'
+EXEC addProductToOrder 967, 3, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 967, 1, 'Black forest cake'
+EXEC addProductToOrder 967, 2, 'Caper sauce'
+EXEC addProductToOrder 968, 3, 'Cookie sandwich roll'
+EXEC addProductToOrder 968, 3, 'Fanta'
+EXEC addProductToOrder 968, 3, 'Tossed salad'
+EXEC addProductToOrder 968, 2, 'Bay leaf'
+EXEC addProductToOrder 968, 1, 'Cranberry juice'
+EXEC addProductToOrder 969, 1, 'Chocolate bar'
+EXEC addProductToOrder 969, 2, 'Pasta with mussels'
+EXEC addProductToOrder 969, 3, 'Pepper jack cheese'
+EXEC addProductToOrder 969, 3, 'Pasta with tomatoes'
+EXEC addProductToOrder 969, 1, 'Baked stuffed zucchini'
+EXEC addProductToOrder 970, 2, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 970, 3, 'Chai tea'
+EXEC addProductToOrder 970, 3, 'Vegetable casserole'
+EXEC addProductToOrder 970, 3, 'Lentil soup'
+EXEC addProductToOrder 970, 3, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 971, 3, 'Peach pudding'
+EXEC addProductToOrder 971, 2, 'Banana cake'
+EXEC addProductToOrder 971, 2, 'Strawberry pudding'
+EXEC addProductToOrder 971, 1, 'Dijon sauce'
+EXEC addProductToOrder 971, 2, 'Cereal roll'
+EXEC addProductToOrder 972, 1, 'Grape juice'
+EXEC addProductToOrder 972, 1, 'Pumpkin pudding'
+EXEC addProductToOrder 972, 1, 'Tomato salad'
+EXEC addProductToOrder 972, 3, 'Cheddar cheese'
+EXEC addProductToOrder 972, 1, 'Beef stew with celery'
+EXEC addProductToOrder 973, 1, 'Baked stuffed zucchini'
+EXEC addProductToOrder 973, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 973, 1, 'Cheesecake'
+EXEC addProductToOrder 973, 1, 'Beet salad'
+EXEC addProductToOrder 973, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 974, 3, 'Chicken soup'
+EXEC addProductToOrder 974, 2, 'Beef stew with tomatoes'
+EXEC addProductToOrder 974, 1, 'Biscuit sandwich'
+EXEC addProductToOrder 974, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 974, 1, 'Spinach salad'
+EXEC addProductToOrder 975, 2, 'Cherry'
+EXEC addProductToOrder 975, 1, 'Feta cheese'
+EXEC addProductToOrder 975, 1, 'French onion soup'
+EXEC addProductToOrder 975, 3, 'Chicken and barley soup'
+EXEC addProductToOrder 975, 2, 'Melon'
+EXEC addProductToOrder 976, 3, 'Fish sandwich'
+EXEC addProductToOrder 976, 3, 'Pasta with zucchini'
+EXEC addProductToOrder 976, 1, 'Mocha'
+EXEC addProductToOrder 976, 1, 'Café mélange'
+EXEC addProductToOrder 976, 3, 'Chicken and rice soup'
+EXEC addProductToOrder 977, 1, 'Fried ravioli'
+EXEC addProductToOrder 977, 3, 'Baked stuffed eggplant'
+EXEC addProductToOrder 977, 2, 'Pepper jack cheese'
+EXEC addProductToOrder 977, 1, 'Lemon pudding'
+EXEC addProductToOrder 977, 3, 'Cocktail sauce'
+EXEC addProductToOrder 978, 3, 'Raspberry juice'
+EXEC addProductToOrder 978, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 978, 1, 'Café de olla'
+EXEC addProductToOrder 978, 2, 'Cookie stick'
+EXEC addProductToOrder 978, 3, 'Pomegranate juice'
+EXEC addProductToOrder 979, 2, 'Chocolate candy sandwich'
+EXEC addProductToOrder 979, 1, 'Pasta with tuna'
+EXEC addProductToOrder 979, 1, 'Chicken and rice soup'
+EXEC addProductToOrder 979, 1, 'Baked clams'
+EXEC addProductToOrder 979, 2, 'Strawberry ice cream'
+EXEC addProductToOrder 980, 3, 'Flat white'
+EXEC addProductToOrder 980, 3, 'Fried potato skins'
+EXEC addProductToOrder 980, 2, 'Butter pecan ice cream'
+EXEC addProductToOrder 980, 2, 'Sprite'
+EXEC addProductToOrder 980, 3, 'Beef stew with potatoes'
+EXEC addProductToOrder 981, 2, 'Pasta with chicken'
+EXEC addProductToOrder 981, 1, 'Dijon sauce'
+EXEC addProductToOrder 981, 3, 'Coconut cake'
+EXEC addProductToOrder 981, 2, 'Anise'
+EXEC addProductToOrder 981, 3, 'Baked brie'
+EXEC addProductToOrder 982, 3, 'Asiago cheese'
+EXEC addProductToOrder 982, 1, 'Chestnut'
+EXEC addProductToOrder 982, 3, 'Biscuit sandwich bun'
+EXEC addProductToOrder 982, 2, 'Dip'
+EXEC addProductToOrder 982, 3, 'Kombucha tea'
+EXEC addProductToOrder 983, 2, 'Fig'
+EXEC addProductToOrder 983, 3, 'Coconut'
+EXEC addProductToOrder 983, 2, 'Cookie roll'
+EXEC addProductToOrder 983, 3, 'Fried mushrooms'
+EXEC addProductToOrder 983, 2, 'Minestrone soup'
+EXEC addProductToOrder 984, 3, 'Minestrone soup'
+EXEC addProductToOrder 984, 1, 'Peach custard'
+EXEC addProductToOrder 984, 1, 'Café mocha'
+EXEC addProductToOrder 984, 1, 'Affogato'
+EXEC addProductToOrder 984, 1, 'Lime'
+EXEC addProductToOrder 985, 3, 'Cookie'
+EXEC addProductToOrder 985, 3, 'Mountain Dew'
+EXEC addProductToOrder 985, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 985, 3, 'Fruit salad'
+EXEC addProductToOrder 985, 2, 'Chocolate bar'
+EXEC addProductToOrder 986, 1, 'Cereal sandwich stick'
+EXEC addProductToOrder 986, 1, 'Pasta with spinach'
+EXEC addProductToOrder 986, 1, 'Butter'
+EXEC addProductToOrder 986, 2, 'Mocha'
+EXEC addProductToOrder 986, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 987, 3, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 987, 3, 'Orange juice'
+EXEC addProductToOrder 987, 1, 'Café zorro'
+EXEC addProductToOrder 987, 1, 'Hummus'
+EXEC addProductToOrder 987, 1, 'Diet Dr Pepper'
+EXEC addProductToOrder 988, 3, 'Cereal sandwich roll'
+EXEC addProductToOrder 988, 1, 'Mocha'
+EXEC addProductToOrder 988, 2, 'Brown sauce'
+EXEC addProductToOrder 988, 1, 'Baked stuffed squash'
+EXEC addProductToOrder 988, 3, 'Tzatziki'
+EXEC addProductToOrder 989, 1, 'Cookie stick'
+EXEC addProductToOrder 989, 2, 'Boursin cheese'
+EXEC addProductToOrder 989, 1, 'Orange'
+EXEC addProductToOrder 989, 1, 'Lime juice'
+EXEC addProductToOrder 989, 2, 'Brioche'
+EXEC addProductToOrder 990, 1, 'Kiwi'
+EXEC addProductToOrder 990, 3, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 990, 3, 'Apple custard'
+EXEC addProductToOrder 990, 2, 'Chili'
+EXEC addProductToOrder 990, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 991, 3, 'Biscuit sandwich'
+EXEC addProductToOrder 991, 3, 'Chocolate'
+EXEC addProductToOrder 991, 3, 'Avocado'
+EXEC addProductToOrder 991, 1, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 991, 3, 'Café mélange'
+EXEC addProductToOrder 992, 3, 'Cloves'
+EXEC addProductToOrder 992, 2, 'Flat white'
+EXEC addProductToOrder 992, 2, 'Lime juice'
+EXEC addProductToOrder 992, 1, 'Strawberry juice'
+EXEC addProductToOrder 992, 3, 'Almond'
+EXEC addProductToOrder 993, 2, 'Cayenne'
+EXEC addProductToOrder 993, 2, 'Fish'
+EXEC addProductToOrder 993, 2, 'Vegetable stew'
+EXEC addProductToOrder 993, 2, 'Cereal'
+EXEC addProductToOrder 993, 1, 'Spinach salad'
+EXEC addProductToOrder 994, 1, 'Pineapple juice'
+EXEC addProductToOrder 994, 1, 'Bechamel sauce'
+EXEC addProductToOrder 994, 1, 'Cappuccino'
+EXEC addProductToOrder 994, 1, 'Tomato soup'
+EXEC addProductToOrder 994, 2, 'Coca-Cola'
+EXEC addProductToOrder 995, 3, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 995, 1, 'Cereal'
+EXEC addProductToOrder 995, 1, 'Dijon sauce'
+EXEC addProductToOrder 995, 3, 'Fish sandwich bun'
+EXEC addProductToOrder 995, 3, 'Chocolate custard'
+EXEC addProductToOrder 996, 1, 'Cereal stick'
+EXEC addProductToOrder 996, 3, 'Dressing sauce'
+EXEC addProductToOrder 996, 3, 'Baguette'
+EXEC addProductToOrder 996, 3, 'Caramel sauce'
+EXEC addProductToOrder 996, 2, 'Bun'
+EXEC addProductToOrder 997, 1, 'Pasta with lobster'
+EXEC addProductToOrder 997, 3, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 997, 2, 'White tea'
+EXEC addProductToOrder 997, 2, 'Café mélange'
+EXEC addProductToOrder 997, 3, 'Macchiato'
+EXEC addProductToOrder 998, 2, 'Artichoke salad'
+EXEC addProductToOrder 998, 2, 'Cereal roll'
+EXEC addProductToOrder 998, 2, 'Bread'
+EXEC addProductToOrder 998, 3, 'Guava'
+EXEC addProductToOrder 998, 2, 'Cayenne'
+EXEC addProductToOrder 999, 2, 'Parmesan cheese'
+EXEC addProductToOrder 999, 1, 'Curry sauce'
+EXEC addProductToOrder 999, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 999, 3, 'Biscuit sandwich'
+EXEC addProductToOrder 999, 1, 'Spinach salad'
+EXEC addProductToOrder 1000, 2, 'Macadamia'
+EXEC addProductToOrder 1000, 2, 'Pecan'
+EXEC addProductToOrder 1000, 3, 'Pasta with clams'
+EXEC addProductToOrder 1000, 1, 'Tomato soup'
+EXEC addProductToOrder 1000, 1, 'Americano'
+EXEC addProductToOrder 1001, 1, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1001, 3, 'Chocolate candy stick'
+EXEC addProductToOrder 1001, 3, 'Pasta with tuna'
+EXEC addProductToOrder 1001, 3, 'Cookie roll'
+EXEC addProductToOrder 1001, 3, 'Fish sandwich roll'
+EXEC addProductToOrder 1002, 1, 'Lemon custard'
+EXEC addProductToOrder 1002, 1, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1002, 2, 'Chicken and rice soup'
+EXEC addProductToOrder 1002, 1, 'Fried okra'
+EXEC addProductToOrder 1002, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1003, 1, 'Mozzarella cheese'
+EXEC addProductToOrder 1003, 1, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1003, 2, 'Melon'
+EXEC addProductToOrder 1003, 2, 'Lemon'
+EXEC addProductToOrder 1003, 3, 'Diet Sprite'
+EXEC addProductToOrder 1004, 3, 'Bay leaf'
+EXEC addProductToOrder 1004, 2, 'Rocky road ice cream'
+EXEC addProductToOrder 1004, 1, 'White tea'
+EXEC addProductToOrder 1004, 1, 'Cloves'
+EXEC addProductToOrder 1004, 2, 'Pasta with spinach'
+EXEC addProductToOrder 1005, 3, 'Brown sauce'
+EXEC addProductToOrder 1005, 1, 'Sprite'
+EXEC addProductToOrder 1005, 2, 'Pumpkin pudding'
+EXEC addProductToOrder 1005, 1, 'Mango'
+EXEC addProductToOrder 1005, 3, 'Cranberry juice'
+EXEC addProductToOrder 1006, 1, 'Coconut cake'
+EXEC addProductToOrder 1006, 1, 'Apple'
+EXEC addProductToOrder 1006, 2, 'Potato salad'
+EXEC addProductToOrder 1006, 1, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1006, 3, 'Bun'
+EXEC addProductToOrder 1007, 1, 'Coconut custard'
+EXEC addProductToOrder 1007, 2, 'Cookie stick'
+EXEC addProductToOrder 1007, 1, 'Café de olla'
+EXEC addProductToOrder 1007, 2, 'Vegetable chili'
+EXEC addProductToOrder 1007, 1, 'Pasta with onions'
+EXEC addProductToOrder 1008, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1008, 1, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1008, 3, 'Mate tea'
+EXEC addProductToOrder 1008, 3, 'Affogato'
+EXEC addProductToOrder 1008, 3, 'Allspice'
+EXEC addProductToOrder 1009, 1, 'Chocolate'
+EXEC addProductToOrder 1009, 1, 'Beet salad'
+EXEC addProductToOrder 1009, 1, 'Feta cheese'
+EXEC addProductToOrder 1009, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1009, 2, 'Guacamole'
+EXEC addProductToOrder 1010, 1, 'Chocolate candy stick'
+EXEC addProductToOrder 1010, 2, 'Pepper jack cheese'
+EXEC addProductToOrder 1010, 1, 'Pasta with broccoli'
+EXEC addProductToOrder 1010, 3, 'Grapefruit'
+EXEC addProductToOrder 1010, 3, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1011, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1011, 3, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1011, 1, 'Strawberry juice'
+EXEC addProductToOrder 1011, 2, 'Cocktail sauce'
+EXEC addProductToOrder 1011, 3, 'Cookie stick'
+EXEC addProductToOrder 1012, 2, 'Café zorro'
+EXEC addProductToOrder 1012, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1012, 1, 'Diet Mountain Dew'
+EXEC addProductToOrder 1012, 3, 'Sprite'
+EXEC addProductToOrder 1012, 3, 'Cereal sandwich roll'
+EXEC addProductToOrder 1013, 3, 'Pasta with cauliflower'
+EXEC addProductToOrder 1013, 2, 'Pasta with salmon'
+EXEC addProductToOrder 1013, 2, 'Fish'
+EXEC addProductToOrder 1013, 3, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1013, 1, 'Avocado'
+EXEC addProductToOrder 1014, 2, 'Cookie roll'
+EXEC addProductToOrder 1014, 2, 'Avocado salad'
+EXEC addProductToOrder 1014, 1, 'Peanut'
+EXEC addProductToOrder 1014, 1, 'Pasta with spinach'
+EXEC addProductToOrder 1014, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1015, 1, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1015, 3, 'Fish sandwich stick'
+EXEC addProductToOrder 1015, 1, 'Fish sandwich'
+EXEC addProductToOrder 1015, 1, 'Chimichurri sauce'
+EXEC addProductToOrder 1015, 2, 'Fried pickles'
+EXEC addProductToOrder 1016, 2, 'Coconut custard'
+EXEC addProductToOrder 1016, 2, 'Cookie roll'
+EXEC addProductToOrder 1016, 1, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1016, 1, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1016, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1017, 2, 'Cortado'
+EXEC addProductToOrder 1017, 1, 'Cookie sandwich roll'
+EXEC addProductToOrder 1017, 3, 'Cookie sandwich'
+EXEC addProductToOrder 1017, 1, 'Baguette'
+EXEC addProductToOrder 1017, 2, 'Deviled eggs'
+EXEC addProductToOrder 1018, 3, 'Apricot'
+EXEC addProductToOrder 1018, 1, 'Date'
+EXEC addProductToOrder 1018, 3, 'Diet Coke'
+EXEC addProductToOrder 1018, 1, 'Café de pico'
+EXEC addProductToOrder 1018, 1, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1019, 1, 'Cheesecake'
+EXEC addProductToOrder 1019, 2, 'Guava'
+EXEC addProductToOrder 1019, 1, 'Coconut custard'
+EXEC addProductToOrder 1019, 1, 'American cheese'
+EXEC addProductToOrder 1019, 1, 'Black forest cake'
+EXEC addProductToOrder 1020, 2, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1020, 1, 'Mocha'
+EXEC addProductToOrder 1020, 1, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1020, 1, 'Carrot juice'
+EXEC addProductToOrder 1020, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1021, 2, 'Apple'
+EXEC addProductToOrder 1021, 2, 'Date'
+EXEC addProductToOrder 1021, 3, 'Salsa'
+EXEC addProductToOrder 1021, 1, 'Spinach salad'
+EXEC addProductToOrder 1021, 1, 'Honeybush tea'
+EXEC addProductToOrder 1022, 3, 'Muenster cheese'
+EXEC addProductToOrder 1022, 1, 'Bun'
+EXEC addProductToOrder 1022, 2, 'Butter pecan ice cream'
+EXEC addProductToOrder 1022, 1, 'Cappuccino'
+EXEC addProductToOrder 1022, 3, 'Macadamia'
+EXEC addProductToOrder 1023, 2, 'Peach pudding'
+EXEC addProductToOrder 1023, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1023, 2, 'Cheddar cheese'
+EXEC addProductToOrder 1023, 2, 'Cookie stick'
+EXEC addProductToOrder 1023, 3, 'Fish roll'
+EXEC addProductToOrder 1024, 3, 'Beef stew with carrots'
+EXEC addProductToOrder 1024, 1, 'Flat white'
+EXEC addProductToOrder 1024, 3, 'Café con leche'
+EXEC addProductToOrder 1024, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1024, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1025, 2, 'Caprese salad'
+EXEC addProductToOrder 1025, 2, 'Vegetable stew'
+EXEC addProductToOrder 1025, 1, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1025, 1, 'Café mocha'
+EXEC addProductToOrder 1025, 1, 'Lemon custard'
+EXEC addProductToOrder 1026, 1, 'Pasta with tomatoes'
+EXEC addProductToOrder 1026, 1, 'Cappuccino'
+EXEC addProductToOrder 1026, 2, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1026, 1, 'Clam chowder'
+EXEC addProductToOrder 1026, 3, 'Vegetable lasagna'
+EXEC addProductToOrder 1027, 1, 'Avocado'
+EXEC addProductToOrder 1027, 3, 'Bisque sauce'
+EXEC addProductToOrder 1027, 1, 'Coffee cake'
+EXEC addProductToOrder 1027, 2, 'Café Cubano'
+EXEC addProductToOrder 1027, 2, 'Pomegranate juice'
+EXEC addProductToOrder 1028, 1, 'Black forest cake'
+EXEC addProductToOrder 1028, 3, 'Affogato'
+EXEC addProductToOrder 1028, 1, 'Coffee cake'
+EXEC addProductToOrder 1028, 2, 'Mountain Dew'
+EXEC addProductToOrder 1028, 3, 'Strawberry pudding'
+EXEC addProductToOrder 1029, 1, 'Avocado salad'
+EXEC addProductToOrder 1029, 1, 'Pecan'
+EXEC addProductToOrder 1029, 2, 'Pasta with meatballs'
+EXEC addProductToOrder 1029, 1, 'Orange juice'
+EXEC addProductToOrder 1029, 1, 'Strawberry ice cream'
+EXEC addProductToOrder 1030, 3, 'Cookie'
+EXEC addProductToOrder 1030, 3, 'Beet salad'
+EXEC addProductToOrder 1030, 1, 'Beef casserole'
+EXEC addProductToOrder 1030, 3, 'Pineapple juice'
+EXEC addProductToOrder 1030, 1, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1031, 1, 'Café mélange'
+EXEC addProductToOrder 1031, 3, 'Beef stew with cabbage'
+EXEC addProductToOrder 1031, 2, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1031, 3, 'Macadamia'
+EXEC addProductToOrder 1031, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 1032, 3, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1032, 2, 'Biscotti'
+EXEC addProductToOrder 1032, 3, 'Pasta with sausage'
+EXEC addProductToOrder 1032, 2, 'Pistachio ice cream'
+EXEC addProductToOrder 1032, 1, 'Caramel sauce'
+EXEC addProductToOrder 1033, 2, 'Pepsi'
+EXEC addProductToOrder 1033, 2, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1033, 1, 'Café de pico'
+EXEC addProductToOrder 1033, 1, 'Cookie stick'
+EXEC addProductToOrder 1033, 1, 'Fried pickles'
+EXEC addProductToOrder 1034, 2, 'Apple custard'
+EXEC addProductToOrder 1034, 2, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1034, 3, 'Café gourmand'
+EXEC addProductToOrder 1034, 3, 'Baked clams'
+EXEC addProductToOrder 1034, 3, 'Coffee cake'
+EXEC addProductToOrder 1035, 2, 'Fried calamari'
+EXEC addProductToOrder 1035, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1035, 1, 'Lemon'
+EXEC addProductToOrder 1035, 3, 'Moose tracks ice cream'
+EXEC addProductToOrder 1035, 2, 'Biscuit stick'
+EXEC addProductToOrder 1036, 3, 'Pasta with chicken'
+EXEC addProductToOrder 1036, 2, 'Fish roll'
+EXEC addProductToOrder 1036, 1, 'Raspberry juice'
+EXEC addProductToOrder 1036, 1, 'Mate tea'
+EXEC addProductToOrder 1036, 2, 'Deviled eggs'
+EXEC addProductToOrder 1037, 1, 'Beet salad'
+EXEC addProductToOrder 1037, 3, 'Vanilla ice cream'
+EXEC addProductToOrder 1037, 1, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1037, 1, 'Coriander'
+EXEC addProductToOrder 1037, 1, 'Chocolate custard'
+EXEC addProductToOrder 1038, 3, 'Grape'
+EXEC addProductToOrder 1038, 1, 'Kiwi'
+EXEC addProductToOrder 1038, 1, 'Fish sandwich stick'
+EXEC addProductToOrder 1038, 3, 'Biscuit roll'
+EXEC addProductToOrder 1038, 3, 'Caraway'
+EXEC addProductToOrder 1039, 1, 'Cereal sandwich roll'
+EXEC addProductToOrder 1039, 2, 'Tomato soup'
+EXEC addProductToOrder 1039, 1, 'Chocolate candy'
+EXEC addProductToOrder 1039, 1, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1039, 1, 'Pomegranate juice'
+EXEC addProductToOrder 1040, 1, 'Feta cheese'
+EXEC addProductToOrder 1040, 3, 'Pasta with meatballs'
+EXEC addProductToOrder 1040, 2, 'Tzatziki'
+EXEC addProductToOrder 1040, 2, 'Vegetable lasagna'
+EXEC addProductToOrder 1040, 2, 'Diet Coke'
+EXEC addProductToOrder 1041, 2, 'Mate tea'
+EXEC addProductToOrder 1041, 3, 'American cheese'
+EXEC addProductToOrder 1041, 2, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1041, 2, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1041, 2, 'Pu-erh tea'
+EXEC addProductToOrder 1042, 2, 'Muenster cheese'
+EXEC addProductToOrder 1042, 1, 'Basil'
+EXEC addProductToOrder 1042, 3, 'Antipasto salad'
+EXEC addProductToOrder 1042, 1, 'Cheddar cheese'
+EXEC addProductToOrder 1042, 3, 'Cashew'
+EXEC addProductToOrder 1043, 1, 'Pasta with broccoli'
+EXEC addProductToOrder 1043, 2, 'Tossed salad'
+EXEC addProductToOrder 1043, 2, '7 Up'
+EXEC addProductToOrder 1043, 1, 'Cookie'
+EXEC addProductToOrder 1043, 1, 'Cranberry'
+EXEC addProductToOrder 1044, 2, 'Pu-erh tea'
+EXEC addProductToOrder 1044, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1044, 3, 'Vegetable soup'
+EXEC addProductToOrder 1044, 1, 'Parmesan cheese'
+EXEC addProductToOrder 1044, 3, 'Coconut cake'
+EXEC addProductToOrder 1045, 3, 'Chicken and dumplings'
+EXEC addProductToOrder 1045, 3, 'Allspice'
+EXEC addProductToOrder 1045, 1, 'Strawberry ice cream'
+EXEC addProductToOrder 1045, 2, 'Boston cream cake'
+EXEC addProductToOrder 1045, 3, 'Hummus'
+EXEC addProductToOrder 1046, 3, 'Pepsi'
+EXEC addProductToOrder 1046, 1, 'Sprite'
+EXEC addProductToOrder 1046, 1, 'Cashew'
+EXEC addProductToOrder 1046, 1, 'Blueberry juice'
+EXEC addProductToOrder 1046, 3, 'Angel food cake'
+EXEC addProductToOrder 1047, 2, 'Cookie sandwich bun'
+EXEC addProductToOrder 1047, 2, 'Vegetable chili'
+EXEC addProductToOrder 1047, 1, 'Potato salad'
+EXEC addProductToOrder 1047, 1, 'Baked crab dip'
+EXEC addProductToOrder 1047, 3, 'Lemon juice'
+EXEC addProductToOrder 1048, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 1048, 2, 'Pasta with crab'
+EXEC addProductToOrder 1048, 2, 'Pumpkin pudding'
+EXEC addProductToOrder 1048, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1048, 1, 'Blueberry juice'
+EXEC addProductToOrder 1049, 3, 'Beef stew with onions'
+EXEC addProductToOrder 1049, 3, 'Chili'
+EXEC addProductToOrder 1049, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1049, 1, 'Cereal roll'
+EXEC addProductToOrder 1049, 3, 'Café gourmand'
+EXEC addProductToOrder 1050, 2, '7 Up'
+EXEC addProductToOrder 1050, 2, 'Diet 7 Up'
+EXEC addProductToOrder 1050, 2, 'Orange'
+EXEC addProductToOrder 1050, 2, 'Pasta with onions'
+EXEC addProductToOrder 1050, 3, 'Walnut'
+EXEC addProductToOrder 1051, 2, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1051, 3, 'Bun'
+EXEC addProductToOrder 1051, 2, 'Matcha tea'
+EXEC addProductToOrder 1051, 2, 'Café mélange'
+EXEC addProductToOrder 1051, 3, 'Bechamel sauce'
+EXEC addProductToOrder 1052, 3, 'Café mocha'
+EXEC addProductToOrder 1052, 2, 'Mango'
+EXEC addProductToOrder 1052, 1, 'Pasta with tuna'
+EXEC addProductToOrder 1052, 3, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1052, 3, 'Dressing sauce'
+EXEC addProductToOrder 1053, 3, 'Kombucha tea'
+EXEC addProductToOrder 1053, 3, 'Cookie sandwich'
+EXEC addProductToOrder 1053, 1, 'Dijon sauce'
+EXEC addProductToOrder 1053, 2, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1053, 1, 'Fried mushrooms'
+EXEC addProductToOrder 1054, 2, 'Pasta with mushrooms'
+EXEC addProductToOrder 1054, 2, 'Chocolate candy'
+EXEC addProductToOrder 1054, 1, 'Dip'
+EXEC addProductToOrder 1054, 3, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1054, 3, 'Apricot'
+EXEC addProductToOrder 1055, 2, 'Pasta with eggplant'
+EXEC addProductToOrder 1055, 3, 'Coconut'
+EXEC addProductToOrder 1055, 1, 'Pasta with tomatoes'
+EXEC addProductToOrder 1055, 2, 'Rooibos tea'
+EXEC addProductToOrder 1055, 1, 'Kombucha tea'
+EXEC addProductToOrder 1056, 1, 'Celery seed'
+EXEC addProductToOrder 1056, 2, 'Café del mar'
+EXEC addProductToOrder 1056, 3, 'Pasta with spinach'
+EXEC addProductToOrder 1056, 3, 'Cheesecake'
+EXEC addProductToOrder 1056, 2, 'Pasta with salmon'
+EXEC addProductToOrder 1057, 2, 'Pasta with shrimp'
+EXEC addProductToOrder 1057, 3, 'Chocolate candy'
+EXEC addProductToOrder 1057, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 1057, 3, 'Cucumber salad'
+EXEC addProductToOrder 1057, 2, 'Date'
+EXEC addProductToOrder 1058, 2, 'Fried zucchini'
+EXEC addProductToOrder 1058, 3, 'Pasta with mussels'
+EXEC addProductToOrder 1058, 2, 'Tomato soup'
+EXEC addProductToOrder 1058, 1, 'Brown sauce'
+EXEC addProductToOrder 1058, 3, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1059, 3, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1059, 3, 'Banana'
+EXEC addProductToOrder 1059, 3, 'Biscuit stick'
+EXEC addProductToOrder 1059, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1059, 1, 'Affogato'
+EXEC addProductToOrder 1060, 1, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1060, 3, 'Bisque sauce'
+EXEC addProductToOrder 1060, 2, 'Caraway'
+EXEC addProductToOrder 1060, 1, 'Sprite'
+EXEC addProductToOrder 1060, 3, 'Lentil soup'
+EXEC addProductToOrder 1061, 1, 'Potato salad'
+EXEC addProductToOrder 1061, 2, 'Oolong tea'
+EXEC addProductToOrder 1061, 2, 'Sierra Mist'
+EXEC addProductToOrder 1061, 2, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1061, 1, 'Coke Zero'
+EXEC addProductToOrder 1062, 3, 'Orange juice'
+EXEC addProductToOrder 1062, 1, 'Chocolate'
+EXEC addProductToOrder 1062, 2, 'Diet 7 Up'
+EXEC addProductToOrder 1062, 2, 'Tomato juice'
+EXEC addProductToOrder 1062, 1, 'Black forest cake'
+EXEC addProductToOrder 1063, 2, 'Peanut'
+EXEC addProductToOrder 1063, 1, 'Dressing sauce'
+EXEC addProductToOrder 1063, 3, 'Diet Fanta'
+EXEC addProductToOrder 1063, 3, 'Basil'
+EXEC addProductToOrder 1063, 2, 'Blackberry'
+EXEC addProductToOrder 1064, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1064, 3, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1064, 2, 'Cheesecake'
+EXEC addProductToOrder 1064, 2, 'Café Cubano'
+EXEC addProductToOrder 1064, 3, 'Americano'
+EXEC addProductToOrder 1065, 2, 'Chicken casserole'
+EXEC addProductToOrder 1065, 2, 'Chocolate bar'
+EXEC addProductToOrder 1065, 1, 'Café zorro'
+EXEC addProductToOrder 1065, 1, 'Vanilla pudding'
+EXEC addProductToOrder 1065, 3, 'Chili'
+EXEC addProductToOrder 1066, 3, 'Fanta'
+EXEC addProductToOrder 1066, 1, 'Espresso'
+EXEC addProductToOrder 1066, 1, 'Fried zucchini'
+EXEC addProductToOrder 1066, 2, 'Chocolate candy roll'
+EXEC addProductToOrder 1066, 1, 'Pasta with lobster'
+EXEC addProductToOrder 1067, 2, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1067, 1, 'Chocolate custard'
+EXEC addProductToOrder 1067, 3, 'Artichoke salad'
+EXEC addProductToOrder 1067, 3, 'Pasta with eggplant'
+EXEC addProductToOrder 1067, 1, 'Vegetable lasagna'
+EXEC addProductToOrder 1068, 1, 'Minestrone soup'
+EXEC addProductToOrder 1068, 2, 'Blackberry'
+EXEC addProductToOrder 1068, 1, 'Corn salad'
+EXEC addProductToOrder 1068, 3, 'Baked crab dip'
+EXEC addProductToOrder 1068, 3, 'Baked stuffed peppers'
+EXEC addProductToOrder 1069, 2, 'Café con leche'
+EXEC addProductToOrder 1069, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1069, 3, 'Chicken noodle soup'
+EXEC addProductToOrder 1069, 3, 'Pasta with crab'
+EXEC addProductToOrder 1069, 3, 'Cashew'
+EXEC addProductToOrder 1070, 2, 'Kombucha tea'
+EXEC addProductToOrder 1070, 1, 'Cortado'
+EXEC addProductToOrder 1070, 3, 'Chili'
+EXEC addProductToOrder 1070, 1, 'Baked stuffed peppers'
+EXEC addProductToOrder 1070, 3, 'Grape juice'
+EXEC addProductToOrder 1071, 2, 'Cookie roll'
+EXEC addProductToOrder 1071, 2, 'Beef stew with onions'
+EXEC addProductToOrder 1071, 3, 'Café zorro'
+EXEC addProductToOrder 1071, 3, 'Boston cream cake'
+EXEC addProductToOrder 1071, 2, 'Lemon'
+EXEC addProductToOrder 1072, 1, 'Black tea'
+EXEC addProductToOrder 1072, 3, 'Asparagus salad'
+EXEC addProductToOrder 1072, 1, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1072, 2, 'Mountain Dew'
+EXEC addProductToOrder 1072, 3, 'Mate tea'
+EXEC addProductToOrder 1073, 1, 'Pasta with lobster'
+EXEC addProductToOrder 1073, 2, 'Cashew'
+EXEC addProductToOrder 1073, 1, 'Moose tracks ice cream'
+EXEC addProductToOrder 1073, 1, 'Banana custard'
+EXEC addProductToOrder 1073, 2, 'Cobb salad'
+EXEC addProductToOrder 1074, 1, 'Pasta with mussels'
+EXEC addProductToOrder 1074, 3, 'Asiago cheese'
+EXEC addProductToOrder 1074, 2, 'Baked stuffed clams'
+EXEC addProductToOrder 1074, 2, 'Moose tracks ice cream'
+EXEC addProductToOrder 1074, 2, 'Feta cheese'
+EXEC addProductToOrder 1075, 1, 'Fish stick'
+EXEC addProductToOrder 1075, 1, 'Cobb salad'
+EXEC addProductToOrder 1075, 1, 'Black tea'
+EXEC addProductToOrder 1075, 2, 'Fried green tomatoes'
+EXEC addProductToOrder 1075, 1, 'Raspberry juice'
+EXEC addProductToOrder 1076, 2, 'Diet Mountain Dew'
+EXEC addProductToOrder 1076, 1, 'Baked clams'
+EXEC addProductToOrder 1076, 2, 'Cereal sandwich'
+EXEC addProductToOrder 1076, 2, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1076, 3, 'Yellow tea'
+EXEC addProductToOrder 1077, 2, 'Curry sauce'
+EXEC addProductToOrder 1077, 2, 'Diet Coke'
+EXEC addProductToOrder 1077, 2, 'French onion soup'
+EXEC addProductToOrder 1077, 3, 'Fried potato skins'
+EXEC addProductToOrder 1077, 3, 'Burrata cheese'
+EXEC addProductToOrder 1078, 1, 'Carrot salad'
+EXEC addProductToOrder 1078, 3, 'Lime juice'
+EXEC addProductToOrder 1078, 3, 'Cloves'
+EXEC addProductToOrder 1078, 1, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1078, 1, 'Cereal sandwich stick'
+EXEC addProductToOrder 1079, 3, 'Rocky road ice cream'
+EXEC addProductToOrder 1079, 2, 'Chocolate'
+EXEC addProductToOrder 1079, 3, 'Baguette'
+EXEC addProductToOrder 1079, 2, 'Fish stick'
+EXEC addProductToOrder 1079, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1080, 3, 'Gruyere cheese'
+EXEC addProductToOrder 1080, 2, 'Chicken and dumplings'
+EXEC addProductToOrder 1080, 1, 'Grapefruit juice'
+EXEC addProductToOrder 1080, 1, 'Breadstick'
+EXEC addProductToOrder 1080, 2, 'Lentil soup'
+EXEC addProductToOrder 1081, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1081, 1, 'Corn chowder'
+EXEC addProductToOrder 1081, 1, 'Bechamel sauce'
+EXEC addProductToOrder 1081, 2, 'Celery seed'
+EXEC addProductToOrder 1081, 2, 'Pasta with tuna'
+EXEC addProductToOrder 1082, 3, 'Yellow tea'
+EXEC addProductToOrder 1082, 2, 'Café de pico'
+EXEC addProductToOrder 1082, 3, 'Cookie sandwich'
+EXEC addProductToOrder 1082, 2, 'Chimichurri sauce'
+EXEC addProductToOrder 1082, 1, 'Chicken and wild rice soup'
+EXEC addProductToOrder 1083, 1, 'Macaroni salad'
+EXEC addProductToOrder 1083, 2, 'Vegetable curry'
+EXEC addProductToOrder 1083, 2, 'Chicken and wild rice soup'
+EXEC addProductToOrder 1083, 1, 'Guacamole'
+EXEC addProductToOrder 1083, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1084, 1, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 1084, 2, 'Cappuccino'
+EXEC addProductToOrder 1084, 1, 'Spinach salad'
+EXEC addProductToOrder 1084, 1, 'Corn salad'
+EXEC addProductToOrder 1084, 1, 'Burrata cheese'
+EXEC addProductToOrder 1085, 2, 'Beet salad'
+EXEC addProductToOrder 1085, 3, 'Affogato'
+EXEC addProductToOrder 1085, 1, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1085, 1, 'Curry sauce'
+EXEC addProductToOrder 1085, 1, 'Baked brie'
+EXEC addProductToOrder 1086, 2, 'Peach custard'
+EXEC addProductToOrder 1086, 1, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1086, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 1086, 3, 'Strawberry pudding'
+EXEC addProductToOrder 1086, 2, 'Orange'
+EXEC addProductToOrder 1087, 1, 'Pasta with crab'
+EXEC addProductToOrder 1087, 2, 'Grapefruit juice'
+EXEC addProductToOrder 1087, 3, 'Kombucha tea'
+EXEC addProductToOrder 1087, 1, 'Bechamel sauce'
+EXEC addProductToOrder 1087, 3, 'Chocolate candy bar'
+EXEC addProductToOrder 1088, 1, 'Lemon juice'
+EXEC addProductToOrder 1088, 1, 'Asparagus salad'
+EXEC addProductToOrder 1088, 2, 'Antipasto salad'
+EXEC addProductToOrder 1088, 1, 'Grapefruit juice'
+EXEC addProductToOrder 1088, 2, 'Muenster cheese'
+EXEC addProductToOrder 1089, 2, 'Diet Sprite'
+EXEC addProductToOrder 1089, 2, 'Rooibos tea'
+EXEC addProductToOrder 1089, 1, 'Chicken and wild rice soup'
+EXEC addProductToOrder 1089, 1, 'Matcha tea'
+EXEC addProductToOrder 1089, 3, 'Lemon custard'
+EXEC addProductToOrder 1090, 2, 'Grapefruit'
+EXEC addProductToOrder 1090, 2, 'Pasta with broccoli'
+EXEC addProductToOrder 1090, 3, 'Avocado salad'
+EXEC addProductToOrder 1090, 3, 'Café zorro'
+EXEC addProductToOrder 1090, 1, 'Blueberry'
+EXEC addProductToOrder 1091, 1, 'White tea'
+EXEC addProductToOrder 1091, 1, 'Pu-erh tea'
+EXEC addProductToOrder 1091, 3, 'Cereal sandwich stick'
+EXEC addProductToOrder 1091, 1, 'Gruyere cheese'
+EXEC addProductToOrder 1091, 2, 'Pasta with onions'
+EXEC addProductToOrder 1092, 1, 'Biscotti'
+EXEC addProductToOrder 1092, 1, 'Grape juice'
+EXEC addProductToOrder 1092, 1, 'Caesar salad'
+EXEC addProductToOrder 1092, 2, 'Angel food cake'
+EXEC addProductToOrder 1092, 1, 'Mocha'
+EXEC addProductToOrder 1093, 1, 'Coffee cake'
+EXEC addProductToOrder 1093, 2, 'Cookie sandwich roll'
+EXEC addProductToOrder 1093, 3, 'Basil'
+EXEC addProductToOrder 1093, 1, 'Caesar salad'
+EXEC addProductToOrder 1093, 3, 'Beef casserole'
+EXEC addProductToOrder 1094, 1, 'Tomato juice'
+EXEC addProductToOrder 1094, 1, 'Kombucha tea'
+EXEC addProductToOrder 1094, 3, 'Mozzarella cheese'
+EXEC addProductToOrder 1094, 3, 'Chocolate candy'
+EXEC addProductToOrder 1094, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1095, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1095, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1095, 2, 'Cereal'
+EXEC addProductToOrder 1095, 1, 'Alfredo sauce'
+EXEC addProductToOrder 1095, 3, 'Pasta with broccoli'
+EXEC addProductToOrder 1096, 1, 'Chicken and barley soup'
+EXEC addProductToOrder 1096, 1, 'Beef soup'
+EXEC addProductToOrder 1096, 2, 'Chestnut'
+EXEC addProductToOrder 1096, 1, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1096, 1, 'Vegetable casserole'
+EXEC addProductToOrder 1097, 1, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1097, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1097, 2, 'Coca-Cola'
+EXEC addProductToOrder 1097, 3, 'Fried green tomatoes'
+EXEC addProductToOrder 1097, 2, 'American cheese'
+EXEC addProductToOrder 1098, 3, 'Biscuit stick'
+EXEC addProductToOrder 1098, 2, 'Fried pickles'
+EXEC addProductToOrder 1098, 2, 'Chili'
+EXEC addProductToOrder 1098, 3, 'Fig'
+EXEC addProductToOrder 1098, 2, 'Cappuccino'
+EXEC addProductToOrder 1099, 2, 'Mountain Dew'
+EXEC addProductToOrder 1099, 3, 'Grape'
+EXEC addProductToOrder 1099, 1, 'Caraway'
+EXEC addProductToOrder 1099, 3, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1099, 3, 'Pasta with onions'
+EXEC addProductToOrder 1100, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1100, 1, 'Butter pecan ice cream'
+EXEC addProductToOrder 1100, 1, 'Cheesecake'
+EXEC addProductToOrder 1100, 1, 'White tea'
+EXEC addProductToOrder 1100, 3, 'Strawberry juice'
+EXEC addProductToOrder 1101, 3, 'Fried calamari'
+EXEC addProductToOrder 1101, 1, 'Beef stew with potatoes'
+EXEC addProductToOrder 1101, 3, 'Pistachio'
+EXEC addProductToOrder 1101, 1, 'Orange'
+EXEC addProductToOrder 1101, 1, 'Chicken casserole'
+EXEC addProductToOrder 1102, 2, 'Chocolate pudding'
+EXEC addProductToOrder 1102, 1, 'Baked brie'
+EXEC addProductToOrder 1102, 3, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1102, 1, 'Orange'
+EXEC addProductToOrder 1102, 2, 'Chocolate candy roll'
+EXEC addProductToOrder 1104, 3, 'Baked brie'
+EXEC addProductToOrder 1104, 1, 'Café crema'
+EXEC addProductToOrder 1104, 2, 'Caesar salad'
+EXEC addProductToOrder 1104, 1, 'Black tea'
+EXEC addProductToOrder 1104, 3, 'Apple custard'
+EXEC addProductToOrder 1105, 2, 'Fried ravioli'
+EXEC addProductToOrder 1105, 3, 'Bread'
+EXEC addProductToOrder 1105, 2, 'Melon'
+EXEC addProductToOrder 1105, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1105, 1, 'Vegetable stew'
+EXEC addProductToOrder 1106, 3, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1106, 3, 'Café bombón'
+EXEC addProductToOrder 1106, 1, 'Gouda cheese'
+EXEC addProductToOrder 1106, 1, 'French onion soup'
+EXEC addProductToOrder 1106, 1, 'Hazelnut'
+EXEC addProductToOrder 1107, 2, 'Cobb salad'
+EXEC addProductToOrder 1107, 1, 'Fried mushrooms'
+EXEC addProductToOrder 1107, 1, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1107, 1, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1107, 3, 'Hazelnut'
+EXEC addProductToOrder 1108, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1108, 1, 'Café mocha'
+EXEC addProductToOrder 1108, 2, 'Butter'
+EXEC addProductToOrder 1108, 1, 'Pasta with mussels'
+EXEC addProductToOrder 1108, 2, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1109, 3, 'Chestnut'
+EXEC addProductToOrder 1109, 1, 'Coconut pudding'
+EXEC addProductToOrder 1109, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 1109, 2, '7 Up'
+EXEC addProductToOrder 1109, 1, 'Pasta with broccoli'
+EXEC addProductToOrder 1110, 2, 'Banana custard'
+EXEC addProductToOrder 1110, 3, 'Broccoli salad'
+EXEC addProductToOrder 1110, 2, 'Café marrón'
+EXEC addProductToOrder 1110, 3, 'Coconut cake'
+EXEC addProductToOrder 1110, 3, 'Tzatziki'
+EXEC addProductToOrder 1111, 3, 'Beef stew with potatoes'
+EXEC addProductToOrder 1111, 1, 'Sierra Mist'
+EXEC addProductToOrder 1111, 3, 'Curry'
+EXEC addProductToOrder 1111, 2, 'Cranberry'
+EXEC addProductToOrder 1111, 2, 'Cereal sandwich stick'
+EXEC addProductToOrder 1112, 1, 'Celery seed'
+EXEC addProductToOrder 1112, 2, 'Biscuit'
+EXEC addProductToOrder 1112, 1, 'Broccoli salad'
+EXEC addProductToOrder 1112, 3, 'Melon'
+EXEC addProductToOrder 1112, 1, 'Apple juice'
+EXEC addProductToOrder 1113, 3, 'Herbal tea'
+EXEC addProductToOrder 1113, 3, 'Mate tea'
+EXEC addProductToOrder 1113, 2, 'Butter'
+EXEC addProductToOrder 1113, 3, 'Diet Pepsi'
+EXEC addProductToOrder 1113, 1, 'Beet salad'
+EXEC addProductToOrder 1114, 1, 'Pistachio ice cream'
+EXEC addProductToOrder 1114, 1, 'Cereal sandwich stick'
+EXEC addProductToOrder 1114, 1, 'Banana pudding'
+EXEC addProductToOrder 1114, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1114, 1, 'Antipasto salad'
+EXEC addProductToOrder 1115, 1, 'Chicken and wild rice soup'
+EXEC addProductToOrder 1115, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1115, 3, 'American cheese'
+EXEC addProductToOrder 1115, 2, 'Caraway'
+EXEC addProductToOrder 1115, 2, 'Cookie sandwich'
+EXEC addProductToOrder 1116, 1, 'Gouda cheese'
+EXEC addProductToOrder 1116, 3, 'Bechamel sauce'
+EXEC addProductToOrder 1116, 2, 'Curry'
+EXEC addProductToOrder 1116, 3, 'Asiago cheese'
+EXEC addProductToOrder 1116, 2, 'Café gourmand'
+EXEC addProductToOrder 1117, 1, 'Coffee cake'
+EXEC addProductToOrder 1117, 3, 'Lime'
+EXEC addProductToOrder 1117, 2, 'Apple pudding'
+EXEC addProductToOrder 1117, 3, 'Peach custard'
+EXEC addProductToOrder 1117, 1, 'Flat white'
+EXEC addProductToOrder 1118, 1, 'Peach pudding'
+EXEC addProductToOrder 1118, 1, 'Tomato juice'
+EXEC addProductToOrder 1118, 1, 'Fish sandwich stick'
+EXEC addProductToOrder 1118, 2, 'Avocado'
+EXEC addProductToOrder 1118, 1, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1119, 3, 'Pasta with mushrooms'
+EXEC addProductToOrder 1119, 3, 'Baked crab dip'
+EXEC addProductToOrder 1119, 3, 'Macadamia'
+EXEC addProductToOrder 1119, 1, 'Bisque sauce'
+EXEC addProductToOrder 1119, 1, 'Breadstick'
+EXEC addProductToOrder 1120, 1, 'Pumpkin pudding'
+EXEC addProductToOrder 1120, 3, 'Fish'
+EXEC addProductToOrder 1120, 3, 'Baked brie'
+EXEC addProductToOrder 1120, 3, 'Fanta'
+EXEC addProductToOrder 1120, 3, 'Pasta with clams'
+EXEC addProductToOrder 1121, 1, 'Dr Pepper'
+EXEC addProductToOrder 1121, 1, 'Beef stew with onions'
+EXEC addProductToOrder 1121, 2, 'Mate tea'
+EXEC addProductToOrder 1121, 2, 'Caraway'
+EXEC addProductToOrder 1121, 1, 'Carrot juice'
+EXEC addProductToOrder 1122, 3, 'Pumpkin pudding'
+EXEC addProductToOrder 1122, 3, 'Coconut pudding'
+EXEC addProductToOrder 1122, 2, 'Chocolate'
+EXEC addProductToOrder 1122, 1, 'Beef stew with onions'
+EXEC addProductToOrder 1122, 3, 'Fish'
+EXEC addProductToOrder 1123, 1, 'Cranberry juice'
+EXEC addProductToOrder 1123, 2, 'Chai tea'
+EXEC addProductToOrder 1123, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1123, 1, 'Caper sauce'
+EXEC addProductToOrder 1123, 3, 'Grapefruit'
+EXEC addProductToOrder 1124, 3, 'Muenster cheese'
+EXEC addProductToOrder 1124, 3, 'Café crema'
+EXEC addProductToOrder 1124, 2, 'Bread'
+EXEC addProductToOrder 1124, 1, 'Macchiato'
+EXEC addProductToOrder 1124, 2, 'Banana cake'
+EXEC addProductToOrder 1125, 1, 'Feta cheese'
+EXEC addProductToOrder 1125, 1, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1125, 1, 'Chocolate custard'
+EXEC addProductToOrder 1125, 2, 'Baked crab dip'
+EXEC addProductToOrder 1125, 2, 'Broccoli salad'
+EXEC addProductToOrder 1126, 2, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1126, 3, 'Potato salad'
+EXEC addProductToOrder 1126, 2, 'Pepper jack cheese'
+EXEC addProductToOrder 1126, 3, 'Lemon pudding'
+EXEC addProductToOrder 1126, 2, 'Kombucha tea'
+EXEC addProductToOrder 1127, 1, 'Apricot'
+EXEC addProductToOrder 1127, 1, 'Tomato juice'
+EXEC addProductToOrder 1127, 1, 'Chili'
+EXEC addProductToOrder 1127, 2, 'Espresso'
+EXEC addProductToOrder 1127, 1, 'Pasta with onions'
+EXEC addProductToOrder 1128, 3, 'Moose tracks ice cream'
+EXEC addProductToOrder 1128, 3, 'Pasta with shrimp'
+EXEC addProductToOrder 1128, 2, 'Breadstick'
+EXEC addProductToOrder 1128, 2, 'Café irlandés'
+EXEC addProductToOrder 1128, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 1129, 3, 'Blueberry'
+EXEC addProductToOrder 1129, 2, 'Apple pudding'
+EXEC addProductToOrder 1129, 3, 'Fried calamari'
+EXEC addProductToOrder 1129, 2, 'Mountain Dew'
+EXEC addProductToOrder 1129, 1, 'Tomato salad'
+EXEC addProductToOrder 1130, 3, 'Chocolate bar'
+EXEC addProductToOrder 1130, 2, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1130, 2, 'Fried mushrooms'
+EXEC addProductToOrder 1130, 3, 'Pasta with tuna'
+EXEC addProductToOrder 1130, 3, 'Melon'
+EXEC addProductToOrder 1131, 2, 'Caesar salad'
+EXEC addProductToOrder 1131, 3, 'Macaroni salad'
+EXEC addProductToOrder 1131, 2, 'Pasta with crab'
+EXEC addProductToOrder 1131, 1, 'Bun'
+EXEC addProductToOrder 1131, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1132, 2, 'Diet 7 Up'
+EXEC addProductToOrder 1132, 3, 'Cayenne'
+EXEC addProductToOrder 1132, 2, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1132, 1, 'Chef salad'
+EXEC addProductToOrder 1132, 3, 'Chicken soup'
+EXEC addProductToOrder 1133, 1, 'Curry sauce'
+EXEC addProductToOrder 1133, 2, 'Apricot'
+EXEC addProductToOrder 1133, 1, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1133, 1, 'Pecan'
+EXEC addProductToOrder 1133, 2, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1134, 2, 'Gouda cheese'
+EXEC addProductToOrder 1134, 1, 'Cereal'
+EXEC addProductToOrder 1134, 3, 'Beef stew with celery'
+EXEC addProductToOrder 1134, 2, 'Cinnamon'
+EXEC addProductToOrder 1134, 1, 'Artichoke salad'
+EXEC addProductToOrder 1135, 1, 'Chocolate pudding'
+EXEC addProductToOrder 1135, 2, 'Coconut'
+EXEC addProductToOrder 1135, 3, 'Asiago cheese'
+EXEC addProductToOrder 1135, 2, 'Sierra Mist'
+EXEC addProductToOrder 1135, 3, 'Orange juice'
+EXEC addProductToOrder 1136, 1, 'Bundt cake'
+EXEC addProductToOrder 1136, 1, 'Chocolate'
+EXEC addProductToOrder 1136, 1, 'Lemon'
+EXEC addProductToOrder 1136, 1, 'Broccoli salad'
+EXEC addProductToOrder 1136, 3, 'Bun'
+EXEC addProductToOrder 1137, 2, 'Feta cheese'
+EXEC addProductToOrder 1137, 3, 'Affogato'
+EXEC addProductToOrder 1137, 2, 'Cookie'
+EXEC addProductToOrder 1137, 2, 'Fried mushrooms'
+EXEC addProductToOrder 1137, 3, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1138, 3, 'Asiago cheese'
+EXEC addProductToOrder 1138, 2, 'Cereal sandwich roll'
+EXEC addProductToOrder 1138, 3, 'Corn salad'
+EXEC addProductToOrder 1138, 3, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1138, 1, 'Brown sauce'
+EXEC addProductToOrder 1139, 3, 'Mountain Dew'
+EXEC addProductToOrder 1139, 1, 'Baked brie'
+EXEC addProductToOrder 1139, 3, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1139, 1, 'Cheesecake'
+EXEC addProductToOrder 1139, 1, 'Rocky road ice cream'
+EXEC addProductToOrder 1140, 2, 'Chili'
+EXEC addProductToOrder 1140, 1, 'Antipasto salad'
+EXEC addProductToOrder 1140, 3, 'Dijon sauce'
+EXEC addProductToOrder 1140, 1, 'Lemon custard'
+EXEC addProductToOrder 1140, 3, 'Diet Dr Pepper'
+EXEC addProductToOrder 1141, 2, 'Sprite'
+EXEC addProductToOrder 1141, 1, 'Pumpkin pudding'
+EXEC addProductToOrder 1141, 1, 'Chocolate'
+EXEC addProductToOrder 1141, 3, 'Baked stuffed clams'
+EXEC addProductToOrder 1141, 3, 'Cookie roll'
+EXEC addProductToOrder 1142, 3, 'Cheddar cheese'
+EXEC addProductToOrder 1142, 3, 'Pineapple juice'
+EXEC addProductToOrder 1142, 2, 'Bisque sauce'
+EXEC addProductToOrder 1142, 3, 'Lemon pudding'
+EXEC addProductToOrder 1142, 2, 'Potato salad'
+EXEC addProductToOrder 1143, 2, 'Butter pecan ice cream'
+EXEC addProductToOrder 1143, 3, 'Bay leaf'
+EXEC addProductToOrder 1143, 2, 'Split pea soup'
+EXEC addProductToOrder 1143, 3, 'Strawberry pudding'
+EXEC addProductToOrder 1143, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1144, 1, 'Chicken tortilla soup'
+EXEC addProductToOrder 1144, 3, 'Black tea'
+EXEC addProductToOrder 1144, 2, 'Pasta with tuna'
+EXEC addProductToOrder 1144, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1144, 2, 'Vanilla pudding'
+EXEC addProductToOrder 1145, 1, 'Guava'
+EXEC addProductToOrder 1145, 2, 'Vanilla ice cream'
+EXEC addProductToOrder 1145, 1, 'Mocha'
+EXEC addProductToOrder 1145, 3, 'Macchiato'
+EXEC addProductToOrder 1145, 3, 'Macaroni salad'
+EXEC addProductToOrder 1146, 3, 'Fried onion rings'
+EXEC addProductToOrder 1146, 2, 'Baked stuffed clams'
+EXEC addProductToOrder 1146, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1146, 1, 'Bisque sauce'
+EXEC addProductToOrder 1146, 1, 'Chocolate'
+EXEC addProductToOrder 1147, 2, 'Cookie sandwich stick'
+EXEC addProductToOrder 1147, 1, 'Chocolate candy bar'
+EXEC addProductToOrder 1147, 2, 'Baked stuffed clams'
+EXEC addProductToOrder 1147, 3, 'Muenster cheese'
+EXEC addProductToOrder 1147, 1, 'Peach custard'
+EXEC addProductToOrder 1148, 2, 'Bleu cheese'
+EXEC addProductToOrder 1148, 2, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1148, 3, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1148, 3, 'Apple pudding'
+EXEC addProductToOrder 1148, 2, 'Beet salad'
+EXEC addProductToOrder 1149, 1, 'Peanut'
+EXEC addProductToOrder 1149, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1149, 1, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1149, 1, 'Basil'
+EXEC addProductToOrder 1149, 1, 'Chicken and dumplings'
+EXEC addProductToOrder 1150, 2, 'Pasta with meatballs'
+EXEC addProductToOrder 1150, 3, 'American cheese'
+EXEC addProductToOrder 1150, 3, 'Bay leaf'
+EXEC addProductToOrder 1150, 2, 'Strawberry pudding'
+EXEC addProductToOrder 1150, 3, 'Broccoli salad'
+EXEC addProductToOrder 1151, 3, 'Peach pudding'
+EXEC addProductToOrder 1151, 3, 'Banana pudding'
+EXEC addProductToOrder 1151, 2, 'Dr Pepper'
+EXEC addProductToOrder 1151, 2, 'Caprese salad'
+EXEC addProductToOrder 1151, 3, 'Lemon juice'
+EXEC addProductToOrder 1152, 3, 'Minestrone soup'
+EXEC addProductToOrder 1152, 3, 'Rocky road ice cream'
+EXEC addProductToOrder 1152, 1, 'Raspberry juice'
+EXEC addProductToOrder 1152, 3, 'Flat white'
+EXEC addProductToOrder 1152, 3, 'Café mocha'
+EXEC addProductToOrder 1153, 2, 'Curry sauce'
+EXEC addProductToOrder 1153, 2, 'Cereal stick'
+EXEC addProductToOrder 1153, 2, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1153, 1, 'Biscuit roll'
+EXEC addProductToOrder 1153, 3, 'Herbal tea'
+EXEC addProductToOrder 1154, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1154, 2, 'Diet Fanta'
+EXEC addProductToOrder 1154, 1, 'Cheesecake'
+EXEC addProductToOrder 1154, 3, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 1154, 1, 'Fruit salad'
+EXEC addProductToOrder 1155, 1, 'Fried okra'
+EXEC addProductToOrder 1155, 3, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1155, 2, 'Vanilla ice cream'
+EXEC addProductToOrder 1155, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1155, 3, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1156, 3, 'Pasta with zucchini'
+EXEC addProductToOrder 1156, 2, 'Tomato salad'
+EXEC addProductToOrder 1156, 2, 'Café marrón'
+EXEC addProductToOrder 1156, 3, 'Kombucha tea'
+EXEC addProductToOrder 1156, 1, 'Chutney sauce'
+EXEC addProductToOrder 1157, 3, 'Pasta with eggplant'
+EXEC addProductToOrder 1157, 2, 'Guava'
+EXEC addProductToOrder 1157, 2, 'Café de pico'
+EXEC addProductToOrder 1157, 1, 'Chicken and barley soup'
+EXEC addProductToOrder 1157, 2, 'Corn salad'
+EXEC addProductToOrder 1158, 2, 'Fish stick'
+EXEC addProductToOrder 1158, 1, 'Grapefruit juice'
+EXEC addProductToOrder 1158, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1158, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 1158, 2, 'Strawberry ice cream'
+EXEC addProductToOrder 1159, 3, 'Green tea'
+EXEC addProductToOrder 1159, 2, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1159, 1, 'Dressing sauce'
+EXEC addProductToOrder 1159, 1, 'Pu-erh tea'
+EXEC addProductToOrder 1159, 2, 'Coconut pudding'
+EXEC addProductToOrder 1160, 1, 'Latte'
+EXEC addProductToOrder 1160, 2, 'White tea'
+EXEC addProductToOrder 1160, 3, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1160, 3, 'Tomato soup'
+EXEC addProductToOrder 1160, 2, 'Fried okra'
+EXEC addProductToOrder 1161, 3, 'Banana cake'
+EXEC addProductToOrder 1161, 2, 'Grapefruit'
+EXEC addProductToOrder 1161, 1, 'Parmesan cheese'
+EXEC addProductToOrder 1161, 2, 'Dressing sauce'
+EXEC addProductToOrder 1161, 2, 'Pasta with clams'
+EXEC addProductToOrder 1162, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1162, 1, 'Almond'
+EXEC addProductToOrder 1162, 2, 'Chef salad'
+EXEC addProductToOrder 1162, 1, 'Brown sauce'
+EXEC addProductToOrder 1162, 1, 'Oolong tea'
+EXEC addProductToOrder 1163, 3, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1163, 2, 'Café bombón'
+EXEC addProductToOrder 1163, 3, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1163, 3, 'Pepsi'
+EXEC addProductToOrder 1163, 3, 'Raspberry juice'
+EXEC addProductToOrder 1164, 1, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1164, 2, 'Pasta with clams'
+EXEC addProductToOrder 1164, 3, 'Banana pudding'
+EXEC addProductToOrder 1164, 3, 'Chocolate candy stick'
+EXEC addProductToOrder 1164, 1, 'Provolone cheese'
+EXEC addProductToOrder 1165, 3, 'Macaroni salad'
+EXEC addProductToOrder 1165, 1, 'Lime'
+EXEC addProductToOrder 1165, 3, 'Fig'
+EXEC addProductToOrder 1165, 2, 'Broccoli salad'
+EXEC addProductToOrder 1165, 1, 'Pasta with mushrooms'
+EXEC addProductToOrder 1166, 2, 'Almond'
+EXEC addProductToOrder 1166, 1, 'Orange juice'
+EXEC addProductToOrder 1166, 1, 'Fried mushrooms'
+EXEC addProductToOrder 1166, 2, 'Apple'
+EXEC addProductToOrder 1166, 2, 'Brioche'
+EXEC addProductToOrder 1167, 3, 'Parmesan cheese'
+EXEC addProductToOrder 1167, 1, 'Oolong tea'
+EXEC addProductToOrder 1167, 2, 'Rice pudding'
+EXEC addProductToOrder 1167, 1, 'Peach custard'
+EXEC addProductToOrder 1167, 3, 'Café crema'
+EXEC addProductToOrder 1168, 3, 'Cinnamon'
+EXEC addProductToOrder 1168, 2, 'Beef casserole'
+EXEC addProductToOrder 1168, 1, 'Café au lait'
+EXEC addProductToOrder 1168, 3, 'Parmesan cheese'
+EXEC addProductToOrder 1168, 3, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1169, 3, 'Lime'
+EXEC addProductToOrder 1169, 1, 'Fried onion rings'
+EXEC addProductToOrder 1169, 1, 'Café marrón'
+EXEC addProductToOrder 1169, 2, 'Biscuit sandwich'
+EXEC addProductToOrder 1169, 2, 'Beef stew with celery'
+EXEC addProductToOrder 1170, 2, 'Bun'
+EXEC addProductToOrder 1170, 2, 'Corn chowder'
+EXEC addProductToOrder 1170, 1, 'Bechamel sauce'
+EXEC addProductToOrder 1170, 3, 'Coriander'
+EXEC addProductToOrder 1170, 1, 'Cumin'
+EXEC addProductToOrder 1171, 1, 'Bun'
+EXEC addProductToOrder 1171, 1, 'Yellow tea'
+EXEC addProductToOrder 1171, 1, 'Broccoli salad'
+EXEC addProductToOrder 1171, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1171, 1, 'Sierra Mist'
+EXEC addProductToOrder 1172, 3, 'Burrata cheese'
+EXEC addProductToOrder 1172, 3, 'Biscuit'
+EXEC addProductToOrder 1172, 1, 'Breadstick'
+EXEC addProductToOrder 1172, 3, 'Kombucha tea'
+EXEC addProductToOrder 1172, 1, 'Herbal tea'
+EXEC addProductToOrder 1173, 3, 'Chocolate bar'
+EXEC addProductToOrder 1173, 2, 'Bundt cake'
+EXEC addProductToOrder 1173, 2, 'Café de pico'
+EXEC addProductToOrder 1173, 3, 'Broccoli salad'
+EXEC addProductToOrder 1173, 1, 'Pasta with salmon'
+EXEC addProductToOrder 1174, 2, 'Biscuit roll'
+EXEC addProductToOrder 1174, 3, 'Chicken casserole'
+EXEC addProductToOrder 1174, 1, 'Coconut pudding'
+EXEC addProductToOrder 1174, 2, 'Café mocha'
+EXEC addProductToOrder 1174, 1, 'Pasta with chicken'
+EXEC addProductToOrder 1175, 3, 'Caraway'
+EXEC addProductToOrder 1175, 2, 'Diet Sprite'
+EXEC addProductToOrder 1175, 1, 'Chicken tortilla soup'
+EXEC addProductToOrder 1175, 3, 'Chimichurri sauce'
+EXEC addProductToOrder 1175, 1, 'Fish roll'
+EXEC addProductToOrder 1176, 2, 'Affogato'
+EXEC addProductToOrder 1176, 3, 'Fish stick'
+EXEC addProductToOrder 1176, 1, 'Pasta with spinach'
+EXEC addProductToOrder 1176, 2, 'Cayenne'
+EXEC addProductToOrder 1176, 1, 'Diet Fanta'
+EXEC addProductToOrder 1177, 2, 'Vegetable casserole'
+EXEC addProductToOrder 1177, 2, 'Chutney sauce'
+EXEC addProductToOrder 1177, 1, 'Banana pudding'
+EXEC addProductToOrder 1177, 1, 'Cereal'
+EXEC addProductToOrder 1177, 2, 'Baked stuffed clams'
+EXEC addProductToOrder 1178, 2, 'Cookie sandwich roll'
+EXEC addProductToOrder 1178, 2, 'Rocky road ice cream'
+EXEC addProductToOrder 1178, 3, 'Strawberry juice'
+EXEC addProductToOrder 1178, 2, 'Pasta with tuna'
+EXEC addProductToOrder 1178, 2, 'Cardamom'
+EXEC addProductToOrder 1179, 2, 'Feta cheese'
+EXEC addProductToOrder 1179, 1, 'Brie cheese'
+EXEC addProductToOrder 1179, 2, 'Chocolate cake'
+EXEC addProductToOrder 1179, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1179, 1, 'Dijon sauce'
+EXEC addProductToOrder 1180, 1, 'Beef casserole'
+EXEC addProductToOrder 1180, 2, 'Pecan'
+EXEC addProductToOrder 1180, 2, 'Cookie sandwich roll'
+EXEC addProductToOrder 1180, 2, 'Black forest cake'
+EXEC addProductToOrder 1180, 1, 'Hazelnut'
+EXEC addProductToOrder 1181, 2, 'Pasta with sausage'
+EXEC addProductToOrder 1181, 2, 'Pepsi'
+EXEC addProductToOrder 1181, 3, 'Fried ravioli'
+EXEC addProductToOrder 1181, 1, 'Carrot juice'
+EXEC addProductToOrder 1181, 2, 'Boursin cheese'
+EXEC addProductToOrder 1182, 1, 'Pomegranate juice'
+EXEC addProductToOrder 1182, 2, 'Chocolate custard'
+EXEC addProductToOrder 1182, 2, 'Fried calamari'
+EXEC addProductToOrder 1182, 3, 'Sierra Mist'
+EXEC addProductToOrder 1182, 1, 'Fried mushrooms'
+EXEC addProductToOrder 1183, 1, 'Pepsi'
+EXEC addProductToOrder 1183, 1, 'Yellow tea'
+EXEC addProductToOrder 1183, 2, 'Fried okra'
+EXEC addProductToOrder 1183, 3, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1183, 2, 'Vanilla ice cream'
+EXEC addProductToOrder 1184, 2, 'Cereal sandwich'
+EXEC addProductToOrder 1184, 3, 'Feta cheese'
+EXEC addProductToOrder 1184, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1184, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1184, 2, 'Vanilla pudding'
+EXEC addProductToOrder 1185, 1, 'Pineapple juice'
+EXEC addProductToOrder 1185, 1, 'Mocha'
+EXEC addProductToOrder 1185, 2, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1185, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1185, 3, 'Chocolate pudding'
+EXEC addProductToOrder 1186, 1, 'Caesar salad'
+EXEC addProductToOrder 1186, 2, 'Provolone cheese'
+EXEC addProductToOrder 1186, 2, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1186, 1, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1186, 1, 'Pasta with lobster'
+EXEC addProductToOrder 1187, 3, 'Banana cake'
+EXEC addProductToOrder 1187, 1, 'Curry'
+EXEC addProductToOrder 1187, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 1187, 3, 'Swiss cheese'
+EXEC addProductToOrder 1187, 1, 'Pasta with tuna'
+EXEC addProductToOrder 1188, 3, 'Peach pudding'
+EXEC addProductToOrder 1188, 2, 'Carrot salad'
+EXEC addProductToOrder 1188, 3, 'Tzatziki'
+EXEC addProductToOrder 1188, 2, 'Minestrone soup'
+EXEC addProductToOrder 1188, 1, 'Cereal stick'
+EXEC addProductToOrder 1189, 3, 'Caramel sauce'
+EXEC addProductToOrder 1189, 1, 'Baked stuffed peppers'
+EXEC addProductToOrder 1189, 2, 'Beef stew with dumplings'
+EXEC addProductToOrder 1189, 1, 'Chef salad'
+EXEC addProductToOrder 1189, 1, 'Curry sauce'
+EXEC addProductToOrder 1190, 2, 'Chocolate candy'
+EXEC addProductToOrder 1190, 2, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 1190, 1, 'Split pea soup'
+EXEC addProductToOrder 1190, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 1190, 1, 'Beef soup'
+EXEC addProductToOrder 1191, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1191, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 1191, 3, 'French onion soup'
+EXEC addProductToOrder 1191, 3, 'Brown sauce'
+EXEC addProductToOrder 1191, 1, 'Dr Pepper'
+EXEC addProductToOrder 1192, 1, 'Orange juice'
+EXEC addProductToOrder 1192, 2, 'Anise'
+EXEC addProductToOrder 1192, 2, 'Coconut custard'
+EXEC addProductToOrder 1192, 1, 'Strawberry pudding'
+EXEC addProductToOrder 1192, 1, 'Pepsi'
+EXEC addProductToOrder 1193, 1, 'Asiago cheese'
+EXEC addProductToOrder 1193, 1, 'Café bombón'
+EXEC addProductToOrder 1193, 3, 'Biscuit'
+EXEC addProductToOrder 1193, 2, 'Pineapple juice'
+EXEC addProductToOrder 1193, 3, 'Bleu cheese'
+EXEC addProductToOrder 1194, 2, 'Breadstick'
+EXEC addProductToOrder 1194, 3, 'Americano'
+EXEC addProductToOrder 1194, 3, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1194, 1, 'Rocky road ice cream'
+EXEC addProductToOrder 1194, 2, 'Béarnaise sauce'
+EXEC addProductToOrder 1195, 2, 'Lemon juice'
+EXEC addProductToOrder 1195, 3, 'Lemon pudding'
+EXEC addProductToOrder 1195, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1195, 2, 'Cucumber salad'
+EXEC addProductToOrder 1195, 2, 'White tea'
+EXEC addProductToOrder 1196, 1, 'Dressing sauce'
+EXEC addProductToOrder 1196, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1196, 2, 'Pepper jack cheese'
+EXEC addProductToOrder 1196, 2, 'Rocky road ice cream'
+EXEC addProductToOrder 1196, 2, 'Curry'
+EXEC addProductToOrder 1197, 1, 'Rooibos tea'
+EXEC addProductToOrder 1197, 1, 'Biscotti'
+EXEC addProductToOrder 1197, 3, 'Tomato salad'
+EXEC addProductToOrder 1197, 1, 'Fish roll'
+EXEC addProductToOrder 1197, 2, 'Cloves'
+EXEC addProductToOrder 1198, 2, 'Chocolate cake'
+EXEC addProductToOrder 1198, 2, 'Chocolate bar'
+EXEC addProductToOrder 1198, 1, 'Fruit salad'
+EXEC addProductToOrder 1198, 2, 'Carrot salad'
+EXEC addProductToOrder 1198, 2, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1199, 1, 'Swiss cheese'
+EXEC addProductToOrder 1199, 2, 'Broccoli salad'
+EXEC addProductToOrder 1199, 1, 'Lemon pudding'
+EXEC addProductToOrder 1199, 1, 'Fried calamari'
+EXEC addProductToOrder 1199, 3, 'Chicken and barley soup'
+EXEC addProductToOrder 1200, 1, 'Kombucha tea'
+EXEC addProductToOrder 1200, 1, 'Cole slaw'
+EXEC addProductToOrder 1200, 2, 'Café de olla'
+EXEC addProductToOrder 1200, 2, 'Lime juice'
+EXEC addProductToOrder 1200, 2, 'Split pea soup'
+EXEC addProductToOrder 1201, 2, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1201, 1, 'Pu-erh tea'
+EXEC addProductToOrder 1201, 2, 'Mozzarella cheese'
+EXEC addProductToOrder 1201, 1, 'Biscuit'
+EXEC addProductToOrder 1201, 3, 'Lime'
+EXEC addProductToOrder 1202, 2, 'Fried ravioli'
+EXEC addProductToOrder 1202, 3, 'Cucumber salad'
+EXEC addProductToOrder 1202, 2, 'Fish'
+EXEC addProductToOrder 1202, 1, 'Cookie sandwich'
+EXEC addProductToOrder 1202, 3, 'Mountain Dew'
+EXEC addProductToOrder 1203, 3, 'Café de pico'
+EXEC addProductToOrder 1203, 2, 'Butter'
+EXEC addProductToOrder 1203, 3, 'Corn salad'
+EXEC addProductToOrder 1203, 3, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1203, 1, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1204, 1, '7 Up'
+EXEC addProductToOrder 1204, 3, 'Lemon pudding'
+EXEC addProductToOrder 1204, 1, 'Cereal sandwich'
+EXEC addProductToOrder 1204, 2, 'Blueberry juice'
+EXEC addProductToOrder 1204, 2, 'Bleu cheese'
+EXEC addProductToOrder 1205, 2, 'Macchiato'
+EXEC addProductToOrder 1205, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1205, 2, 'Vanilla ice cream'
+EXEC addProductToOrder 1205, 2, 'Café crema'
+EXEC addProductToOrder 1205, 2, 'Apricot'
+EXEC addProductToOrder 1206, 3, 'Butter pecan ice cream'
+EXEC addProductToOrder 1206, 3, 'Angel food cake'
+EXEC addProductToOrder 1206, 1, 'Pumpkin pudding'
+EXEC addProductToOrder 1206, 1, 'Chili'
+EXEC addProductToOrder 1206, 3, 'Pistachio ice cream'
+EXEC addProductToOrder 1207, 3, 'Sierra Mist'
+EXEC addProductToOrder 1207, 2, 'Chocolate'
+EXEC addProductToOrder 1207, 3, 'Tomato juice'
+EXEC addProductToOrder 1207, 3, 'Chocolate ice cream'
+EXEC addProductToOrder 1207, 1, 'Orange juice'
+EXEC addProductToOrder 1208, 3, 'Vegetable lasagna'
+EXEC addProductToOrder 1208, 2, 'Strawberry pudding'
+EXEC addProductToOrder 1208, 1, 'Bleu cheese'
+EXEC addProductToOrder 1208, 3, 'Americano'
+EXEC addProductToOrder 1208, 3, 'Bread'
+EXEC addProductToOrder 1209, 3, 'Broccoli salad'
+EXEC addProductToOrder 1209, 1, 'Cortado'
+EXEC addProductToOrder 1209, 3, 'Strawberry pudding'
+EXEC addProductToOrder 1209, 2, 'Coconut'
+EXEC addProductToOrder 1209, 3, 'Fish sandwich bun'
+EXEC addProductToOrder 1210, 2, 'Cereal sandwich'
+EXEC addProductToOrder 1210, 1, 'Beef stew with onions'
+EXEC addProductToOrder 1210, 1, 'Pasta with crab'
+EXEC addProductToOrder 1210, 1, 'Fanta'
+EXEC addProductToOrder 1210, 2, 'Bechamel sauce'
+EXEC addProductToOrder 1211, 3, 'Muenster cheese'
+EXEC addProductToOrder 1211, 2, 'Peach pudding'
+EXEC addProductToOrder 1211, 3, 'Burrata cheese'
+EXEC addProductToOrder 1211, 3, 'Coke Zero'
+EXEC addProductToOrder 1211, 2, 'Goat cheese'
+EXEC addProductToOrder 1212, 1, 'Chicken soup'
+EXEC addProductToOrder 1212, 2, 'Café bombón'
+EXEC addProductToOrder 1212, 1, 'Yellow tea'
+EXEC addProductToOrder 1212, 2, 'Chocolate candy'
+EXEC addProductToOrder 1212, 3, 'Pistachio'
+EXEC addProductToOrder 1213, 2, 'Baked brie'
+EXEC addProductToOrder 1213, 3, 'Artichoke salad'
+EXEC addProductToOrder 1213, 1, 'Asparagus salad'
+EXEC addProductToOrder 1213, 1, 'Herbal tea'
+EXEC addProductToOrder 1213, 3, 'Baked crab dip'
+EXEC addProductToOrder 1214, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1214, 1, 'Coke Zero'
+EXEC addProductToOrder 1214, 1, 'Clam chowder'
+EXEC addProductToOrder 1214, 3, 'Diet Sierra Mist'
+EXEC addProductToOrder 1214, 1, 'Café de olla'
+EXEC addProductToOrder 1215, 1, 'Gruyere cheese'
+EXEC addProductToOrder 1215, 3, 'Fried mushrooms'
+EXEC addProductToOrder 1215, 1, 'Banana custard'
+EXEC addProductToOrder 1215, 2, 'Cookie sandwich bun'
+EXEC addProductToOrder 1215, 1, 'Biscuit stick'
+EXEC addProductToOrder 1216, 3, 'Black tea'
+EXEC addProductToOrder 1216, 1, 'Coconut cake'
+EXEC addProductToOrder 1216, 1, 'Green tea'
+EXEC addProductToOrder 1216, 3, 'Tomato juice'
+EXEC addProductToOrder 1216, 3, 'Feta cheese'
+EXEC addProductToOrder 1217, 3, 'Caprese salad'
+EXEC addProductToOrder 1217, 2, 'Tossed salad'
+EXEC addProductToOrder 1217, 2, 'Potato soup'
+EXEC addProductToOrder 1217, 1, 'Potato salad'
+EXEC addProductToOrder 1217, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1218, 1, 'Mocha'
+EXEC addProductToOrder 1218, 1, 'Café marrón'
+EXEC addProductToOrder 1218, 3, 'Banana pudding'
+EXEC addProductToOrder 1218, 1, 'Pumpkin pudding'
+EXEC addProductToOrder 1218, 1, 'Spinach salad'
+EXEC addProductToOrder 1219, 3, 'Caesar salad'
+EXEC addProductToOrder 1219, 3, 'Curry sauce'
+EXEC addProductToOrder 1219, 2, 'Biscuit'
+EXEC addProductToOrder 1219, 1, 'Diet Dr Pepper'
+EXEC addProductToOrder 1219, 3, 'Mocha'
+EXEC addProductToOrder 1220, 3, 'Strawberry pudding'
+EXEC addProductToOrder 1220, 1, 'Pepper jack cheese'
+EXEC addProductToOrder 1220, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1220, 3, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1220, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1221, 1, 'Fish roll'
+EXEC addProductToOrder 1221, 3, 'Beef stew with carrots'
+EXEC addProductToOrder 1221, 3, 'Café con leche'
+EXEC addProductToOrder 1221, 1, 'Tomato salad'
+EXEC addProductToOrder 1221, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1222, 1, 'French onion soup'
+EXEC addProductToOrder 1222, 1, 'Pasta with crab'
+EXEC addProductToOrder 1222, 2, 'Kiwi'
+EXEC addProductToOrder 1222, 1, 'Orange juice'
+EXEC addProductToOrder 1222, 3, 'Vegetable chili'
+EXEC addProductToOrder 1223, 2, 'Chocolate candy bar'
+EXEC addProductToOrder 1223, 2, 'Café zorro'
+EXEC addProductToOrder 1223, 1, 'Celery seed'
+EXEC addProductToOrder 1223, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1223, 2, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1224, 1, 'Strawberry juice'
+EXEC addProductToOrder 1224, 2, 'Mozzarella cheese'
+EXEC addProductToOrder 1224, 3, 'Bisque sauce'
+EXEC addProductToOrder 1224, 3, 'Cookie sandwich bun'
+EXEC addProductToOrder 1224, 1, 'Béarnaise sauce'
+EXEC addProductToOrder 1225, 3, 'Espresso'
+EXEC addProductToOrder 1225, 3, 'Coca-Cola'
+EXEC addProductToOrder 1225, 1, 'Chicken casserole'
+EXEC addProductToOrder 1225, 1, 'Coconut'
+EXEC addProductToOrder 1225, 2, 'Sprite'
+EXEC addProductToOrder 1226, 3, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1226, 2, 'Kombucha tea'
+EXEC addProductToOrder 1226, 1, 'Baked stuffed squash'
+EXEC addProductToOrder 1226, 2, 'Hazelnut'
+EXEC addProductToOrder 1226, 1, 'Bun'
+EXEC addProductToOrder 1227, 2, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1227, 3, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1227, 3, 'Coconut'
+EXEC addProductToOrder 1227, 3, 'Asparagus salad'
+EXEC addProductToOrder 1227, 2, 'Americano'
+EXEC addProductToOrder 1228, 2, 'Pasta with sausage'
+EXEC addProductToOrder 1228, 2, 'Pasta with meatballs'
+EXEC addProductToOrder 1228, 1, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1228, 3, 'Café mélange'
+EXEC addProductToOrder 1228, 1, 'Banana pudding'
+EXEC addProductToOrder 1229, 2, 'Cheesecake'
+EXEC addProductToOrder 1229, 1, 'Muenster cheese'
+EXEC addProductToOrder 1229, 2, 'Date'
+EXEC addProductToOrder 1229, 1, 'Feta cheese'
+EXEC addProductToOrder 1229, 3, 'Beef soup'
+EXEC addProductToOrder 1230, 1, 'Strawberry juice'
+EXEC addProductToOrder 1230, 1, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1230, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1230, 1, 'Affogato'
+EXEC addProductToOrder 1230, 2, 'Goat cheese'
+EXEC addProductToOrder 1231, 2, 'Mountain Dew'
+EXEC addProductToOrder 1231, 3, 'Dressing sauce'
+EXEC addProductToOrder 1231, 3, 'Greek salad'
+EXEC addProductToOrder 1231, 1, 'Biscuit roll'
+EXEC addProductToOrder 1231, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1232, 1, 'Fried zucchini'
+EXEC addProductToOrder 1232, 3, 'Fish'
+EXEC addProductToOrder 1232, 2, 'Vanilla ice cream'
+EXEC addProductToOrder 1232, 3, 'Chocolate candy'
+EXEC addProductToOrder 1232, 2, 'Café Cubano'
+EXEC addProductToOrder 1233, 2, 'Salsa'
+EXEC addProductToOrder 1233, 1, 'Cheddar cheese'
+EXEC addProductToOrder 1233, 3, 'White tea'
+EXEC addProductToOrder 1233, 1, 'Romano cheese'
+EXEC addProductToOrder 1233, 1, 'Coconut'
+EXEC addProductToOrder 1234, 1, 'Cookie'
+EXEC addProductToOrder 1234, 1, 'Fish'
+EXEC addProductToOrder 1234, 2, 'Yellow tea'
+EXEC addProductToOrder 1234, 2, 'Cranberry juice'
+EXEC addProductToOrder 1234, 2, 'Mango'
+EXEC addProductToOrder 1235, 3, 'Butter'
+EXEC addProductToOrder 1235, 2, 'Pasta with clams'
+EXEC addProductToOrder 1235, 2, 'Allspice'
+EXEC addProductToOrder 1235, 1, 'Caper sauce'
+EXEC addProductToOrder 1235, 3, 'Café crema'
+EXEC addProductToOrder 1236, 2, 'Lime juice'
+EXEC addProductToOrder 1236, 1, 'Cookie stick'
+EXEC addProductToOrder 1236, 2, 'Chicken and dumplings'
+EXEC addProductToOrder 1236, 3, 'Orange juice'
+EXEC addProductToOrder 1236, 3, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1237, 2, 'Chocolate candy stick'
+EXEC addProductToOrder 1237, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1237, 3, 'Cookie'
+EXEC addProductToOrder 1237, 2, 'Pasta with sausage'
+EXEC addProductToOrder 1237, 2, 'Mango'
+EXEC addProductToOrder 1238, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 1238, 2, 'Fish sandwich'
+EXEC addProductToOrder 1238, 1, 'Hummus'
+EXEC addProductToOrder 1238, 2, 'Vegetable lasagna'
+EXEC addProductToOrder 1238, 3, 'Cranberry'
+EXEC addProductToOrder 1239, 1, 'Beef casserole'
+EXEC addProductToOrder 1239, 2, 'Hummus'
+EXEC addProductToOrder 1239, 3, 'Muenster cheese'
+EXEC addProductToOrder 1239, 2, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1239, 3, 'Dr Pepper'
+EXEC addProductToOrder 1240, 2, 'Banana cake'
+EXEC addProductToOrder 1240, 3, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1240, 1, 'Café crema'
+EXEC addProductToOrder 1240, 2, 'Fried potato skins'
+EXEC addProductToOrder 1240, 3, 'Cobb salad'
+EXEC addProductToOrder 1241, 2, 'Chocolate candy'
+EXEC addProductToOrder 1241, 2, 'Affogato'
+EXEC addProductToOrder 1241, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1241, 2, 'Banana'
+EXEC addProductToOrder 1241, 2, 'Café de pico'
+EXEC addProductToOrder 1242, 2, 'Pasta with broccoli'
+EXEC addProductToOrder 1242, 3, 'Pasta with tuna'
+EXEC addProductToOrder 1242, 2, 'Lemon pudding'
+EXEC addProductToOrder 1242, 1, 'Pasta with tomatoes'
+EXEC addProductToOrder 1242, 1, 'Moose tracks ice cream'
+EXEC addProductToOrder 1243, 1, 'Cereal sandwich roll'
+EXEC addProductToOrder 1243, 3, 'Vegetable stew'
+EXEC addProductToOrder 1243, 3, 'Mango'
+EXEC addProductToOrder 1243, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1243, 1, 'Fish'
+EXEC addProductToOrder 1244, 2, 'Café de pico'
+EXEC addProductToOrder 1244, 2, 'Lemon pudding'
+EXEC addProductToOrder 1244, 1, 'Chutney sauce'
+EXEC addProductToOrder 1244, 3, 'Vegetable chili'
+EXEC addProductToOrder 1244, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1245, 1, 'Biscuit stick'
+EXEC addProductToOrder 1245, 3, 'Café gourmand'
+EXEC addProductToOrder 1245, 1, 'Cobb salad'
+EXEC addProductToOrder 1245, 1, 'Asparagus salad'
+EXEC addProductToOrder 1245, 1, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1246, 2, 'Pepsi'
+EXEC addProductToOrder 1246, 2, 'Butter'
+EXEC addProductToOrder 1246, 1, 'Chocolate ice cream'
+EXEC addProductToOrder 1246, 2, 'Cookie sandwich bun'
+EXEC addProductToOrder 1246, 2, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1247, 2, 'Biscuit sandwich'
+EXEC addProductToOrder 1247, 1, 'Alfredo sauce'
+EXEC addProductToOrder 1247, 3, 'Cookie stick'
+EXEC addProductToOrder 1247, 3, 'Dijon sauce'
+EXEC addProductToOrder 1247, 2, 'Cinnamon'
+EXEC addProductToOrder 1248, 3, 'Kiwi'
+EXEC addProductToOrder 1248, 2, 'Chocolate pudding'
+EXEC addProductToOrder 1248, 1, 'Chai tea'
+EXEC addProductToOrder 1248, 3, 'Grape'
+EXEC addProductToOrder 1248, 1, 'Black tea'
+EXEC addProductToOrder 1249, 2, 'Beet salad'
+EXEC addProductToOrder 1249, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1249, 1, 'Cardamom'
+EXEC addProductToOrder 1249, 2, 'Coke Zero'
+EXEC addProductToOrder 1249, 3, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1250, 3, 'Grapefruit juice'
+EXEC addProductToOrder 1250, 3, 'Honeybush tea'
+EXEC addProductToOrder 1250, 1, 'Pistachio'
+EXEC addProductToOrder 1250, 3, 'Carrot juice'
+EXEC addProductToOrder 1250, 1, 'Corn salad'
+EXEC addProductToOrder 1251, 1, 'Pistachio'
+EXEC addProductToOrder 1251, 2, 'Cole slaw'
+EXEC addProductToOrder 1251, 1, 'Bisque sauce'
+EXEC addProductToOrder 1251, 2, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1251, 2, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1252, 2, 'Blackberry'
+EXEC addProductToOrder 1252, 2, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1252, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1252, 3, 'Caraway'
+EXEC addProductToOrder 1252, 3, 'Fish sandwich'
+EXEC addProductToOrder 1253, 3, 'Pasta with salmon'
+EXEC addProductToOrder 1253, 3, 'Garden salad'
+EXEC addProductToOrder 1253, 3, 'Lentil soup'
+EXEC addProductToOrder 1253, 3, 'Pasta with meatballs'
+EXEC addProductToOrder 1253, 2, 'Chocolate candy bar'
+EXEC addProductToOrder 1254, 3, 'Alfredo sauce'
+EXEC addProductToOrder 1254, 3, 'Muenster cheese'
+EXEC addProductToOrder 1254, 1, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1254, 3, 'Kombucha tea'
+EXEC addProductToOrder 1254, 1, 'Baked oysters'
+EXEC addProductToOrder 1255, 3, 'Minestrone soup'
+EXEC addProductToOrder 1255, 2, 'Sprite'
+EXEC addProductToOrder 1255, 3, 'Pasta with onions'
+EXEC addProductToOrder 1255, 3, 'Biscuit'
+EXEC addProductToOrder 1255, 3, 'Lime juice'
+EXEC addProductToOrder 1256, 1, 'Chocolate'
+EXEC addProductToOrder 1256, 1, 'Pasta with lobster'
+EXEC addProductToOrder 1256, 3, 'White tea'
+EXEC addProductToOrder 1256, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1256, 1, 'Fish sandwich stick'
+EXEC addProductToOrder 1257, 1, 'Vegetable soup'
+EXEC addProductToOrder 1257, 3, 'Butter'
+EXEC addProductToOrder 1257, 1, 'Garden salad'
+EXEC addProductToOrder 1257, 1, 'Bread'
+EXEC addProductToOrder 1257, 2, 'Rice pudding'
+EXEC addProductToOrder 1258, 3, 'Biscuit'
+EXEC addProductToOrder 1258, 2, 'Salsa'
+EXEC addProductToOrder 1258, 1, 'Fried onion rings'
+EXEC addProductToOrder 1258, 1, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1258, 3, 'Fanta'
+EXEC addProductToOrder 1259, 1, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1259, 3, 'Basil'
+EXEC addProductToOrder 1259, 3, 'Oolong tea'
+EXEC addProductToOrder 1259, 3, 'Guacamole'
+EXEC addProductToOrder 1259, 2, 'Cobb salad'
+EXEC addProductToOrder 1260, 3, 'Apple pudding'
+EXEC addProductToOrder 1260, 1, 'Apricot'
+EXEC addProductToOrder 1260, 3, 'Chai tea'
+EXEC addProductToOrder 1260, 1, 'Cobb salad'
+EXEC addProductToOrder 1260, 1, 'Goat cheese'
+EXEC addProductToOrder 1261, 3, 'Yellow tea'
+EXEC addProductToOrder 1261, 3, 'Cookie'
+EXEC addProductToOrder 1261, 1, 'Beef stew with onions'
+EXEC addProductToOrder 1261, 1, 'Tossed salad'
+EXEC addProductToOrder 1261, 3, 'Pecan'
+EXEC addProductToOrder 1262, 3, 'Cumin'
+EXEC addProductToOrder 1262, 2, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1262, 2, 'Carrot juice'
+EXEC addProductToOrder 1262, 1, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1262, 1, 'Caprese salad'
+EXEC addProductToOrder 1263, 2, 'Pu-erh tea'
+EXEC addProductToOrder 1263, 3, 'Black tea'
+EXEC addProductToOrder 1263, 3, 'Pasta with mushrooms'
+EXEC addProductToOrder 1263, 3, 'Bay leaf'
+EXEC addProductToOrder 1263, 1, 'Café zorro'
+EXEC addProductToOrder 1264, 1, 'Clam chowder'
+EXEC addProductToOrder 1264, 3, 'Orange'
+EXEC addProductToOrder 1264, 1, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1264, 3, 'Strawberry juice'
+EXEC addProductToOrder 1264, 3, 'Feta cheese'
+EXEC addProductToOrder 1265, 3, 'Latte'
+EXEC addProductToOrder 1265, 3, 'Cucumber salad'
+EXEC addProductToOrder 1265, 2, 'Pasta with onions'
+EXEC addProductToOrder 1265, 2, 'Cookie'
+EXEC addProductToOrder 1265, 2, 'Breadstick'
+EXEC addProductToOrder 1266, 3, 'Baguette'
+EXEC addProductToOrder 1266, 2, 'Biscuit stick'
+EXEC addProductToOrder 1266, 2, 'Pasta with tuna'
+EXEC addProductToOrder 1266, 2, 'Cinnamon'
+EXEC addProductToOrder 1266, 2, 'Café mocha'
+EXEC addProductToOrder 1267, 2, 'Almond'
+EXEC addProductToOrder 1267, 1, 'Cranberry juice'
+EXEC addProductToOrder 1267, 3, 'Mango'
+EXEC addProductToOrder 1267, 2, 'Split pea soup'
+EXEC addProductToOrder 1267, 1, 'Bay leaf'
+EXEC addProductToOrder 1268, 1, 'Hummus'
+EXEC addProductToOrder 1268, 3, 'Pasta with broccoli'
+EXEC addProductToOrder 1268, 1, 'Provolone cheese'
+EXEC addProductToOrder 1268, 1, 'Almond'
+EXEC addProductToOrder 1268, 3, 'Cereal sandwich roll'
+EXEC addProductToOrder 1269, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1269, 2, 'Strawberry juice'
+EXEC addProductToOrder 1269, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1269, 1, 'Chocolate candy roll'
+EXEC addProductToOrder 1269, 2, 'Basil'
+EXEC addProductToOrder 1270, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1270, 1, 'Fried pickles'
+EXEC addProductToOrder 1270, 1, 'Fish sandwich'
+EXEC addProductToOrder 1270, 1, 'Garden salad'
+EXEC addProductToOrder 1270, 3, 'Bread'
+EXEC addProductToOrder 1271, 3, 'Cheesecake'
+EXEC addProductToOrder 1271, 3, 'Boston cream cake'
+EXEC addProductToOrder 1271, 3, 'Lime'
+EXEC addProductToOrder 1271, 2, 'Minestrone soup'
+EXEC addProductToOrder 1271, 3, '7 Up'
+EXEC addProductToOrder 1272, 1, 'Vegetable stew'
+EXEC addProductToOrder 1272, 1, 'Peanut'
+EXEC addProductToOrder 1272, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1272, 3, 'Beef soup'
+EXEC addProductToOrder 1272, 3, 'Chocolate bar'
+EXEC addProductToOrder 1273, 3, 'Orange juice'
+EXEC addProductToOrder 1273, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1273, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1273, 1, 'Fruit salad'
+EXEC addProductToOrder 1273, 3, 'Chicken and rice soup'
+EXEC addProductToOrder 1274, 1, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1274, 3, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1274, 3, 'Deviled eggs'
+EXEC addProductToOrder 1274, 2, 'Café marrón'
+EXEC addProductToOrder 1274, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1275, 1, 'Garden salad'
+EXEC addProductToOrder 1275, 3, 'Coca-Cola'
+EXEC addProductToOrder 1275, 2, 'Tomato salad'
+EXEC addProductToOrder 1275, 3, 'Vegetable stew'
+EXEC addProductToOrder 1275, 2, 'Pistachio'
+EXEC addProductToOrder 1276, 2, 'Coffee cake'
+EXEC addProductToOrder 1276, 2, 'Blackberry'
+EXEC addProductToOrder 1276, 3, 'Kiwi'
+EXEC addProductToOrder 1276, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 1276, 1, 'Bay leaf'
+EXEC addProductToOrder 1277, 1, 'Diet Dr Pepper'
+EXEC addProductToOrder 1277, 3, 'Pecan'
+EXEC addProductToOrder 1277, 1, 'Beef stew with carrots'
+EXEC addProductToOrder 1277, 1, 'French onion soup'
+EXEC addProductToOrder 1277, 3, 'Cloves'
+EXEC addProductToOrder 1278, 1, 'Chicken casserole'
+EXEC addProductToOrder 1278, 1, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1278, 1, 'Coconut cake'
+EXEC addProductToOrder 1278, 2, 'Vegetable stir fry'
+EXEC addProductToOrder 1278, 2, 'Macchiato'
+EXEC addProductToOrder 1279, 2, 'Diet Coke'
+EXEC addProductToOrder 1279, 3, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1279, 1, 'Biscotti'
+EXEC addProductToOrder 1279, 2, 'Coca-Cola'
+EXEC addProductToOrder 1279, 2, 'Baked stuffed squash'
+EXEC addProductToOrder 1280, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1280, 3, 'Angel food cake'
+EXEC addProductToOrder 1280, 3, 'Pomegranate juice'
+EXEC addProductToOrder 1280, 1, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1280, 3, 'Pasta with tomatoes'
+EXEC addProductToOrder 1281, 2, 'Baked stuffed peppers'
+EXEC addProductToOrder 1281, 1, 'Pu-erh tea'
+EXEC addProductToOrder 1281, 1, 'Dijon sauce'
+EXEC addProductToOrder 1281, 3, 'Cheesecake'
+EXEC addProductToOrder 1281, 3, 'Minestrone soup'
+EXEC addProductToOrder 1282, 3, 'Fig'
+EXEC addProductToOrder 1282, 2, 'Macadamia'
+EXEC addProductToOrder 1282, 3, 'Yellow tea'
+EXEC addProductToOrder 1282, 1, 'Chicken tortilla soup'
+EXEC addProductToOrder 1282, 2, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1283, 3, 'Apple custard'
+EXEC addProductToOrder 1283, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1283, 3, 'Macchiato'
+EXEC addProductToOrder 1283, 2, 'Mate tea'
+EXEC addProductToOrder 1283, 3, 'Brioche'
+EXEC addProductToOrder 1284, 3, 'Cinnamon'
+EXEC addProductToOrder 1284, 2, 'Goat cheese'
+EXEC addProductToOrder 1284, 2, 'Garden salad'
+EXEC addProductToOrder 1284, 3, 'Vegetable chili'
+EXEC addProductToOrder 1284, 2, 'Pasta with spinach'
+EXEC addProductToOrder 1285, 2, 'Chicken and rice soup'
+EXEC addProductToOrder 1285, 2, '7 Up'
+EXEC addProductToOrder 1285, 3, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1285, 3, 'Diet Sprite'
+EXEC addProductToOrder 1285, 2, 'Pasta with zucchini'
+EXEC addProductToOrder 1286, 1, 'Cookie sandwich'
+EXEC addProductToOrder 1286, 3, 'Café Cubano'
+EXEC addProductToOrder 1286, 1, 'Chicken tortilla soup'
+EXEC addProductToOrder 1286, 1, 'Chocolate bar'
+EXEC addProductToOrder 1286, 1, 'Mate tea'
+EXEC addProductToOrder 1287, 2, 'Cereal sandwich'
+EXEC addProductToOrder 1287, 2, 'Cookie stick'
+EXEC addProductToOrder 1287, 3, 'Spinach salad'
+EXEC addProductToOrder 1287, 2, 'Café del mar'
+EXEC addProductToOrder 1287, 1, 'Fried green tomatoes'
+EXEC addProductToOrder 1288, 3, 'Lime juice'
+EXEC addProductToOrder 1288, 3, 'Lemon'
+EXEC addProductToOrder 1288, 2, 'Mountain Dew'
+EXEC addProductToOrder 1288, 3, 'Apple custard'
+EXEC addProductToOrder 1288, 1, 'Date'
+EXEC addProductToOrder 1289, 1, 'Butter'
+EXEC addProductToOrder 1289, 1, 'Americano'
+EXEC addProductToOrder 1289, 2, 'Pumpkin pudding'
+EXEC addProductToOrder 1289, 2, 'Bechamel sauce'
+EXEC addProductToOrder 1289, 3, 'Boursin cheese'
+EXEC addProductToOrder 1290, 3, 'Sprite'
+EXEC addProductToOrder 1290, 1, 'Pasta with meatballs'
+EXEC addProductToOrder 1290, 2, 'Café con leche'
+EXEC addProductToOrder 1290, 2, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1290, 2, 'Fruit salad'
+EXEC addProductToOrder 1291, 1, 'Apple juice'
+EXEC addProductToOrder 1291, 2, 'Chocolate'
+EXEC addProductToOrder 1291, 1, 'Biscuit roll'
+EXEC addProductToOrder 1291, 1, 'Café de pico'
+EXEC addProductToOrder 1291, 3, 'Americano'
+EXEC addProductToOrder 1292, 1, 'Café con leche'
+EXEC addProductToOrder 1292, 3, 'Chicken tortilla soup'
+EXEC addProductToOrder 1292, 3, 'Beef casserole'
+EXEC addProductToOrder 1292, 2, 'Blueberry juice'
+EXEC addProductToOrder 1292, 1, 'Oolong tea'
+EXEC addProductToOrder 1293, 3, 'Coconut custard'
+EXEC addProductToOrder 1293, 2, 'Affogato'
+EXEC addProductToOrder 1293, 3, 'Brie cheese'
+EXEC addProductToOrder 1293, 1, 'Pasta with tuna'
+EXEC addProductToOrder 1293, 2, 'Apricot'
+EXEC addProductToOrder 1294, 1, 'Cortado'
+EXEC addProductToOrder 1294, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 1294, 3, 'Brioche'
+EXEC addProductToOrder 1294, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1294, 1, 'Brown sauce'
+EXEC addProductToOrder 1295, 1, 'Café de olla'
+EXEC addProductToOrder 1295, 1, 'Fried okra'
+EXEC addProductToOrder 1295, 2, 'Grapefruit'
+EXEC addProductToOrder 1295, 3, 'Fish'
+EXEC addProductToOrder 1295, 3, 'Pasta with shrimp'
+EXEC addProductToOrder 1296, 2, 'Oolong tea'
+EXEC addProductToOrder 1296, 3, 'Tzatziki'
+EXEC addProductToOrder 1296, 3, 'Blueberry'
+EXEC addProductToOrder 1296, 3, 'Chocolate cake'
+EXEC addProductToOrder 1296, 1, 'Fig'
+EXEC addProductToOrder 1297, 1, 'Pasta with onions'
+EXEC addProductToOrder 1297, 3, 'Diet Sierra Mist'
+EXEC addProductToOrder 1297, 3, 'Vegetable chili'
+EXEC addProductToOrder 1297, 3, 'Biscotti'
+EXEC addProductToOrder 1297, 3, 'Tomato soup'
+EXEC addProductToOrder 1298, 3, 'Rooibos tea'
+EXEC addProductToOrder 1298, 1, 'Baked stuffed clams'
+EXEC addProductToOrder 1298, 1, 'Oolong tea'
+EXEC addProductToOrder 1298, 2, 'Brie cheese'
+EXEC addProductToOrder 1298, 2, 'Apple'
+EXEC addProductToOrder 1299, 3, 'Blackberry'
+EXEC addProductToOrder 1299, 3, 'Gouda cheese'
+EXEC addProductToOrder 1299, 1, 'Pasta with salmon'
+EXEC addProductToOrder 1299, 1, 'Blueberry juice'
+EXEC addProductToOrder 1299, 1, 'Oolong tea'
+EXEC addProductToOrder 1300, 2, 'Vegetable soup'
+EXEC addProductToOrder 1300, 3, 'Diet 7 Up'
+EXEC addProductToOrder 1300, 3, 'Banana'
+EXEC addProductToOrder 1300, 1, 'Almond'
+EXEC addProductToOrder 1300, 1, 'Potato salad'
+EXEC addProductToOrder 1301, 2, 'Grapefruit juice'
+EXEC addProductToOrder 1301, 1, 'Butter pecan ice cream'
+EXEC addProductToOrder 1301, 1, 'White tea'
+EXEC addProductToOrder 1301, 2, 'Swiss cheese'
+EXEC addProductToOrder 1301, 2, 'Pasta with tomatoes'
+EXEC addProductToOrder 1302, 3, 'Pasta with sausage'
+EXEC addProductToOrder 1302, 3, 'Affogato'
+EXEC addProductToOrder 1302, 2, 'Banana pudding'
+EXEC addProductToOrder 1302, 2, 'Chimichurri sauce'
+EXEC addProductToOrder 1302, 3, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1304, 3, 'Melon'
+EXEC addProductToOrder 1304, 3, 'Bleu cheese'
+EXEC addProductToOrder 1304, 2, 'Cookie sandwich'
+EXEC addProductToOrder 1304, 1, 'Grapefruit'
+EXEC addProductToOrder 1304, 3, 'Coconut pudding'
+EXEC addProductToOrder 1305, 1, 'Baked oysters'
+EXEC addProductToOrder 1305, 1, 'Coconut cake'
+EXEC addProductToOrder 1305, 2, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1305, 2, 'Diet Mountain Dew'
+EXEC addProductToOrder 1305, 1, 'Beef stew with carrots'
+EXEC addProductToOrder 1306, 3, 'Beef stew with carrots'
+EXEC addProductToOrder 1306, 1, 'Diet Mountain Dew'
+EXEC addProductToOrder 1306, 3, 'Pasta with onions'
+EXEC addProductToOrder 1306, 3, 'Boston cream cake'
+EXEC addProductToOrder 1306, 2, 'Café de olla'
+EXEC addProductToOrder 1307, 2, 'Boston cream cake'
+EXEC addProductToOrder 1307, 3, 'Cobb salad'
+EXEC addProductToOrder 1307, 3, 'Fish roll'
+EXEC addProductToOrder 1307, 2, 'Apple'
+EXEC addProductToOrder 1307, 2, 'Chocolate pudding'
+EXEC addProductToOrder 1308, 3, 'Grapefruit'
+EXEC addProductToOrder 1308, 1, 'Mocha'
+EXEC addProductToOrder 1308, 1, 'Espresso'
+EXEC addProductToOrder 1308, 2, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1308, 3, 'Basil'
+EXEC addProductToOrder 1309, 1, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 1309, 3, 'Tzatziki'
+EXEC addProductToOrder 1309, 2, 'Chocolate pudding'
+EXEC addProductToOrder 1309, 2, '7 Up'
+EXEC addProductToOrder 1309, 3, 'Curry sauce'
+EXEC addProductToOrder 1310, 3, 'Banana pudding'
+EXEC addProductToOrder 1310, 3, 'Pasta with crab'
+EXEC addProductToOrder 1310, 2, 'Pasta with spinach'
+EXEC addProductToOrder 1310, 3, 'Burrata cheese'
+EXEC addProductToOrder 1310, 2, 'Pasta with tomatoes'
+EXEC addProductToOrder 1311, 2, 'Clam chowder'
+EXEC addProductToOrder 1311, 1, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1311, 3, 'Cookie'
+EXEC addProductToOrder 1311, 2, 'Mango'
+EXEC addProductToOrder 1311, 2, 'Fig'
+EXEC addProductToOrder 1312, 1, 'Lentil soup'
+EXEC addProductToOrder 1312, 2, 'Fried potato skins'
+EXEC addProductToOrder 1312, 2, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1312, 3, 'Green tea'
+EXEC addProductToOrder 1312, 2, 'Cobb salad'
+EXEC addProductToOrder 1313, 2, 'Dip'
+EXEC addProductToOrder 1313, 1, 'Brioche'
+EXEC addProductToOrder 1313, 2, 'Affogato'
+EXEC addProductToOrder 1313, 1, 'Pepsi'
+EXEC addProductToOrder 1313, 1, 'Fig'
+EXEC addProductToOrder 1314, 1, 'Cloves'
+EXEC addProductToOrder 1314, 2, 'Cheddar cheese'
+EXEC addProductToOrder 1314, 3, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1314, 3, 'Cinnamon'
+EXEC addProductToOrder 1314, 2, 'Vegetable lasagna'
+EXEC addProductToOrder 1315, 2, 'Black tea'
+EXEC addProductToOrder 1315, 2, 'Brown sauce'
+EXEC addProductToOrder 1315, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1315, 2, 'Spinach salad'
+EXEC addProductToOrder 1315, 1, 'Beef casserole'
+EXEC addProductToOrder 1316, 1, 'Brioche'
+EXEC addProductToOrder 1316, 2, 'Bun'
+EXEC addProductToOrder 1316, 3, 'Dr Pepper'
+EXEC addProductToOrder 1316, 1, 'Chicken tortilla soup'
+EXEC addProductToOrder 1316, 3, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1317, 2, 'Pomegranate juice'
+EXEC addProductToOrder 1317, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1317, 3, 'Pecan'
+EXEC addProductToOrder 1317, 3, 'Fish roll'
+EXEC addProductToOrder 1317, 3, 'Moose tracks ice cream'
+EXEC addProductToOrder 1318, 2, 'Chutney sauce'
+EXEC addProductToOrder 1318, 2, 'Diet Mountain Dew'
+EXEC addProductToOrder 1318, 1, 'Café mocha'
+EXEC addProductToOrder 1318, 2, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1318, 3, 'Goat cheese'
+EXEC addProductToOrder 1319, 1, 'Potato soup'
+EXEC addProductToOrder 1319, 1, 'Caramel sauce'
+EXEC addProductToOrder 1319, 3, 'Pistachio ice cream'
+EXEC addProductToOrder 1319, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1319, 2, 'Yellow tea'
+EXEC addProductToOrder 1320, 3, 'Café Cubano'
+EXEC addProductToOrder 1320, 2, 'Beef stew with carrots'
+EXEC addProductToOrder 1320, 3, 'Diet Sprite'
+EXEC addProductToOrder 1320, 1, 'Cookie sandwich stick'
+EXEC addProductToOrder 1320, 1, 'Latte'
+EXEC addProductToOrder 1321, 3, 'Cranberry'
+EXEC addProductToOrder 1321, 2, 'Cayenne'
+EXEC addProductToOrder 1321, 1, 'Orange juice'
+EXEC addProductToOrder 1321, 2, 'Potato soup'
+EXEC addProductToOrder 1321, 2, 'Pasta with zucchini'
+EXEC addProductToOrder 1322, 2, 'Tomato soup'
+EXEC addProductToOrder 1322, 1, 'Caramel sauce'
+EXEC addProductToOrder 1322, 3, 'Caraway'
+EXEC addProductToOrder 1322, 1, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1322, 3, 'Cereal sandwich'
+EXEC addProductToOrder 1323, 3, 'Café mocha'
+EXEC addProductToOrder 1323, 2, 'Pasta with zucchini'
+EXEC addProductToOrder 1323, 3, 'Chocolate cake'
+EXEC addProductToOrder 1323, 3, 'Potato salad'
+EXEC addProductToOrder 1323, 3, 'Chicken and dumplings'
+EXEC addProductToOrder 1324, 1, 'Chai tea'
+EXEC addProductToOrder 1324, 3, 'Potato salad'
+EXEC addProductToOrder 1324, 3, 'Antipasto salad'
+EXEC addProductToOrder 1324, 3, 'Coca-Cola'
+EXEC addProductToOrder 1324, 2, 'Bun'
+EXEC addProductToOrder 1325, 1, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1325, 1, 'Cookie sandwich stick'
+EXEC addProductToOrder 1325, 3, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1325, 1, 'Sprite'
+EXEC addProductToOrder 1325, 1, 'Caper sauce'
+EXEC addProductToOrder 1326, 2, '7 Up'
+EXEC addProductToOrder 1326, 2, 'Fish sandwich bun'
+EXEC addProductToOrder 1326, 1, 'Apple juice'
+EXEC addProductToOrder 1326, 3, 'Apricot'
+EXEC addProductToOrder 1326, 3, 'Breadstick'
+EXEC addProductToOrder 1327, 1, 'Diet Pepsi'
+EXEC addProductToOrder 1327, 1, 'Macchiato'
+EXEC addProductToOrder 1327, 3, 'Biscuit roll'
+EXEC addProductToOrder 1327, 3, 'French onion soup'
+EXEC addProductToOrder 1327, 3, 'Banana cake'
+EXEC addProductToOrder 1328, 3, 'Biscotti'
+EXEC addProductToOrder 1328, 2, 'Fried green tomatoes'
+EXEC addProductToOrder 1328, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1328, 2, 'Pasta with shrimp'
+EXEC addProductToOrder 1328, 2, 'Strawberry pudding'
+EXEC addProductToOrder 1329, 2, 'Chocolate cake'
+EXEC addProductToOrder 1329, 2, 'Grape juice'
+EXEC addProductToOrder 1329, 2, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1329, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1329, 1, 'Provolone cheese'
+EXEC addProductToOrder 1330, 2, 'Burrata cheese'
+EXEC addProductToOrder 1330, 1, 'Basil'
+EXEC addProductToOrder 1330, 2, 'Beef soup'
+EXEC addProductToOrder 1330, 2, 'Fried okra'
+EXEC addProductToOrder 1330, 3, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1331, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1331, 3, 'Raspberry juice'
+EXEC addProductToOrder 1331, 3, 'Blackberry'
+EXEC addProductToOrder 1331, 3, 'Pasta with meatballs'
+EXEC addProductToOrder 1331, 3, 'Orange juice'
+EXEC addProductToOrder 1332, 1, 'Pasta with eggplant'
+EXEC addProductToOrder 1332, 1, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1332, 3, 'Baked stuffed clams'
+EXEC addProductToOrder 1332, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1332, 3, 'Baked brie'
+EXEC addProductToOrder 1333, 1, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1333, 2, 'Moose tracks ice cream'
+EXEC addProductToOrder 1333, 1, 'Butter pecan ice cream'
+EXEC addProductToOrder 1333, 3, 'Fish sandwich'
+EXEC addProductToOrder 1333, 3, 'Chili'
+EXEC addProductToOrder 1334, 3, 'Diet Coke'
+EXEC addProductToOrder 1334, 3, 'American cheese'
+EXEC addProductToOrder 1334, 2, 'Gouda cheese'
+EXEC addProductToOrder 1334, 2, 'Mountain Dew'
+EXEC addProductToOrder 1334, 3, 'Vanilla ice cream'
+EXEC addProductToOrder 1335, 3, 'Cocktail sauce'
+EXEC addProductToOrder 1335, 1, 'French onion soup'
+EXEC addProductToOrder 1335, 2, 'Anise'
+EXEC addProductToOrder 1335, 1, 'Fish stick'
+EXEC addProductToOrder 1335, 3, 'Cereal stick'
+EXEC addProductToOrder 1336, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1336, 1, 'Vegetable curry'
+EXEC addProductToOrder 1336, 3, 'Bundt cake'
+EXEC addProductToOrder 1336, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1336, 3, 'Carrot cake'
+EXEC addProductToOrder 1337, 1, 'Cereal sandwich stick'
+EXEC addProductToOrder 1337, 3, 'Macaroni salad'
+EXEC addProductToOrder 1337, 1, 'Fish'
+EXEC addProductToOrder 1337, 2, 'Avocado'
+EXEC addProductToOrder 1337, 1, 'Cookie sandwich'
+EXEC addProductToOrder 1338, 3, 'Banana custard'
+EXEC addProductToOrder 1338, 2, 'Macchiato'
+EXEC addProductToOrder 1338, 1, 'Pasta with clams'
+EXEC addProductToOrder 1338, 3, 'Café de pico'
+EXEC addProductToOrder 1338, 3, 'Diet Sprite'
+EXEC addProductToOrder 1339, 2, 'Honeybush tea'
+EXEC addProductToOrder 1339, 2, 'Biscuit roll'
+EXEC addProductToOrder 1339, 2, 'Beet salad'
+EXEC addProductToOrder 1339, 1, 'Mate tea'
+EXEC addProductToOrder 1339, 1, 'Anise'
+EXEC addProductToOrder 1340, 2, 'Oolong tea'
+EXEC addProductToOrder 1340, 3, 'Pecan'
+EXEC addProductToOrder 1340, 1, 'Mocha'
+EXEC addProductToOrder 1340, 3, 'Broccoli salad'
+EXEC addProductToOrder 1340, 2, 'Butter roll'
+EXEC addProductToOrder 1341, 1, 'Mozzarella cheese'
+EXEC addProductToOrder 1341, 1, 'Deviled eggs'
+EXEC addProductToOrder 1341, 1, 'Curry sauce'
+EXEC addProductToOrder 1341, 2, 'Pasta with clams'
+EXEC addProductToOrder 1341, 3, 'Carrot salad'
+EXEC addProductToOrder 1342, 3, 'Dr Pepper'
+EXEC addProductToOrder 1342, 1, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1342, 1, 'Basil'
+EXEC addProductToOrder 1342, 2, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1342, 3, 'Cookie sandwich bun'
+EXEC addProductToOrder 1343, 3, 'Lime juice'
+EXEC addProductToOrder 1343, 1, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1343, 1, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1343, 2, 'Vegetable chili'
+EXEC addProductToOrder 1343, 1, 'Asiago cheese'
+EXEC addProductToOrder 1344, 3, 'Bread'
+EXEC addProductToOrder 1344, 3, 'Fried ravioli'
+EXEC addProductToOrder 1344, 3, 'Chocolate ice cream'
+EXEC addProductToOrder 1344, 3, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1344, 2, 'Pineapple juice'
+EXEC addProductToOrder 1345, 1, 'Pistachio'
+EXEC addProductToOrder 1345, 2, 'Boston cream cake'
+EXEC addProductToOrder 1345, 3, 'Diet Sprite'
+EXEC addProductToOrder 1345, 1, 'Rooibos tea'
+EXEC addProductToOrder 1345, 1, 'Mango'
+EXEC addProductToOrder 1346, 3, 'Banana cake'
+EXEC addProductToOrder 1346, 1, 'Cereal stick'
+EXEC addProductToOrder 1346, 2, 'Chicken and rice soup'
+EXEC addProductToOrder 1346, 3, 'Mate tea'
+EXEC addProductToOrder 1346, 2, 'Bay leaf'
+EXEC addProductToOrder 1347, 1, 'Pasta with meatballs'
+EXEC addProductToOrder 1347, 2, 'Hazelnut'
+EXEC addProductToOrder 1347, 2, 'Cereal'
+EXEC addProductToOrder 1347, 3, 'Mozzarella cheese'
+EXEC addProductToOrder 1347, 2, 'Fried ravioli'
+EXEC addProductToOrder 1348, 1, 'Pistachio'
+EXEC addProductToOrder 1348, 3, 'Diet 7 Up'
+EXEC addProductToOrder 1348, 1, 'Peanut'
+EXEC addProductToOrder 1348, 2, 'Chicken soup'
+EXEC addProductToOrder 1348, 1, 'Cereal roll'
+EXEC addProductToOrder 1349, 1, 'Lemon juice'
+EXEC addProductToOrder 1349, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1349, 2, 'American cheese'
+EXEC addProductToOrder 1349, 3, 'Anise'
+EXEC addProductToOrder 1349, 2, 'Honeybush tea'
+EXEC addProductToOrder 1350, 3, 'Peanut'
+EXEC addProductToOrder 1350, 2, 'Béarnaise sauce'
+EXEC addProductToOrder 1350, 3, 'American cheese'
+EXEC addProductToOrder 1350, 3, 'Coconut'
+EXEC addProductToOrder 1350, 1, 'Fruit salad'
+EXEC addProductToOrder 1351, 3, 'Pasta with zucchini'
+EXEC addProductToOrder 1351, 2, 'Chicken noodle soup'
+EXEC addProductToOrder 1351, 1, 'Cheddar cheese'
+EXEC addProductToOrder 1351, 3, 'Oolong tea'
+EXEC addProductToOrder 1351, 3, 'Chicken soup'
+EXEC addProductToOrder 1352, 2, 'Biscuit sandwich'
+EXEC addProductToOrder 1352, 1, 'Kiwi'
+EXEC addProductToOrder 1352, 3, 'Kombucha tea'
+EXEC addProductToOrder 1352, 2, 'Cookie sandwich stick'
+EXEC addProductToOrder 1352, 3, 'Pasta with mushrooms'
+EXEC addProductToOrder 1353, 3, 'Beef stew with carrots'
+EXEC addProductToOrder 1353, 2, 'Chef salad'
+EXEC addProductToOrder 1353, 2, 'Pasta with onions'
+EXEC addProductToOrder 1353, 2, 'Cookie stick'
+EXEC addProductToOrder 1353, 2, 'Pineapple juice'
+EXEC addProductToOrder 1354, 2, 'Chicken and barley soup'
+EXEC addProductToOrder 1354, 2, 'Cereal sandwich stick'
+EXEC addProductToOrder 1354, 2, 'Avocado salad'
+EXEC addProductToOrder 1354, 3, 'Beef stew with dumplings'
+EXEC addProductToOrder 1354, 1, 'Apple'
+EXEC addProductToOrder 1355, 2, 'Flat white'
+EXEC addProductToOrder 1355, 3, 'Caper sauce'
+EXEC addProductToOrder 1355, 1, 'Fish roll'
+EXEC addProductToOrder 1355, 2, 'Fried ravioli'
+EXEC addProductToOrder 1355, 3, 'Dijon sauce'
+EXEC addProductToOrder 1356, 1, 'Peanut'
+EXEC addProductToOrder 1356, 2, 'Date'
+EXEC addProductToOrder 1356, 2, 'Butter'
+EXEC addProductToOrder 1356, 2, 'Peach custard'
+EXEC addProductToOrder 1356, 3, 'Curry'
+EXEC addProductToOrder 1357, 3, 'Herbal tea'
+EXEC addProductToOrder 1357, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1357, 2, 'Beef stew with celery'
+EXEC addProductToOrder 1357, 3, 'Avocado'
+EXEC addProductToOrder 1357, 3, 'Curry sauce'
+EXEC addProductToOrder 1358, 1, 'Pasta with sausage'
+EXEC addProductToOrder 1358, 3, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1358, 3, 'Artichoke salad'
+EXEC addProductToOrder 1358, 2, 'Date'
+EXEC addProductToOrder 1358, 3, 'Caraway'
+EXEC addProductToOrder 1359, 1, 'Corn chowder'
+EXEC addProductToOrder 1359, 1, 'Antipasto salad'
+EXEC addProductToOrder 1359, 3, 'Curry sauce'
+EXEC addProductToOrder 1359, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1359, 2, 'Baked stuffed clams'
+EXEC addProductToOrder 1360, 2, 'Curry sauce'
+EXEC addProductToOrder 1360, 3, 'Bisque sauce'
+EXEC addProductToOrder 1360, 2, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1360, 2, 'Cookie roll'
+EXEC addProductToOrder 1360, 2, 'Cereal sandwich roll'
+EXEC addProductToOrder 1361, 3, 'Walnut'
+EXEC addProductToOrder 1361, 1, 'Latte'
+EXEC addProductToOrder 1361, 1, 'Lentil soup'
+EXEC addProductToOrder 1361, 2, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1361, 1, 'Mozzarella cheese'
+EXEC addProductToOrder 1362, 3, 'Caesar salad'
+EXEC addProductToOrder 1362, 1, 'Cranberry juice'
+EXEC addProductToOrder 1362, 2, 'Biscotti'
+EXEC addProductToOrder 1362, 2, 'Fried green tomatoes'
+EXEC addProductToOrder 1362, 1, 'Cashew'
+EXEC addProductToOrder 1363, 3, 'Cereal'
+EXEC addProductToOrder 1363, 1, 'Tomato salad'
+EXEC addProductToOrder 1363, 3, 'Fried calamari'
+EXEC addProductToOrder 1363, 3, 'Cheddar cheese'
+EXEC addProductToOrder 1363, 1, 'Chocolate cake'
+EXEC addProductToOrder 1364, 2, 'Lime'
+EXEC addProductToOrder 1364, 2, 'Strawberry ice cream'
+EXEC addProductToOrder 1364, 2, 'Curry sauce'
+EXEC addProductToOrder 1364, 3, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1364, 2, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1365, 1, 'Baked oysters'
+EXEC addProductToOrder 1365, 3, 'Cookie sandwich bun'
+EXEC addProductToOrder 1365, 1, 'Baked stuffed clams'
+EXEC addProductToOrder 1365, 2, 'Cherry'
+EXEC addProductToOrder 1365, 1, 'Diet Coke'
+EXEC addProductToOrder 1366, 2, 'Sprite'
+EXEC addProductToOrder 1366, 3, 'Avocado'
+EXEC addProductToOrder 1366, 1, 'Banana cake'
+EXEC addProductToOrder 1366, 3, 'Chocolate ice cream'
+EXEC addProductToOrder 1366, 1, 'Chai tea'
+EXEC addProductToOrder 1367, 2, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 1367, 3, 'Vegetable curry'
+EXEC addProductToOrder 1367, 1, 'Cashew'
+EXEC addProductToOrder 1367, 1, 'Latte'
+EXEC addProductToOrder 1367, 1, 'Biscuit stick'
+EXEC addProductToOrder 1368, 2, 'Apple juice'
+EXEC addProductToOrder 1368, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1368, 1, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1368, 2, 'Fish roll'
+EXEC addProductToOrder 1368, 3, 'Chocolate candy roll'
+EXEC addProductToOrder 1369, 3, 'Beef stew with cabbage'
+EXEC addProductToOrder 1369, 1, 'Sierra Mist'
+EXEC addProductToOrder 1369, 3, 'Fried potato skins'
+EXEC addProductToOrder 1369, 1, 'Macchiato'
+EXEC addProductToOrder 1369, 2, 'Pasta with broccoli'
+EXEC addProductToOrder 1370, 1, 'Beet salad'
+EXEC addProductToOrder 1370, 3, 'Fried potato skins'
+EXEC addProductToOrder 1370, 2, 'Bay leaf'
+EXEC addProductToOrder 1370, 1, 'Chocolate candy stick'
+EXEC addProductToOrder 1370, 1, 'Caraway'
+EXEC addProductToOrder 1371, 3, 'Vegetable stir fry'
+EXEC addProductToOrder 1371, 1, 'Peach custard'
+EXEC addProductToOrder 1371, 2, 'Banana custard'
+EXEC addProductToOrder 1371, 1, 'Chocolate custard'
+EXEC addProductToOrder 1371, 3, 'Cranberry juice'
+EXEC addProductToOrder 1372, 3, 'Coffee cake'
+EXEC addProductToOrder 1372, 3, 'Spinach salad'
+EXEC addProductToOrder 1372, 2, 'Cortado'
+EXEC addProductToOrder 1372, 1, 'Cumin'
+EXEC addProductToOrder 1372, 1, 'Mozzarella cheese'
+EXEC addProductToOrder 1373, 3, 'Biscuit'
+EXEC addProductToOrder 1373, 2, 'Grape'
+EXEC addProductToOrder 1373, 3, 'Cookie sandwich stick'
+EXEC addProductToOrder 1373, 1, 'Diet Mountain Dew'
+EXEC addProductToOrder 1373, 2, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1374, 1, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1374, 3, 'Mountain Dew'
+EXEC addProductToOrder 1374, 3, 'Fish sandwich bun'
+EXEC addProductToOrder 1374, 2, 'Fish roll'
+EXEC addProductToOrder 1374, 3, 'Artichoke salad'
+EXEC addProductToOrder 1375, 2, 'Coffee cake'
+EXEC addProductToOrder 1375, 2, 'Muenster cheese'
+EXEC addProductToOrder 1375, 1, 'Pasta with crab'
+EXEC addProductToOrder 1375, 1, 'Caprese salad'
+EXEC addProductToOrder 1375, 2, 'Pepsi'
+EXEC addProductToOrder 1376, 2, 'Beef casserole'
+EXEC addProductToOrder 1376, 2, 'Diet 7 Up'
+EXEC addProductToOrder 1376, 2, 'Chimichurri sauce'
+EXEC addProductToOrder 1376, 2, 'Broccoli salad'
+EXEC addProductToOrder 1376, 1, 'Cortado'
+EXEC addProductToOrder 1377, 3, 'Strawberry pudding'
+EXEC addProductToOrder 1377, 2, 'Walnut'
+EXEC addProductToOrder 1377, 2, 'Café irlandés'
+EXEC addProductToOrder 1377, 2, 'Cookie sandwich'
+EXEC addProductToOrder 1377, 1, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1378, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1378, 1, 'Lemon'
+EXEC addProductToOrder 1378, 2, 'Baked crab dip'
+EXEC addProductToOrder 1378, 1, 'Cappuccino'
+EXEC addProductToOrder 1378, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1379, 3, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1379, 2, 'Pomegranate juice'
+EXEC addProductToOrder 1379, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1379, 3, 'Fish stick'
+EXEC addProductToOrder 1379, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1380, 1, 'Matcha tea'
+EXEC addProductToOrder 1380, 3, 'Diet Pepsi'
+EXEC addProductToOrder 1380, 2, 'Peach pudding'
+EXEC addProductToOrder 1380, 2, 'Fish sandwich'
+EXEC addProductToOrder 1380, 2, 'Lemon'
+EXEC addProductToOrder 1381, 1, 'Macaroni salad'
+EXEC addProductToOrder 1381, 2, 'Pasta with clams'
+EXEC addProductToOrder 1381, 3, 'Baked stuffed peppers'
+EXEC addProductToOrder 1381, 2, 'Vanilla ice cream'
+EXEC addProductToOrder 1381, 1, 'Sierra Mist'
+EXEC addProductToOrder 1382, 2, 'Melon'
+EXEC addProductToOrder 1382, 1, 'Pepsi'
+EXEC addProductToOrder 1382, 3, 'Lemon'
+EXEC addProductToOrder 1382, 3, 'Baked brie'
+EXEC addProductToOrder 1382, 3, 'Pasta with broccoli'
+EXEC addProductToOrder 1383, 3, 'Honeybush tea'
+EXEC addProductToOrder 1383, 2, 'Biscuit stick'
+EXEC addProductToOrder 1383, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1383, 2, 'Apple custard'
+EXEC addProductToOrder 1383, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1384, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1384, 1, 'Chicken and rice soup'
+EXEC addProductToOrder 1384, 1, 'Bleu cheese'
+EXEC addProductToOrder 1384, 1, 'Apple custard'
+EXEC addProductToOrder 1384, 1, 'Deviled eggs'
+EXEC addProductToOrder 1385, 3, 'Café crema'
+EXEC addProductToOrder 1385, 1, 'Cheddar cheese'
+EXEC addProductToOrder 1385, 2, 'Biscotti'
+EXEC addProductToOrder 1385, 3, 'Lemon custard'
+EXEC addProductToOrder 1385, 3, 'Chef salad'
+EXEC addProductToOrder 1386, 1, 'Broccoli salad'
+EXEC addProductToOrder 1386, 1, 'Baked oysters'
+EXEC addProductToOrder 1386, 2, 'Fried potato skins'
+EXEC addProductToOrder 1386, 3, 'Potato salad'
+EXEC addProductToOrder 1386, 1, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1387, 3, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1387, 1, 'Vegetable casserole'
+EXEC addProductToOrder 1387, 2, 'Boston cream cake'
+EXEC addProductToOrder 1387, 3, 'Allspice'
+EXEC addProductToOrder 1387, 1, 'Celery seed'
+EXEC addProductToOrder 1388, 2, 'Pasta with sausage'
+EXEC addProductToOrder 1388, 2, 'Café de pico'
+EXEC addProductToOrder 1388, 1, 'Pasta with tomatoes'
+EXEC addProductToOrder 1388, 1, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1388, 1, 'Fried mushrooms'
+EXEC addProductToOrder 1389, 2, 'Chicken noodle soup'
+EXEC addProductToOrder 1389, 3, 'Cocktail sauce'
+EXEC addProductToOrder 1389, 3, 'Date'
+EXEC addProductToOrder 1389, 1, 'Lime juice'
+EXEC addProductToOrder 1389, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1390, 3, 'Brown sauce'
+EXEC addProductToOrder 1390, 3, 'Fried pickles'
+EXEC addProductToOrder 1390, 1, 'Pasta with spinach'
+EXEC addProductToOrder 1390, 1, 'Diet Fanta'
+EXEC addProductToOrder 1390, 3, 'Biscotti'
+EXEC addProductToOrder 1391, 1, 'Vegetable stew'
+EXEC addProductToOrder 1391, 3, 'Raspberry juice'
+EXEC addProductToOrder 1391, 1, 'Antipasto salad'
+EXEC addProductToOrder 1391, 3, 'Vegetable chili'
+EXEC addProductToOrder 1391, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1392, 3, 'Cereal sandwich stick'
+EXEC addProductToOrder 1392, 3, 'Fried zucchini'
+EXEC addProductToOrder 1392, 1, 'Lemon pudding'
+EXEC addProductToOrder 1392, 2, 'Peanut'
+EXEC addProductToOrder 1392, 1, 'Parmesan cheese'
+EXEC addProductToOrder 1393, 2, 'Mocha'
+EXEC addProductToOrder 1393, 3, 'Herbal tea'
+EXEC addProductToOrder 1393, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1393, 1, 'Cardamom'
+EXEC addProductToOrder 1393, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1394, 2, 'Baked stuffed clams'
+EXEC addProductToOrder 1394, 2, 'Banana cake'
+EXEC addProductToOrder 1394, 2, 'Biscuit roll'
+EXEC addProductToOrder 1394, 2, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1394, 1, 'Coriander'
+EXEC addProductToOrder 1395, 2, 'Lime'
+EXEC addProductToOrder 1395, 2, 'Tomato juice'
+EXEC addProductToOrder 1395, 2, 'Pepsi'
+EXEC addProductToOrder 1395, 1, 'Cereal'
+EXEC addProductToOrder 1395, 3, 'Coffee cake'
+EXEC addProductToOrder 1396, 2, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1396, 3, 'Banana custard'
+EXEC addProductToOrder 1396, 3, 'Banana'
+EXEC addProductToOrder 1396, 2, 'Brown sauce'
+EXEC addProductToOrder 1396, 1, 'Cookie sandwich'
+EXEC addProductToOrder 1397, 3, 'Biscuit sandwich'
+EXEC addProductToOrder 1397, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1397, 2, 'Brie cheese'
+EXEC addProductToOrder 1397, 2, 'Café marrón'
+EXEC addProductToOrder 1397, 2, 'Chocolate'
+EXEC addProductToOrder 1398, 2, 'Vegetable stew'
+EXEC addProductToOrder 1398, 3, 'Baked stuffed peppers'
+EXEC addProductToOrder 1398, 1, 'Banana cake'
+EXEC addProductToOrder 1398, 2, 'Cucumber salad'
+EXEC addProductToOrder 1398, 3, 'Clam chowder'
+EXEC addProductToOrder 1399, 2, 'Vegetable casserole'
+EXEC addProductToOrder 1399, 1, 'Corn chowder'
+EXEC addProductToOrder 1399, 2, 'Pasta with cauliflower'
+EXEC addProductToOrder 1399, 2, 'Pecan'
+EXEC addProductToOrder 1399, 2, 'Coconut pudding'
+EXEC addProductToOrder 1400, 3, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1400, 1, 'Curry'
+EXEC addProductToOrder 1400, 1, 'Grape juice'
+EXEC addProductToOrder 1400, 3, 'Mate tea'
+EXEC addProductToOrder 1400, 3, 'Alfredo sauce'
+EXEC addProductToOrder 1401, 1, 'Mango'
+EXEC addProductToOrder 1401, 1, 'Pistachio'
+EXEC addProductToOrder 1401, 1, 'Lime juice'
+EXEC addProductToOrder 1401, 1, 'Pasta with tuna'
+EXEC addProductToOrder 1401, 2, 'Cereal roll'
+EXEC addProductToOrder 1402, 3, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1402, 1, 'Macchiato'
+EXEC addProductToOrder 1402, 2, 'Macadamia'
+EXEC addProductToOrder 1402, 3, 'Fanta'
+EXEC addProductToOrder 1402, 1, 'Diet Sprite'
+EXEC addProductToOrder 1103, 2, 'Fruit salad'
+EXEC addProductToOrder 1103, 3, 'Biscuit sandwich'
+EXEC addProductToOrder 1103, 2, 'Chimichurri sauce'
+EXEC addProductToOrder 1103, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1103, 2, 'Carrot cake'
+EXEC addProductToOrder 1303, 2, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1303, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1303, 1, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1303, 3, 'Apricot'
+EXEC addProductToOrder 1303, 1, 'Banana'
+EXEC addProductToOrder 1403, 1, 'Cookie sandwich roll'
+EXEC addProductToOrder 1403, 1, 'Fish sandwich'
+EXEC addProductToOrder 1403, 1, 'Strawberry pudding'
+EXEC addProductToOrder 1403, 1, 'Tossed salad'
+EXEC addProductToOrder 1403, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1404, 1, 'Pasta with clams'
+EXEC addProductToOrder 1404, 3, 'Chai tea'
+EXEC addProductToOrder 1404, 2, 'Cereal sandwich'
+EXEC addProductToOrder 1404, 3, 'Café bombón'
+EXEC addProductToOrder 1404, 3, 'Yellow tea'
+EXEC addProductToOrder 1405, 3, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1405, 2, 'Vegetable casserole'
+EXEC addProductToOrder 1405, 2, 'Cherry'
+EXEC addProductToOrder 1405, 1, 'Fruit salad'
+EXEC addProductToOrder 1405, 2, 'Chocolate candy stick'
+EXEC addProductToOrder 1406, 3, 'Diet Coke'
+EXEC addProductToOrder 1406, 1, 'Chocolate'
+EXEC addProductToOrder 1406, 3, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1406, 3, 'Split pea soup'
+EXEC addProductToOrder 1406, 3, 'Apple juice'
+EXEC addProductToOrder 1407, 1, 'Gruyere cheese'
+EXEC addProductToOrder 1407, 3, 'Fried onion rings'
+EXEC addProductToOrder 1407, 2, 'Kiwi'
+EXEC addProductToOrder 1407, 3, 'Fanta'
+EXEC addProductToOrder 1407, 1, 'Asparagus salad'
+EXEC addProductToOrder 1408, 3, 'Corn chowder'
+EXEC addProductToOrder 1408, 1, 'Cappuccino'
+EXEC addProductToOrder 1408, 3, 'Rice pudding'
+EXEC addProductToOrder 1408, 1, 'Corn salad'
+EXEC addProductToOrder 1408, 3, 'Brie cheese'
+EXEC addProductToOrder 1409, 1, 'Greek salad'
+EXEC addProductToOrder 1409, 2, 'Chai tea'
+EXEC addProductToOrder 1409, 2, 'Fish'
+EXEC addProductToOrder 1409, 3, 'Boursin cheese'
+EXEC addProductToOrder 1409, 3, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1410, 3, 'Strawberry juice'
+EXEC addProductToOrder 1410, 1, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1410, 2, 'Chicken and dumplings'
+EXEC addProductToOrder 1410, 2, 'Diet Pepsi'
+EXEC addProductToOrder 1410, 3, 'Apple custard'
+EXEC addProductToOrder 1411, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1411, 2, 'Pasta with meatballs'
+EXEC addProductToOrder 1411, 3, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1411, 2, 'Pasta with onions'
+EXEC addProductToOrder 1411, 3, 'Greek salad'
+EXEC addProductToOrder 1412, 3, 'Cookie sandwich bun'
+EXEC addProductToOrder 1412, 1, 'Cayenne'
+EXEC addProductToOrder 1412, 2, 'Apple pudding'
+EXEC addProductToOrder 1412, 2, 'Mate tea'
+EXEC addProductToOrder 1412, 3, 'Fried green tomatoes'
+EXEC addProductToOrder 1413, 3, 'Pomegranate juice'
+EXEC addProductToOrder 1413, 1, 'Chocolate candy bar'
+EXEC addProductToOrder 1413, 3, 'Coconut'
+EXEC addProductToOrder 1413, 2, 'Fried onion rings'
+EXEC addProductToOrder 1413, 1, 'Pasta with cauliflower'
+EXEC addProductToOrder 1414, 3, 'Fig'
+EXEC addProductToOrder 1414, 3, 'Latte'
+EXEC addProductToOrder 1414, 1, 'Cookie'
+EXEC addProductToOrder 1414, 1, 'Mate tea'
+EXEC addProductToOrder 1414, 3, 'Bundt cake'
+EXEC addProductToOrder 1415, 2, 'Diet 7 Up'
+EXEC addProductToOrder 1415, 2, 'White tea'
+EXEC addProductToOrder 1415, 2, 'Apple juice'
+EXEC addProductToOrder 1415, 2, 'Rocky road ice cream'
+EXEC addProductToOrder 1415, 2, 'Baked clams'
+EXEC addProductToOrder 1416, 3, 'Grapefruit juice'
+EXEC addProductToOrder 1416, 2, 'Coffee cake'
+EXEC addProductToOrder 1416, 3, 'Honeybush tea'
+EXEC addProductToOrder 1416, 2, 'Split pea soup'
+EXEC addProductToOrder 1416, 3, 'Pasta with onions'
+EXEC addProductToOrder 1417, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1417, 1, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1417, 2, 'Fruit salad'
+EXEC addProductToOrder 1417, 1, 'Deviled eggs'
+EXEC addProductToOrder 1417, 2, 'Chutney sauce'
+EXEC addProductToOrder 1418, 1, 'Curry'
+EXEC addProductToOrder 1418, 1, 'Pasta with eggplant'
+EXEC addProductToOrder 1418, 1, 'Chef salad'
+EXEC addProductToOrder 1418, 1, 'Asparagus salad'
+EXEC addProductToOrder 1418, 2, 'Pasta with tomatoes'
+EXEC addProductToOrder 1419, 1, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1419, 1, 'Cookie sandwich stick'
+EXEC addProductToOrder 1419, 3, 'Bread'
+EXEC addProductToOrder 1419, 2, 'Fish stick'
+EXEC addProductToOrder 1419, 1, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1420, 1, 'Yellow tea'
+EXEC addProductToOrder 1420, 1, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1420, 3, 'Raspberry juice'
+EXEC addProductToOrder 1420, 3, 'Grapefruit'
+EXEC addProductToOrder 1420, 1, 'Cookie'
+EXEC addProductToOrder 1421, 2, 'Biscotti'
+EXEC addProductToOrder 1421, 3, 'Café con leche'
+EXEC addProductToOrder 1421, 2, 'Cookie sandwich stick'
+EXEC addProductToOrder 1421, 3, 'Mate tea'
+EXEC addProductToOrder 1421, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1422, 2, 'Pasta with spinach'
+EXEC addProductToOrder 1422, 1, 'Breadstick'
+EXEC addProductToOrder 1422, 3, 'Fig'
+EXEC addProductToOrder 1422, 1, 'Pepper jack cheese'
+EXEC addProductToOrder 1422, 2, 'Moose tracks ice cream'
+EXEC addProductToOrder 1423, 3, 'Diet Coke'
+EXEC addProductToOrder 1423, 2, 'Fig'
+EXEC addProductToOrder 1423, 1, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1423, 1, 'Peach custard'
+EXEC addProductToOrder 1423, 3, 'Antipasto salad'
+EXEC addProductToOrder 1424, 2, 'Grape'
+EXEC addProductToOrder 1424, 3, 'Rooibos tea'
+EXEC addProductToOrder 1424, 3, 'Mocha'
+EXEC addProductToOrder 1424, 1, 'Pasta with broccoli'
+EXEC addProductToOrder 1424, 1, 'Vegetable casserole'
+EXEC addProductToOrder 1425, 2, 'Potato salad'
+EXEC addProductToOrder 1425, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1425, 1, 'Latte'
+EXEC addProductToOrder 1425, 1, 'Pasta with cauliflower'
+EXEC addProductToOrder 1425, 2, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1426, 2, 'Chicken noodle soup'
+EXEC addProductToOrder 1426, 3, 'Banana custard'
+EXEC addProductToOrder 1426, 1, 'Fried ravioli'
+EXEC addProductToOrder 1426, 1, 'Brown sauce'
+EXEC addProductToOrder 1426, 1, 'Fanta'
+EXEC addProductToOrder 1427, 3, 'Cereal sandwich'
+EXEC addProductToOrder 1427, 3, 'Chocolate candy roll'
+EXEC addProductToOrder 1427, 3, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1427, 1, 'Fish sandwich stick'
+EXEC addProductToOrder 1427, 3, 'Kiwi'
+EXEC addProductToOrder 1428, 1, 'Dr Pepper'
+EXEC addProductToOrder 1428, 3, 'Coca-Cola'
+EXEC addProductToOrder 1428, 3, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1428, 3, 'Apple pudding'
+EXEC addProductToOrder 1428, 2, 'Coconut'
+EXEC addProductToOrder 1429, 3, 'Beef stew with carrots'
+EXEC addProductToOrder 1429, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1429, 1, 'Baked oysters'
+EXEC addProductToOrder 1429, 3, 'Fig'
+EXEC addProductToOrder 1429, 1, 'Tomato soup'
+EXEC addProductToOrder 1430, 2, 'Coffee cake'
+EXEC addProductToOrder 1430, 1, 'Chestnut'
+EXEC addProductToOrder 1430, 3, 'Coconut pudding'
+EXEC addProductToOrder 1430, 2, 'Cereal sandwich'
+EXEC addProductToOrder 1430, 1, 'Dip'
+EXEC addProductToOrder 1431, 2, 'Biscuit sandwich'
+EXEC addProductToOrder 1431, 3, 'Vegetable casserole'
+EXEC addProductToOrder 1431, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1431, 1, 'Beef stew with carrots'
+EXEC addProductToOrder 1431, 1, 'Tomato salad'
+EXEC addProductToOrder 1432, 1, 'Fish roll'
+EXEC addProductToOrder 1432, 3, 'Fried zucchini'
+EXEC addProductToOrder 1432, 2, 'Chicken and dumplings'
+EXEC addProductToOrder 1432, 1, 'Cereal sandwich'
+EXEC addProductToOrder 1432, 1, 'Rocky road ice cream'
+EXEC addProductToOrder 1433, 1, 'Chicken and dumplings'
+EXEC addProductToOrder 1433, 3, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1433, 3, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1433, 2, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1433, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 1434, 1, 'Lemon pudding'
+EXEC addProductToOrder 1434, 2, 'Cookie sandwich roll'
+EXEC addProductToOrder 1434, 2, 'Romano cheese'
+EXEC addProductToOrder 1434, 3, 'Honeybush tea'
+EXEC addProductToOrder 1434, 2, 'Corn salad'
+EXEC addProductToOrder 1435, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1435, 3, 'Chutney sauce'
+EXEC addProductToOrder 1435, 1, 'Brie cheese'
+EXEC addProductToOrder 1435, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1435, 1, 'Macadamia'
+EXEC addProductToOrder 1436, 1, 'Blueberry juice'
+EXEC addProductToOrder 1436, 2, 'Baked crab dip'
+EXEC addProductToOrder 1436, 3, 'Bechamel sauce'
+EXEC addProductToOrder 1436, 3, 'Pasta with zucchini'
+EXEC addProductToOrder 1436, 1, 'Diet Dr Pepper'
+EXEC addProductToOrder 1437, 3, 'Fried okra'
+EXEC addProductToOrder 1437, 3, 'Café del mar'
+EXEC addProductToOrder 1437, 1, 'Chicken soup'
+EXEC addProductToOrder 1437, 2, 'Cherry'
+EXEC addProductToOrder 1437, 3, 'Avocado salad'
+EXEC addProductToOrder 1438, 3, 'Lime'
+EXEC addProductToOrder 1438, 3, 'Café de pico'
+EXEC addProductToOrder 1438, 2, 'Chutney sauce'
+EXEC addProductToOrder 1438, 2, 'Tomato soup'
+EXEC addProductToOrder 1438, 1, 'Hummus'
+EXEC addProductToOrder 1439, 3, 'Coconut cake'
+EXEC addProductToOrder 1439, 3, 'Fried potato skins'
+EXEC addProductToOrder 1439, 3, 'Macadamia'
+EXEC addProductToOrder 1439, 1, 'Cookie stick'
+EXEC addProductToOrder 1439, 3, 'Café irlandés'
+EXEC addProductToOrder 1440, 1, 'Guava'
+EXEC addProductToOrder 1440, 3, 'Yellow tea'
+EXEC addProductToOrder 1440, 1, 'Fanta'
+EXEC addProductToOrder 1440, 2, 'Caraway'
+EXEC addProductToOrder 1440, 3, 'Split pea soup'
+EXEC addProductToOrder 1441, 2, 'Rocky road ice cream'
+EXEC addProductToOrder 1441, 1, 'Grape juice'
+EXEC addProductToOrder 1441, 2, 'Strawberry juice'
+EXEC addProductToOrder 1441, 3, 'Biscuit'
+EXEC addProductToOrder 1441, 3, 'Pepper jack cheese'
+EXEC addProductToOrder 1442, 1, 'Pineapple juice'
+EXEC addProductToOrder 1442, 3, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1442, 3, 'Sierra Mist'
+EXEC addProductToOrder 1442, 1, 'Provolone cheese'
+EXEC addProductToOrder 1442, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1443, 1, 'Caprese salad'
+EXEC addProductToOrder 1443, 2, 'Carrot salad'
+EXEC addProductToOrder 1443, 2, 'Cortado'
+EXEC addProductToOrder 1443, 3, 'Tomato salad'
+EXEC addProductToOrder 1443, 1, 'Mango'
+EXEC addProductToOrder 1444, 3, 'Caesar salad'
+EXEC addProductToOrder 1444, 1, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1444, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1444, 1, 'Cappuccino'
+EXEC addProductToOrder 1444, 1, 'Pasta with clams'
+EXEC addProductToOrder 1445, 3, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1445, 3, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1445, 2, 'Fried pickles'
+EXEC addProductToOrder 1445, 3, 'Corn salad'
+EXEC addProductToOrder 1445, 3, 'Vegetable soup'
+EXEC addProductToOrder 1446, 2, 'Oolong tea'
+EXEC addProductToOrder 1446, 1, 'Cashew'
+EXEC addProductToOrder 1446, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1446, 3, 'Chicken tortilla soup'
+EXEC addProductToOrder 1446, 3, 'Pistachio ice cream'
+EXEC addProductToOrder 1447, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1447, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 1447, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1447, 1, 'Artichoke salad'
+EXEC addProductToOrder 1447, 3, 'French onion soup'
+EXEC addProductToOrder 1448, 3, 'Banana cake'
+EXEC addProductToOrder 1448, 2, 'Banana custard'
+EXEC addProductToOrder 1448, 2, 'Pasta with cauliflower'
+EXEC addProductToOrder 1448, 1, 'Cheddar cheese'
+EXEC addProductToOrder 1448, 1, 'Kiwi'
+EXEC addProductToOrder 1449, 3, 'Grape'
+EXEC addProductToOrder 1449, 3, 'Rice pudding'
+EXEC addProductToOrder 1449, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1449, 1, 'Pu-erh tea'
+EXEC addProductToOrder 1449, 3, 'Bleu cheese'
+EXEC addProductToOrder 1450, 1, 'Curry'
+EXEC addProductToOrder 1450, 1, 'Deviled eggs'
+EXEC addProductToOrder 1450, 2, 'Grapefruit juice'
+EXEC addProductToOrder 1450, 2, 'Pecan'
+EXEC addProductToOrder 1450, 3, 'Provolone cheese'
+EXEC addProductToOrder 1451, 1, 'Baked stuffed clams'
+EXEC addProductToOrder 1451, 3, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1451, 1, 'Beet salad'
+EXEC addProductToOrder 1451, 3, 'Chestnut'
+EXEC addProductToOrder 1451, 3, 'Pasta with mushrooms'
+EXEC addProductToOrder 1452, 3, 'Banana'
+EXEC addProductToOrder 1452, 1, 'Coke Zero'
+EXEC addProductToOrder 1452, 2, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1452, 2, 'Antipasto salad'
+EXEC addProductToOrder 1452, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1453, 2, 'Mountain Dew'
+EXEC addProductToOrder 1453, 3, 'Rocky road ice cream'
+EXEC addProductToOrder 1453, 2, 'Gouda cheese'
+EXEC addProductToOrder 1453, 2, 'Diet Coke'
+EXEC addProductToOrder 1453, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1454, 2, 'Diet Mountain Dew'
+EXEC addProductToOrder 1454, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 1454, 2, 'Café de olla'
+EXEC addProductToOrder 1454, 2, 'Macaroni salad'
+EXEC addProductToOrder 1454, 2, 'Chicken and corn chowder'
+EXEC addProductToOrder 1455, 3, 'Black tea'
+EXEC addProductToOrder 1455, 1, 'Café bombón'
+EXEC addProductToOrder 1455, 1, 'Cheesecake'
+EXEC addProductToOrder 1455, 2, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1455, 2, 'Vegetable chili'
+EXEC addProductToOrder 1456, 3, 'Cereal sandwich stick'
+EXEC addProductToOrder 1456, 1, 'Cookie roll'
+EXEC addProductToOrder 1456, 3, 'Corn salad'
+EXEC addProductToOrder 1456, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1456, 1, 'Cortado'
+EXEC addProductToOrder 1457, 2, 'Carrot salad'
+EXEC addProductToOrder 1457, 1, 'Vanilla pudding'
+EXEC addProductToOrder 1457, 1, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1457, 3, 'Chai tea'
+EXEC addProductToOrder 1457, 2, 'Chicken casserole'
+EXEC addProductToOrder 1458, 2, 'Cookie stick'
+EXEC addProductToOrder 1458, 3, 'Moose tracks ice cream'
+EXEC addProductToOrder 1458, 3, 'Tossed salad'
+EXEC addProductToOrder 1458, 3, 'Pepper jack cheese'
+EXEC addProductToOrder 1458, 1, 'Pasta with mushrooms'
+EXEC addProductToOrder 1459, 2, 'Macaroni salad'
+EXEC addProductToOrder 1459, 3, 'Hazelnut'
+EXEC addProductToOrder 1459, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1459, 1, 'Cherry'
+EXEC addProductToOrder 1459, 2, 'Pasta with mushrooms'
+EXEC addProductToOrder 1460, 2, 'Caramel sauce'
+EXEC addProductToOrder 1460, 3, 'Chimichurri sauce'
+EXEC addProductToOrder 1460, 3, 'Vanilla pudding'
+EXEC addProductToOrder 1460, 2, 'Fried zucchini'
+EXEC addProductToOrder 1460, 1, 'Lime juice'
+EXEC addProductToOrder 1461, 1, 'Dijon sauce'
+EXEC addProductToOrder 1461, 3, 'Cardamom'
+EXEC addProductToOrder 1461, 2, 'Cloves'
+EXEC addProductToOrder 1461, 1, 'Beef stew with dumplings'
+EXEC addProductToOrder 1461, 2, 'Cucumber salad'
+EXEC addProductToOrder 1462, 1, 'Cookie stick'
+EXEC addProductToOrder 1462, 2, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1462, 2, 'Coconut custard'
+EXEC addProductToOrder 1462, 2, 'Cereal'
+EXEC addProductToOrder 1462, 1, 'Flat white'
+EXEC addProductToOrder 1463, 2, 'Cranberry'
+EXEC addProductToOrder 1463, 1, 'Dip'
+EXEC addProductToOrder 1463, 1, 'Brie cheese'
+EXEC addProductToOrder 1463, 3, 'Kombucha tea'
+EXEC addProductToOrder 1463, 2, 'Strawberry pudding'
+EXEC addProductToOrder 1464, 3, 'Split pea soup'
+EXEC addProductToOrder 1464, 1, 'Pineapple juice'
+EXEC addProductToOrder 1464, 2, 'Gouda cheese'
+EXEC addProductToOrder 1464, 1, 'Greek salad'
+EXEC addProductToOrder 1464, 1, 'Muenster cheese'
+EXEC addProductToOrder 1465, 2, 'Chicken casserole'
+EXEC addProductToOrder 1465, 1, 'Kiwi'
+EXEC addProductToOrder 1465, 1, 'Caper sauce'
+EXEC addProductToOrder 1465, 1, 'Herbal tea'
+EXEC addProductToOrder 1465, 1, 'Mango'
+EXEC addProductToOrder 1466, 1, 'Fanta'
+EXEC addProductToOrder 1466, 3, 'Muenster cheese'
+EXEC addProductToOrder 1466, 2, 'Dip'
+EXEC addProductToOrder 1466, 2, 'Dr Pepper'
+EXEC addProductToOrder 1466, 1, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1467, 3, 'Fish stick'
+EXEC addProductToOrder 1467, 1, 'Butter'
+EXEC addProductToOrder 1467, 1, 'Peach pudding'
+EXEC addProductToOrder 1467, 3, 'Coconut'
+EXEC addProductToOrder 1467, 2, 'Chocolate candy'
+EXEC addProductToOrder 1468, 3, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1468, 3, 'Angel food cake'
+EXEC addProductToOrder 1468, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1468, 3, 'French onion soup'
+EXEC addProductToOrder 1468, 3, 'Cortado'
+EXEC addProductToOrder 1469, 3, 'Cobb salad'
+EXEC addProductToOrder 1469, 2, 'Rooibos tea'
+EXEC addProductToOrder 1469, 2, 'Chocolate custard'
+EXEC addProductToOrder 1469, 2, 'Basil'
+EXEC addProductToOrder 1469, 2, 'Guacamole'
+EXEC addProductToOrder 1470, 2, 'Pasta with spinach'
+EXEC addProductToOrder 1470, 2, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1470, 3, 'Café bombón'
+EXEC addProductToOrder 1470, 3, 'Greek salad'
+EXEC addProductToOrder 1470, 2, 'Apple'
+EXEC addProductToOrder 1471, 3, 'Biscuit stick'
+EXEC addProductToOrder 1471, 2, 'Caesar salad'
+EXEC addProductToOrder 1471, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 1471, 3, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1471, 2, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1472, 2, 'Cookie sandwich bun'
+EXEC addProductToOrder 1472, 3, 'Chili'
+EXEC addProductToOrder 1472, 1, 'Peach custard'
+EXEC addProductToOrder 1472, 1, 'Cashew'
+EXEC addProductToOrder 1472, 2, 'Burrata cheese'
+EXEC addProductToOrder 1473, 1, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1473, 3, 'Café de olla'
+EXEC addProductToOrder 1473, 1, 'Boursin cheese'
+EXEC addProductToOrder 1473, 2, 'Béarnaise sauce'
+EXEC addProductToOrder 1473, 2, 'Vegetable chili'
+EXEC addProductToOrder 1474, 1, 'Chili'
+EXEC addProductToOrder 1474, 2, 'Greek salad'
+EXEC addProductToOrder 1474, 2, 'Café zorro'
+EXEC addProductToOrder 1474, 3, 'Chocolate candy bar'
+EXEC addProductToOrder 1474, 3, 'Pasta with broccoli'
+EXEC addProductToOrder 1475, 2, 'Banana pudding'
+EXEC addProductToOrder 1475, 3, 'Biscuit stick'
+EXEC addProductToOrder 1475, 1, 'Brie cheese'
+EXEC addProductToOrder 1475, 1, 'Cranberry'
+EXEC addProductToOrder 1475, 1, 'Espresso'
+EXEC addProductToOrder 1476, 3, 'Pasta with shrimp'
+EXEC addProductToOrder 1476, 1, 'Caper sauce'
+EXEC addProductToOrder 1476, 2, 'Chicken soup'
+EXEC addProductToOrder 1476, 1, 'Banana pudding'
+EXEC addProductToOrder 1476, 2, 'Rice pudding'
+EXEC addProductToOrder 1477, 1, 'Butter pecan ice cream'
+EXEC addProductToOrder 1477, 2, 'Almond'
+EXEC addProductToOrder 1477, 2, 'Macaroni salad'
+EXEC addProductToOrder 1477, 1, 'Vegetable stir fry'
+EXEC addProductToOrder 1477, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1478, 2, 'Cereal sandwich roll'
+EXEC addProductToOrder 1478, 2, 'Cereal roll'
+EXEC addProductToOrder 1478, 3, 'Alfredo sauce'
+EXEC addProductToOrder 1478, 2, 'Garden salad'
+EXEC addProductToOrder 1478, 3, 'Yellow tea'
+EXEC addProductToOrder 1479, 2, 'Chocolate ice cream'
+EXEC addProductToOrder 1479, 2, 'Béarnaise sauce'
+EXEC addProductToOrder 1479, 2, 'Vanilla ice cream'
+EXEC addProductToOrder 1479, 1, 'Fried zucchini'
+EXEC addProductToOrder 1479, 3, 'Pasta with onions'
+EXEC addProductToOrder 1480, 2, 'Beef stew with dumplings'
+EXEC addProductToOrder 1480, 2, 'Coconut pudding'
+EXEC addProductToOrder 1480, 2, 'Café bombón'
+EXEC addProductToOrder 1480, 1, 'Allspice'
+EXEC addProductToOrder 1480, 3, 'Pecan'
+EXEC addProductToOrder 1481, 1, 'Minestrone soup'
+EXEC addProductToOrder 1481, 2, 'Strawberry ice cream'
+EXEC addProductToOrder 1481, 2, 'Pepsi'
+EXEC addProductToOrder 1481, 2, 'Chicken and rice soup'
+EXEC addProductToOrder 1481, 3, 'Chimichurri sauce'
+EXEC addProductToOrder 1482, 1, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1482, 3, 'Chocolate bar'
+EXEC addProductToOrder 1482, 2, 'Black tea'
+EXEC addProductToOrder 1482, 1, 'Pasta with tuna'
+EXEC addProductToOrder 1482, 3, 'Butter'
+EXEC addProductToOrder 1483, 3, 'Sierra Mist'
+EXEC addProductToOrder 1483, 2, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1483, 3, 'Cereal sandwich stick'
+EXEC addProductToOrder 1483, 3, 'Gruyere cheese'
+EXEC addProductToOrder 1483, 3, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1484, 1, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1484, 1, 'Beef stew with potatoes'
+EXEC addProductToOrder 1484, 3, 'Tossed salad'
+EXEC addProductToOrder 1484, 2, 'Vegetable chili'
+EXEC addProductToOrder 1484, 3, 'Yellow tea'
+EXEC addProductToOrder 1485, 1, 'Asiago cheese'
+EXEC addProductToOrder 1485, 1, 'Chimichurri sauce'
+EXEC addProductToOrder 1485, 3, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1485, 2, 'Garden salad'
+EXEC addProductToOrder 1485, 3, 'Hazelnut'
+EXEC addProductToOrder 1486, 3, 'Macadamia'
+EXEC addProductToOrder 1486, 2, 'Fish roll'
+EXEC addProductToOrder 1486, 3, 'Macchiato'
+EXEC addProductToOrder 1486, 1, 'Raspberry juice'
+EXEC addProductToOrder 1486, 3, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1487, 3, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1487, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1487, 3, 'Fried calamari'
+EXEC addProductToOrder 1487, 1, 'Boursin cheese'
+EXEC addProductToOrder 1487, 2, 'Chicken and wild rice soup'
+EXEC addProductToOrder 1488, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1488, 3, 'Pasta with spinach'
+EXEC addProductToOrder 1488, 1, 'Pasta with crab'
+EXEC addProductToOrder 1488, 1, 'Coriander'
+EXEC addProductToOrder 1488, 2, 'Americano'
+EXEC addProductToOrder 1489, 1, 'Cereal sandwich'
+EXEC addProductToOrder 1489, 3, 'Beef casserole'
+EXEC addProductToOrder 1489, 1, 'Apple'
+EXEC addProductToOrder 1489, 3, 'Carrot cake'
+EXEC addProductToOrder 1489, 1, 'Bechamel sauce'
+EXEC addProductToOrder 1490, 1, 'Fried pickles'
+EXEC addProductToOrder 1490, 1, 'Lemon juice'
+EXEC addProductToOrder 1490, 2, 'Fried onion rings'
+EXEC addProductToOrder 1490, 3, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1490, 2, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1491, 3, 'Dr Pepper'
+EXEC addProductToOrder 1491, 1, 'Baked stuffed clams'
+EXEC addProductToOrder 1491, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 1491, 1, 'Chili'
+EXEC addProductToOrder 1491, 1, 'Diet Sprite'
+EXEC addProductToOrder 1492, 1, 'Beef stew with carrots'
+EXEC addProductToOrder 1492, 3, 'Fish'
+EXEC addProductToOrder 1492, 3, 'Chutney sauce'
+EXEC addProductToOrder 1492, 1, 'Macadamia'
+EXEC addProductToOrder 1492, 2, 'Beef stew with cabbage'
+EXEC addProductToOrder 1493, 3, 'Moose tracks ice cream'
+EXEC addProductToOrder 1493, 2, 'Guacamole'
+EXEC addProductToOrder 1493, 2, 'Cereal stick'
+EXEC addProductToOrder 1493, 1, 'Diet Fanta'
+EXEC addProductToOrder 1493, 3, 'Beet salad'
+EXEC addProductToOrder 1494, 1, 'Apple pudding'
+EXEC addProductToOrder 1494, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1494, 3, 'Fish sandwich stick'
+EXEC addProductToOrder 1494, 3, 'Rooibos tea'
+EXEC addProductToOrder 1494, 3, 'Pasta with mussels'
+EXEC addProductToOrder 1495, 3, 'Cobb salad'
+EXEC addProductToOrder 1495, 2, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1495, 2, 'Tomato juice'
+EXEC addProductToOrder 1495, 1, 'Baked oysters'
+EXEC addProductToOrder 1495, 1, 'Apple'
+EXEC addProductToOrder 1496, 1, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1496, 2, 'Baked stuffed peppers'
+EXEC addProductToOrder 1496, 3, 'Artichoke salad'
+EXEC addProductToOrder 1496, 2, 'Mocha'
+EXEC addProductToOrder 1496, 1, 'Café de olla'
+EXEC addProductToOrder 1497, 3, 'Chocolate bar'
+EXEC addProductToOrder 1497, 1, 'Vegetable chili'
+EXEC addProductToOrder 1497, 1, 'White tea'
+EXEC addProductToOrder 1497, 1, 'Tomato juice'
+EXEC addProductToOrder 1497, 1, 'Cookie roll'
+EXEC addProductToOrder 1498, 3, 'Dijon sauce'
+EXEC addProductToOrder 1498, 3, 'Bleu cheese'
+EXEC addProductToOrder 1498, 1, 'Blackberry'
+EXEC addProductToOrder 1498, 1, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1498, 2, 'Pasta with tuna'
+EXEC addProductToOrder 1499, 1, 'Espresso'
+EXEC addProductToOrder 1499, 3, 'Coconut pudding'
+EXEC addProductToOrder 1499, 1, 'Fried onion rings'
+EXEC addProductToOrder 1499, 3, 'Chocolate'
+EXEC addProductToOrder 1499, 3, 'Café marrón'
+EXEC addProductToOrder 1500, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1500, 1, 'Chicken and barley soup'
+EXEC addProductToOrder 1500, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 1500, 3, 'Mocha'
+EXEC addProductToOrder 1500, 2, 'Black forest cake'
+EXEC addProductToOrder 1501, 1, 'Blackberry'
+EXEC addProductToOrder 1501, 2, 'Lentil soup'
+EXEC addProductToOrder 1501, 1, 'Vegetable stir fry'
+EXEC addProductToOrder 1501, 2, 'Peanut'
+EXEC addProductToOrder 1501, 3, 'Tomato salad'
+EXEC addProductToOrder 1502, 3, 'Chocolate candy bar'
+EXEC addProductToOrder 1502, 1, 'Vegetable casserole'
+EXEC addProductToOrder 1502, 1, 'Carrot cake'
+EXEC addProductToOrder 1502, 2, 'Fried okra'
+EXEC addProductToOrder 1502, 1, 'Strawberry ice cream'
+EXEC addProductToOrder 1503, 3, 'Chocolate candy roll'
+EXEC addProductToOrder 1503, 3, 'Brie cheese'
+EXEC addProductToOrder 1503, 1, 'Dijon sauce'
+EXEC addProductToOrder 1503, 1, 'Biscotti'
+EXEC addProductToOrder 1503, 2, 'Asiago cheese'
+EXEC addProductToOrder 1504, 1, 'Muenster cheese'
+EXEC addProductToOrder 1504, 3, 'Fig'
+EXEC addProductToOrder 1504, 2, 'Chicken and corn chowder'
+EXEC addProductToOrder 1504, 1, 'Almond'
+EXEC addProductToOrder 1504, 2, 'Avocado salad'
+EXEC addProductToOrder 1505, 3, 'Bisque sauce'
+EXEC addProductToOrder 1505, 1, 'Cookie sandwich'
+EXEC addProductToOrder 1505, 3, 'Romano cheese'
+EXEC addProductToOrder 1505, 3, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1505, 2, 'Chef salad'
+EXEC addProductToOrder 1507, 2, 'Pasta with zucchini'
+EXEC addProductToOrder 1507, 2, 'Muenster cheese'
+EXEC addProductToOrder 1507, 1, 'Butter roll'
+EXEC addProductToOrder 1507, 2, 'Caprese salad'
+EXEC addProductToOrder 1507, 1, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1508, 3, 'Chimichurri sauce'
+EXEC addProductToOrder 1508, 3, 'Caprese salad'
+EXEC addProductToOrder 1508, 3, 'Dijon sauce'
+EXEC addProductToOrder 1508, 1, 'Curry sauce'
+EXEC addProductToOrder 1508, 3, 'Rocky road ice cream'
+EXEC addProductToOrder 1509, 3, 'Rice pudding'
+EXEC addProductToOrder 1509, 2, 'American cheese'
+EXEC addProductToOrder 1509, 1, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1509, 1, 'Pasta with scallops'
+EXEC addProductToOrder 1509, 2, 'Coconut cake'
+EXEC addProductToOrder 1510, 3, 'Beet salad'
+EXEC addProductToOrder 1510, 2, 'Cookie stick'
+EXEC addProductToOrder 1510, 2, 'Banana'
+EXEC addProductToOrder 1510, 1, 'Cloves'
+EXEC addProductToOrder 1510, 3, 'Cherry'
+EXEC addProductToOrder 1511, 3, 'Beet salad'
+EXEC addProductToOrder 1511, 2, 'Pasta with broccoli'
+EXEC addProductToOrder 1511, 1, 'Pasta with eggplant'
+EXEC addProductToOrder 1511, 2, 'Blueberry juice'
+EXEC addProductToOrder 1511, 3, 'Swiss cheese'
+EXEC addProductToOrder 1512, 2, 'Pasta with zucchini'
+EXEC addProductToOrder 1512, 2, 'Rice pudding'
+EXEC addProductToOrder 1512, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 1512, 3, 'Angel food cake'
+EXEC addProductToOrder 1512, 3, 'Lemon pudding'
+EXEC addProductToOrder 1513, 1, 'Banana pudding'
+EXEC addProductToOrder 1513, 2, 'Cookie stick'
+EXEC addProductToOrder 1513, 2, 'Chocolate candy'
+EXEC addProductToOrder 1513, 3, 'Bun'
+EXEC addProductToOrder 1513, 1, 'Grapefruit juice'
+EXEC addProductToOrder 1514, 2, 'Butter'
+EXEC addProductToOrder 1514, 2, 'Blueberry juice'
+EXEC addProductToOrder 1514, 3, 'Chocolate custard'
+EXEC addProductToOrder 1514, 1, 'Avocado'
+EXEC addProductToOrder 1514, 3, 'Pecan'
+EXEC addProductToOrder 1515, 1, 'Vegetable soup'
+EXEC addProductToOrder 1515, 1, 'Provolone cheese'
+EXEC addProductToOrder 1515, 3, 'Avocado'
+EXEC addProductToOrder 1515, 2, 'Antipasto salad'
+EXEC addProductToOrder 1515, 2, 'Minestrone soup'
+EXEC addProductToOrder 1516, 1, 'Pasta with shrimp'
+EXEC addProductToOrder 1516, 2, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1516, 1, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1516, 3, 'Apple'
+EXEC addProductToOrder 1516, 3, 'Breadstick'
+EXEC addProductToOrder 1517, 3, 'Cereal sandwich'
+EXEC addProductToOrder 1517, 3, 'Blackberry'
+EXEC addProductToOrder 1517, 1, 'Chocolate'
+EXEC addProductToOrder 1517, 1, 'Café del mar'
+EXEC addProductToOrder 1517, 1, 'Chicken and wild rice soup'
+EXEC addProductToOrder 1518, 2, 'Cookie roll'
+EXEC addProductToOrder 1518, 3, 'Grape juice'
+EXEC addProductToOrder 1518, 3, 'Carrot juice'
+EXEC addProductToOrder 1518, 2, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1518, 1, 'Melon'
+EXEC addProductToOrder 1519, 1, 'Pasta with clams'
+EXEC addProductToOrder 1519, 1, 'Carrot cake'
+EXEC addProductToOrder 1519, 3, 'Chocolate pudding'
+EXEC addProductToOrder 1519, 2, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1519, 2, 'Dressing sauce'
+EXEC addProductToOrder 1520, 3, 'Beef stew with carrots'
+EXEC addProductToOrder 1520, 2, 'Cookie'
+EXEC addProductToOrder 1520, 2, 'Vanilla pudding'
+EXEC addProductToOrder 1520, 2, 'Salsa'
+EXEC addProductToOrder 1520, 2, 'Apple juice'
+EXEC addProductToOrder 1521, 3, 'Caramel sauce'
+EXEC addProductToOrder 1521, 1, 'Biscuit'
+EXEC addProductToOrder 1521, 2, 'Pasta with tuna'
+EXEC addProductToOrder 1521, 3, 'Goat cheese'
+EXEC addProductToOrder 1521, 1, 'Cappuccino'
+EXEC addProductToOrder 1522, 2, 'Peach pudding'
+EXEC addProductToOrder 1522, 2, 'Fried potato skins'
+EXEC addProductToOrder 1522, 2, 'Vegetable soup'
+EXEC addProductToOrder 1522, 2, 'Kombucha tea'
+EXEC addProductToOrder 1522, 2, 'Tzatziki'
+EXEC addProductToOrder 1523, 1, 'Banana custard'
+EXEC addProductToOrder 1523, 3, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1523, 1, 'Chicken and dumplings'
+EXEC addProductToOrder 1523, 1, 'Vanilla pudding'
+EXEC addProductToOrder 1523, 2, 'Lemon'
+EXEC addProductToOrder 1524, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 1524, 3, 'Fried okra'
+EXEC addProductToOrder 1524, 2, 'Kombucha tea'
+EXEC addProductToOrder 1524, 3, 'Pepsi'
+EXEC addProductToOrder 1524, 2, 'Tomato soup'
+EXEC addProductToOrder 1525, 3, 'Antipasto salad'
+EXEC addProductToOrder 1525, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1525, 1, 'Café mélange'
+EXEC addProductToOrder 1525, 2, 'Fish sandwich stick'
+EXEC addProductToOrder 1525, 1, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1526, 3, 'Cookie sandwich roll'
+EXEC addProductToOrder 1526, 1, 'Butter'
+EXEC addProductToOrder 1526, 3, 'Café bombón'
+EXEC addProductToOrder 1526, 2, 'Sierra Mist'
+EXEC addProductToOrder 1526, 1, 'Peach pudding'
+EXEC addProductToOrder 1527, 3, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1527, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1527, 3, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1527, 1, 'Deviled eggs'
+EXEC addProductToOrder 1527, 3, 'Biscuit stick'
+EXEC addProductToOrder 1528, 2, 'Goat cheese'
+EXEC addProductToOrder 1528, 2, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1528, 2, 'Mocha'
+EXEC addProductToOrder 1528, 1, 'Fried mushrooms'
+EXEC addProductToOrder 1528, 3, 'Cumin'
+EXEC addProductToOrder 1529, 3, 'Asparagus salad'
+EXEC addProductToOrder 1529, 1, 'Cheesecake'
+EXEC addProductToOrder 1529, 3, 'Fried ravioli'
+EXEC addProductToOrder 1529, 2, 'Brioche'
+EXEC addProductToOrder 1529, 1, 'Boursin cheese'
+EXEC addProductToOrder 1530, 3, 'Chocolate ice cream'
+EXEC addProductToOrder 1530, 3, 'Curry'
+EXEC addProductToOrder 1530, 2, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1530, 3, 'Cookie sandwich stick'
+EXEC addProductToOrder 1530, 3, 'Béarnaise sauce'
+EXEC addProductToOrder 1531, 2, 'Café de olla'
+EXEC addProductToOrder 1531, 2, 'Beef stew with potatoes'
+EXEC addProductToOrder 1531, 3, 'Honeybush tea'
+EXEC addProductToOrder 1531, 3, 'Banana cake'
+EXEC addProductToOrder 1531, 1, 'Diet Pepsi'
+EXEC addProductToOrder 1532, 3, 'Swiss cheese'
+EXEC addProductToOrder 1532, 3, 'White tea'
+EXEC addProductToOrder 1532, 3, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1532, 2, 'Latte'
+EXEC addProductToOrder 1532, 2, 'Garden salad'
+EXEC addProductToOrder 1533, 1, 'Fish roll'
+EXEC addProductToOrder 1533, 3, 'Dr Pepper'
+EXEC addProductToOrder 1533, 3, 'Tzatziki'
+EXEC addProductToOrder 1533, 2, 'Beet salad'
+EXEC addProductToOrder 1533, 2, 'Vegetable soup'
+EXEC addProductToOrder 1534, 1, 'Baked stuffed squash'
+EXEC addProductToOrder 1534, 3, 'Chicken soup'
+EXEC addProductToOrder 1534, 2, 'Blueberry juice'
+EXEC addProductToOrder 1534, 2, 'Chocolate pudding'
+EXEC addProductToOrder 1534, 3, 'Chai tea'
+EXEC addProductToOrder 1535, 1, 'Chocolate candy'
+EXEC addProductToOrder 1535, 1, 'Bread'
+EXEC addProductToOrder 1535, 1, 'Baked oysters'
+EXEC addProductToOrder 1535, 3, 'Biscuit'
+EXEC addProductToOrder 1535, 3, 'Pasta with zucchini'
+EXEC addProductToOrder 1536, 1, 'Tzatziki'
+EXEC addProductToOrder 1536, 3, 'Fish sandwich bun'
+EXEC addProductToOrder 1536, 2, 'Diet Fanta'
+EXEC addProductToOrder 1536, 3, 'Deviled eggs'
+EXEC addProductToOrder 1536, 1, 'Honeybush tea'
+EXEC addProductToOrder 1537, 2, 'Café con leche'
+EXEC addProductToOrder 1537, 3, 'Café de olla'
+EXEC addProductToOrder 1537, 1, 'Macchiato'
+EXEC addProductToOrder 1537, 1, 'Peach custard'
+EXEC addProductToOrder 1537, 1, 'Clam chowder'
+EXEC addProductToOrder 1538, 2, 'Biscuit sandwich'
+EXEC addProductToOrder 1538, 2, 'Chicken and rice soup'
+EXEC addProductToOrder 1538, 1, 'Lemon custard'
+EXEC addProductToOrder 1538, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1538, 3, 'Black tea'
+EXEC addProductToOrder 1539, 1, 'Green tea'
+EXEC addProductToOrder 1539, 1, 'Café crema'
+EXEC addProductToOrder 1539, 3, 'Chicken and rice soup'
+EXEC addProductToOrder 1539, 2, 'Vegetable soup'
+EXEC addProductToOrder 1539, 2, 'Fish sandwich stick'
+EXEC addProductToOrder 1540, 3, 'Caraway'
+EXEC addProductToOrder 1540, 1, 'Chocolate pudding'
+EXEC addProductToOrder 1540, 1, 'Beef stew with onions'
+EXEC addProductToOrder 1540, 1, 'Moose tracks ice cream'
+EXEC addProductToOrder 1540, 3, 'Cashew'
+EXEC addProductToOrder 1541, 2, 'Deviled eggs'
+EXEC addProductToOrder 1541, 3, 'Banana cake'
+EXEC addProductToOrder 1541, 2, 'Cereal roll'
+EXEC addProductToOrder 1541, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1541, 3, 'Cereal sandwich'
+EXEC addProductToOrder 1542, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1542, 1, 'Chicken and wild rice soup'
+EXEC addProductToOrder 1542, 3, 'Honeybush tea'
+EXEC addProductToOrder 1542, 1, 'Guava'
+EXEC addProductToOrder 1542, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1543, 3, 'Blueberry'
+EXEC addProductToOrder 1543, 3, 'Caper sauce'
+EXEC addProductToOrder 1543, 1, 'Diet 7 Up'
+EXEC addProductToOrder 1543, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1543, 3, 'Parmesan cheese'
+EXEC addProductToOrder 1544, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1544, 1, 'Pasta with meatballs'
+EXEC addProductToOrder 1544, 3, 'Boston cream cake'
+EXEC addProductToOrder 1544, 2, 'Romano cheese'
+EXEC addProductToOrder 1544, 3, 'Cheesecake'
+EXEC addProductToOrder 1545, 3, 'Tomato juice'
+EXEC addProductToOrder 1545, 2, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1545, 1, 'Vegetable stew'
+EXEC addProductToOrder 1545, 1, 'Cole slaw'
+EXEC addProductToOrder 1545, 3, 'Calamari fritti (deep-fried squid)'
+EXEC addProductToOrder 1546, 1, 'Apple juice'
+EXEC addProductToOrder 1546, 3, 'Cardamom'
+EXEC addProductToOrder 1546, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1546, 3, 'Cookie roll'
+EXEC addProductToOrder 1546, 3, 'Diet Pepsi'
+EXEC addProductToOrder 1547, 1, 'Strawberry ice cream'
+EXEC addProductToOrder 1547, 3, 'Goat cheese'
+EXEC addProductToOrder 1547, 3, 'Cloves'
+EXEC addProductToOrder 1547, 2, 'Angel food cake'
+EXEC addProductToOrder 1547, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1548, 3, 'Peach custard'
+EXEC addProductToOrder 1548, 2, 'Lime'
+EXEC addProductToOrder 1548, 2, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1548, 1, 'Orange juice'
+EXEC addProductToOrder 1548, 3, 'Pomegranate juice'
+EXEC addProductToOrder 1549, 2, 'Mozzarella cheese'
+EXEC addProductToOrder 1549, 3, 'Beef soup'
+EXEC addProductToOrder 1549, 2, 'Lemon juice'
+EXEC addProductToOrder 1549, 2, 'Chocolate candy roll'
+EXEC addProductToOrder 1549, 2, 'Avocado salad'
+EXEC addProductToOrder 1550, 3, 'Apple custard'
+EXEC addProductToOrder 1550, 3, 'Feta cheese'
+EXEC addProductToOrder 1550, 3, 'Biscotti'
+EXEC addProductToOrder 1550, 2, 'Béarnaise sauce'
+EXEC addProductToOrder 1550, 3, 'Carrot salad'
+EXEC addProductToOrder 1551, 2, 'Cookie sandwich stick'
+EXEC addProductToOrder 1551, 3, 'Cardamom'
+EXEC addProductToOrder 1551, 3, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1551, 3, 'Fish roll'
+EXEC addProductToOrder 1551, 2, 'Beef casserole'
+EXEC addProductToOrder 1552, 1, 'Macchiato'
+EXEC addProductToOrder 1552, 1, 'Kombucha tea'
+EXEC addProductToOrder 1552, 3, 'Carrot cake'
+EXEC addProductToOrder 1552, 2, 'Beef stew with cabbage'
+EXEC addProductToOrder 1552, 2, 'Café mocha'
+EXEC addProductToOrder 1553, 3, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1553, 1, 'Apple juice'
+EXEC addProductToOrder 1553, 3, 'Beet salad'
+EXEC addProductToOrder 1553, 2, 'Pasta with chicken'
+EXEC addProductToOrder 1553, 1, 'Rice pudding'
+EXEC addProductToOrder 1554, 3, 'Muenster cheese'
+EXEC addProductToOrder 1554, 1, 'Chicken and barley soup'
+EXEC addProductToOrder 1554, 3, 'Coconut cake'
+EXEC addProductToOrder 1554, 2, 'Diet 7 Up'
+EXEC addProductToOrder 1554, 3, 'Guacamole'
+EXEC addProductToOrder 1555, 1, 'Bundt cake'
+EXEC addProductToOrder 1555, 3, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1555, 3, 'Sprite'
+EXEC addProductToOrder 1555, 3, 'Baked brie'
+EXEC addProductToOrder 1555, 3, 'Dr Pepper'
+EXEC addProductToOrder 1556, 1, 'Chicken casserole'
+EXEC addProductToOrder 1556, 1, 'Macchiato'
+EXEC addProductToOrder 1556, 3, 'Curry'
+EXEC addProductToOrder 1556, 1, 'Apple juice'
+EXEC addProductToOrder 1556, 2, 'Honeybush tea'
+EXEC addProductToOrder 1557, 2, 'Café Cubano'
+EXEC addProductToOrder 1557, 2, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1557, 1, 'Rooibos tea'
+EXEC addProductToOrder 1557, 3, 'Biscuit roll'
+EXEC addProductToOrder 1557, 2, 'Pasta with tuna'
+EXEC addProductToOrder 1558, 2, 'Dressing sauce'
+EXEC addProductToOrder 1558, 2, 'Guava'
+EXEC addProductToOrder 1558, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1558, 2, 'Muenster cheese'
+EXEC addProductToOrder 1558, 1, 'Carrot juice'
+EXEC addProductToOrder 1559, 1, 'Lemon juice'
+EXEC addProductToOrder 1559, 2, 'Fried zucchini'
+EXEC addProductToOrder 1559, 3, 'Pasta with sausage'
+EXEC addProductToOrder 1559, 1, 'Diet Pepsi'
+EXEC addProductToOrder 1559, 2, 'Asparagus salad'
+EXEC addProductToOrder 1560, 2, 'Pomegranate juice'
+EXEC addProductToOrder 1560, 1, 'Vegetable curry'
+EXEC addProductToOrder 1560, 3, 'Chicken and dumplings'
+EXEC addProductToOrder 1560, 1, 'Beef stew with potatoes'
+EXEC addProductToOrder 1560, 1, 'Vegetable chili'
+EXEC addProductToOrder 1561, 3, 'Pistachio'
+EXEC addProductToOrder 1561, 2, 'Cookie stick'
+EXEC addProductToOrder 1561, 2, 'Vanilla pudding'
+EXEC addProductToOrder 1561, 2, 'Cumin'
+EXEC addProductToOrder 1561, 2, 'Café de olla'
+EXEC addProductToOrder 1562, 2, 'Black forest cake'
+EXEC addProductToOrder 1562, 2, 'Café del mar'
+EXEC addProductToOrder 1562, 2, 'Mate tea'
+EXEC addProductToOrder 1562, 1, 'Chestnut'
+EXEC addProductToOrder 1562, 1, 'Asparagus salad'
+EXEC addProductToOrder 1563, 2, 'Chai tea'
+EXEC addProductToOrder 1563, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1563, 3, 'Americano'
+EXEC addProductToOrder 1563, 3, 'Parmesan cheese'
+EXEC addProductToOrder 1563, 1, 'Café crema'
+EXEC addProductToOrder 1564, 2, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1564, 3, 'Beef stew with potatoes'
+EXEC addProductToOrder 1564, 2, 'Caramel sauce'
+EXEC addProductToOrder 1564, 3, 'Lemon'
+EXEC addProductToOrder 1564, 3, 'Butter roll'
+EXEC addProductToOrder 1565, 1, 'Peach custard'
+EXEC addProductToOrder 1565, 2, 'Grapefruit juice'
+EXEC addProductToOrder 1565, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1565, 1, 'Chicken and rice soup'
+EXEC addProductToOrder 1565, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1566, 1, 'Cereal sandwich roll'
+EXEC addProductToOrder 1566, 1, 'Lime'
+EXEC addProductToOrder 1566, 1, 'Lime juice'
+EXEC addProductToOrder 1566, 2, 'Fried calamari'
+EXEC addProductToOrder 1566, 2, 'Cheddar cheese'
+EXEC addProductToOrder 1567, 2, 'Oolong tea'
+EXEC addProductToOrder 1567, 1, 'Vegetable casserole'
+EXEC addProductToOrder 1567, 1, 'Chimichurri sauce'
+EXEC addProductToOrder 1567, 1, 'Cocktail sauce'
+EXEC addProductToOrder 1567, 1, 'Chocolate candy stick'
+EXEC addProductToOrder 1568, 2, 'Dr Pepper'
+EXEC addProductToOrder 1568, 1, 'Gruyere cheese'
+EXEC addProductToOrder 1568, 1, 'Fried mushrooms'
+EXEC addProductToOrder 1568, 1, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1568, 1, 'Allspice'
+EXEC addProductToOrder 1569, 3, 'Beef stew with cabbage'
+EXEC addProductToOrder 1569, 2, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1569, 2, 'Orange juice'
+EXEC addProductToOrder 1569, 3, 'Mango'
+EXEC addProductToOrder 1569, 1, 'Caraway'
+EXEC addProductToOrder 1570, 2, 'Chocolate pudding'
+EXEC addProductToOrder 1570, 3, 'Beet salad'
+EXEC addProductToOrder 1570, 1, 'Breadstick'
+EXEC addProductToOrder 1570, 2, 'Tzatziki'
+EXEC addProductToOrder 1570, 1, 'Caraway'
+EXEC addProductToOrder 1571, 3, 'Sprite'
+EXEC addProductToOrder 1571, 2, 'Chocolate'
+EXEC addProductToOrder 1571, 2, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1571, 3, 'Breadstick'
+EXEC addProductToOrder 1571, 1, 'Pistachio'
+EXEC addProductToOrder 1572, 1, 'Baked oysters'
+EXEC addProductToOrder 1572, 3, 'Baked crab dip'
+EXEC addProductToOrder 1572, 2, 'Spinach salad'
+EXEC addProductToOrder 1572, 2, 'Grape juice'
+EXEC addProductToOrder 1572, 1, 'Tomato soup'
+EXEC addProductToOrder 1573, 1, 'Guava'
+EXEC addProductToOrder 1573, 3, 'Tomato juice'
+EXEC addProductToOrder 1573, 1, 'Tossed salad'
+EXEC addProductToOrder 1573, 1, 'Diet Sprite'
+EXEC addProductToOrder 1573, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 1574, 1, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1574, 1, 'Fried onion rings'
+EXEC addProductToOrder 1574, 3, 'Beef stew with cabbage'
+EXEC addProductToOrder 1574, 1, 'Diet Fanta'
+EXEC addProductToOrder 1574, 1, 'Cereal sandwich stick'
+EXEC addProductToOrder 1575, 2, 'Béarnaise sauce'
+EXEC addProductToOrder 1575, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1575, 1, 'Beef soup'
+EXEC addProductToOrder 1575, 3, 'Black tea'
+EXEC addProductToOrder 1575, 1, 'Coconut'
+EXEC addProductToOrder 1576, 3, 'Chicken and dumplings'
+EXEC addProductToOrder 1576, 2, 'Herbal tea'
+EXEC addProductToOrder 1576, 3, 'Yellow tea'
+EXEC addProductToOrder 1576, 3, 'Pasta with salmon'
+EXEC addProductToOrder 1576, 2, 'Pomegranate juice'
+EXEC addProductToOrder 1577, 1, 'Curry'
+EXEC addProductToOrder 1577, 1, 'Tzatziki'
+EXEC addProductToOrder 1577, 2, 'Cayenne'
+EXEC addProductToOrder 1577, 3, 'Pasta with tomatoes'
+EXEC addProductToOrder 1577, 2, 'Biscotti'
+EXEC addProductToOrder 1578, 2, 'Caramel sauce'
+EXEC addProductToOrder 1578, 3, 'Macchiato'
+EXEC addProductToOrder 1578, 3, 'Bechamel sauce'
+EXEC addProductToOrder 1578, 2, 'Pasta with onions'
+EXEC addProductToOrder 1578, 2, 'Yellow tea'
+EXEC addProductToOrder 1579, 3, 'Moose tracks ice cream'
+EXEC addProductToOrder 1579, 3, 'Baked stuffed mushrooms'
+EXEC addProductToOrder 1579, 2, 'Blueberry juice'
+EXEC addProductToOrder 1579, 3, 'Pumpkin pudding'
+EXEC addProductToOrder 1579, 3, 'Pasta with scallops'
+EXEC addProductToOrder 1580, 2, 'Dr Pepper'
+EXEC addProductToOrder 1580, 3, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1580, 3, 'Fried zucchini'
+EXEC addProductToOrder 1580, 2, 'Macchiato'
+EXEC addProductToOrder 1580, 3, 'Macadamia'
+EXEC addProductToOrder 1581, 3, 'Baked stuffed clams'
+EXEC addProductToOrder 1581, 1, 'Gouda cheese'
+EXEC addProductToOrder 1581, 3, 'Chocolate candy bar'
+EXEC addProductToOrder 1581, 3, 'Caraway'
+EXEC addProductToOrder 1581, 1, 'Apple pudding'
+EXEC addProductToOrder 1582, 3, 'Black forest cake'
+EXEC addProductToOrder 1582, 2, 'Caesar salad'
+EXEC addProductToOrder 1582, 2, 'Cereal roll'
+EXEC addProductToOrder 1582, 3, 'Alfredo sauce'
+EXEC addProductToOrder 1582, 1, 'Vegetable curry'
+EXEC addProductToOrder 1583, 2, 'Cobb salad'
+EXEC addProductToOrder 1583, 2, 'Hummus'
+EXEC addProductToOrder 1583, 1, 'French onion soup'
+EXEC addProductToOrder 1583, 1, 'Biscuit stick'
+EXEC addProductToOrder 1583, 2, 'Raspberry juice'
+EXEC addProductToOrder 1584, 1, 'Caprese salad'
+EXEC addProductToOrder 1584, 1, 'Chicken soup'
+EXEC addProductToOrder 1584, 2, 'Pasta with scallops'
+EXEC addProductToOrder 1584, 1, 'Cardamom'
+EXEC addProductToOrder 1584, 2, 'Chicken and barley soup'
+EXEC addProductToOrder 1585, 1, 'Pasta with spinach'
+EXEC addProductToOrder 1585, 3, 'Cheesecake'
+EXEC addProductToOrder 1585, 1, 'Vegetable stir fry'
+EXEC addProductToOrder 1585, 1, 'Pu-erh tea'
+EXEC addProductToOrder 1585, 3, 'Herbal tea'
+EXEC addProductToOrder 1586, 3, 'Boursin cheese'
+EXEC addProductToOrder 1586, 1, 'Biscuit'
+EXEC addProductToOrder 1586, 1, 'Banana cake'
+EXEC addProductToOrder 1586, 2, 'Rooibos tea'
+EXEC addProductToOrder 1586, 3, 'Peach custard'
+EXEC addProductToOrder 1587, 3, 'Affogato'
+EXEC addProductToOrder 1587, 3, 'Beef stew with carrots'
+EXEC addProductToOrder 1587, 2, 'Vegetable soup'
+EXEC addProductToOrder 1587, 1, 'Americano'
+EXEC addProductToOrder 1587, 1, 'Tomato soup'
+EXEC addProductToOrder 1588, 1, 'Guacamole'
+EXEC addProductToOrder 1588, 1, 'Macadamia'
+EXEC addProductToOrder 1588, 1, 'Broccoli salad'
+EXEC addProductToOrder 1588, 3, 'Pomegranate juice'
+EXEC addProductToOrder 1588, 1, 'Café zorro'
+EXEC addProductToOrder 1589, 3, 'Pistachio ice cream'
+EXEC addProductToOrder 1589, 3, 'Coriander'
+EXEC addProductToOrder 1589, 3, 'Rice pudding'
+EXEC addProductToOrder 1589, 3, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1589, 3, 'Diet Dr Pepper'
+EXEC addProductToOrder 1590, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1590, 1, 'Asiago cheese'
+EXEC addProductToOrder 1590, 3, 'Lemon custard'
+EXEC addProductToOrder 1590, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1590, 3, 'Cobb salad'
+EXEC addProductToOrder 1591, 1, 'Chocolate candy'
+EXEC addProductToOrder 1591, 2, 'Goat cheese'
+EXEC addProductToOrder 1591, 2, 'Baked oysters'
+EXEC addProductToOrder 1591, 2, 'Coconut pudding'
+EXEC addProductToOrder 1591, 2, 'Beef stew with carrots'
+EXEC addProductToOrder 1592, 1, 'Tzatziki'
+EXEC addProductToOrder 1592, 3, 'Mozzarella cheese'
+EXEC addProductToOrder 1592, 2, 'Cumin'
+EXEC addProductToOrder 1592, 3, 'Pumpkin pudding'
+EXEC addProductToOrder 1592, 1, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1593, 3, 'Diet Coke'
+EXEC addProductToOrder 1593, 2, 'Basil'
+EXEC addProductToOrder 1593, 3, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1593, 2, 'Coconut custard'
+EXEC addProductToOrder 1593, 3, 'Blueberry'
+EXEC addProductToOrder 1594, 3, 'Vanilla ice cream'
+EXEC addProductToOrder 1594, 2, 'Curry'
+EXEC addProductToOrder 1594, 2, 'Butter'
+EXEC addProductToOrder 1594, 3, 'Corn chowder'
+EXEC addProductToOrder 1594, 1, 'Hazelnut'
+EXEC addProductToOrder 1595, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1595, 2, 'Vegetable lasagna'
+EXEC addProductToOrder 1595, 1, 'Gruyere cheese'
+EXEC addProductToOrder 1595, 2, 'Melon'
+EXEC addProductToOrder 1595, 1, 'Raspberry juice'
+EXEC addProductToOrder 1596, 2, 'Coffee cake'
+EXEC addProductToOrder 1596, 1, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1596, 3, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1596, 3, 'Lemon custard'
+EXEC addProductToOrder 1596, 3, 'Rocky road ice cream'
+EXEC addProductToOrder 1597, 1, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1597, 1, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1597, 3, 'Beef stew with potatoes'
+EXEC addProductToOrder 1597, 2, 'Fish stick'
+EXEC addProductToOrder 1597, 3, 'Dijon sauce'
+EXEC addProductToOrder 1598, 2, 'Hummus'
+EXEC addProductToOrder 1598, 2, 'Green tea'
+EXEC addProductToOrder 1598, 1, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1598, 1, 'Cinnamon'
+EXEC addProductToOrder 1598, 3, 'Grapefruit juice'
+EXEC addProductToOrder 1599, 1, 'Garden salad'
+EXEC addProductToOrder 1599, 3, 'Cherry'
+EXEC addProductToOrder 1599, 3, 'Dressing sauce'
+EXEC addProductToOrder 1599, 2, 'Fish sandwich bun'
+EXEC addProductToOrder 1599, 1, 'Cookie stick'
+EXEC addProductToOrder 1600, 1, 'Grape'
+EXEC addProductToOrder 1600, 3, 'Bleu cheese'
+EXEC addProductToOrder 1600, 1, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1600, 1, 'Coconut custard'
+EXEC addProductToOrder 1600, 2, 'Cookie sandwich'
+EXEC addProductToOrder 1601, 3, 'Chili'
+EXEC addProductToOrder 1601, 2, 'Chocolate candy roll'
+EXEC addProductToOrder 1601, 2, 'Vanilla pudding'
+EXEC addProductToOrder 1601, 1, 'Cinnamon'
+EXEC addProductToOrder 1601, 2, 'Fish roll'
+EXEC addProductToOrder 1603, 2, 'Brie cheese'
+EXEC addProductToOrder 1603, 2, 'Fish stick'
+EXEC addProductToOrder 1603, 3, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1603, 1, 'Café marrón'
+EXEC addProductToOrder 1603, 2, 'Lemon'
+EXEC addProductToOrder 1604, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1604, 2, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1604, 3, 'Caprese salad'
+EXEC addProductToOrder 1604, 3, 'Fried pickles'
+EXEC addProductToOrder 1604, 3, 'Apple custard'
+EXEC addProductToOrder 1605, 2, 'Coconut custard'
+EXEC addProductToOrder 1605, 3, 'Chicken soup'
+EXEC addProductToOrder 1605, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1605, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1605, 1, 'Fried onion rings'
+EXEC addProductToOrder 1606, 3, 'Hummus'
+EXEC addProductToOrder 1606, 3, 'Pasta with onions'
+EXEC addProductToOrder 1606, 2, 'Breadstick'
+EXEC addProductToOrder 1606, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1606, 1, 'Boston cream cake'
+EXEC addProductToOrder 1607, 3, 'Rice pudding'
+EXEC addProductToOrder 1607, 1, 'Caprese salad'
+EXEC addProductToOrder 1607, 3, 'Pasta with lobster'
+EXEC addProductToOrder 1607, 1, 'Butter roll'
+EXEC addProductToOrder 1607, 2, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1608, 2, 'Banana custard'
+EXEC addProductToOrder 1608, 1, 'Fried ravioli'
+EXEC addProductToOrder 1608, 1, 'Breadstick'
+EXEC addProductToOrder 1608, 3, 'Pasta with lobster'
+EXEC addProductToOrder 1608, 3, 'Pasta with crab'
+EXEC addProductToOrder 1609, 3, 'Pasta with onions'
+EXEC addProductToOrder 1609, 2, 'Tomato soup'
+EXEC addProductToOrder 1609, 1, 'Lemon'
+EXEC addProductToOrder 1609, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1609, 2, 'Macchiato'
+EXEC addProductToOrder 1610, 2, 'Mountain Dew'
+EXEC addProductToOrder 1610, 1, 'French onion soup'
+EXEC addProductToOrder 1610, 3, 'Kiwi'
+EXEC addProductToOrder 1610, 3, 'Café au lait'
+EXEC addProductToOrder 1610, 3, 'Fish sandwich stick'
+EXEC addProductToOrder 1611, 1, 'Mango'
+EXEC addProductToOrder 1611, 2, 'Chocolate bar'
+EXEC addProductToOrder 1611, 1, 'Mocha'
+EXEC addProductToOrder 1611, 3, 'Banana custard'
+EXEC addProductToOrder 1611, 3, 'Cereal'
+EXEC addProductToOrder 1612, 2, 'Lemon juice'
+EXEC addProductToOrder 1612, 3, 'Pasta with eggplant'
+EXEC addProductToOrder 1612, 3, 'Chocolate custard'
+EXEC addProductToOrder 1612, 1, 'Coffee cake'
+EXEC addProductToOrder 1612, 3, 'Bleu cheese'
+EXEC addProductToOrder 1613, 3, 'Pasta with broccoli'
+EXEC addProductToOrder 1613, 3, 'Fruit salad'
+EXEC addProductToOrder 1613, 1, 'Cranberry juice'
+EXEC addProductToOrder 1613, 3, 'Dijon sauce'
+EXEC addProductToOrder 1613, 3, 'Café mélange'
+EXEC addProductToOrder 1614, 3, 'Café marrón'
+EXEC addProductToOrder 1614, 3, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1614, 3, 'Mountain Dew'
+EXEC addProductToOrder 1614, 2, 'Café gourmand'
+EXEC addProductToOrder 1614, 2, 'Chocolate candy stick'
+EXEC addProductToOrder 1615, 3, 'Coconut pudding'
+EXEC addProductToOrder 1615, 2, 'Chocolate bar'
+EXEC addProductToOrder 1615, 1, 'Curry'
+EXEC addProductToOrder 1615, 1, 'Gouda cheese'
+EXEC addProductToOrder 1615, 3, 'Tossed salad'
+EXEC addProductToOrder 1616, 2, 'Beef stew with dumplings'
+EXEC addProductToOrder 1616, 3, 'Café de pico'
+EXEC addProductToOrder 1616, 2, 'Mint chocolate chip ice cream'
+EXEC addProductToOrder 1616, 2, 'White tea'
+EXEC addProductToOrder 1616, 2, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1617, 1, 'Café mocha'
+EXEC addProductToOrder 1617, 2, 'Beef soup'
+EXEC addProductToOrder 1617, 3, 'Salsa'
+EXEC addProductToOrder 1617, 1, 'Cranberry juice'
+EXEC addProductToOrder 1617, 3, 'Cereal sandwich roll'
+EXEC addProductToOrder 1618, 1, 'Chocolate candy'
+EXEC addProductToOrder 1618, 1, 'Pasta with chicken'
+EXEC addProductToOrder 1618, 3, 'Pasta with tomatoes'
+EXEC addProductToOrder 1618, 2, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1618, 2, 'Chocolate custard'
+EXEC addProductToOrder 1619, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 1619, 3, 'Brown sauce'
+EXEC addProductToOrder 1619, 3, 'Fanta'
+EXEC addProductToOrder 1619, 1, 'Banana cake'
+EXEC addProductToOrder 1619, 2, 'Gruyere cheese'
+EXEC addProductToOrder 1620, 3, 'Cookie'
+EXEC addProductToOrder 1620, 2, 'Fried calamari'
+EXEC addProductToOrder 1620, 3, 'Chili'
+EXEC addProductToOrder 1620, 3, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1620, 3, 'Café au lait'
+EXEC addProductToOrder 1621, 3, 'Kiwi'
+EXEC addProductToOrder 1621, 3, 'Macadamia'
+EXEC addProductToOrder 1621, 1, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1621, 1, 'Parmesan cheese'
+EXEC addProductToOrder 1621, 1, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1622, 2, 'Béarnaise sauce'
+EXEC addProductToOrder 1622, 1, 'Black tea'
+EXEC addProductToOrder 1622, 1, 'Dr Pepper'
+EXEC addProductToOrder 1622, 2, 'Celery seed'
+EXEC addProductToOrder 1622, 3, 'Vegetable lasagna'
+EXEC addProductToOrder 1623, 3, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1623, 2, 'Lentil soup'
+EXEC addProductToOrder 1623, 3, 'Pasta with shrimp'
+EXEC addProductToOrder 1623, 3, 'Macaroni salad'
+EXEC addProductToOrder 1623, 3, 'Cobb salad'
+EXEC addProductToOrder 1624, 1, 'Peach pudding'
+EXEC addProductToOrder 1624, 2, 'Coconut custard'
+EXEC addProductToOrder 1624, 2, 'Biscotti'
+EXEC addProductToOrder 1624, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1624, 1, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1625, 2, 'Minestrone soup'
+EXEC addProductToOrder 1625, 2, 'Pistachio'
+EXEC addProductToOrder 1625, 1, 'Deviled eggs'
+EXEC addProductToOrder 1625, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1625, 1, 'Vegetable soup'
+EXEC addProductToOrder 1626, 1, 'Café Cubano'
+EXEC addProductToOrder 1626, 3, 'Café bombón'
+EXEC addProductToOrder 1626, 1, 'Swiss cheese'
+EXEC addProductToOrder 1626, 3, 'Pasta with mushrooms'
+EXEC addProductToOrder 1626, 2, 'Cookie stick'
+EXEC addProductToOrder 1627, 2, 'Baked clams'
+EXEC addProductToOrder 1627, 3, 'Spinach salad'
+EXEC addProductToOrder 1627, 3, 'Cereal sandwich stick'
+EXEC addProductToOrder 1627, 1, 'Latte'
+EXEC addProductToOrder 1627, 1, 'Coke Zero'
+EXEC addProductToOrder 1628, 2, 'Pasta with cauliflower'
+EXEC addProductToOrder 1628, 3, 'Blueberry'
+EXEC addProductToOrder 1628, 2, 'Rice pudding'
+EXEC addProductToOrder 1628, 3, 'Espresso'
+EXEC addProductToOrder 1628, 2, 'Minestrone soup'
+EXEC addProductToOrder 1629, 2, 'Café crema'
+EXEC addProductToOrder 1629, 2, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1629, 3, 'Fried calamari'
+EXEC addProductToOrder 1629, 2, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1629, 3, 'Walnut'
+EXEC addProductToOrder 1630, 2, 'Boursin cheese'
+EXEC addProductToOrder 1630, 3, 'Cereal sandwich stick'
+EXEC addProductToOrder 1630, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1630, 2, 'Pasta with lobster'
+EXEC addProductToOrder 1630, 3, 'Fried onion rings'
+EXEC addProductToOrder 1631, 1, 'Diet Mountain Dew'
+EXEC addProductToOrder 1631, 2, 'Vegetable soup'
+EXEC addProductToOrder 1631, 2, 'Vegetable chili'
+EXEC addProductToOrder 1631, 2, 'Café au lait'
+EXEC addProductToOrder 1631, 1, 'Coffee cake'
+EXEC addProductToOrder 1632, 3, 'Tomato salad'
+EXEC addProductToOrder 1632, 3, 'Chocolate bar'
+EXEC addProductToOrder 1632, 2, 'Cherry'
+EXEC addProductToOrder 1632, 2, 'Cloves'
+EXEC addProductToOrder 1632, 3, 'Cereal sandwich'
+EXEC addProductToOrder 1633, 1, 'Baguette'
+EXEC addProductToOrder 1633, 3, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1633, 3, 'Chicken and corn chowder'
+EXEC addProductToOrder 1633, 1, 'Grape'
+EXEC addProductToOrder 1633, 1, 'Diet Dr Pepper'
+EXEC addProductToOrder 1634, 2, 'Burrata cheese'
+EXEC addProductToOrder 1634, 3, 'Celery seed'
+EXEC addProductToOrder 1634, 3, 'Dijon sauce'
+EXEC addProductToOrder 1634, 2, 'Biscotti'
+EXEC addProductToOrder 1634, 3, 'White tea'
+EXEC addProductToOrder 1635, 2, 'Coconut'
+EXEC addProductToOrder 1635, 1, 'Pasta with onions'
+EXEC addProductToOrder 1635, 1, 'Anise'
+EXEC addProductToOrder 1635, 3, 'Mozzarella cheese'
+EXEC addProductToOrder 1635, 1, 'Bleu cheese'
+EXEC addProductToOrder 1636, 2, 'Café crema'
+EXEC addProductToOrder 1636, 3, 'Diet Sierra Mist'
+EXEC addProductToOrder 1636, 1, 'Cookie sandwich stick'
+EXEC addProductToOrder 1636, 3, 'Cereal sandwich stick'
+EXEC addProductToOrder 1636, 3, 'Mountain Dew'
+EXEC addProductToOrder 1637, 1, 'Coca-Cola'
+EXEC addProductToOrder 1637, 3, 'Macchiato'
+EXEC addProductToOrder 1637, 1, 'Café de pico'
+EXEC addProductToOrder 1637, 1, 'Apricot'
+EXEC addProductToOrder 1637, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1638, 2, 'Blueberry juice'
+EXEC addProductToOrder 1638, 1, 'Moose tracks ice cream'
+EXEC addProductToOrder 1638, 1, 'Garden salad'
+EXEC addProductToOrder 1638, 1, 'Lentil soup'
+EXEC addProductToOrder 1638, 2, 'Kombucha tea'
+EXEC addProductToOrder 1639, 3, 'Coconut cake'
+EXEC addProductToOrder 1639, 1, 'Biscuit sandwich'
+EXEC addProductToOrder 1639, 2, 'Anise'
+EXEC addProductToOrder 1639, 3, 'Cocktail sauce'
+EXEC addProductToOrder 1639, 2, 'Chocolate candy bar'
+EXEC addProductToOrder 1640, 2, 'Diet Sierra Mist'
+EXEC addProductToOrder 1640, 3, 'Anise'
+EXEC addProductToOrder 1640, 2, 'Chocolate candy roll'
+EXEC addProductToOrder 1640, 1, 'Moose tracks ice cream'
+EXEC addProductToOrder 1640, 3, 'Green tea'
+EXEC addProductToOrder 1641, 2, 'Vegetable stew'
+EXEC addProductToOrder 1641, 2, 'Blueberry'
+EXEC addProductToOrder 1641, 2, 'Chocolate'
+EXEC addProductToOrder 1641, 3, 'Chocolate cake'
+EXEC addProductToOrder 1641, 3, 'Fish sandwich'
+EXEC addProductToOrder 1642, 2, 'Black tea'
+EXEC addProductToOrder 1642, 3, 'Fish sandwich stick'
+EXEC addProductToOrder 1642, 1, 'Fruit salad'
+EXEC addProductToOrder 1642, 2, 'Matcha tea'
+EXEC addProductToOrder 1642, 2, 'Chicken soup'
+EXEC addProductToOrder 1643, 2, 'Pumpkin pudding'
+EXEC addProductToOrder 1643, 3, 'Matcha tea'
+EXEC addProductToOrder 1643, 2, 'Latte'
+EXEC addProductToOrder 1643, 2, 'Café Cubano'
+EXEC addProductToOrder 1643, 1, 'Cheddar cheese'
+EXEC addProductToOrder 1644, 1, 'Espresso'
+EXEC addProductToOrder 1644, 2, 'Vegetable casserole'
+EXEC addProductToOrder 1644, 3, 'Potato soup'
+EXEC addProductToOrder 1644, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1644, 1, 'Chef salad'
+EXEC addProductToOrder 1645, 3, 'Chutney sauce'
+EXEC addProductToOrder 1645, 2, 'Lemon'
+EXEC addProductToOrder 1645, 2, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1645, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1645, 2, 'Bay leaf'
+EXEC addProductToOrder 1646, 3, 'Fried green tomatoes'
+EXEC addProductToOrder 1646, 3, 'Cardamom'
+EXEC addProductToOrder 1646, 3, 'Breadstick'
+EXEC addProductToOrder 1646, 2, 'Café au lait'
+EXEC addProductToOrder 1646, 3, 'Split pea soup'
+EXEC addProductToOrder 1647, 3, 'Cole slaw'
+EXEC addProductToOrder 1647, 1, 'Breadstick'
+EXEC addProductToOrder 1647, 2, 'Spinach salad'
+EXEC addProductToOrder 1647, 1, 'Dijon sauce'
+EXEC addProductToOrder 1647, 3, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1648, 3, 'Pasta with cauliflower'
+EXEC addProductToOrder 1648, 3, 'Lemon'
+EXEC addProductToOrder 1648, 2, 'Fanta'
+EXEC addProductToOrder 1648, 2, 'Spinach salad'
+EXEC addProductToOrder 1648, 2, 'Goat cheese'
+EXEC addProductToOrder 1649, 3, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1649, 3, 'Baked stuffed clams'
+EXEC addProductToOrder 1649, 2, 'Asparagus salad'
+EXEC addProductToOrder 1649, 1, 'Cinnamon'
+EXEC addProductToOrder 1649, 1, 'Cumin'
+EXEC addProductToOrder 1650, 2, 'Tzatziki'
+EXEC addProductToOrder 1650, 1, 'Bleu cheese'
+EXEC addProductToOrder 1650, 3, 'Pasta with zucchini'
+EXEC addProductToOrder 1650, 1, 'Butter roll'
+EXEC addProductToOrder 1650, 2, 'Cookie'
+EXEC addProductToOrder 1651, 2, 'Swiss cheese'
+EXEC addProductToOrder 1651, 1, 'Banana custard'
+EXEC addProductToOrder 1651, 2, 'Artichoke salad'
+EXEC addProductToOrder 1651, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1651, 3, 'Pistachio ice cream'
+EXEC addProductToOrder 1652, 2, 'Apple pudding'
+EXEC addProductToOrder 1652, 1, 'Banana cake'
+EXEC addProductToOrder 1652, 1, 'Swiss cheese'
+EXEC addProductToOrder 1652, 2, 'Curry sauce'
+EXEC addProductToOrder 1652, 2, 'Minestrone soup'
+EXEC addProductToOrder 1653, 1, 'Carrot juice'
+EXEC addProductToOrder 1653, 1, 'Cereal sandwich stick'
+EXEC addProductToOrder 1653, 3, 'Biscuit roll'
+EXEC addProductToOrder 1653, 2, 'Fish roll'
+EXEC addProductToOrder 1653, 3, 'Caprese salad'
+EXEC addProductToOrder 1654, 3, 'Blackberry'
+EXEC addProductToOrder 1654, 1, 'Vegetable stew'
+EXEC addProductToOrder 1654, 3, 'Diet Fanta'
+EXEC addProductToOrder 1654, 1, 'Biscuit stick'
+EXEC addProductToOrder 1654, 2, 'Brown sauce'
+EXEC addProductToOrder 1655, 3, 'Pasta with tuna'
+EXEC addProductToOrder 1655, 2, 'Fish sandwich'
+EXEC addProductToOrder 1655, 3, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1655, 3, 'Strawberry juice'
+EXEC addProductToOrder 1655, 2, 'Coconut custard'
+EXEC addProductToOrder 1656, 3, 'Pasta with mushrooms'
+EXEC addProductToOrder 1656, 2, 'Pepper jack cheese'
+EXEC addProductToOrder 1656, 2, 'Kombucha tea'
+EXEC addProductToOrder 1656, 3, 'Peach custard'
+EXEC addProductToOrder 1656, 2, 'Tossed salad'
+EXEC addProductToOrder 1657, 1, 'Chili'
+EXEC addProductToOrder 1657, 3, 'Cheddar cheese'
+EXEC addProductToOrder 1657, 3, 'Biscuit stick'
+EXEC addProductToOrder 1657, 3, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1657, 2, 'Café Cubano'
+EXEC addProductToOrder 1658, 1, '7 Up'
+EXEC addProductToOrder 1658, 3, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1658, 3, 'Fried okra'
+EXEC addProductToOrder 1658, 2, 'Banana'
+EXEC addProductToOrder 1658, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 1659, 3, 'Pasta with crab'
+EXEC addProductToOrder 1659, 3, 'Pasta with sausage'
+EXEC addProductToOrder 1659, 3, 'Split pea soup'
+EXEC addProductToOrder 1659, 2, 'Pistachio'
+EXEC addProductToOrder 1659, 1, 'Brown sauce'
+EXEC addProductToOrder 1660, 2, 'Tomato salad'
+EXEC addProductToOrder 1660, 2, 'Coconut custard'
+EXEC addProductToOrder 1660, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 1660, 2, 'Pasta with clams'
+EXEC addProductToOrder 1660, 2, 'Lobster tail with drawn butter'
+EXEC addProductToOrder 1661, 1, 'Fish sandwich bun'
+EXEC addProductToOrder 1661, 2, 'Cayenne'
+EXEC addProductToOrder 1661, 3, 'Baked stuffed peppers'
+EXEC addProductToOrder 1661, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1661, 2, 'Cookie roll'
+EXEC addProductToOrder 1662, 2, 'Banana custard'
+EXEC addProductToOrder 1662, 3, 'Lentil soup'
+EXEC addProductToOrder 1662, 2, 'Pasta with chicken'
+EXEC addProductToOrder 1662, 3, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1662, 3, 'Pasta with tomatoes'
+EXEC addProductToOrder 1663, 1, 'Café mocha'
+EXEC addProductToOrder 1663, 1, 'Caprese salad'
+EXEC addProductToOrder 1663, 3, 'Brioche'
+EXEC addProductToOrder 1663, 1, 'Chocolate candy bar'
+EXEC addProductToOrder 1663, 2, 'Apple'
+EXEC addProductToOrder 1664, 3, 'Béarnaise sauce'
+EXEC addProductToOrder 1664, 2, 'Diet Fanta'
+EXEC addProductToOrder 1664, 1, 'Swiss cheese'
+EXEC addProductToOrder 1664, 3, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1664, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1665, 2, 'Beef stew with cabbage'
+EXEC addProductToOrder 1665, 2, 'Cucumber salad'
+EXEC addProductToOrder 1665, 3, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1665, 1, 'Provolone cheese'
+EXEC addProductToOrder 1665, 1, 'Fish stick'
+EXEC addProductToOrder 1666, 1, 'Pasta with mushrooms'
+EXEC addProductToOrder 1666, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1666, 3, 'Rice pudding'
+EXEC addProductToOrder 1666, 2, 'Avocado'
+EXEC addProductToOrder 1666, 2, 'Kiwi'
+EXEC addProductToOrder 1667, 1, 'Grape juice'
+EXEC addProductToOrder 1667, 1, 'Espresso'
+EXEC addProductToOrder 1667, 3, 'Pistachio ice cream'
+EXEC addProductToOrder 1667, 1, 'Boston cream cake'
+EXEC addProductToOrder 1667, 1, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1668, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1668, 2, 'Dr Pepper'
+EXEC addProductToOrder 1668, 1, 'Pasta with sausage'
+EXEC addProductToOrder 1668, 3, 'Pasta with onions'
+EXEC addProductToOrder 1668, 1, 'Fig'
+EXEC addProductToOrder 1669, 2, 'Vegetable stir fry'
+EXEC addProductToOrder 1669, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1669, 1, 'Pasta with meatballs'
+EXEC addProductToOrder 1669, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 1669, 3, 'Salsa'
+EXEC addProductToOrder 1670, 1, 'Brioche'
+EXEC addProductToOrder 1670, 3, 'Coca-Cola'
+EXEC addProductToOrder 1670, 2, 'Hummus'
+EXEC addProductToOrder 1670, 1, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1670, 3, 'Herbal tea'
+EXEC addProductToOrder 1671, 2, 'Vegetable soup'
+EXEC addProductToOrder 1671, 1, 'Artichoke salad'
+EXEC addProductToOrder 1671, 3, 'Tossed salad'
+EXEC addProductToOrder 1671, 3, 'Chocolate ice cream'
+EXEC addProductToOrder 1671, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1672, 2, 'American cheese'
+EXEC addProductToOrder 1672, 1, 'Diet Pepsi'
+EXEC addProductToOrder 1672, 1, 'Caramel sauce'
+EXEC addProductToOrder 1672, 3, 'Feta cheese'
+EXEC addProductToOrder 1672, 2, 'Coconut custard'
+EXEC addProductToOrder 1673, 3, 'Cookie sandwich roll'
+EXEC addProductToOrder 1673, 2, 'Macaroni salad'
+EXEC addProductToOrder 1673, 1, 'Peanut'
+EXEC addProductToOrder 1673, 2, 'Biscuit stick'
+EXEC addProductToOrder 1673, 1, 'Dip'
+EXEC addProductToOrder 1674, 2, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1674, 1, 'Diet 7 Up'
+EXEC addProductToOrder 1674, 3, 'French onion soup'
+EXEC addProductToOrder 1674, 2, 'Goat cheese'
+EXEC addProductToOrder 1674, 3, 'Dijon sauce'
+EXEC addProductToOrder 1675, 2, 'Pu-erh tea'
+EXEC addProductToOrder 1675, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1675, 3, 'Raspberry juice'
+EXEC addProductToOrder 1675, 1, 'Chef salad'
+EXEC addProductToOrder 1675, 2, 'Fanta'
+EXEC addProductToOrder 1676, 2, 'Diet Sprite'
+EXEC addProductToOrder 1676, 1, 'Pistachio ice cream'
+EXEC addProductToOrder 1676, 3, 'Cookie sandwich'
+EXEC addProductToOrder 1676, 1, 'Apple'
+EXEC addProductToOrder 1676, 2, 'Kombucha tea'
+EXEC addProductToOrder 1677, 1, 'Cole slaw'
+EXEC addProductToOrder 1677, 1, 'Lemon pudding'
+EXEC addProductToOrder 1677, 3, 'Tomato soup'
+EXEC addProductToOrder 1677, 1, 'Cumin'
+EXEC addProductToOrder 1677, 2, 'Pumpkin pudding'
+EXEC addProductToOrder 1678, 1, 'Baked stuffed peppers'
+EXEC addProductToOrder 1678, 1, 'Fried zucchini'
+EXEC addProductToOrder 1678, 3, 'Cucumber salad'
+EXEC addProductToOrder 1678, 3, 'Black forest cake'
+EXEC addProductToOrder 1678, 2, 'Affogato'
+EXEC addProductToOrder 1679, 3, 'Tossed salad'
+EXEC addProductToOrder 1679, 2, 'Green tea'
+EXEC addProductToOrder 1679, 1, 'Flat white'
+EXEC addProductToOrder 1679, 2, 'Chicken and broccoli soup'
+EXEC addProductToOrder 1679, 3, 'Banana cake'
+EXEC addProductToOrder 1680, 1, 'Mountain Dew'
+EXEC addProductToOrder 1680, 2, 'Apple juice'
+EXEC addProductToOrder 1680, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1680, 2, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1680, 2, 'Chimichurri sauce'
+EXEC addProductToOrder 1681, 3, 'Café zorro'
+EXEC addProductToOrder 1681, 1, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1681, 1, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1681, 3, 'Salsa'
+EXEC addProductToOrder 1681, 1, 'Minestrone soup'
+EXEC addProductToOrder 1682, 3, 'Cereal sandwich roll'
+EXEC addProductToOrder 1682, 1, 'Cheesecake'
+EXEC addProductToOrder 1682, 3, 'Minestrone soup'
+EXEC addProductToOrder 1682, 3, 'Pasta with zucchini'
+EXEC addProductToOrder 1682, 2, 'Fried green tomatoes'
+EXEC addProductToOrder 1683, 2, 'Brown sauce'
+EXEC addProductToOrder 1683, 2, 'Pasta with lobster'
+EXEC addProductToOrder 1683, 2, 'Diet Mountain Dew'
+EXEC addProductToOrder 1683, 2, 'Mocha'
+EXEC addProductToOrder 1683, 1, 'Coconut pudding'
+EXEC addProductToOrder 1684, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 1684, 2, 'Cranberry'
+EXEC addProductToOrder 1684, 1, 'Cereal'
+EXEC addProductToOrder 1684, 3, 'Grape juice'
+EXEC addProductToOrder 1684, 1, 'Anise'
+EXEC addProductToOrder 1685, 3, 'Spinach salad'
+EXEC addProductToOrder 1685, 3, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1685, 3, 'Sprite'
+EXEC addProductToOrder 1685, 1, 'Cranberry'
+EXEC addProductToOrder 1685, 2, 'Apricot'
+EXEC addProductToOrder 1686, 1, 'White tea'
+EXEC addProductToOrder 1686, 2, 'Fish sandwich bun'
+EXEC addProductToOrder 1686, 3, 'Black forest cake'
+EXEC addProductToOrder 1686, 1, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1686, 3, 'Pasta with broccoli'
+EXEC addProductToOrder 1687, 2, 'Lemon pudding'
+EXEC addProductToOrder 1687, 1, 'Dip'
+EXEC addProductToOrder 1687, 3, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1687, 3, 'Baked oysters'
+EXEC addProductToOrder 1687, 2, 'Potato salad'
+EXEC addProductToOrder 1688, 1, 'Diet Sprite'
+EXEC addProductToOrder 1688, 2, 'Café de pico'
+EXEC addProductToOrder 1688, 3, 'Fanta'
+EXEC addProductToOrder 1688, 2, 'Dijon sauce'
+EXEC addProductToOrder 1688, 3, 'Asparagus salad'
+EXEC addProductToOrder 1689, 2, 'Diet Sierra Mist'
+EXEC addProductToOrder 1689, 1, 'Chicken and barley soup'
+EXEC addProductToOrder 1689, 1, 'Baked crab dip'
+EXEC addProductToOrder 1689, 3, 'Artichoke salad'
+EXEC addProductToOrder 1689, 3, 'Fried mushrooms'
+EXEC addProductToOrder 1690, 2, 'Asparagus salad'
+EXEC addProductToOrder 1690, 1, 'Macaroni salad'
+EXEC addProductToOrder 1690, 3, 'Coconut pudding'
+EXEC addProductToOrder 1690, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1690, 3, 'Deviled eggs'
+EXEC addProductToOrder 1691, 1, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1691, 1, 'Burrata cheese'
+EXEC addProductToOrder 1691, 1, 'Apple custard'
+EXEC addProductToOrder 1691, 1, 'Orange'
+EXEC addProductToOrder 1691, 3, 'Carrot salad'
+EXEC addProductToOrder 1692, 3, 'Chocolate candy stick'
+EXEC addProductToOrder 1692, 1, 'Chocolate candy roll'
+EXEC addProductToOrder 1692, 2, 'Lemon custard'
+EXEC addProductToOrder 1692, 3, 'Lemon juice'
+EXEC addProductToOrder 1692, 3, 'Sierra Mist'
+EXEC addProductToOrder 1693, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1693, 3, 'Biscuit stick'
+EXEC addProductToOrder 1693, 1, 'Diet Dr Pepper'
+EXEC addProductToOrder 1693, 3, 'Baked stuffed squash'
+EXEC addProductToOrder 1693, 2, 'Lemon'
+EXEC addProductToOrder 1694, 2, 'Mountain Dew'
+EXEC addProductToOrder 1694, 3, 'Walnut'
+EXEC addProductToOrder 1694, 2, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1694, 3, 'Parmesan cheese'
+EXEC addProductToOrder 1694, 3, 'Hummus'
+EXEC addProductToOrder 1695, 2, 'Vegetable chili'
+EXEC addProductToOrder 1695, 2, 'Cereal stick'
+EXEC addProductToOrder 1695, 2, 'Yellow tea'
+EXEC addProductToOrder 1695, 1, 'Spinach salad'
+EXEC addProductToOrder 1695, 2, 'Blueberry'
+EXEC addProductToOrder 1696, 2, 'Orange juice'
+EXEC addProductToOrder 1696, 1, 'Fish'
+EXEC addProductToOrder 1696, 2, 'Chicken tortilla soup'
+EXEC addProductToOrder 1696, 1, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1696, 2, 'Vegetable chili'
+EXEC addProductToOrder 1697, 3, 'Pepsi'
+EXEC addProductToOrder 1697, 3, 'Fish sandwich stick'
+EXEC addProductToOrder 1697, 3, 'Diet Mountain Dew'
+EXEC addProductToOrder 1697, 1, 'Fish sandwich roll'
+EXEC addProductToOrder 1697, 2, 'Chai tea'
+EXEC addProductToOrder 1698, 1, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1698, 3, 'Vegetable lasagna'
+EXEC addProductToOrder 1698, 1, 'Fried calamari'
+EXEC addProductToOrder 1698, 3, 'Clam chowder'
+EXEC addProductToOrder 1698, 1, 'Honeybush tea'
+EXEC addProductToOrder 1699, 2, 'Corn salad'
+EXEC addProductToOrder 1699, 3, 'Chicken soup'
+EXEC addProductToOrder 1699, 3, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1699, 1, 'Banana custard'
+EXEC addProductToOrder 1699, 3, 'Café mélange'
+EXEC addProductToOrder 1700, 3, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1700, 3, 'Brie cheese'
+EXEC addProductToOrder 1700, 2, 'Cereal roll'
+EXEC addProductToOrder 1700, 1, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1700, 3, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1701, 3, 'Chocolate candy sandwich'
+EXEC addProductToOrder 1701, 2, 'Artichoke salad'
+EXEC addProductToOrder 1701, 3, 'Pasta with sausage'
+EXEC addProductToOrder 1701, 1, 'Vegetable stew'
+EXEC addProductToOrder 1701, 1, 'Avocado salad'
+EXEC addProductToOrder 1702, 2, 'Apricot'
+EXEC addProductToOrder 1702, 3, 'Cardamom'
+EXEC addProductToOrder 1702, 3, 'Fried mozzarella sticks'
+EXEC addProductToOrder 1702, 2, 'Pineapple juice'
+EXEC addProductToOrder 1702, 2, 'Black forest cake'
+EXEC addProductToOrder 1703, 1, 'Mozzarella cheese'
+EXEC addProductToOrder 1703, 2, 'Fish'
+EXEC addProductToOrder 1703, 3, 'Café mocha'
+EXEC addProductToOrder 1703, 1, 'Bisque sauce'
+EXEC addProductToOrder 1703, 3, 'Lentil soup'
+EXEC addProductToOrder 1704, 2, 'Chocolate bar'
+EXEC addProductToOrder 1704, 1, 'Coca-Cola'
+EXEC addProductToOrder 1704, 1, 'Pistachio'
+EXEC addProductToOrder 1704, 1, 'Peanut'
+EXEC addProductToOrder 1704, 1, 'Fish sandwich stick'
+EXEC addProductToOrder 1705, 3, 'Feta cheese'
+EXEC addProductToOrder 1705, 2, 'Butter pecan ice cream'
+EXEC addProductToOrder 1705, 3, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1705, 3, 'Café marrón'
+EXEC addProductToOrder 1705, 1, 'Bundt cake'
+EXEC addProductToOrder 1706, 1, 'Garden salad'
+EXEC addProductToOrder 1706, 2, 'Cereal roll'
+EXEC addProductToOrder 1706, 2, 'Biscuit roll'
+EXEC addProductToOrder 1706, 1, 'Moose tracks ice cream'
+EXEC addProductToOrder 1706, 2, 'Bun'
+EXEC addProductToOrder 1707, 3, 'Caesar salad'
+EXEC addProductToOrder 1707, 3, 'Chocolate'
+EXEC addProductToOrder 1707, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1707, 3, 'Pasta with meatballs'
+EXEC addProductToOrder 1707, 3, 'Cheddar cheese'
+EXEC addProductToOrder 1708, 3, 'Basil'
+EXEC addProductToOrder 1708, 1, 'Chestnut'
+EXEC addProductToOrder 1708, 3, 'Apple'
+EXEC addProductToOrder 1708, 2, 'Broccoli salad'
+EXEC addProductToOrder 1708, 2, 'Caramel sauce'
+EXEC addProductToOrder 1709, 3, 'Spinach salad'
+EXEC addProductToOrder 1709, 2, 'Beet salad'
+EXEC addProductToOrder 1709, 2, 'Fried zucchini'
+EXEC addProductToOrder 1709, 3, 'Chocolate custard'
+EXEC addProductToOrder 1709, 2, 'Grapefruit juice'
+EXEC addProductToOrder 1710, 3, 'Rooibos tea'
+EXEC addProductToOrder 1710, 1, 'Baked crab dip'
+EXEC addProductToOrder 1710, 2, 'Baked oysters'
+EXEC addProductToOrder 1710, 3, 'Baked brie'
+EXEC addProductToOrder 1710, 3, 'Beef casserole'
+EXEC addProductToOrder 1711, 2, 'Café mélange'
+EXEC addProductToOrder 1711, 3, 'Fried mushrooms'
+EXEC addProductToOrder 1711, 1, 'Almond'
+EXEC addProductToOrder 1711, 1, 'Pasta with eggplant'
+EXEC addProductToOrder 1711, 1, 'Chocolate candy roll'
+EXEC addProductToOrder 1712, 2, 'Butter roll'
+EXEC addProductToOrder 1712, 1, 'Pasta with crab'
+EXEC addProductToOrder 1712, 3, 'Fish'
+EXEC addProductToOrder 1712, 3, 'Cereal sandwich'
+EXEC addProductToOrder 1712, 3, 'Tomato juice'
+EXEC addProductToOrder 1713, 3, 'Lime'
+EXEC addProductToOrder 1713, 1, 'Banana'
+EXEC addProductToOrder 1713, 1, 'Café marrón'
+EXEC addProductToOrder 1713, 1, 'Pasta with crab'
+EXEC addProductToOrder 1713, 3, 'Biscuit sandwich'
+EXEC addProductToOrder 1714, 3, 'Black forest cake'
+EXEC addProductToOrder 1714, 1, 'Biscuit sandwich bun'
+EXEC addProductToOrder 1714, 2, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1714, 1, 'Blueberry juice'
+EXEC addProductToOrder 1714, 2, 'Latte'
+EXEC addProductToOrder 1715, 3, 'Artichoke salad'
+EXEC addProductToOrder 1715, 1, 'Kiwi'
+EXEC addProductToOrder 1715, 3, 'Caraway'
+EXEC addProductToOrder 1715, 1, 'Cranberry'
+EXEC addProductToOrder 1715, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1716, 3, 'Chai tea'
+EXEC addProductToOrder 1716, 1, 'Vanilla ice cream'
+EXEC addProductToOrder 1716, 1, 'Honeybush tea'
+EXEC addProductToOrder 1716, 3, 'Dressing sauce'
+EXEC addProductToOrder 1716, 3, 'Chicken casserole'
+EXEC addProductToOrder 1717, 3, 'Fried green tomatoes'
+EXEC addProductToOrder 1717, 3, 'Cereal stick'
+EXEC addProductToOrder 1717, 1, 'Goat cheese'
+EXEC addProductToOrder 1717, 1, 'Baked stuffed potatoes'
+EXEC addProductToOrder 1717, 3, 'Fried ravioli'
+EXEC addProductToOrder 1718, 2, 'Cookie sandwich roll'
+EXEC addProductToOrder 1718, 2, 'Café mocha'
+EXEC addProductToOrder 1718, 2, 'Artichoke salad'
+EXEC addProductToOrder 1718, 3, 'Salsa'
+EXEC addProductToOrder 1718, 3, 'Green tea'
+EXEC addProductToOrder 1719, 3, 'Cheddar cheese'
+EXEC addProductToOrder 1719, 1, 'Pasta with chicken'
+EXEC addProductToOrder 1719, 2, 'Tuna tartare with avocado and soy sauce'
+EXEC addProductToOrder 1719, 1, 'Chicken and dumplings'
+EXEC addProductToOrder 1719, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1720, 3, 'Yellow tea'
+EXEC addProductToOrder 1720, 3, 'Beef soup'
+EXEC addProductToOrder 1720, 1, 'Diet Mountain Dew'
+EXEC addProductToOrder 1720, 2, 'Café Cubano'
+EXEC addProductToOrder 1720, 1, 'Romano cheese'
+EXEC addProductToOrder 1721, 2, 'Pasta with sausage'
+EXEC addProductToOrder 1721, 2, 'Banana cake'
+EXEC addProductToOrder 1721, 2, 'White tea'
+EXEC addProductToOrder 1721, 3, 'Fried ravioli'
+EXEC addProductToOrder 1721, 1, 'Baked brie'
+EXEC addProductToOrder 1722, 1, 'Café gourmand'
+EXEC addProductToOrder 1722, 2, 'Dr Pepper'
+EXEC addProductToOrder 1722, 3, 'Affogato'
+EXEC addProductToOrder 1722, 3, 'Fruit salad'
+EXEC addProductToOrder 1722, 3, 'Tomato soup'
+EXEC addProductToOrder 1723, 1, 'Pasta with scallops'
+EXEC addProductToOrder 1723, 3, 'Herbal tea'
+EXEC addProductToOrder 1723, 1, 'Bisque sauce'
+EXEC addProductToOrder 1723, 2, 'Artichoke salad'
+EXEC addProductToOrder 1723, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1724, 1, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1724, 2, 'Mozzarella cheese'
+EXEC addProductToOrder 1724, 3, 'Minestrone soup'
+EXEC addProductToOrder 1724, 2, 'Café Cubano'
+EXEC addProductToOrder 1724, 2, 'Asparagus salad'
+EXEC addProductToOrder 1725, 1, 'Vegetable chili'
+EXEC addProductToOrder 1725, 3, 'Orange juice'
+EXEC addProductToOrder 1725, 2, 'Bundt cake'
+EXEC addProductToOrder 1725, 1, 'Minestrone soup'
+EXEC addProductToOrder 1725, 3, 'Boursin cheese'
+EXEC addProductToOrder 1726, 1, 'Celery seed'
+EXEC addProductToOrder 1726, 3, 'Coriander'
+EXEC addProductToOrder 1726, 1, 'Beef casserole'
+EXEC addProductToOrder 1726, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1726, 1, 'Pasta with cauliflower'
+EXEC addProductToOrder 1727, 2, 'Latte'
+EXEC addProductToOrder 1727, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1727, 3, 'Curry'
+EXEC addProductToOrder 1727, 1, 'Pasta with spinach'
+EXEC addProductToOrder 1727, 2, 'Apple pudding'
+EXEC addProductToOrder 1728, 3, 'Lemon juice'
+EXEC addProductToOrder 1728, 1, 'Broccoli salad'
+EXEC addProductToOrder 1728, 1, 'Chocolate pudding'
+EXEC addProductToOrder 1728, 3, 'Pecan'
+EXEC addProductToOrder 1728, 3, 'Fish stick'
+EXEC addProductToOrder 1729, 2, 'Basil'
+EXEC addProductToOrder 1729, 3, 'Butter'
+EXEC addProductToOrder 1729, 1, 'Pasta with tuna'
+EXEC addProductToOrder 1729, 1, 'Lime'
+EXEC addProductToOrder 1729, 2, 'Rice pudding'
+EXEC addProductToOrder 1730, 1, 'Black forest cake'
+EXEC addProductToOrder 1730, 2, 'Black tea'
+EXEC addProductToOrder 1730, 2, 'Diet Dr Pepper'
+EXEC addProductToOrder 1730, 1, 'Pasta with mussels'
+EXEC addProductToOrder 1730, 3, 'Bechamel sauce'
+EXEC addProductToOrder 1731, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1731, 1, 'Affogato'
+EXEC addProductToOrder 1731, 3, 'Vanilla ice cream'
+EXEC addProductToOrder 1731, 2, 'Greek salad'
+EXEC addProductToOrder 1731, 1, 'Fried potato skins'
+EXEC addProductToOrder 1732, 2, 'Fish stick'
+EXEC addProductToOrder 1732, 3, 'Pistachio ice cream'
+EXEC addProductToOrder 1732, 3, 'Chai tea'
+EXEC addProductToOrder 1732, 3, 'Caramel sauce'
+EXEC addProductToOrder 1732, 2, 'Oolong tea'
+EXEC addProductToOrder 1733, 3, 'Asparagus salad'
+EXEC addProductToOrder 1733, 3, 'Coconut pudding'
+EXEC addProductToOrder 1733, 3, 'Tomato juice'
+EXEC addProductToOrder 1733, 3, 'Pasta with onions'
+EXEC addProductToOrder 1733, 2, 'Romano cheese'
+EXEC addProductToOrder 1734, 1, 'Cereal'
+EXEC addProductToOrder 1734, 3, 'Rocky road ice cream'
+EXEC addProductToOrder 1734, 2, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1734, 2, 'Beet salad'
+EXEC addProductToOrder 1734, 1, 'Pasta with tomatoes'
+EXEC addProductToOrder 1735, 3, 'Asiago cheese'
+EXEC addProductToOrder 1735, 1, 'Kombucha tea'
+EXEC addProductToOrder 1735, 1, 'Chai tea'
+EXEC addProductToOrder 1735, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1735, 2, 'Corn chowder'
+EXEC addProductToOrder 1736, 1, 'Café gourmand'
+EXEC addProductToOrder 1736, 3, 'Beef stew with onions'
+EXEC addProductToOrder 1736, 2, 'Date'
+EXEC addProductToOrder 1736, 2, 'Strawberry pudding'
+EXEC addProductToOrder 1736, 3, 'Macchiato'
+EXEC addProductToOrder 1737, 3, 'Diet Pepsi'
+EXEC addProductToOrder 1737, 3, 'Diet Coke'
+EXEC addProductToOrder 1737, 2, 'Tzatziki'
+EXEC addProductToOrder 1737, 2, 'Beef stew with mushrooms'
+EXEC addProductToOrder 1737, 2, 'Tomato soup'
+EXEC addProductToOrder 1738, 3, 'Chicken casserole'
+EXEC addProductToOrder 1738, 2, 'Café mocha'
+EXEC addProductToOrder 1738, 3, 'Romano cheese'
+EXEC addProductToOrder 1738, 3, 'Cookie'
+EXEC addProductToOrder 1738, 2, 'Broccoli salad'
+EXEC addProductToOrder 1739, 3, 'Baked stuffed tomatoes'
+EXEC addProductToOrder 1739, 2, 'Chocolate bar'
+EXEC addProductToOrder 1739, 2, 'Chestnut'
+EXEC addProductToOrder 1739, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1739, 3, 'Grapefruit'
+EXEC addProductToOrder 1740, 3, 'Chicken and mushroom soup'
+EXEC addProductToOrder 1740, 1, 'Asiago cheese'
+EXEC addProductToOrder 1740, 3, 'Pasta with spinach'
+EXEC addProductToOrder 1740, 3, 'Bun'
+EXEC addProductToOrder 1740, 1, 'Feta cheese'
+EXEC addProductToOrder 1741, 1, 'Fried zucchini'
+EXEC addProductToOrder 1741, 3, 'Beef stew with potatoes'
+EXEC addProductToOrder 1741, 3, 'Baked crab dip'
+EXEC addProductToOrder 1741, 1, 'Bread'
+EXEC addProductToOrder 1741, 1, 'Café de olla'
+EXEC addProductToOrder 1742, 3, 'Coke Zero'
+EXEC addProductToOrder 1742, 2, 'Cereal stick'
+EXEC addProductToOrder 1742, 3, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1742, 2, 'Baked stuffed peppers'
+EXEC addProductToOrder 1742, 2, 'Fruit salad'
+EXEC addProductToOrder 1743, 1, 'Chai tea'
+EXEC addProductToOrder 1743, 1, 'Chicken and corn chowder'
+EXEC addProductToOrder 1743, 2, 'Beef stew with potatoes'
+EXEC addProductToOrder 1743, 1, 'Broccoli salad'
+EXEC addProductToOrder 1743, 2, 'Baked stuffed zucchini'
+EXEC addProductToOrder 1744, 1, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1744, 1, 'Biscuit sandwich'
+EXEC addProductToOrder 1744, 2, 'Cayenne'
+EXEC addProductToOrder 1744, 3, 'Diet Sprite'
+EXEC addProductToOrder 1744, 2, 'Grape'
+EXEC addProductToOrder 1745, 3, 'Mozzarella cheese'
+EXEC addProductToOrder 1745, 2, 'Chocolate chip ice cream'
+EXEC addProductToOrder 1745, 2, 'Café de pico'
+EXEC addProductToOrder 1745, 3, 'Cappuccino'
+EXEC addProductToOrder 1745, 2, 'Chocolate candy bar'
+EXEC addProductToOrder 1746, 1, 'White tea'
+EXEC addProductToOrder 1746, 2, 'Broccoli salad'
+EXEC addProductToOrder 1746, 3, 'Vegetable chili'
+EXEC addProductToOrder 1746, 1, 'Flat white'
+EXEC addProductToOrder 1746, 2, 'Diet Pepsi'
+EXEC addProductToOrder 1747, 1, 'Chutney sauce'
+EXEC addProductToOrder 1747, 2, 'Strawberry ice cream'
+EXEC addProductToOrder 1747, 2, 'Dressing sauce'
+EXEC addProductToOrder 1747, 3, 'Walnut'
+EXEC addProductToOrder 1747, 2, 'Lemon custard'
+EXEC addProductToOrder 1748, 1, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1748, 2, 'Angel food cake'
+EXEC addProductToOrder 1748, 2, 'Coconut pudding'
+EXEC addProductToOrder 1748, 3, 'Pu-erh tea'
+EXEC addProductToOrder 1748, 1, 'Macadamia'
+EXEC addProductToOrder 1749, 3, 'Kiwi'
+EXEC addProductToOrder 1749, 1, 'Chef salad'
+EXEC addProductToOrder 1749, 1, 'Apple custard'
+EXEC addProductToOrder 1749, 1, 'Cobb salad'
+EXEC addProductToOrder 1749, 3, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1750, 2, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1750, 3, 'Chimichurri sauce'
+EXEC addProductToOrder 1750, 1, 'Vegetable chili'
+EXEC addProductToOrder 1750, 3, 'Tossed salad'
+EXEC addProductToOrder 1750, 3, 'Lemon pudding'
+EXEC addProductToOrder 1751, 2, 'Apple'
+EXEC addProductToOrder 1751, 1, 'Gouda cheese'
+EXEC addProductToOrder 1751, 2, 'Café au lait'
+EXEC addProductToOrder 1751, 3, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1751, 1, 'Tzatziki'
+EXEC addProductToOrder 1752, 2, 'Macchiato'
+EXEC addProductToOrder 1752, 1, 'Grape'
+EXEC addProductToOrder 1752, 3, 'Café del mar'
+EXEC addProductToOrder 1752, 1, 'Pepsi'
+EXEC addProductToOrder 1752, 3, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1753, 2, 'Fried mushrooms'
+EXEC addProductToOrder 1753, 3, 'Cookie sandwich bun'
+EXEC addProductToOrder 1753, 3, 'Oolong tea'
+EXEC addProductToOrder 1753, 2, 'Chocolate candy'
+EXEC addProductToOrder 1753, 2, 'Chocolate custard'
+EXEC addProductToOrder 1754, 3, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1754, 2, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1754, 3, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1754, 1, 'Macadamia'
+EXEC addProductToOrder 1754, 1, 'Sierra Mist'
+EXEC addProductToOrder 1755, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1755, 2, 'Fish sandwich roll'
+EXEC addProductToOrder 1755, 1, 'Dr Pepper'
+EXEC addProductToOrder 1755, 1, 'Peach custard'
+EXEC addProductToOrder 1755, 1, 'Café bombón'
+EXEC addProductToOrder 1756, 2, 'Chocolate cake'
+EXEC addProductToOrder 1756, 3, 'Cortado'
+EXEC addProductToOrder 1756, 1, 'Coke Zero'
+EXEC addProductToOrder 1756, 2, 'Mate tea'
+EXEC addProductToOrder 1756, 1, 'Bisque sauce'
+EXEC addProductToOrder 1757, 2, 'Rice pudding'
+EXEC addProductToOrder 1757, 3, 'Banana pudding'
+EXEC addProductToOrder 1757, 1, 'Cinnamon'
+EXEC addProductToOrder 1757, 3, 'Pan-seared scallops with a white wine sauce'
+EXEC addProductToOrder 1757, 3, 'Baked stuffed eggplant'
+EXEC addProductToOrder 1758, 2, 'Vegetable stir fry'
+EXEC addProductToOrder 1758, 2, 'Coconut pudding'
+EXEC addProductToOrder 1758, 2, 'Oolong tea'
+EXEC addProductToOrder 1758, 3, 'Antipasto salad'
+EXEC addProductToOrder 1758, 3, 'Chicken noodle soup'
+EXEC addProductToOrder 1759, 2, 'Grapefruit juice'
+EXEC addProductToOrder 1759, 1, 'Caprese salad'
+EXEC addProductToOrder 1759, 3, 'Apple pudding'
+EXEC addProductToOrder 1759, 3, 'Lemon juice'
+EXEC addProductToOrder 1759, 2, 'Cereal sandwich'
+EXEC addProductToOrder 1760, 2, 'Black forest cake'
+EXEC addProductToOrder 1760, 1, 'Fruit salad'
+EXEC addProductToOrder 1760, 1, 'Café del mar'
+EXEC addProductToOrder 1760, 3, 'Fish sandwich roll'
+EXEC addProductToOrder 1760, 3, 'Baked brie'
+EXEC addProductToOrder 1761, 3, 'Butter roll'
+EXEC addProductToOrder 1761, 2, 'Americano'
+EXEC addProductToOrder 1761, 3, 'Chicken tortilla soup'
+EXEC addProductToOrder 1761, 2, 'Pasta with mushrooms'
+EXEC addProductToOrder 1761, 3, 'Banana pudding'
+EXEC addProductToOrder 1762, 1, 'Fried onion rings'
+EXEC addProductToOrder 1762, 1, 'Corn salad'
+EXEC addProductToOrder 1762, 1, 'Kiwi'
+EXEC addProductToOrder 1762, 2, 'Pasta with scallops'
+EXEC addProductToOrder 1762, 1, 'Cereal sandwich'
+EXEC addProductToOrder 1763, 2, 'Broccoli salad'
+EXEC addProductToOrder 1763, 3, 'Pasta with onions'
+EXEC addProductToOrder 1763, 2, 'Baked stuffed squash'
+EXEC addProductToOrder 1763, 2, 'Chicken and rice soup'
+EXEC addProductToOrder 1763, 1, 'Beef stew with potatoes'
+EXEC addProductToOrder 1764, 3, 'Pasta with mussels'
+EXEC addProductToOrder 1764, 3, 'Beef stew with tomatoes'
+EXEC addProductToOrder 1764, 3, 'Coke Zero'
+EXEC addProductToOrder 1764, 2, 'Café de olla'
+EXEC addProductToOrder 1764, 2, 'Cinnamon'
+EXEC addProductToOrder 1765, 3, 'Blackberry'
+EXEC addProductToOrder 1765, 2, 'Banana custard'
+EXEC addProductToOrder 1765, 2, 'Pasta with spinach'
+EXEC addProductToOrder 1765, 2, 'Sprite'
+EXEC addProductToOrder 1765, 2, 'Pasta with mussels'
+EXEC addProductToOrder 1766, 1, 'Café au lait'
+EXEC addProductToOrder 1766, 1, 'Dressing sauce'
+EXEC addProductToOrder 1766, 3, 'Cookie stick'
+EXEC addProductToOrder 1766, 2, 'Bleu cheese'
+EXEC addProductToOrder 1766, 1, 'Deviled eggs'
+EXEC addProductToOrder 1767, 3, 'Espresso'
+EXEC addProductToOrder 1767, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1767, 3, 'Pasta with eggplant'
+EXEC addProductToOrder 1767, 3, 'Alfredo sauce'
+EXEC addProductToOrder 1767, 2, 'Café mélange'
+EXEC addProductToOrder 1768, 3, 'Pasta with scallops'
+EXEC addProductToOrder 1768, 2, 'Peach custard'
+EXEC addProductToOrder 1768, 2, 'Cardamom'
+EXEC addProductToOrder 1768, 2, 'Beef stew with potatoes'
+EXEC addProductToOrder 1768, 2, 'Pomegranate juice'
+EXEC addProductToOrder 1769, 2, 'Baked stuffed squash'
+EXEC addProductToOrder 1769, 3, 'Caesar salad'
+EXEC addProductToOrder 1769, 1, 'Bisque sauce'
+EXEC addProductToOrder 1769, 1, 'Split pea soup'
+EXEC addProductToOrder 1769, 3, 'Fried okra'
+EXEC addProductToOrder 1770, 1, 'Chocolate'
+EXEC addProductToOrder 1770, 1, 'Coke Zero'
+EXEC addProductToOrder 1770, 3, 'Cookie'
+EXEC addProductToOrder 1770, 2, 'Raspberry juice'
+EXEC addProductToOrder 1770, 2, 'Diet Pepsi'
+EXEC addProductToOrder 1771, 3, 'Coconut pudding'
+EXEC addProductToOrder 1771, 3, 'Cheddar cheese'
+EXEC addProductToOrder 1771, 2, 'Cookie sandwich stick'
+EXEC addProductToOrder 1771, 2, 'Yellow tea'
+EXEC addProductToOrder 1771, 3, 'Fried okra'
+EXEC addProductToOrder 1772, 3, 'Allspice'
+EXEC addProductToOrder 1772, 3, 'Fish sandwich'
+EXEC addProductToOrder 1772, 1, 'Grapefruit'
+EXEC addProductToOrder 1772, 3, 'Chestnut'
+EXEC addProductToOrder 1772, 3, 'Cheesecake'
+EXEC addProductToOrder 1773, 3, 'Café mocha'
+EXEC addProductToOrder 1773, 2, 'Cookie sandwich'
+EXEC addProductToOrder 1773, 2, 'Alfredo sauce'
+EXEC addProductToOrder 1773, 3, 'Apple custard'
+EXEC addProductToOrder 1773, 2, 'Brioche'
+EXEC addProductToOrder 1774, 1, 'Minestrone soup'
+EXEC addProductToOrder 1774, 2, 'Asparagus salad'
+EXEC addProductToOrder 1774, 1, 'Antipasto salad'
+EXEC addProductToOrder 1774, 1, 'Yellow tea'
+EXEC addProductToOrder 1774, 1, 'Banana cake'
+EXEC addProductToOrder 1775, 3, 'Sierra Mist'
+EXEC addProductToOrder 1775, 2, 'Chocolate peanut butter ice cream'
+EXEC addProductToOrder 1775, 2, 'Fanta'
+EXEC addProductToOrder 1775, 1, 'Cayenne'
+EXEC addProductToOrder 1775, 3, 'Chicken casserole'
+EXEC addProductToOrder 1776, 2, 'Diet 7 Up'
+EXEC addProductToOrder 1776, 3, 'Hummus'
+EXEC addProductToOrder 1776, 2, 'Lime'
+EXEC addProductToOrder 1776, 3, 'Strawberry ice cream'
+EXEC addProductToOrder 1776, 1, 'Date'
+EXEC addProductToOrder 1777, 1, 'Beef stew with celery'
+EXEC addProductToOrder 1777, 1, 'Cobb salad'
+EXEC addProductToOrder 1777, 1, 'Bread'
+EXEC addProductToOrder 1777, 1, 'Baked stuffed squash'
+EXEC addProductToOrder 1777, 3, 'Carrot salad'
+EXEC addProductToOrder 1778, 3, 'Rice pudding'
+EXEC addProductToOrder 1778, 3, 'Swiss cheese'
+EXEC addProductToOrder 1778, 1, 'Melon'
+EXEC addProductToOrder 1778, 2, 'Baked stuffed shrimp'
+EXEC addProductToOrder 1778, 1, 'Cereal stick'
+EXEC addProductToOrder 1779, 2, 'Diet Fanta'
+EXEC addProductToOrder 1779, 1, 'Pecan'
+EXEC addProductToOrder 1779, 1, 'Pasta with mushrooms'
+EXEC addProductToOrder 1779, 1, '7 Up'
+EXEC addProductToOrder 1779, 2, 'Espresso'
+EXEC addProductToOrder 1780, 2, 'Fried okra'
+EXEC addProductToOrder 1780, 2, 'Flat white'
+EXEC addProductToOrder 1780, 2, 'Apple'
+EXEC addProductToOrder 1780, 3, 'Grapefruit juice'
+EXEC addProductToOrder 1780, 2, 'Dr Pepper'
+EXEC addProductToOrder 1781, 1, 'Crab cakes with a remoulade sauce'
+EXEC addProductToOrder 1781, 3, 'Vanilla pudding'
+EXEC addProductToOrder 1781, 2, 'Rice pudding'
+EXEC addProductToOrder 1781, 3, 'Coconut custard'
+EXEC addProductToOrder 1781, 2, 'Apple pudding'
+EXEC addProductToOrder 1782, 1, 'Melon'
+EXEC addProductToOrder 1782, 1, 'Gruyere cheese'
+EXEC addProductToOrder 1782, 1, 'Asiago cheese'
+EXEC addProductToOrder 1782, 1, 'Macaroni salad'
+EXEC addProductToOrder 1782, 3, 'Celery seed'
+EXEC addProductToOrder 1783, 2, '7 Up'
+EXEC addProductToOrder 1783, 1, 'Cookies and cream ice cream'
+EXEC addProductToOrder 1783, 2, 'Chestnut'
+EXEC addProductToOrder 1783, 1, 'Pasta with zucchini'
+EXEC addProductToOrder 1783, 1, 'Pasta with crab'
+EXEC addProductToOrder 1784, 3, 'Hazelnut'
+EXEC addProductToOrder 1784, 1, 'Cereal roll'
+EXEC addProductToOrder 1784, 2, 'Provolone cheese'
+EXEC addProductToOrder 1784, 2, 'Baguette'
+EXEC addProductToOrder 1784, 2, 'Parmesan cheese'
+EXEC addProductToOrder 1785, 3, 'Hummus'
+EXEC addProductToOrder 1785, 2, 'Pumpkin pudding'
+EXEC addProductToOrder 1785, 3, 'Strawberry juice'
+EXEC addProductToOrder 1785, 2, 'Chutney sauce'
+EXEC addProductToOrder 1785, 1, 'Beef stew with cabbage'
+EXEC addProductToOrder 1786, 1, 'Carrot juice'
+EXEC addProductToOrder 1786, 3, 'Grape juice'
+EXEC addProductToOrder 1786, 1, 'Dr Pepper'
+EXEC addProductToOrder 1786, 3, 'Pasta with scallops'
+EXEC addProductToOrder 1786, 3, 'Chocolate chip cookie dough ice cream'
+EXEC addProductToOrder 1787, 2, 'Boston cream cake'
+EXEC addProductToOrder 1787, 3, 'Lemon juice'
+EXEC addProductToOrder 1787, 2, 'Coconut'
+EXEC addProductToOrder 1787, 1, 'Goat cheese'
+EXEC addProductToOrder 1787, 1, 'Brown sauce'
+EXEC addProductToOrder 1788, 2, 'Cheddar cheese'
+EXEC addProductToOrder 1788, 2, 'Cookie stick'
+EXEC addProductToOrder 1788, 3, 'Peach pudding'
+EXEC addProductToOrder 1788, 1, 'Hazelnut'
+EXEC addProductToOrder 1788, 2, 'Rice pudding'
+EXEC addProductToOrder 1789, 2, 'Caprese salad'
+EXEC addProductToOrder 1789, 2, 'Baked stuffed artichokes'
+EXEC addProductToOrder 1789, 3, 'Grilled salmon with a lemon butter sauce'
+EXEC addProductToOrder 1789, 1, 'Chocolate bar'
+EXEC addProductToOrder 1789, 3, 'Boursin cheese'
+EXEC addProductToOrder 1790, 2, 'Biscuit roll'
+EXEC addProductToOrder 1790, 2, 'Biscuit sandwich roll'
+EXEC addProductToOrder 1790, 2, 'Diet Fanta'
+EXEC addProductToOrder 1790, 3, 'Carrot juice'
+EXEC addProductToOrder 1790, 2, 'Biscuit sandwich stick'
+EXEC addProductToOrder 1791, 1, 'Muenster cheese'
+EXEC addProductToOrder 1791, 2, 'Coconut custard'
+EXEC addProductToOrder 1791, 1, 'Fig'
+EXEC addProductToOrder 1791, 1, 'Cookie roll'
+EXEC addProductToOrder 1791, 1, 'Coconut pudding'
+EXEC addProductToOrder 1792, 3, 'Curry sauce'
+EXEC addProductToOrder 1792, 2, 'Americano'
+EXEC addProductToOrder 1792, 1, 'Chicken noodle soup'
+EXEC addProductToOrder 1792, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1792, 1, 'Chocolate pudding'
+EXEC addProductToOrder 1793, 1, 'Pepsi'
+EXEC addProductToOrder 1793, 2, 'Cereal roll'
+EXEC addProductToOrder 1793, 2, 'Café Cubano'
+EXEC addProductToOrder 1793, 1, 'Asparagus salad'
+EXEC addProductToOrder 1793, 3, 'Caprese salad'
+EXEC addProductToOrder 1794, 3, 'Chicken and rice soup'
+EXEC addProductToOrder 1794, 2, 'Gruyere cheese'
+EXEC addProductToOrder 1794, 2, 'Black tea'
+EXEC addProductToOrder 1794, 3, 'Café marrón'
+EXEC addProductToOrder 1794, 2, 'Swiss cheese'
+EXEC addProductToOrder 1795, 1, 'Macchiato'
+EXEC addProductToOrder 1795, 1, 'Pasta with broccoli'
+EXEC addProductToOrder 1795, 3, 'Cherry'
+EXEC addProductToOrder 1795, 3, 'Matcha tea'
+EXEC addProductToOrder 1795, 1, 'Cookie sandwich bun'
+EXEC addProductToOrder 1796, 2, 'Chocolate candy sandwich roll'
+EXEC addProductToOrder 1796, 3, 'Diet Coke'
+EXEC addProductToOrder 1796, 1, 'Black tea'
+EXEC addProductToOrder 1796, 1, 'Fish sandwich'
+EXEC addProductToOrder 1796, 2, 'Pasta with spinach'
+EXEC addProductToOrder 1797, 2, 'Chai tea'
+EXEC addProductToOrder 1797, 2, 'Romano cheese'
+EXEC addProductToOrder 1797, 3, 'Banana cake'
+EXEC addProductToOrder 1797, 3, 'Vegetable casserole'
+EXEC addProductToOrder 1797, 3, 'Broccoli salad'
+EXEC addProductToOrder 1798, 2, 'Café mélange'
+EXEC addProductToOrder 1798, 2, 'Spinach salad'
+EXEC addProductToOrder 1798, 3, 'Tomato juice'
+EXEC addProductToOrder 1798, 2, 'Fried calamari'
+EXEC addProductToOrder 1798, 2, 'Sierra Mist'
+EXEC addProductToOrder 1799, 1, 'Lemon custard'
+EXEC addProductToOrder 1799, 1, 'Biscuit stick'
+EXEC addProductToOrder 1799, 1, 'Fruit salad'
+EXEC addProductToOrder 1799, 2, 'Split pea soup'
+EXEC addProductToOrder 1799, 1, 'White tea'
+EXEC addProductToOrder 1800, 3, 'Latte'
+EXEC addProductToOrder 1800, 1, 'Cardamom'
+EXEC addProductToOrder 1800, 1, 'Cherry'
+EXEC addProductToOrder 1800, 1, 'Pasta with sausage'
+EXEC addProductToOrder 1800, 3, 'Béarnaise sauce'
+EXEC addProductToOrder 1801, 2, 'Carrot cake'
+EXEC addProductToOrder 1801, 2, 'Orange'
+EXEC addProductToOrder 1801, 3, 'Corn chowder'
+EXEC addProductToOrder 1801, 3, 'Fried ravioli'
+EXEC addProductToOrder 1801, 1, 'Grilled octopus with a citrus marinade'
+EXEC addProductToOrder 1803, 1, 'Café crema'
+EXEC addProductToOrder 1803, 3, 'Shrimp scampi served over pasta'
+EXEC addProductToOrder 1803, 2, 'Cookie stick'
+EXEC addProductToOrder 1803, 2, 'Potato salad'
+EXEC addProductToOrder 1803, 1, 'Strawberry ice cream'
+EXEC addProductToOrder 1804, 1, 'Alfredo sauce'
+EXEC addProductToOrder 1804, 1, 'Diet Sierra Mist'
+EXEC addProductToOrder 1804, 2, 'Artichoke salad'
+EXEC addProductToOrder 1804, 3, 'Chocolate pudding'
+EXEC addProductToOrder 1804, 1, 'Pepper jack cheese'
+EXEC addProductToOrder 1805, 3, 'Salsa'
+EXEC addProductToOrder 1805, 3, 'Black forest cake'
+EXEC addProductToOrder 1805, 1, 'Orange'
+EXEC addProductToOrder 1805, 2, 'Dijon sauce'
+EXEC addProductToOrder 1805, 1, 'Cereal'
+EXEC addProductToOrder 1806, 1, 'Chili'
+EXEC addProductToOrder 1806, 3, 'Antipasto salad'
+EXEC addProductToOrder 1806, 1, 'Cappuccino'
+EXEC addProductToOrder 1806, 1, 'Pasta with sausage'
+EXEC addProductToOrder 1806, 2, 'Caesar salad'
+EXEC addProductToOrder 1802, 1, 'Chili'
+EXEC addProductToOrder 1802, 3, 'Antipasto salad'
+EXEC addProductToOrder 1802, 1, 'Cappuccino'
+EXEC addProductToOrder 1802, 1, 'Pasta with sausage'
+EXEC addProductToOrder 1802, 2, 'Caesar salad'
+EXEC addProductToOrder 1602, 1, 'Chili'
+EXEC addProductToOrder 1602, 3, 'Antipasto salad'
+EXEC addProductToOrder 1602, 1, 'Cappuccino'
+EXEC addProductToOrder 1602, 1, 'Pasta with sausage'
+EXEC addProductToOrder 1602, 2, 'Caesar salad'
