@@ -350,38 +350,58 @@ CREATE FUNCTION WhatWasNotInTheMenuOfGivenID(@MenuID int)
          WHERE MenuID=@MenuID) AND P.IsAvailable = 1
 GO
 
-    CREATE FUNCTION MenuIsCorrect(@MenuID int) RETURNS bit AS BEGIN DECLARE @SameItems int
-SET
-    @SameItems = (
-        SELECT
-            COUNT(*)
-        FROM
-            (
-                SELECT
-                    ProductID
-                FROM
-                    MenuDetails
-                WHERE
-                    MenuID = (@MenuID - 1)
-                INTERSECT
-                SELECT
-                    ProductID
-                FROM
-                    MenuDetails
-                WHERE
-                    MenuID = @MenuID
-            ) OUT
-    ) DECLARE @minAmountToChange int
-SET
-    @minAmountToChange = (
-        SELECT
-            COUNT(*)
-        FROM
-            MenuDetails
-        WHERE
-            MenuID = (@MenuID - 1)
-    ) / 2 IF @SameItems <= @minAmountToChange BEGIN RETURN 1 END RETURN 0 END
-GO
+CREATE FUNCTION MenuIsCorrect(@MenuID int) RETURNS bit
+AS
+    BEGIN
+        DECLARE @SameItemsPrevious int
+        SET @SameItemsPrevious = (
+            SELECT
+                COUNT(*)
+            FROM (
+                        SELECT Name, Description FROM dbo.ShowDuplicatesPreviousMenu (@MenuID)
+                    INTERSECT
+                        SELECT P.Name, P.Description FROM MenuDetails INNER JOIN Products P on P.ProductID = MenuDetails.ProductID WHERE MenuID = @MenuID
+                 ) OUT
+        )
+
+        DECLARE @SameItemsFollowing int
+        SET @SameItemsFollowing = (
+            SELECT
+                COUNT(*)
+            FROM (
+                        SELECT Name, Description FROM dbo.ShowDuplicatesFollowingMenu (@MenuID)
+                    INTERSECT
+                        SELECT P.Name, P.Description FROM MenuDetails INNER JOIN Products P on P.ProductID = MenuDetails.ProductID WHERE MenuID = @MenuID
+                 ) OUT
+        )
+
+        DECLARE @minAmountToChangePrevious int
+        SET @minAmountToChangePrevious = (
+            SELECT
+                COUNT(*)
+            FROM
+                MenuDetails
+            WHERE
+                MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+        ) / 2
+
+        DECLARE @minAmountToChangeFollowing int
+        SET @minAmountToChangeFollowing = (
+            SELECT
+                COUNT(*)
+            FROM
+                MenuDetails
+            WHERE
+                MenuID = dbo.GetIdOfFollowingMenu (@MenuID)
+        ) / 2
+
+        IF (@SameItemsFollowing <= @minAmountToChangeFollowing OR @minAmountToChangeFollowing = 0) AND (@SameItemsPrevious <= @minAmountToChangePrevious OR  @minAmountToChangePrevious = 0)
+            BEGIN
+                RETURN 1
+            END 
+        RETURN 0
+    END
+go
 
 CREATE FUNCTION GetIdOfFollowingMenu(@MenuID int)
 RETURNS int
@@ -409,7 +429,9 @@ AS
             INTERSECT
             (SELECT P.Name, P.Description FROM MenuDetails MD
                 INNER JOIN Products P on P.ProductID = MD.ProductID
-            WHERE MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+                INNER JOIN Menu M on M.MenuID = MD.MenuID
+            WHERE MD.MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+                AND ABS(DATEDIFF(day, (SELECT TOP 1 Menu.startDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.endDate)) <= 1
             UNION
             SELECT P.Name, P.Description FROM MenuDetails MD
                 INNER JOIN Products P on P.ProductID = MD.ProductID
@@ -418,18 +440,49 @@ AS
                     AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1)
 go
 
+CREATE FUNCTION ShowDuplicatesFollowingMenu(@MenuID int)
+RETURNS table
+AS
+    RETURN SELECT P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+            WHERE MenuID = @MenuID
+    INTERSECT
+        (SELECT P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+                INNER JOIN Menu M on M.MenuID = MD.MenuID
+            WHERE MD.MenuID = dbo.GetIdOfFollowingMenu(@MenuID)
+                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1)
+GO
+
+CREATE FUNCTION ShowDuplicatesPreviousMenu(@MenuID int)
+RETURNS table
+AS
+    RETURN  SELECT P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+            WHERE MenuID = @MenuID
+    INTERSECT
+        (SELECT P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+                INNER JOIN Menu M on M.MenuID = MD.MenuID
+            WHERE MD.MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+                AND ABS(DATEDIFF(day, (SELECT TOP 1 Menu.startDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.endDate)) <= 1)
+GO
+
+
 CREATE FUNCTION ShowDuplicatesInPreviousAndFollowingMenuWithID(@MenuID int)
 RETURNS table
     AS
-        RETURN SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
+        RETURN  SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
                 INNER JOIN Products P ON P.ProductID = MD.ProductID
+                INNER JOIN Menu M on M.MenuID = MD.MenuID
                 WHERE
                     P.Name IN (SELECT  MI.Name FROM dbo.ShowDuplicatesInPreviousAndFollowingMenu(@MenuID) MI)
-                    AND MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+                    AND MD.MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+                    AND ABS(DATEDIFF(day, (SELECT TOP 1 Menu.startDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.endDate)) <= 1
                UNION
                SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
-               INNER JOIN Products P ON P.ProductID = MD.ProductID
-               INNER JOIN Menu M on M.MenuID = MD.MenuID
+                    INNER JOIN Products P ON P.ProductID = MD.ProductID
+                    INNER JOIN Menu M on M.MenuID = MD.MenuID
                WHERE
                     P.Name IN (SELECT  MI.Name FROM dbo.ShowDuplicatesInPreviousAndFollowingMenu(@MenuID) MI)
                     AND MD.MenuID = dbo.GetIdOfFollowingMenu(@MenuID)
