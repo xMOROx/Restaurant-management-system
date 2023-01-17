@@ -1199,7 +1199,7 @@ AS
 
         SELECT @CurrentValue = OrderSum FROM [Orders] WHERE OrderID = @OrderId
         SELECT @ClientID = ClientID, @OrderDate = OrderDate FROM Orders WHERE OrderID = @OrderId
-        SELECT @DiscMulti = dbo.calculateDiscountForOrder(@ClientID)
+        SELECT @DiscMulti = dbo.calculateDiscountForClient(@ClientID)
 
         INSERT INTO OrderDetails(OrderID, Quantity, ProductID) VALUES (@OrderID, @Quantity, @ProductID)
 
@@ -1480,35 +1480,28 @@ AS
 GO
 
 -- add discount var 
-CREATE PROCEDURE AddDiscountVar @MinimalOrders int = NULL, @MinimalAggregateValue money = NULL, @ValidityPeriod int = NULL, @DiscountValue decimal(3,2), @StartDate datetime, @EndDate datetime = NULL
-AS 
+CREATE PROCEDURE AddDiscountVar @MinimalOrders int = NULL, @MinimalValue money, @ValidityPeriod int = NULL, @DiscountValue decimal(3,2), @StartDate datetime, @EndDate datetime = NULL
+AS
     BEGIN
         SET NOCOUNT ON
         BEGIN TRY
-            IF EXISTS(SELECT * FROM DiscountsVar WHERE ((MinimalOrders = @MinimalOrders AND ValidityPeriod = @ValidityPeriod) OR  MinimalAggregateValue = @MinimalAggregateValue)  AND DiscountValue = @DiscountValue AND startDate = @StartDate AND endDate = @EndDate)
+            IF EXISTS(SELECT * FROM DiscountsVar WHERE ((MinimalOrders = @MinimalOrders AND ValidityPeriod = @ValidityPeriod) OR  MinimalAggregateValue = @MinimalValue)  AND DiscountValue = @DiscountValue AND startDate = @StartDate AND endDate = @EndDate)
                 BEGIN;
                     THROW 52000, N'Istnieje już taka zmienna dotycząca rabatu!', 1
                 END
-            IF @MinimalOrders IS NULL AND @ValidityPeriod IS NULL AND @MinimalAggregateValue IS NULL
+            IF @MinimalOrders IS NULL AND @ValidityPeriod IS NULL
                 BEGIN;
-                    THROW 52000, N'@MinimalOrders i @ValidityPeriod nie mogą być Null dla zniżki tymczasowej. @MinimalAggregateValue nie mogą być puste dla zniżki bez okresu ważności!', 1
+                    THROW 52000, N'Nie można dodać zmiennych bez warunków! Podaj @MinimalOrders dla zniżki permanentnej lub @ValidityPeriod dla zniżki tymczasowej', 1
                 END
 
-            IF @MinimalOrders IS NOT NULL AND @ValidityPeriod IS NULL 
+            IF @ValidityPeriod IS NOT NULL AND @MinimalOrders IS NULL
                 BEGIN;
-                    THROW 52000, N'@MinimalOrders musi być związana z @ValidityPeriod!', 1
+                    INSERT INTO DiscountsVar (DiscountType,MinimalOrders, MinimalAggregateValue, ValidityPeriod, DiscountValue, startDate, endDate) VALUES ('Temporary',@MinimalOrders, @MinimalValue, @ValidityPeriod, @DiscountValue, @StartDate, @EndDate)
                 END
-            IF @MinimalOrders IS NULL AND @ValidityPeriod IS NOT NULL
+
+            IF @MinimalOrders IS NOT NULL AND @ValidityPeriod IS NULL
                 BEGIN;
-                    THROW 52000, N'@ValidityPeriod musi być związany z @MinimalOrders!', 1
-                END
-            IF @MinimalAggregateValue IS NOT NULL
-                BEGIN;
-                    INSERT INTO DiscountsVar (DiscountType,MinimalOrders, MinimalAggregateValue, ValidityPeriod, DiscountValue, startDate, endDate) VALUES ('Permanent',@MinimalOrders, @MinimalAggregateValue, @ValidityPeriod, @DiscountValue, @StartDate, @EndDate)
-                END
-            IF @MinimalOrders IS NOT NULL AND @ValidityPeriod IS NOT NULL 
-                BEGIN;
-                    INSERT INTO DiscountsVar (DiscountType,MinimalOrders, MinimalAggregateValue, ValidityPeriod, DiscountValue, startDate, endDate) VALUES ('Temporary',@MinimalOrders, @MinimalAggregateValue, @ValidityPeriod, @DiscountValue, @StartDate, @EndDate)
+                    INSERT INTO DiscountsVar (DiscountType,MinimalOrders, MinimalAggregateValue, ValidityPeriod, DiscountValue, startDate, endDate) VALUES ('Permanent',@MinimalOrders, @MinimalValue, @ValidityPeriod, @DiscountValue, @StartDate, @EndDate)
                 END
 
         END TRY
@@ -1517,7 +1510,8 @@ AS
             THROW 52000, @msg, 1
         END CATCH
     END
-GO
+go
+
 -- add discount var
 -- add discount
 CREATE PROCEDURE addDiscount @ClientID int, @DiscountType char(9)
@@ -1528,14 +1522,20 @@ AS
                 BEGIN
                     THROW 52000, N'Nie ma takiego klienta indywidualnego! ', 1
                 END
-            IF LOWER(@DiscountType) NOT IN('Permanent', 'Temporary')
+            IF LOWER(@DiscountType) NOT IN('permanent', 'temporary')
                 BEGIN
                     THROW 52000, N'Nie ma takiego typu zniżki! ', 1
                 END
 
             DECLARE @VarID int
-            SET @VarID = (SELECT MAX(VarID) FROM DiscountsVar WHERE DiscountType LIKE @DiscountType)
-
+            SET @VarID = (SELECT VarID FROM DiscountsVar WHERE LOWER(DiscountType) LIKE LOWER(@DiscountType)  AND (startDate <= GETDATE() AND (endDate IS NULL OR endDate >= GETDATE())))
+            
+            IF EXISTS(SELECT * FROM Discounts WHERE ClientID = @ClientID AND CAST(AppliedDate AS date) = CAST(GETDATE() AS DATE) AND VarID = @VarID)
+                BEGIN 
+                    return 
+                END
+            
+          
             IF @DiscountType LIKE 'Permanent'
                 BEGIN
                     INSERT INTO Discounts(ClientID, VarID, AppliedDate, isUsed)
@@ -1552,7 +1552,7 @@ AS
             THROW 52000, @msg, 1
         END CATCH
     END
-GO
+go
 
 -- add discount
 
