@@ -9,20 +9,6 @@ GO
 GO
 -- Current menu view --
 
--- DiscountsReport
-CREATE VIEW dbo.DiscountsReport AS
-    SELECT
-        YEAR(O.OrderDate) AS [Year],
-        MONTH(O.OrderDate) AS [Month]
-    FROM Orders AS O
-        INNER JOIN Clients C ON C.ClientID = O.ClientID
-        INNER JOIN IndividualClient IC ON IC.ClientID = C.ClientID
-        INNER JOIN Discounts D ON D.ClientID = IC.ClientID
-        INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
-    GROUP BY CUBE (DV.DiscountType, YEAR(O.OrderDate), MONTH(O.OrderDate))
-go
--- DiscountsReport
-
 -- Current reservation vars --
 CREATE VIEW dbo.CurrentReservationVars
 AS
@@ -1595,3 +1581,24 @@ AS
         INNER JOIN Companies CC on CC.ClientID = C.ClientID
 GO
 -- show company clients --
+
+-- Discounts Summary
+
+CREATE VIEW DiscountsSummaryPerClient
+AS
+    SELECT
+            IC.ClientID,
+            CONCAT(P.LastName, ' ', P.FirstName) AS 'Person',
+            DiscountID,
+            AppliedDate,
+            DiscountType,
+            DiscountValue,
+            ISNULL(CAST(MinimalOrders AS varchar), '') AS 'Minimal Orders needed',
+            ISNULL(CAST(MinimalAggregateValue AS varchar), '') AS 'Minimal Aggregate Value needed',
+            ISNULL(CAST(ValidityPeriod AS varchar), '') AS 'Validity Period',
+            ISNULL(CAST(isUsed AS varchar), 'It is permanent') AS 'is Used'
+    FROM IndividualClient IC
+        INNER JOIN Person P on P.PersonID = IC.PersonID
+        INNER JOIN Discounts D on IC.ClientID = D.ClientID
+        INNER JOIN DiscountsVar DV on D.VarID = DV.VarID
+GO
