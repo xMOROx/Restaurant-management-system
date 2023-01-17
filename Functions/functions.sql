@@ -144,60 +144,106 @@ WHERE
 GO
 -- Jeżeli zniżka tymczasowa i została użyta to zmień jej pole isUsed na 1
 
-CREATE FUNCTION calculateBestDiscountTemporary(@ClientID int) RETURNS decimal(3, 2)
+CREATE FUNCTION calculateBestDiscountTemporary(@ClientID int) RETURNS Table
+AS
+    RETURN (SELECT DiscountValue, DiscountID FROM
+                            (SELECT DiscountValue, DiscountID, ROW_NUMBER() over (order by DiscountValue DESC ) as 'Row number' FROM Discounts
+                                    INNER JOIN DiscountsVar DV ON DV.VarID = Discounts.VarID
+                            WHERE ClientID = @ClientID
+                                    AND DiscountType = 'Temporary'
+                                    AND isUsed = 0
+                                    AND AppliedDate <= getdate() AND GETDATE() <= dateadd(DAY, ValidityPeriod, AppliedDate)
+                            ) CTE
+                        WHERE [Row number] = 1
+                        )
+go
+
+
+CREATE FUNCTION calculateBestDiscountPermanent(@ClientID int) RETURNS Table
+AS
+    RETURN (SELECT DiscountValue, DiscountID FROM
+                            (SELECT DiscountValue, DiscountID, ROW_NUMBER() over (order by DiscountValue DESC ) as 'Row number' FROM Discounts
+                                    INNER JOIN DiscountsVar DV ON DV.VarID = Discounts.VarID
+                            WHERE ClientID = @ClientID
+                                    AND DiscountType = 'Permanent'
+                            ) CTE
+                        WHERE [Row number] = 1
+                        )
+go
+
+
+CREATE FUNCTION calculateDiscountForClient(@ClientID int) RETURNS @Discount Table(ID int, Value decimal(3,2), Type nvarchar(50))
 AS
     BEGIN
-        RETURN (SELECT max(DiscountValue) AS 'Discount Value' FROM IndividualClient I
-                INNER JOIN Discounts D ON I.ClientID = D.ClientID
-                INNER JOIN DiscountsVar DV ON DV.VarID = D.VarID
-            WHERE
-                DiscountType = 'Temporary'
-                AND I.ClientID = @ClientID
-                AND isUsed = 0
-                AND AppliedDate <= getdate() AND GETDATE() <= dateadd(DAY, ValidityPeriod, AppliedDate))
+        DECLARE @BestValue decimal(3, 2);
+        DECLARE @DiscountID int
+        DECLARE @Permanent int
+        DECLARE @Temporary int
+
+        SET @Permanent = (SELECT COUNT(*) FROM dbo.calculateBestDiscountPermanent(@ClientID))
+        SET @Temporary = (SELECT COUNT(*) FROM dbo.calculateBestDiscountTemporary(@ClientID))
+    IF (@Permanent + @Temporary) = 0
+        BEGIN
+            INSERT @Discount(ID, Value, Type)
+            VALUES (
+                    NULL,
+                    NULL,
+                    NULL
+                   )
+            RETURN
+        END
+
+    IF @Permanent = 0 AND @Temporary = 1
+        BEGIN
+            SELECT @BestValue = DiscountValue, @DiscountID = DiscountID FROM dbo.calculateBestDiscountTemporary(@ClientID)
+            INSERT @Discount(ID, Value, Type)
+            values (
+                        @DiscountID,
+                        @BestValue,
+                        'Temporary'
+                   )
+            RETURN
+        END 
+    IF @Permanent = 1 AND @Temporary = 0
+        BEGIN 
+            SELECT @BestValue = DiscountValue, @DiscountID = DiscountID FROM dbo.calculateBestDiscountPermanent(@ClientID)
+            INSERT @Discount(ID, Value, Type)
+            values (
+                        @DiscountID,
+                        @BestValue,
+                        'Permanent'
+                   )
+            RETURN
+        END
+
+    DECLARE @PermanentValue decimal(3,2)
+    DECLARE @PermanentID int
+    DECLARE @TemporaryValue decimal(3,2)
+    DECLARE @TemporaryID int
+
+    SELECT @TemporaryValue = DiscountValue, @TemporaryID = DiscountID FROM dbo.calculateBestDiscountTemporary(@ClientID)
+    SELECT @PermanentValue = DiscountValue, @PermanentID = DiscountID FROM dbo.calculateBestDiscountPermanent(@ClientID)
+
+    IF @PermanentValue > @TemporaryValue
+        BEGIN
+            INSERT @Discount(ID, Value, Type)
+            values (
+                        @PermanentID,
+                        @PermanentValue,
+                        'Permanent'
+                   )
+            RETURN
+        END
+        INSERT @Discount(ID, Value, Type)
+        values (
+                    @TemporaryID,
+                    @TemporaryValue,
+                    'Temporary'
+               )
+        RETURN
+
     END
-GO
-
-
-CREATE FUNCTION calculateBestDiscountPermanent(@ClientID int) RETURNS decimal(3, 2) AS BEGIN RETURN (
-        SELECT
-            max(DiscountValue) AS 'Value'
-        FROM
-            IndividualClient I
-            JOIN Discounts D ON I.ClientID = D.ClientID
-            JOIN DiscountsVar DV ON DV.VarID = D.VarID
-        WHERE
-            DiscountType = 'Permanent'
-            AND I.ClientID = @ClientID
-    ) END
-GO
-
-
-CREATE FUNCTION calculateDiscountForOrder(@OrderId int) RETURNS money
-AS BEGIN
-DECLARE @BestValue decimal(3, 2);
-DECLARE @ClientID int;
-SET
-    @ClientID = (
-        SELECT
-            ClientID
-        FROM
-            Orders
-        WHERE
-            OrderID = @OrderId
-    );IF dbo.calculateBestDiscountTemporary(@ClientID) > dbo.calculateBestDiscountPermanent(@ClientID) BEGIN
-SET
-    @BestValue = dbo.calculateBestDiscountTemporary(@ClientID);END ELSE BEGIN
-SET
-    @BestValue = dbo.calculateBestDiscountPermanent(@ClientID);END RETURN (
-        SELECT
-            @BestValue * Orders.OrderSum
-        FROM
-            Orders
-        WHERE
-            OrderID = @OrderId
-    ) END
-GO;
+go
 
 CREATE FUNCTION sumOfMoneySpentIn_Month_Year(@WhichYear int, @WhichMonth int) RETURNS money AS BEGIN RETURN (
         SELECT
@@ -489,6 +535,34 @@ BEGIN
         @LastName
     )
 
+    DECLARE @Email varchar(100)
+    SET @Email = (SELECT Email FROM Clients WHERE ClientID = @ClientID)
+    INSERT @report
+    (
+        Field ,
+        Field_value
+    )
+    VALUES
+    (
+        'Email',
+        @Email
+    )
+
+    DECLARE @Phone varchar(14)
+    SET @Phone = (SELECT Phone FROM Clients WHERE ClientID = @ClientID)
+
+    INSERT @report
+    (
+        Field ,
+        Field_value
+    )
+    VALUES
+    (
+        'Phone number',
+        @Email
+    )
+
+
     DECLARE @TotalOrders INT
     SET @TotalOrders = (
         SELECT count (*) FROM Orders
@@ -698,6 +772,33 @@ AS
         (
             'Company Name',
             @CompanyName
+        )
+
+        DECLARE @Email varchar(100)
+        SET @Email = (SELECT Email FROM Clients WHERE ClientID = @CompanyID)
+        INSERT @report
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Email',
+            @Email
+        )
+
+        DECLARE @Phone varchar(14)
+        SET @Phone = (SELECT Phone FROM Clients WHERE ClientID = @CompanyID)
+
+        INSERT @report
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Phone number',
+            @Email
         )
 
         DECLARE @Nip char(10)
@@ -1033,43 +1134,7 @@ CREATE FUNCTION GenerateReservationReport(@From Date, @To Date)
 RETURNS Table
 AS
     RETURN (
-        SELECT
-            O.ClientID AS 'Numer clienta',
-            startDate,
-            endDate,
-            CONVERT(TIME, endDate - startDate, 108) AS 'Czas trwania',
-            O.OrderSum,
-            O.OrderDate,
-            O.OrderCompletionDate,
-            OD.Quantity,
-            RD.TableID
-        FROM Reservation
-            INNER JOIN Orders O ON Reservation.ReservationID = O.ReservationID
-            INNER JOIN OrderDetails OD ON O.OrderID = OD.OrderID
-            INNER JOIN ReservationCompany RC ON Reservation.ReservationID = RC.ReservationID
-            INNER JOIN ReservationDetails RD ON RC.ReservationID = RD.ReservationID
-        WHERE
-            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
-            AND startDate BETWEEN @From AND @To
-    UNION
-        SELECT
-            O.ClientID AS 'Numer clienta',
-            startDate,
-            endDate,
-            CONVERT(TIME, endDate - startDate, 108) AS 'Czas trwania',
-            O.OrderSum,
-            O.OrderDate,
-            O.OrderCompletionDate,
-            OD.Quantity,
-            RD.TableID
-        FROM Reservation
-            INNER JOIN Orders O ON Reservation.ReservationID = O.ReservationID
-            INNER JOIN OrderDetails OD ON O.OrderID = OD.OrderID
-            INNER JOIN ReservationIndividual RC ON Reservation.ReservationID = RC.ReservationID
-            INNER JOIN ReservationDetails RD ON RC.ReservationID = RD.ReservationID
-        WHERE
-            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
-            AND startDate BETWEEN @From AND @To
+        SELECT * FROM ReservationSummary WHERE startDate BETWEEN @From AND @To
     )
 GO
 
@@ -1077,63 +1142,16 @@ CREATE FUNCTION GenerateReservationMonthlyReport(@From Date, @To Date)
 RETURNS Table
 AS
     RETURN (
-        SELECT
-            R.ReservationID,
-            R.startDate,
-            R.endDate,
-            R.Status,
-            O.ClientID,
-            DATEPART(MONTH, cast(O.OrderDate AS DATE)) AS 'Miesiac',
-            DATEPART(YEAR, cast(O.OrderDate AS DATE)) AS 'Rok',
-            count(OD.ProductID) AS 'Liczba zamowionych produktow'
-        FROM Reservation R
-            INNER JOIN Orders O on R.ReservationID = O.ReservationID
-            INNER JOIN OrderDetails OD on O.OrderID = OD.OrderID
-        WHERE
-            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
-            AND LOWER(O.OrderStatus) NOT LIKE 'denied' AND LOWER(O.OrderStatus) NOT LIKE 'cancelled'
-            AND startDate BETWEEN @From AND @To
-        GROUP BY
-            R.ReservationID,
-            R.startDate,
-            R.endDate,
-            R.Status,
-            O.ClientID,
-            DATEPART(MONTH, cast(O.OrderDate AS DATE)),
-            DATEPART(YEAR, cast(O.OrderDate AS DATE))
+        SELECT * FROM ReservationSummaryMonthly WHERE startDate BETWEEN @From AND @To
     )
-GO
+go
 
 CREATE FUNCTION GenerateReservationWeeklyReport(@From Date, @To Date)
 RETURNS Table
 AS
     RETURN (
-        SELECT
-            R.ReservationID,
-            R.startDate,
-            R.endDate,
-            R.Status,
-            O.ClientID,
-            DATEPART(iso_week, cast(O.OrderDate AS DATE)) AS 'Tydzien',
-            DATEPART(YEAR, cast(O.OrderDate AS DATE)) AS 'Rok',
-            count(OD.ProductID) AS 'Liczba zamowionych produktow'
-        FROM Reservation R
-            INNER JOIN Orders O on R.ReservationID = O.ReservationID
-            INNER JOIN OrderDetails OD on O.OrderID = OD.OrderID
-        WHERE
-            LOWER(STATUS) NOT LIKE 'denied' AND LOWER(STATUS) NOT LIKE 'cancelled'
-            AND LOWER(O.OrderStatus) NOT LIKE 'denied' AND LOWER(O.OrderStatus) NOT LIKE 'cancelled'
-            AND startDate BETWEEN @From AND @To
-        GROUP BY
-            R.ReservationID,
-            R.startDate,
-            R.endDate,
-            R.Status,
-            O.ClientID,
-            DATEPART(iso_week, cast(O.OrderDate AS DATE)),
-            DATEPART(YEAR, cast(O.OrderDate AS DATE))
-        )
-
+        SELECT * FROM ReservationSummaryWeekly WHERE startDate BETWEEN  @From AND @To
+    )
 GO
 
 CREATE FUNCTION GenerateMenuReport(@MenuID int)
@@ -1179,3 +1197,601 @@ AS
         RETURN
     END
 GO
+
+CREATE FUNCTION GenerateOrderReport (@OrderID int)
+RETURNS @Report TABLE(
+                        Field nvarchar(100),
+                        Field_value nvarchar(100)
+                     )
+AS
+    BEGIN
+        IF NOT EXISTS(SELECT * FROM Orders WHERE OrderID = @OrderID)
+            BEGIN
+                INSERT @Report(Field, Field_value)
+                VALUES (
+                        N'Błąd',
+                        N'Nie ma takiego zamówienia! '
+                       )
+                RETURN
+            END
+        DECLARE @ClientID int
+        SET @ClientID = (SELECT  ClientID FROM Orders WHERE OrderID = @OrderID)
+
+        IF EXISTS(SELECT * FROM Companies WHERE ClientID = @ClientID)
+            BEGIN
+                DECLARE @CompanyName nvarchar(100)
+                SET @CompanyName = (SELECT CompanyName FROM Companies WHERE ClientID = @ClientID )
+
+                INSERT @Report(Field, Field_value)
+                VALUES(
+                        N'Company Name',
+                       @CompanyName
+                      )
+
+                DECLARE @Nip char(10)
+                SET @Nip = (SELECT Nip FROM Companies WHERE ClientID = @ClientID)
+                INSERT @Report
+                (
+                    Field,
+                    Field_Value
+                )
+                VALUES
+                (
+                    'NIP',
+                    @Nip
+                )
+
+                DECLARE @KRS char(10)
+                SET @KRS = (SELECT KRS FROM Companies WHERE ClientID = @ClientID)
+
+                IF @KRS IS NULL
+                    BEGIN
+                       SET @KRS = ''
+                    END
+
+                INSERT @Report
+                (
+                    Field,
+                    Field_Value
+                )
+                VALUES
+                (
+                    'KRS',
+                    @KRS
+                )
+
+                DECLARE @Regon char(9)
+                SET @Regon = (SELECT Regon FROM Companies WHERE ClientID = @ClientID)
+
+                IF @Regon IS NULL
+                    BEGIN
+                       SET @Regon = ''
+                    END
+
+                INSERT @Report
+                (
+                    Field,
+                    Field_Value
+                )
+                VALUES
+                (
+                    'Regon',
+                    @Regon
+                )
+            END
+        ELSE
+            BEGIN
+                DECLARE @FirstName NVARCHAR (50)
+                SET @FirstName = (SELECT FirstName FROM IndividualClient INNER JOIN Person P on IndividualClient.PersonID = P.PersonID WHERE ClientID = @ClientID)
+
+                INSERT @Report
+                (
+                    Field ,
+                    Field_value
+                )
+                VALUES
+                (
+                    'First Name' ,
+                    @FirstName
+                )
+
+                DECLARE @LastName NVARCHAR (50)
+                SET @LastName = (SELECT LastName FROM IndividualClient INNER JOIN Person P on IndividualClient.PersonID = P.PersonID WHERE ClientID = @ClientID)
+
+                INSERT @Report
+                (
+                    Field ,
+                    Field_value
+                )
+                VALUES
+                (
+                    'Last name' ,
+                    @LastName
+                )
+            END
+
+        DECLARE @Email varchar(100)
+        SET @Email = (SELECT Email FROM Clients WHERE ClientID = @ClientID)
+
+        INSERT @Report
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Email',
+            @Email
+        )
+
+        DECLARE @Phone varchar(14)
+        SET @Phone = (SELECT Phone FROM Clients WHERE ClientID = @ClientID)
+
+        INSERT @Report
+        (
+            Field,
+            Field_value
+        )
+        VALUES
+        (
+            'Phone number',
+            @Email
+        )
+
+        DECLARE @OrderStatus nvarchar(15)
+        SET @OrderStatus = (SELECT OrderStatus FROM Orders WHERE OrderID = @OrderID)
+
+        INSERT @Report
+        (
+            Field,
+            Field_value
+        )
+        VALUES
+        (
+            'Order status',
+            @OrderStatus
+        )
+
+        DECLARE @OrderDate datetime
+        SET @OrderDate = (SELECT OrderDate FROM Orders WHERE OrderID = @OrderID)
+
+        INSERT @Report
+        (
+            Field,
+            Field_value
+        )
+        VALUES
+        (
+            'Order Date',
+            @OrderDate
+        )
+
+
+        IF LOWER(@OrderStatus) NOT IN('denied', 'cancelled')
+            BEGIN
+                DECLARE @OrderCompletionDate datetime
+                SET @OrderCompletionDate = (SELECT OrderCompletionDate FROM Orders WHERE OrderID = @OrderID)
+
+                IF @OrderCompletionDate IS NULL
+                    BEGIN
+                        SET @OrderCompletionDate = ''
+                    END
+
+                INSERT @Report
+                (
+                    Field,
+                    Field_value
+                )
+                VALUES
+                (
+                    'Order Completion Date',
+                    @OrderCompletionDate
+                )
+                INSERT @Report(Field, Field_value)
+                VALUES(
+                       'Products For Order ',
+                        '----------'
+                      )
+
+                INSERT @Report
+                (
+                    Field,
+                    Field_value
+                )
+                SELECT Name, CONCAT('Price: ',(SELECT Price FROM MenuDetails MD INNER JOIN Menu M on M.MenuID = MD.MenuID WHERE @OrderDate BETWEEN startDate AND endDate AND OD.ProductID = MD.ProductID) , 'Quantity: ',Quantity) FROM Orders INNER JOIN OrderDetails OD on Orders.OrderID = OD.OrderID INNER JOIN Products P2 on P2.ProductID = OD.ProductID WHERE Orders.OrderID = @OrderID
+
+                DECLARE @OrderSum money
+                SET @OrderSum = (SELECT OrderSum FROM Orders WHERE OrderID = @OrderID)
+
+                DECLARE @TotalProducts int
+                SET @TotalProducts = (SELECT SUM(Quantity) FROM OrderDetails WHERE OrderID = @OrderID)
+
+                INSERT @Report
+                (
+                    Field,
+                    Field_value
+                )
+                VALUES
+                (
+                    'Total products',
+                    @TotalProducts
+                )
+
+                INSERT @Report
+                (
+                    Field,
+                    Field_value
+                )
+                VALUES
+                (
+                    'Order Sum',
+                    @OrderSum
+                )
+            END
+        ELSE
+            BEGIN
+                INSERT @Report
+                (
+                    Field,
+                    Field_value
+                )
+                VALUES
+                (
+                    'Order Completion Date',
+                    N'Brak'
+                )
+
+
+                INSERT @Report
+                (
+                    Field,
+                    Field_value
+                )
+                VALUES
+                (
+                    'Order Sum',
+                    0
+                )
+            END
+        DECLARE @InvoiceID int
+        SET @InvoiceID = (SELECT InvoiceID FROM Orders WHERE OrderID = @OrderID)
+
+        IF @InvoiceID IS NULL
+            BEGIN
+                SET @InvoiceID = ''
+            END
+
+
+        INSERT @Report(Field, Field_value)
+        VALUES(
+               'Invoice ID',
+                @InvoiceID
+              )
+
+        DECLARE @PaymentMethodName varchar(50)
+        SET @PaymentMethodName = (SELECT PaymentName FROM Orders O INNER JOIN PaymentMethods PM on PM.PaymentMethodID = O.PaymentMethodID WHERE OrderID = @OrderID)
+
+        INSERT @Report
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Payment Method Name',
+            @PaymentMethodName
+        )
+
+        DECLARE @PaymentStatusName varchar(50)
+        SET @PaymentStatusName = (SELECT PaymentStatusName  FROM Orders O INNER JOIN PaymentStatus PS on PS.PaymentStatusID = O.PaymentStatusID  WHERE OrderID = @OrderID)
+
+        INSERT @Report
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Payment Status Name',
+            @PaymentStatusName
+        )
+
+
+
+
+        DECLARE @TakeawayID int
+        SET @TakeawayID = (SELECT TakeawayID FROM Orders WHERE OrderID = @OrderID)
+        IF @TakeawayID IS NOT NULL
+            BEGIN
+                DECLARE @PrefDate datetime
+                SET @PrefDate = (SELECT PrefDate FROM OrdersTakeaways WHERE TakeawaysID = @TakeawayID)
+                INSERT @Report(Field, Field_value)
+                VALUES(
+                       'Pref Date',
+                        @PrefDate
+                      )
+            END
+
+        DECLARE @ReservationID int
+        SET @ReservationID = (SELECT ReservationID FROM Orders WHERE OrderID = @OrderID)
+        IF @ReservationID IS NOT NULL
+            BEGIN
+                INSERT @Report(Field, Field_value)
+                VALUES(
+                       'Reservation',
+                        '----------'
+                      )
+
+                DECLARE @StartDate datetime
+                SET @StartDate = (SELECT startDate FROM Reservation WHERE ReservationID = @ReservationID)
+
+                INSERT @Report(Field, Field_value)
+                VALUES(
+                       'Reservation Start Date',
+                        @StartDate
+                      )
+
+                DECLARE @EndDate datetime
+                SET @EndDate = (SELECT endDate FROM Reservation WHERE ReservationID = @ReservationID)
+
+                INSERT @Report(Field, Field_value)
+                VALUES(
+                       'Reservation End Date',
+                        @EndDate
+                      )
+                INSERT @Report(Field, Field_value)
+                VALUES(
+                       'Tables for reservation',
+                        '----------'
+                      )
+                INSERT @Report(Field, Field_value)
+                SELECT T.TableID, ChairAmount FROM ReservationDetails INNER JOIN Tables T on T.TableID = ReservationDetails.TableID WHERE ReservationID = @ReservationID
+            END
+        DECLARE @FirstNameOfStaff nvarchar(70)
+        DECLARE @LastNameOfStaff nvarchar(70)
+        DECLARE @Position nvarchar(14)
+        SELECT @FirstNameOfStaff = FirstName, @LastNameOfStaff = LastName, @Position = Position FROM Orders INNER JOIN Staff S on Orders.staffID = S.StaffID WHERE OrderID = @OrderID
+
+        INSERT @Report(Field, Field_value)
+        VALUES(
+               'Last Name of Staff',
+                @LastNameOfStaff
+              )
+        INSERT @Report(Field, Field_value)
+        VALUES(
+               'First Name of Staff',
+                @FirstNameOfStaff
+              )
+        INSERT @Report(Field, Field_value)
+        VALUES(
+               'Position of Staff',
+                @Position
+              )
+        RETURN
+    END
+GO
+
+CREATE FUNCTION GenerateDiscountsSummaryForClient(@ClientID int)
+RETURNS TABLE
+    AS
+        RETURN (
+                SELECT * FROM DiscountsSummary WHERE ClientID = @ClientID
+    )
+GO
+CREATE FUNCTION GetInvoice(@OrderID int)
+RETURNS @Invoice Table(Field nvarchar(100), Field_value nvarchar(100))
+AS
+    BEGIN
+        IF NOT EXISTS(SELECT * FROM Orders WHERE OrderID = @OrderID)
+            BEGIN
+                INSERT @Invoice(Field, Field_value)
+                VALUES(
+                        N'Błąd',
+                        N'Nie ma takiego zamówienia'
+                      )
+                RETURN
+            END
+        DECLARE @ClientID int
+        SET @ClientID = (SELECT ClientID FROM Orders WHERE OrderID = @OrderID)
+
+        IF EXISTS(SELECT * FROM Companies WHERE ClientID = @ClientID)
+            BEGIN
+                DECLARE @CompanyName nvarchar(100)
+                SET @CompanyName = (SELECT CompanyName FROM Companies)
+
+                INSERT @Invoice(Field, Field_value)
+                VALUES(
+                        N'Company Name',
+                       @CompanyName
+                      )
+
+                DECLARE @Nip char(10)
+                SET @Nip = (SELECT Nip FROM Companies WHERE ClientID = @ClientID)
+
+                INSERT @Invoice
+                (
+                    Field,
+                    Field_Value
+                )
+                VALUES
+                (
+                    'NIP',
+                    @Nip
+                )
+
+                DECLARE @KRS char(10)
+                SET @KRS = (SELECT KRS FROM Companies WHERE ClientID = @ClientID)
+
+                IF @KRS IS NULL
+                    BEGIN
+                       SET @KRS = ''
+                    END
+
+                INSERT @Invoice
+                (
+                    Field,
+                    Field_Value
+                )
+                VALUES
+                (
+                    'KRS',
+                    @KRS
+                )
+
+                DECLARE @Regon char(9)
+                SET @Regon = (SELECT Regon FROM Companies WHERE ClientID = @ClientID)
+
+                IF @Regon IS NULL
+                    BEGIN
+                       SET @Regon = ''
+                    END
+
+                INSERT @Invoice
+                (
+                    Field,
+                    Field_Value
+                )
+                VALUES
+                (
+                    'Regon',
+                    @Regon
+                )
+            END
+        ELSE
+            BEGIN
+                DECLARE @FirstName NVARCHAR (50)
+                SET @FirstName = (SELECT FirstName FROM IndividualClient INNER JOIN Person P on IndividualClient.PersonID = P.PersonID WHERE ClientID = @ClientID)
+
+                INSERT @Invoice
+                (
+                    Field ,
+                    Field_value
+                )
+                VALUES
+                (
+                    'First Name' ,
+                    @FirstName
+                )
+
+                DECLARE @LastName NVARCHAR (50)
+                SET @LastName = (SELECT LastName FROM IndividualClient INNER JOIN Person P on IndividualClient.PersonID = P.PersonID WHERE ClientID = @ClientID)
+
+                INSERT @Invoice
+                (
+                    Field ,
+                    Field_value
+                )
+                VALUES
+                (
+                    'Last name' ,
+                    @LastName
+                )
+            END
+
+        DECLARE @Email varchar(100)
+        SET @Email = (SELECT Email FROM Clients WHERE ClientID = @ClientID)
+
+        INSERT @Invoice
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Email',
+            @Email
+        )
+
+        DECLARE @Phone varchar(14)
+        SET @Phone = (SELECT Phone FROM Clients WHERE ClientID = @ClientID)
+
+        INSERT @Invoice
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Phone number',
+            @Email
+        )
+
+        DECLARE @InvoiceNumber varchar(50)
+        SET @InvoiceNumber = (SELECT InvoiceNumber FROM Invoice WHERE ClientID = @ClientID)
+
+        INSERT @Invoice
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Invoice Number',
+            @InvoiceNumber
+        )
+
+        DECLARE @InvoiceDate datetime
+        SET @InvoiceDate = (SELECT InvoiceDate FROM Invoice WHERE ClientID = @ClientID)
+
+        INSERT @Invoice
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Invoice Date',
+            @InvoiceDate
+        )
+
+        DECLARE @DueDate datetime
+        SET @DueDate = (SELECT DueDate FROM Invoice WHERE ClientID = @ClientID)
+
+        INSERT @Invoice
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Due Date',
+            @DueDate
+        )
+
+        DECLARE @PaymentMethodName varchar(50)
+        SET @PaymentMethodName = (SELECT PaymentName FROM Invoice INNER JOIN PaymentMethods PM on PM.PaymentMethodID = Invoice.PaymentMethodID WHERE ClientID = @ClientID)
+
+        INSERT @Invoice
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Payment Method Name',
+            @PaymentMethodName
+        )
+
+        DECLARE @PaymentStatusName varchar(50)
+        SET @PaymentStatusName = (SELECT PaymentStatusName  FROM Invoice INNER JOIN PaymentStatus PS on PS.PaymentStatusID = Invoice.PaymentStatusID  WHERE ClientID = @ClientID)
+
+        INSERT @Invoice
+        (
+            Field ,
+            Field_value
+        )
+        VALUES
+        (
+            'Payment Status Name',
+            @PaymentStatusName
+        )
+        RETURN
+    END
+GO
+
+CREATE FUNCTION GetClientInvoices(@ClientID int)
+RETURNS TABLE
+AS
+    RETURN (SELECT * FROM Invoice WHERE ClientID = @ClientID)
+GO
+
