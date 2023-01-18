@@ -444,6 +444,10 @@ AS
             BEGIN;
                 THROW 52000, N'Nie ma takiego produktu', 1
             END
+            IF EXISTS(SELECT * FROM Products WHERE Name LIKE @Name AND IsAvailable = 0)
+                BEGIN
+                    THROW 52000, N'Ten produkt jest aktualnie niedostępny!', 1
+                END
 
             IF NOT EXISTS(
                 SELECT * FROM Menu WHERE MenuID = @MenuID
