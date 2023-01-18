@@ -1179,11 +1179,10 @@ GO
 -- Jakie zamówienia są w trakcie przygotowywania
 CREATE OR ALTER VIEW dbo.OrdersToPrepare 
 AS
-    SELECT OrderID, ClientID, TakeawayID, PaymentStatusName, PM.PaymentName,
+    SELECT OrderID, ClientID, ISNULL(CAST(TakeawayID AS varchar), '') as TakeawayID, ISNULL(CAST(ReservationID AS varchar), '') as ReservationID, PaymentStatusName, PM.PaymentName,
     CONCAT(S.LastName, ' ',S.FirstName) AS 'Dane kelnera',
-    OrderSum, OrderDate, PrefDate
-    FROM Orders O 
-        INNER JOIN OrdersTakeaways OT ON O.TakeawayID = OT.TakeawaysID
+    OrderSum, OrderDate
+    FROM Orders O
         INNER JOIN PaymentStatus PS ON PS.PaymentStatusID = O.PaymentStatusID
         INNER JOIN PaymentMethods PM ON PM.PaymentMethodID = O.PaymentMethodID
         INNER JOIN Staff S ON O.staffID = S.StaffID
