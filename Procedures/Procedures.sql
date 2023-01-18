@@ -579,7 +579,7 @@ GO
 -- UPDATE MENU DESCRIPTION
 --create invoice
 CREATE PROCEDURE [create invoice] @OrderID int,
-  @InvoiceDate date,
+  @InvoiceDate datetime,
   @PaymentMethodName varchar(50),
   @PaymentStatusName varchar(50),
   @InvoiceID int output
@@ -632,7 +632,7 @@ AS
             THROW 52000, @msg, 1
         END CATCH
     END
-GO
+go
 --create invoice
 -- add Payment Status
 CREATE PROCEDURE [add Payment Status] @PaymentStatusName varchar(50)
@@ -778,7 +778,7 @@ GO
 -- change Payment status for order
 -- order Insert Instant Pay
 CREATE PROCEDURE AddOrderInstantPay @ClientID int,
-                                    @OrderCompletionDate DATE,
+                                    @OrderCompletionDate datetime,
                                     @PaymentStatusName_ varchar(50),
                                     @PaymentMethodName_ varchar(50),
                                     @OrderStatus varchar(15),
@@ -812,14 +812,13 @@ BEGIN
         DECLARE @InvoiceID int
 
         SELECT @PaymentStatusID =  PaymentStatusID FROM PaymentStatus WHERE PaymentStatusName LIKE @PaymentStatusName_
-        SELECT @PaymentMethodID =  PaymentMethods.PaymentName FROM PaymentMethods WHERE PaymentMethods.PaymentName LIKE @PaymentMethodName_
+        SELECT @PaymentMethodID =  PaymentMethods.PaymentMethodID FROM PaymentMethods WHERE PaymentMethods.PaymentName LIKE @PaymentMethodName_
 
         INSERT INTO Orders (ClientID, PaymentStatusID, PaymentMethodID, staffID, OrderSum, OrderCompletionDate, OrderStatus, OrderDate)
         OUTPUT inserted.OrderID INTO @OrderIDTable
         VALUES (@ClientID, @PaymentStatusID, @PaymentMethodID, @StaffID , 0.0, @OrderCompletionDate, @OrderStatus, GETDATE());
 
         SELECT @OrderID = Id FROM @OrderIDTable
-
         EXEC dbo.[create invoice] @OrderID = @OrderID, @InvoiceDate = @OrderCompletionDate, @PaymentMethodName = @PaymentMethodName_, @PaymentStatusName = @PaymentStatusName_, @InvoiceID = @InvoiceID OUTPUT
         UPDATE [Orders] SET InvoiceID= @InvoiceID WHERE OrderID = @OrderID
         RETURN @OrderID
@@ -829,11 +828,13 @@ BEGIN
             THROW 52000, @msg,1
     END CATCH
 END
-GO
+go
+
+
 -- order Insert Instant Pay
 -- order Insert Month Pay
-CREATE PROCEDURE AddOrderMonthPay  @ClientID int,
-                                    @OrderCompletionDate DATE,
+CREATE PROCEDURE AddOrderMonthPay   @ClientID int,
+                                    @OrderCompletionDate datetime,
                                     @PaymentStatusName_ varchar(50),
                                     @PaymentMethodName_ varchar(50),
                                     @OrderStatus varchar(15),
@@ -862,11 +863,11 @@ BEGIN
         Declare @OrderID int
         DECLARE @PaymentMethodID int
         DECLARE @PaymentStatusID int
-        DECLARE @startOfMonth date = cast(DATEADD(month, DATEDIFF(month, 0, @OrderCompletionDate) + 1, 0) AS date)
+        DECLARE @startOfMonth datetime = cast(DATEADD(month, DATEDIFF(month, 0, @OrderCompletionDate) + 1, 0) AS date)
         DECLARE @InvoiceID int
 
         SELECT @PaymentStatusID =  PaymentStatusID FROM PaymentStatus WHERE PaymentStatusName LIKE @PaymentStatusName_
-        SELECT @PaymentMethodID =  PaymentMethods.PaymentName FROM PaymentMethods WHERE PaymentMethods.PaymentName LIKE @PaymentMethodName_
+        SELECT @PaymentMethodID =  PaymentMethods.PaymentMethodID FROM PaymentMethods WHERE PaymentMethods.PaymentName LIKE @PaymentMethodName_
 
         INSERT INTO Orders (ClientID, PaymentStatusID, PaymentMethodID, staffID, OrderSum, OrderCompletionDate, OrderStatus, OrderDate)
         OUTPUT inserted.OrderID INTO @OrderIDTable
@@ -893,7 +894,7 @@ BEGIN
         THROW 52000, @msg, 1
     END CATCH
 END;
-GO
+go
 -- order Insert Month Pay
 -- add Staff Member
 CREATE PROCEDURE addStaffMember @LastName nvarchar(50), @FirstName nvarchar(70), @Position varchar(50), @Email varchar(100), @Phone varchar(14), @AddressID int
@@ -1390,7 +1391,31 @@ AS
     END
 GO
 -- add takeaway to order
+-- add reservation to order 
+CREATE PROCEDURE AddReservationToOrder @OrderID int, @ReservationID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM Orders WHERE OrderID = @OrderID)
+                BEGIN;
+                    THROW 52000, 'Nie ma takiego zamowienia', 1
+                END
 
+            IF NOT EXISTS(SELECT * FROM Reservation WHERE ReservationID = @ReservationID)
+                BEGIN;
+                    THROW 52000, 'Nie ma takiego rezerwacji', 1
+                END
+
+            UPDATE Orders SET ReservationID = @ReservationID WHERE OrderID = @OrderID
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania rezerwacji do zamowienia: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
+-- add reservation to order
 
 -- add Reservation
 CREATE PROCEDURE AddReservation @ClientID int, @StartDate datetime, @EndDate datetime, @Status varchar(15), @StaffID int
