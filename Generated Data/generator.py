@@ -1234,8 +1234,8 @@ products = [
     "Beef stew with celery",
 ]
 products = list(set(products))
-for i in range(401, 405):
-    order_id = orders[i]
+for i in range(1, 100):
+    order_id = i
     random.shuffle(products)
     for i in products[:5]:
         quantity = random.randint(1, 3)
