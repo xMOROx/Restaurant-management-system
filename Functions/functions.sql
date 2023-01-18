@@ -27,6 +27,36 @@ CREATE FUNCTION GetMaximumPriceOfMenu(@MenuID int) RETURNS money AS BEGIN RETURN
     ) END
 GO
 
+CREATE FUNCTION getNotReservedTablesOnAParticularDay(@Date datetime)
+RETURNS TABLE
+    AS
+        RETURN (SELECT TableID, ChairAmount FROM Tables
+                    WHERE TableID NOT IN(SELECT ReservationDetails.TableID FROM ReservationDetails
+                                            INNER JOIN ReservationCompany RC ON RC.ReservationID = ReservationDetails.ReservationID
+                                            INNER JOIN Reservation R2 ON RC.ReservationID = R2.ReservationID
+                                         WHERE
+                                            (CAST(@Date AS date) =  CAST(startDate AS date))
+                                            AND (CAST(@Date AS date) =  CAST(endDate AS date))
+                                            AND (STATUS NOT LIKE 'cancelled' AND STATUS NOT LIKE 'denied')
+                                            AND isActive = 1
+                                        ) AND isActive = 1
+                UNION
+                SELECT TableID, ChairAmount FROM Tables
+                    WHERE TableID NOT IN(SELECT ReservationDetails.TableID FROM ReservationDetails
+                                            INNER JOIN ReservationIndividual RC ON RC.ReservationID = ReservationDetails.ReservationID
+                                            INNER JOIN Reservation R2 ON RC.ReservationID = R2.ReservationID
+                                          WHERE
+                                                (CAST(@Date AS date) =  CAST(startDate AS date))
+                                                AND (CAST(@Date AS date) =  CAST(endDate AS date))
+                                                AND (
+                                                    STATUS NOT LIKE 'cancelled'
+                                                    AND STATUS NOT LIKE 'denied'
+                                                )
+                                                AND isActive = 1
+                                        ) AND isActive = 1
+               )
+GO
+
 
 CREATE FUNCTION show_taken_tables_from_x_to_y_with_z_chairs(
         @StartDate datetime,
@@ -521,35 +551,7 @@ go
 
 -- Menu system section
 
-CREATE FUNCTION getNotReservedTablesOnAParticularDay(@Date datetime)
-RETURNS TABLE
-    AS
-        RETURN (SELECT TableID, ChairAmount FROM Tables
-                    WHERE TableID NOT IN(SELECT ReservationDetails.TableID FROM ReservationDetails
-                                            INNER JOIN ReservationCompany RC ON RC.ReservationID = ReservationDetails.ReservationID
-                                            INNER JOIN Reservation R2 ON RC.ReservationID = R2.ReservationID
-                                         WHERE
-                                            (CAST(@Date AS date) =  CAST(startDate AS date))
-                                            AND (CAST(@Date AS date) =  CAST(endDate AS date))
-                                            AND (STATUS NOT LIKE 'cancelled' AND STATUS NOT LIKE 'denied')
-                                            AND isActive = 1
-                                        ) AND isActive = 1
-                UNION
-                SELECT TableID, ChairAmount FROM Tables
-                    WHERE TableID NOT IN(SELECT ReservationDetails.TableID FROM ReservationDetails
-                                            INNER JOIN ReservationIndividual RC ON RC.ReservationID = ReservationDetails.ReservationID
-                                            INNER JOIN Reservation R2 ON RC.ReservationID = R2.ReservationID
-                                          WHERE
-                                                (CAST(@Date AS date) =  CAST(startDate AS date))
-                                                AND (CAST(@Date AS date) =  CAST(endDate AS date))
-                                                AND (
-                                                    STATUS NOT LIKE 'cancelled'
-                                                    AND STATUS NOT LIKE 'denied'
-                                                )
-                                                AND isActive = 1
-                                        ) AND isActive = 1
-               )
-GO
+
 
 
 CREATE FUNCTION GenerateIndividualClientReport(@ClientID int, @From Date, @To Date)
