@@ -76,7 +76,7 @@ BEGIN
         WHERE LOWER(O.OrderStatus) LIKE 'cancelled' OR LOWER(O.OrderStatus) LIKE 'denied'
     )
 END
-
+go
 -- Trigger sprawdza czy danie które probujemy dodac do menu jest w bazie w czasie odbioru zamowienia zaznaczone jako dostepne i jest w menu wtedy
 CREATE TRIGGER OrderDetailsInsert
 ON OrderDetails
@@ -87,22 +87,24 @@ BEGIN
     DECLARE @ProductID int
     DECLARE @OrderID int
     DECLARE @MenuID int
+    DECLARE @ProductName nvarchar(200)
     SELECT @MenuID = MAX(MenuID) from Menu
 
     SELECT @ProductID = ProductID from inserted
     SELECT @OrderID = OrderID from inserted
+    SET @ProductName = (SELECT Name FROM Products where Products.ProductID = @ProductID)
     IF EXISTS(SELECT * FROM Products P WHERE P.ProductID = @ProductID AND P.IsAvailable = 0)
         BEGIN;
             THROW 50001, 'Niepoprawne ProductID, Jego IsAvailable to 0 w tabeli Products. ', 1
             ROLLBACK TRANSACTION
         END
-    IF NOT EXISTS(SELECT * FROM MenuDetails MD WHERE MD.MenuID = @MenuID AND MD.ProductID = @ProductID)
+    IF NOT EXISTS(SELECT * FROM CurrentMenu where Name like @ProductName)
         BEGIN
             THROW 50001, 'Ten produkt nieznajduje się aktualnie w menu.', 1
             ROLLBACK TRANSACTION
         END
 END
-GO
+go
 
 -- Sprawdzanie czy pracodawca dodanego pracownika jest firmą
 
