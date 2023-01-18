@@ -395,15 +395,15 @@ alter table ReservationDetails
         foreign key (TableID) references Tables
             on update cascade
 
--- Reference: ReservationCompany_Reservation (table: Reservation)
-ALTER TABLE Reservation ADD CONSTRAINT ReservationCompany_Reservation
+-- Reference: ReservationCompany_Reservation (table: ReservationCompany)
+ALTER TABLE ReservationCompany ADD CONSTRAINT ReservationCompany_Reservation
     FOREIGN KEY (ReservationID)
-    REFERENCES ReservationCompany (ReservationID);
+    REFERENCES Reservation (ReservationID);
 
--- Reference: ReservationIndividual_Reservation (table: Reservation)
-ALTER TABLE Reservation ADD CONSTRAINT ReservationIndividual_Reservation
+-- Reference: ReservationIndividual_Reservation (table: ReservationIndividual)
+ALTER TABLE ReservationIndividual ADD CONSTRAINT ReservationIndividual_Reservation
     FOREIGN KEY (ReservationID)
-    REFERENCES ReservationIndividual (ReservationID);
+    REFERENCES Reservation (ReservationID);
 
 -- Reference: Reservation_Staff (table: Reservation)
 alter table Reservation
