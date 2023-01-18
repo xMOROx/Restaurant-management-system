@@ -130,9 +130,9 @@ CREATE TABLE Orders (
     staffID int  NOT NULL,
     OrderSum money  NOT NULL check ( OrderSum >= 0 ),
     OrderDate datetime  NOT NULL default getdate(),
-    OrderCompletionDate datetime  NULL ,
+    OrderCompletionDate datetime NULL ,
     OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked', 'cancelled')),
-    CONSTRAINT validDateOrders check ( (OrderCompletionDate >= OrderDate)  or (OrderCompletionDate is null)),
+    CONSTRAINT validDateOrders check ( (OrderCompletionDate >= OrderDate) or OrderCompletionDate is null),
     CONSTRAINT Orders_pk PRIMARY KEY  (OrderID)
 );
 
@@ -177,7 +177,7 @@ CREATE TABLE Products (
 
 -- Table: Reservation
 CREATE TABLE Reservation (
-    ReservationID int  NOT NULL  IDENTITY (1,1),
+    ReservationID int  NOT NULL,
     startDate datetime  NOT NULL,
     endDate datetime  NOT NULL ,
     Status varchar(15)  NOT NULL default 'waiting',
@@ -395,15 +395,15 @@ alter table ReservationDetails
         foreign key (TableID) references Tables
             on update cascade
 
--- Reference: Reservation_ReservationCompany (table: Reservation)
-alter table Reservation
-    add constraint Reservation_ReservationCompany
-        foreign key (ReservationID) references ReservationCompany
+-- Reference: ReservationCompany_Reservation (table: Reservation)
+ALTER TABLE Reservation ADD CONSTRAINT ReservationCompany_Reservation
+    FOREIGN KEY (ReservationID)
+    REFERENCES ReservationCompany (ReservationID);
 
--- Reference: Reservation_ReservationIndividual (table: Reservation)
-alter table Reservation
-    add constraint Reservation_ReservationIndividual
-        foreign key (ReservationID) references ReservationIndividual
+-- Reference: ReservationIndividual_Reservation (table: Reservation)
+ALTER TABLE Reservation ADD CONSTRAINT ReservationIndividual_Reservation
+    FOREIGN KEY (ReservationID)
+    REFERENCES ReservationIndividual (ReservationID);
 
 -- Reference: Reservation_Staff (table: Reservation)
 alter table Reservation
