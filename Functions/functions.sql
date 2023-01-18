@@ -319,23 +319,7 @@ AS
     )
 GO
 
-CREATE FUNCTION ShowDuplicatedProductsInXMenuFromYMenu(@MenuFirstID int, @MenuSecondID int)
-    RETURNS TABLE
-        AS RETURN SELECT max(M.MenuID) as 'MenuID', P.ProductID, P.Name, P.Description FROM Products P
-            INNER JOIN (SELECT P1.ProductID, P1.Name, P1.Description
-                FROM MenuDetails M1
-                    INNER JOIN Products P1 on P1.ProductID = M1.ProductID
-                WHERE MenuID = (@MenuSecondID)
-                    INTERSECT
-                SELECT P2.ProductID, P2.Name, P2.Description
-                FROM MenuDetails M2
-                    INNER JOIN Products P2 on P2.ProductID = M2.ProductID
-                WHERE MenuID = @MenuFirstID) P3
-                ON P3.ProductID = P.ProductID
-                    INNER JOIN MenuDetails M on P.ProductID = M.ProductID
-                GROUP BY P.ProductID, P.Name, P.Description
-GO
-
+-- Menu system section
 --helps to make a new menu
 CREATE FUNCTION WhatWasNotInTheMenuOfGivenID(@MenuID int)
     RETURNS TABLE AS RETURN
@@ -350,7 +334,25 @@ CREATE FUNCTION WhatWasNotInTheMenuOfGivenID(@MenuID int)
          WHERE MenuID=@MenuID) AND P.IsAvailable = 1
 GO
 
-CREATE FUNCTION MenuIsCorrect(@MenuID int) RETURNS bit
+CREATE FUNCTION WhatWasNotInThePreviousAndFollowingMenu(@MenuID int)
+    RETURNS TABLE AS RETURN
+        SELECT P.ProductID, P.Name, P.Description as 'Product Description', C.CategoryName , C.Description as 'Category Description' FROM Products P
+                INNER JOIN Category C on C.CategoryID = P.CategoryID
+            WHERE P.ProductID IN
+        (SELECT P.ProductID FROM Products PI
+         EXCEPT
+            (SELECT ProductID FROM MenuDetails MD
+                    INNER JOIN Menu M on M.MenuID = MD.MenuID
+                WHERE MD.MenuID=dbo.GetIdOfFollowingMenu(@MenuID)
+                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1
+                )
+         EXCEPT
+            (SELECT ProductID FROM MenuDetails
+                WHERE MenuID=dbo.GetIdOfPreviousMenu(@MenuID) )
+         ) AND P.IsAvailable = 1
+go
+
+CREATE FUNCTION MenuIsCorrect(@MenuID int) RETURNS @WhereAreDuplicated Table(Field nvarchar(100), Field_value nvarchar(100))
 AS
     BEGIN
         DECLARE @SameItemsPrevious int
@@ -394,12 +396,39 @@ AS
             WHERE
                 MenuID = dbo.GetIdOfFollowingMenu (@MenuID)
         ) / 2
-
-        IF (@SameItemsFollowing <= @minAmountToChangeFollowing OR @minAmountToChangeFollowing = 0) AND (@SameItemsPrevious <= @minAmountToChangePrevious OR  @minAmountToChangePrevious = 0)
+        IF @SameItemsFollowing > @minAmountToChangeFollowing
             BEGIN
-                RETURN 1
-            END 
-        RETURN 0
+                INSERT @WhereAreDuplicated(Field, Field_value)
+                VALUES (
+                        'Following',
+                        0
+                       )
+            END
+        ELSE
+            BEGIN
+                INSERT @WhereAreDuplicated(Field, Field_value)
+                VALUES (
+                        'Following',
+                        1
+                       )
+            END
+        IF @SameItemsPrevious > @minAmountToChangePrevious
+            BEGIN
+                INSERT @WhereAreDuplicated(Field, Field_value)
+                VALUES (
+                        'Previous',
+                        0
+                       )
+            END
+        ELSE
+            BEGIN
+                INSERT @WhereAreDuplicated(Field, Field_value)
+                VALUES (
+                        'Previous',
+                        1
+                       )
+            END
+        RETURN
     END
 go
 
@@ -440,39 +469,11 @@ AS
                     AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1)
 go
 
-CREATE FUNCTION ShowDuplicatesFollowingMenu(@MenuID int)
-RETURNS table
-AS
-    RETURN SELECT P.Name, P.Description FROM MenuDetails MD
-                INNER JOIN Products P on P.ProductID = MD.ProductID
-            WHERE MenuID = @MenuID
-    INTERSECT
-        (SELECT P.Name, P.Description FROM MenuDetails MD
-                INNER JOIN Products P on P.ProductID = MD.ProductID
-                INNER JOIN Menu M on M.MenuID = MD.MenuID
-            WHERE MD.MenuID = dbo.GetIdOfFollowingMenu(@MenuID)
-                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1)
-GO
-
-CREATE FUNCTION ShowDuplicatesPreviousMenu(@MenuID int)
-RETURNS table
-AS
-    RETURN  SELECT P.Name, P.Description FROM MenuDetails MD
-                INNER JOIN Products P on P.ProductID = MD.ProductID
-            WHERE MenuID = @MenuID
-    INTERSECT
-        (SELECT P.Name, P.Description FROM MenuDetails MD
-                INNER JOIN Products P on P.ProductID = MD.ProductID
-                INNER JOIN Menu M on M.MenuID = MD.MenuID
-            WHERE MD.MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
-                AND ABS(DATEDIFF(day, (SELECT TOP 1 Menu.startDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.endDate)) <= 1)
-GO
-
 
 CREATE FUNCTION ShowDuplicatesInPreviousAndFollowingMenuWithID(@MenuID int)
 RETURNS table
     AS
-        RETURN  SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
+        RETURN  SELECT P.ProductID ,P.Name, P.Description FROM MenuDetails MD
                 INNER JOIN Products P ON P.ProductID = MD.ProductID
                 INNER JOIN Menu M on M.MenuID = MD.MenuID
                 WHERE
@@ -480,7 +481,7 @@ RETURNS table
                     AND MD.MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
                     AND ABS(DATEDIFF(day, (SELECT TOP 1 Menu.startDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.endDate)) <= 1
                UNION
-               SELECT MD.MenuID, P.Name, P.Description FROM MenuDetails MD
+               SELECT P.ProductID, P.Name, P.Description FROM MenuDetails MD
                     INNER JOIN Products P ON P.ProductID = MD.ProductID
                     INNER JOIN Menu M on M.MenuID = MD.MenuID
                WHERE
@@ -490,23 +491,35 @@ RETURNS table
 go
 
 
-CREATE FUNCTION WhatWasNotInThePreviousAndFollowingMenu(@MenuID int)
-    RETURNS TABLE AS RETURN
-        SELECT P.ProductID, P.Name, P.Description as 'Product Description', C.CategoryName , C.Description as 'Category Description' FROM Products P
-                INNER JOIN Category C on C.CategoryID = P.CategoryID
-            WHERE P.ProductID IN
-        (SELECT P.ProductID FROM Products PI
-         EXCEPT
-            (SELECT ProductID FROM MenuDetails MD
-                    INNER JOIN Menu M on M.MenuID = MD.MenuID
-                WHERE MD.MenuID=dbo.GetIdOfFollowingMenu(@MenuID)
-                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1
-                )
-         EXCEPT
-            (SELECT ProductID FROM MenuDetails
-                WHERE MenuID=dbo.GetIdOfPreviousMenu(@MenuID) )
-         ) AND P.IsAvailable = 1
+CREATE FUNCTION ShowDuplicatesFollowingMenu(@MenuID int)
+RETURNS table
+AS
+    RETURN SELECT P.ProductID, P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+            WHERE MenuID = @MenuID
+    INTERSECT
+        (SELECT P.ProductID,P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+                INNER JOIN Menu M on M.MenuID = MD.MenuID
+            WHERE MD.MenuID = dbo.GetIdOfFollowingMenu(@MenuID)
+                    AND ABS(DATEDIFF(day, (SELECT TOP 1 endDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.startDate)) <= 1)
 go
+
+CREATE FUNCTION ShowDuplicatesPreviousMenu(@MenuID int)
+RETURNS table
+AS
+    RETURN  SELECT P.ProductID, P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+            WHERE MenuID = @MenuID
+    INTERSECT
+        (SELECT P.ProductID,P.Name, P.Description FROM MenuDetails MD
+                INNER JOIN Products P on P.ProductID = MD.ProductID
+                INNER JOIN Menu M on M.MenuID = MD.MenuID
+            WHERE MD.MenuID = dbo.GetIdOfPreviousMenu(@MenuID)
+                AND ABS(DATEDIFF(day, (SELECT TOP 1 Menu.startDate from Menu inner join MenuDetails D on Menu.MenuID = D.MenuID WHERE D.MenuID = @MenuID), M.endDate)) <= 1)
+go
+
+-- Menu system section
 
 CREATE FUNCTION getNotReservedTablesOnAParticularDay(@Date datetime)
 RETURNS TABLE
