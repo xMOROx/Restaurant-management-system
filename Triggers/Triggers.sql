@@ -255,18 +255,19 @@ go
 
 
 CREATE TRIGGER CanReservation
-    ON Reservation
-    AFTER INSERT
+    ON Orders
+    AFTER UPDATE
 AS
     SET NOCOUNT ON
     BEGIN
-        DECLARE @LastOrderID int = (SELECT OrderID FROM inserted INNER JOIN Orders O ON O.ReservationID = inserted.ReservationID);
-        DECLARE @ClientID int = (SELECT ClientID FROM inserted INNER JOIN Orders O ON O.ReservationID = inserted.ReservationID)
+        DECLARE @LastOrderID int = (SELECT OrderID FROM inserted );
+        DECLARE @ClientID int = (SELECT ClientID FROM inserted )
         DECLARE @ReservationID int;
 
         SELECT @ReservationID = R2.ReservationID FROM Orders
             INNER JOIN Reservation R2 on Orders.ReservationID = R2.ReservationID
         WHERE OrderID = @LastOrderID
+
         IF @ReservationID IS NOT NULL
         BEGIN;
             DECLARE @MinimalOrders int
@@ -275,19 +276,21 @@ AS
             SELECT @MinimalOrders = [Minimal number of orders], @MinimalValue = [Minimal value for orders] FROM CurrentReservationVars
 
             IF NOT EXISTS(SELECT * FROM dbo.GetClientsOrderedMoreThanXTimes(@MinimalOrders) WHERE ClientID = @ClientID)
-            BEGIN
-                DECLARE @msg1 varchar(2048) = N'Należy odrzucić dane zamówienie i rezerwację! Klient nie spełnia minimalnej liczby zamówień wynoszącej: ' + @MinimalOrders;
-                THROW 52000, @msg1, 1
-            END
+                BEGIN
+                    DECLARE @msg1 nvarchar(2048) = N'Należy odrzucić dane zamówienie i rezerwację! Klient nie spełnia minimalnej liczby zamówień wynoszącej: ' + CAST(@MinimalOrders AS nvarchar);
+                    THROW 52000, @msg1, 1
+                    ROLLBACK TRANSACTION
+                END
 
             IF (SELECT OrderSum FROM OrdersToPrepare WHERE OrderID = @LastOrderID AND ClientID = @ClientID ) >= @MinimalValue
-            BEGIN
-                DECLARE @msg2 varchar(2048) = N'Należy odrzucić dane zamówienie i rezerwację! Klient nie spełnia minimalnej wartości zamówienia wynoszącej: ' + @MinimalValue;
-                THROW 52000, @msg2, 1
-            END
+                BEGIN
+                    DECLARE @msg2 nvarchar(2048) = N'Należy odrzucić dane zamówienie i rezerwację! Klient nie spełnia minimalnej wartości zamówienia wynoszącej: ' + CAST(@MinimalValue AS nvarchar);
+                    THROW 52000, @msg2, 1
+                    ROLLBACK TRANSACTION
+                END
         END
     END
-GO
+go
 
 
 CREATE TRIGGER uniqueValuesInCompanies
