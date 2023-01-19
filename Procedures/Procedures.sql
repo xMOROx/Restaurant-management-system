@@ -1406,6 +1406,12 @@ AS
                 BEGIN;
                     THROW 52000, 'Nie ma takiego rezerwacji', 1
                 END
+            DECLARE @ReservationIDAssignmentToOrder int
+            SET @ReservationIDAssignmentToOrder = (SELECT ReservationID FROM Orders WHERE OrderID = @OrderID)
+            IF @ReservationIDAssignmentToOrder IS NOT NULL
+                BEGIN
+                    THROW 52000, N'To zamówienie ma już swoją rezerwację!', 1
+                END
 
             UPDATE Orders SET ReservationID = @ReservationID WHERE OrderID = @OrderID
         END TRY
@@ -1414,29 +1420,34 @@ AS
             THROW 52000, @msg, 1
         END CATCH
     END
-GO
+go
 -- add reservation to order
 
 -- add Reservation
-CREATE PROCEDURE AddReservation @ClientID int, @StartDate datetime, @EndDate datetime, @Status varchar(15), @StaffID int
+CREATE PROCEDURE AddReservation @ClientID int, @OrderID int , @StartDate datetime, @EndDate datetime, @StaffID int
 AS
     BEGIN
         SET NOCOUNT ON
         BEGIN TRY
             IF NOT EXISTS(SELECT * FROM Clients WHERE ClientID = @ClientID)
                 BEGIN;
-                        THROW 52000, 'Nie ma takiego klienta', 1
+                        THROW 52000, N'Nie ma takiego klienta', 1
                 END
 
             IF NOT EXISTS(SELECT * FROM Staff WHERE StaffID = @StaffID)
                 BEGIN;
-                        THROW 52000, 'Nie ma takiego pracownika', 1
+                        THROW 52000, N'Nie ma takiego pracownika', 1
                 END
+
 
             DECLARE @ReservationID int
             DECLARE @PersonID int
 
             SELECT @ReservationID = ISNULL(MAX(ReservationID), 0) + 1 FROM Reservation
+
+
+            INSERT INTO Reservation(ReservationID, startDate, endDate, Status, StaffID)
+            VALUES (@ReservationID,@StartDate, @EndDate, 'waiting', @StaffID)
 
             IF EXISTS(SELECT * FROM Companies WHERE ClientID = @ClientID)
                 BEGIN;
@@ -1449,16 +1460,14 @@ AS
                     INSERT INTO ReservationIndividual(ReservationID, ClientID, PersonID)
                     VALUES (@ReservationID, @ClientID, @PersonID)
                 END
-
-            INSERT INTO Reservation(startDate, endDate, Status, StaffID)
-            VALUES (@StartDate, @EndDate, @Status, @StaffID)
+            EXEC AddReservationToOrder @OrderID, @ReservationID
         END TRY
         BEGIN CATCH
                 DECLARE @msg nvarchar(2048) = 'Błąd dodania rezerwacji: ' + ERROR_MESSAGE();
                 THROW 52000, @msg, 1
         END CATCH
     END
-GO
+go
 -- add Reservation
 
 -- add Table to  Reservation
