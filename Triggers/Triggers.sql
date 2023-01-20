@@ -14,6 +14,41 @@ AS BEGIN
             INNER JOIN Orders AS O ON O.OrderID = I.OrderID
             INNER JOIN dbo.OrderDetails OD ON O.OrderID = OD.OrderID
             INNER JOIN Products P ON OD.ProductID = P.ProductID
+        WHERE
+            (   DATENAME(WEEKDAY, O.OrderCompletionDate) LIKE 'Thursday'
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, O.OrderCompletionDate) LIKE 'Friday'
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, O.OrderCompletionDate) LIKE 'Saturday'
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (   DATENAME(WEEKDAY, O.OrderDate) LIKE 'Thursday'
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, O.OrderDate) LIKE 'Friday'
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, O.OrderDate) LIKE 'Saturday'
+                AND CategoryID = @CategoryID
+            )
+        )
+        OR
+        EXISTS(
+        SELECT * FROM inserted AS I
+            INNER JOIN Orders AS O ON O.OrderID = I.OrderID
+            INNER JOIN dbo.OrderDetails OD ON O.OrderID = OD.OrderID
+            INNER JOIN Products P ON OD.ProductID = P.ProductID
             INNER JOIN Reservation R2 ON O.ReservationID = R2.ReservationID
         WHERE
             (   DATENAME(WEEKDAY, R2.startDate) LIKE 'Thursday'
@@ -61,6 +96,8 @@ AS BEGIN
         END
     END
 go
+
+
 
 
 
