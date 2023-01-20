@@ -1454,7 +1454,7 @@ AS
                         THROW 52000, N'Nie ma takiego pracownika', 1
                 END
 
-                DECLARE @ReservationIDAssignmentToOrder int
+            DECLARE @ReservationIDAssignmentToOrder int
             SET @ReservationIDAssignmentToOrder = (SELECT ReservationID FROM Orders WHERE OrderID = @OrderID)
             IF @ReservationIDAssignmentToOrder IS NOT NULL
                 BEGIN
@@ -1489,7 +1489,6 @@ AS
         END CATCH
     END
 go
-
 
 -- add Reservation
 

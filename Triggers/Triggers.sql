@@ -14,8 +14,30 @@ AS BEGIN
             INNER JOIN Orders AS O ON O.OrderID = I.OrderID
             INNER JOIN dbo.OrderDetails OD ON O.OrderID = OD.OrderID
             INNER JOIN Products P ON OD.ProductID = P.ProductID
-            INNER JOIN OrdersTakeaways OT ON O.TakeawayID = OT.TakeawaysID
             INNER JOIN Reservation R2 ON O.ReservationID = R2.ReservationID
+        WHERE
+            (   DATENAME(WEEKDAY, R2.startDate) LIKE 'Thursday'
+                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 2
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, R2.startDate) LIKE 'Friday'
+                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 3
+                AND CategoryID = @CategoryID
+            )
+            OR
+            (
+                DATENAME(WEEKDAY, R2.startDate) LIKE 'Saturday'
+                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 4
+                AND CategoryID = @CategoryID
+            )
+        ) OR EXISTS(
+            SELECT * FROM inserted AS I
+            INNER JOIN Orders AS O ON O.OrderID = I.OrderID
+            INNER JOIN dbo.OrderDetails OD ON O.OrderID = OD.OrderID
+            INNER JOIN Products P ON OD.ProductID = P.ProductID
+            INNER JOIN OrdersTakeaways OT ON O.TakeawayID = OT.TakeawaysID
         WHERE
             (   DATENAME(WEEKDAY, OT.PrefDate) LIKE 'Thursday'
                 AND DATEDIFF(DAY, O.OrderDate, OT.PrefDate) <= 2
@@ -33,29 +55,14 @@ AS BEGIN
                 AND DATEDIFF(DAY, O.OrderDate, OT.PrefDate) <= 4
                 AND CategoryID = @CategoryID
             )
-            OR
-            (   DATENAME(WEEKDAY, R2.startDate) LIKE 'Thursday'
-                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 2
-                AND CategoryID = @CategoryID
-            )
-            OR
-            (
-                DATENAME(WEEKDAY, R2.startDate) LIKE 'Friday'
-                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 3
-                AND CategoryID = @CategoryID
-            )
-            OR
-            (
-                DATENAME(WEEKDAY, R2.startDate) LIKE 'Saturday'
-                AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 4
-                AND CategoryID = @CategoryID
-            )
         )
         BEGIN;
             THROW 50001, N'Takie zamówienie winno być złożone maksylamnie do poniedziałku poprzedzającego zamówienie.', 1
         END
     END
-GO
+go
+
+
 
 -- Trigger usuwa szczegóły zamówienia z tabeli OrderDetails, jeżeli powiązana z nim
 -- rezerwacja została anulowana przez klienta
@@ -267,12 +274,44 @@ AS
         SELECT @ReservationID = R2.ReservationID FROM Orders
             INNER JOIN Reservation R2 on Orders.ReservationID = R2.ReservationID
         WHERE OrderID = @LastOrderID
+
+
         IF @ReservationID IS NOT NULL
         BEGIN;
             DECLARE @MinimalOrders int
             DECLARE @MinimalValue money
+            DECLARE @CategoryID int
 
+            SELECT @CategoryID = CategoryID FROM Category WHERE LOWER(CategoryName) LIKE 'sea food'
             SELECT @MinimalOrders = [Minimal number of orders], @MinimalValue = [Minimal value for orders] FROM CurrentReservationVars
+
+            IF EXISTS(
+                SELECT * FROM  Orders AS O
+                    INNER JOIN dbo.OrderDetails OD ON O.OrderID = OD.OrderID
+                    INNER JOIN Products P ON OD.ProductID = P.ProductID
+                    INNER JOIN Reservation R2 ON O.ReservationID = R2.ReservationID
+                WHERE
+                    (   DATENAME(WEEKDAY, R2.startDate) LIKE 'Thursday'
+                        AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 2
+                        AND CategoryID = @CategoryID AND O.ClientID = @ClientID AND O.OrderID = @LastOrderID
+                    )
+                    OR
+                    (
+                        DATENAME(WEEKDAY, R2.startDate) LIKE 'Friday'
+                        AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 3
+                        AND CategoryID = @CategoryID AND O.ClientID = @ClientID AND O.OrderID = @LastOrderID
+                    )
+                    OR
+                    (
+                        DATENAME(WEEKDAY, R2.startDate) LIKE 'Saturday'
+                        AND DATEDIFF(DAY, O.OrderDate, R2.startDate) <= 4
+                        AND CategoryID = @CategoryID AND O.ClientID = @ClientID AND O.OrderID = @LastOrderID
+                    )
+            )
+                BEGIN
+                    THROW 52000, N'Należy odrzucić dane zamówienie i rezerwację! Klient nie może zamówić w tym dniu owoców morza!', 1
+                END
+
 
             IF NOT EXISTS(SELECT * FROM dbo.GetClientsOrderedMoreThanXTimes(@MinimalOrders) WHERE ClientID = @ClientID)
                 BEGIN
@@ -290,7 +329,6 @@ AS
         END
     END
 go
-
 
 
 
@@ -345,7 +383,15 @@ AS
         IF EXISTS(SELECT * FROM GetClientsOrderedMoreThanXValue(@MinimalAggregateValueTemporary) WHERE ClientID = @ClientID)
             BEGIN
 --                  Add Temporary discount
-                EXEC addDiscount @ClientID, 'Temporary'
+                IF NOT EXISTS(
+                            SELECT * FROM Discounts
+                                INNER JOIN DiscountsVar DV on DV.VarID = Discounts.VarID
+                            WHERE ClientID = @ClientID AND LOWER(DiscountType) LIKE 'temporary' AND DATEADD(DAY, ValidityPeriod, AppliedDate) >= GETDATE() AND isUsed = 0
+                    )
+                BEGIN
+                    EXEC addDiscount @ClientID, 'Temporary'
+                END
             END
     END
-GO
+go
+
