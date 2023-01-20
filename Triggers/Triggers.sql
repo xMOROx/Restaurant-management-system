@@ -267,7 +267,6 @@ AS
         SELECT @ReservationID = R2.ReservationID FROM Orders
             INNER JOIN Reservation R2 on Orders.ReservationID = R2.ReservationID
         WHERE OrderID = @LastOrderID
-
         IF @ReservationID IS NOT NULL
         BEGIN;
             DECLARE @MinimalOrders int
@@ -282,7 +281,7 @@ AS
                     ROLLBACK TRANSACTION
                 END
 
-            IF (SELECT OrderSum FROM OrdersToPrepare WHERE OrderID = @LastOrderID AND ClientID = @ClientID ) >= @MinimalValue
+            IF (SELECT OrderSum FROM inserted WHERE OrderID = @LastOrderID AND ClientID = @ClientID ) <= @MinimalValue
                 BEGIN
                     DECLARE @msg2 nvarchar(2048) = N'Należy odrzucić dane zamówienie i rezerwację! Klient nie spełnia minimalnej wartości zamówienia wynoszącej: ' + CAST(@MinimalValue AS nvarchar);
                     THROW 52000, @msg2, 1
@@ -291,6 +290,8 @@ AS
         END
     END
 go
+
+
 
 
 CREATE TRIGGER uniqueValuesInCompanies

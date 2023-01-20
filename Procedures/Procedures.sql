@@ -1430,6 +1430,8 @@ AS
         END CATCH
     END
 go
+
+
 -- add reservation to order
 
 -- add Reservation
@@ -1450,6 +1452,13 @@ AS
             IF NOT EXISTS(SELECT * FROM Staff WHERE StaffID = @StaffID)
                 BEGIN;
                         THROW 52000, N'Nie ma takiego pracownika', 1
+                END
+
+                DECLARE @ReservationIDAssignmentToOrder int
+            SET @ReservationIDAssignmentToOrder = (SELECT ReservationID FROM Orders WHERE OrderID = @OrderID)
+            IF @ReservationIDAssignmentToOrder IS NOT NULL
+                BEGIN
+                    THROW 52000, N'To zamówienie ma już swoją rezerwację!', 1
                 END
 
             DECLARE @ReservationID int
@@ -1480,6 +1489,8 @@ AS
         END CATCH
     END
 go
+
+
 -- add Reservation
 
 -- add Table to  Reservation
