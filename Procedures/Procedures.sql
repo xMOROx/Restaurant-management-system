@@ -778,7 +778,7 @@ GO
 -- change Payment status for order
 -- order Insert Instant Pay
 CREATE PROCEDURE AddOrderInstantPay @ClientID int,
-                                    @OrderCompletionDate datetime,
+                                    @OrderCompletionDate datetime = null,
                                     @PaymentStatusName_ varchar(50),
                                     @PaymentMethodName_ varchar(50),
                                     @OrderStatus varchar(15),
@@ -787,7 +787,10 @@ AS
 BEGIN
     SET NOCOUNT ON
     BEGIN TRY
-
+        IF @OrderCompletionDate IS NOT NULL AND  @OrderCompletionDate <= GETDATE()
+            BEGIN
+                THROW 52000, N'Data ukończenia zamówienia musi być większa od aktualnej!', 1
+            END
         IF NOT EXISTS(SELECT PaymentStatusID FROM PaymentStatus WHERE PaymentStatusName LIKE @PaymentStatusName_)
             BEGIN;
                 THROW 52000, 'Nie ma takiego statusu!', 1
@@ -831,6 +834,8 @@ END
 go
 
 
+
+
 -- order Insert Instant Pay
 -- order Insert Month Pay
 CREATE PROCEDURE AddOrderMonthPay   @ClientID int,
@@ -843,6 +848,10 @@ AS
 BEGIN
     SET NOCOUNT ON
     BEGIN TRY
+        IF @OrderCompletionDate IS NOT NULL AND  @OrderCompletionDate <= GETDATE()
+            BEGIN
+                THROW 52000, N'Data ukończenia zamówienia musi być większa od aktualnej!', 1
+            END
         IF NOT EXISTS(SELECT PaymentStatusID FROM PaymentStatus WHERE PaymentStatusName LIKE @PaymentStatusName_)
             BEGIN;
                 THROW 52000, 'Nie ma takiego statusu!', 1
@@ -1429,6 +1438,10 @@ AS
     BEGIN
         SET NOCOUNT ON
         BEGIN TRY
+            IF @StartDate >= @EndDate
+                BEGIN
+                    THROW 52000, 'Data końca musi być większa od startu!', 1
+                END
             IF NOT EXISTS(SELECT * FROM Clients WHERE ClientID = @ClientID)
                 BEGIN;
                         THROW 52000, N'Nie ma takiego klienta', 1
@@ -1438,7 +1451,6 @@ AS
                 BEGIN;
                         THROW 52000, N'Nie ma takiego pracownika', 1
                 END
-
 
             DECLARE @ReservationID int
             DECLARE @PersonID int

@@ -132,7 +132,6 @@ CREATE TABLE Orders (
     OrderDate datetime  NOT NULL default getdate(),
     OrderCompletionDate datetime NULL ,
     OrderStatus varchar(15) NOT NULL check (OrderStatus in ('pending', 'accepted', 'completed', 'denied', 'picked', 'cancelled')),
-    CONSTRAINT validDateOrders check ( (OrderCompletionDate >= OrderDate) or OrderCompletionDate is null),
     CONSTRAINT Orders_pk PRIMARY KEY  (OrderID)
 );
 
