@@ -1335,6 +1335,44 @@ AS
     END
 GO
 -- add payment status 
+-- remove payment status
+CREATE PROCEDURE RemovePaymentStatus @PaymentStatusID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM PaymentStatus WHERE PaymentStatusID = @PaymentStatusID)
+                BEGIN;
+                    THROW 52000, 'Nie ma takiego statusu płatności', 1
+                END
+            DELETE FROM PaymentStatus WHERE PaymentStatusID = @PaymentStatusID
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd usunięcia statusu płatności: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO 
+-- remove payment status
+-- remove payment method
+CREATE PROCEDURE RemovePaymentMethod @PaymentMethodID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM PaymentMethods WHERE PaymentMethodID = @PaymentMethodID)
+                BEGIN;
+                    THROW 52000, 'Nie ma takiej metody płatności', 1
+                END
+            DELETE FROM PaymentMethods WHERE PaymentMethodID = @PaymentMethodID
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd usunięcia metody płatności: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO 
+-- remove payment method
 
 -- add payment method 
 CREATE PROCEDURE AddPaymentMethod @PaymentMethodName varchar(50)
@@ -1491,7 +1529,25 @@ AS
 go
 
 -- add Reservation
+-- remove Reservation
+CREATE PROCEDURE RemoveReservation @ReservationID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM Reservation WHERE ReservationID = @ReservationID)
+                BEGIN;
+                    THROW 52000, 'Nie ma takiej rezerwacji', 1
+                END
 
+            DELETE FROM Reservation WHERE ReservationID = @ReservationID
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd usunięcia rezerwacji: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
 -- add Table to  Reservation
 CREATE PROCEDURE addTableToReservation @ReservationID int, @TableID int
 AS
@@ -1518,7 +1574,29 @@ AS
     END
 GO
 -- add Table to  Reservation
+-- remove table from reservation
+CREATE PROCEDURE removeTableFromReservation @ReservationID int, @TableID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM TABLES WHERE TableID = @TableID)
+            BEGIN;
+                THROW 52000, 'Nie ma takiego stolika! ', 1
+            END
 
+            IF NOT EXISTS(SELECT * FROM Orders WHERE ReservationID = @ReservationID)
+            BEGIN;
+                THROW 52000, 'Nie ma takiej rezerwacji! ', 1
+            END
+            DELETE FROM ReservationDetails WHERE ReservationID = @ReservationID AND TableID = @TableID
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = 'Błąd dodania stolika do rezerwacji: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
 -- Add reservation var
 CREATE PROCEDURE AddReservationVar @WK int, @WZ money, @startDate datetime, @endDate datetime = NULL
 AS
@@ -1642,3 +1720,27 @@ AS
     END
 GO
 
+-- remove Employee from Company
+CREATE PROCEDURE removeEmployeeFromCompany @CompanyID int, @PersonID int
+AS
+    BEGIN
+        SET NOCOUNT ON
+        BEGIN TRY
+            IF NOT EXISTS(SELECT * FROM Companies WHERE ClientID = @CompanyID)
+            BEGIN;
+                THROW 52000, N'Nie ma takiej firmy! ', 1
+            END
+
+            IF NOT EXISTS(SELECT * FROM Person WHERE PersonID = @PersonID)
+            BEGIN;
+                THROW 52000, N'Nie ma takiej osoby! ', 1
+            END
+
+            DELETE FROM Employees WHERE PersonID = @PersonID AND CompanyID = @CompanyID
+        END TRY
+        BEGIN CATCH
+            DECLARE @msg nvarchar(2048) = N'Błąd usunięcia pracownika z firmy: ' + ERROR_MESSAGE();
+            THROW 52000, @msg, 1
+        END CATCH
+    END
+GO
