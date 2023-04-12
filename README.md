@@ -38,10 +38,10 @@
 
 ## Functionality
 
-- [Functions](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Functions/description.md)
-- [Procedurs](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Procedures/description.md)
-- [Tables and Indexes](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Tables/description.md)
-- [Triggers](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Triggers/description.md)
+- [Functions](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Functions)
+- [Procedurs](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Procedures)
+- [Tables and Indexes](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Tables)
+- [Triggers](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Triggers)
 
 ## Diagrams
 
