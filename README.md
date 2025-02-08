@@ -45,5 +45,5 @@
 
 ## Diagrams
 
-PNG [here](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Diagrams/Diagram.png)  
+![Diagram](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Diagrams/Diagram.png)  
 SVG [here](https://github.com/xMOROx/Podstawy-Baz-Danych-Projekt-1/blob/main/Diagrams/Diagram.svg)  
